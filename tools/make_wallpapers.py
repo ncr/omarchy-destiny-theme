@@ -35,10 +35,12 @@ def main():
     if args.set == "classic":
         from classic import SHEETS
     else:
-        from devices import SHEETS as devices
-        from foibles import SHEETS as foibles
-        from leisure import SHEETS as leisure
-        SHEETS = devices + leisure + foibles
+        import devices
+        import foibles
+        import leisure
+        from order import ORDER
+        drawn = dict(devices.SHEETS + leisure.SHEETS + foibles.SHEETS)
+        SHEETS = [(f"{i:02d}-{name}", drawn[name]) for i, (name, _) in enumerate(ORDER, 1)]
     size = tuple(int(v) for v in args.size.lower().split("x"))
     from sheet import Sheet
     is_16_9 = abs(size[0] / size[1] - 16 / 9) < 0.01

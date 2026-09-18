@@ -52,6 +52,9 @@ git -C ~/.config/omarchy/themes/destiny switch ultrawide
 omarchy theme set destiny
 ```
 
+`omarchy theme update` pulls the branch you are on, so you stay on `ultrawide`.
+Run `omarchy theme set destiny` after an update to load new wallpapers.
+
 For any other shape, render a set for your exact screen — see
 [Rendering your own](#rendering-your-own).
 
@@ -142,24 +145,31 @@ service. Pick one with `Super + Ctrl + Space`, or cycle with `omarchy theme bg n
 
 | | Device | What it does | Year | Mood |
 |-|--------|--------------|------|------|
-| 01 | Organ Foundry | Prints a kidney from the patient's own cells and matures it for 21 days | 2068 | teal, coral |
-| 02 | Quantum Simulator | Computes exactly how molecules and materials behave | 2058 | indigo, Arc blue |
-| 03 | Tether Climber | Lifts 20 t to geostationary orbit on beamed laser power | 2075 | navy (the theme's own), Arc blue |
-| 04 | Cortical Mesh | Gives back sight, speech and movement after injury | 2062 | plum, pink |
-| 05 | Fusion Transport | Takes six crew to Mars in 75 days | 2072 | rust, amber |
-| 06 | Air Refinery | Makes jet fuel from air, water and sunlight | 2055 | olive, lime |
-| 07 | Sky Racer | One-seat electric racer that flies gates at 320 km/h and refuses to crash | 2052 | petrol, orange |
-| 08 | Volumetric Stage | Moving 3D images in open air above a stage, no glasses | 2060 | violet, cyan |
-| 09 | Presence Rig | Suit and floor that let a player walk, climb and fight in a game and feel it | 2057 | graphite, mint |
-| 10 | Aroma Organ | Plays any of two million smells on cue, then clears the air | 2050 | wine, peach |
-| 11 | Bounder | Powered legs: 62 km/h and a six-metre high jump | 2064 | royal blue, yellow-green |
-| 12 | Proxy | Runs 10 km every morning wearing your fitness watch, so your insurer thinks you did | 2047 | sand, Arc blue |
-| 13 | Greener | Keeps your lawn exactly 4 % greener than the neighbour's | 2049 | grass green |
-| 14 | Truth Lamp | Glows red over the dinner table when anyone says what they do not believe | 2046 | umber, red |
+| 01 | Quantum Simulator | Computes exactly how molecules and materials behave | 2058 | indigo, Arc blue |
+| 02 | Sky Racer | One-seat electric racer that flies gates at 320 km/h and refuses to crash | 2052 | petrol, orange |
+| 03 | Fusion Transport | Takes six crew to Mars in 75 days | 2072 | rust, amber |
+| 04 | Greener | Keeps your lawn exactly 4 % greener than the neighbour's | 2049 | grass green |
+| 05 | Cortical Mesh | Gives back sight, speech and movement after injury | 2062 | plum, pink |
+| 06 | Bounder | Powered legs: 62 km/h and a six-metre high jump | 2064 | royal blue, yellow-green |
+| 07 | Air Refinery | Makes jet fuel from air, water and sunlight | 2055 | olive, lime |
+| 08 | Aroma Organ | Plays any of two million smells on cue, then clears the air | 2050 | wine, peach |
+| 09 | Tether Climber | Lifts 20 t to geostationary orbit on beamed laser power | 2075 | navy (the theme's own), Arc blue |
+| 10 | Truth Lamp | Glows red over the dinner table when anyone says what they do not believe | 2046 | umber, red |
+| 11 | Organ Foundry | Prints a kidney from the patient's own cells and matures it for 21 days | 2068 | teal, coral |
+| 12 | Volumetric Stage | Moving 3D images in open air above a stage, no glasses | 2060 | violet, cyan |
+| 13 | Proxy | Runs 10 km every morning wearing your fitness watch, so your insurer thinks you did | 2047 | sand, Arc blue |
+| 14 | Presence Rig | Suit and floor that let a player walk, climb and fight in a game and feel it | 2057 | graphite, mint |
 
-Sheets 01–06 are serious. 07–11 are for fun: racing, shows, games, smell and
-sport. 12–14 are jokes told with a straight face: each device works, and each
+Three kinds of sheet take turns. Six are serious: Quantum Simulator, Fusion
+Transport, Cortical Mesh, Air Refinery, Tether Climber, Organ Foundry. Five are
+for fun: racing, sport, smell, shows and games. Three are jokes told with a
+straight face — Greener, Truth Lamp and Proxy: each device works, and each
 exists only because people are the way they are. Read the small print.
+
+The order is arranged by hand in `tools/order.py`: neighbours are far apart in
+hue, so every switch changes how the desktop feels, and the first sheet is the
+one closest to the theme's own navy. A sheet's number, its file name and the
+`NCR-07` printed on it all come from its place in that list.
 
 The numbers on the sheets are made up, but they are checked against each
 other: the refinery's 13 000 t of fuel matches its 40 000 t of CO₂ and its
@@ -167,9 +177,9 @@ other: the refinery's 13 000 t of fuel matches its 40 000 t of CO₂ and its
 
 | | |
 |-|-|
-| ![01](previews/01-organ-foundry.webp) | ![02](previews/02-quantum-simulator.webp) |
-| ![05](previews/05-fusion-transport.webp) | ![08](previews/08-volumetric-stage.webp) |
-| ![13](previews/13-greener.webp) | ![14](previews/14-truth-lamp.webp) |
+| ![01](previews/01-quantum-simulator.webp) | ![03](previews/03-fusion-transport.webp) |
+| ![05](previews/05-cortical-mesh.webp) | ![12](previews/12-volumetric-stage.webp) |
+| ![04](previews/04-greener.webp) | ![10](previews/10-truth-lamp.webp) |
 
 ### The emblem
 
@@ -188,7 +198,7 @@ same command gives byte-identical files.
 python3 tools/make_wallpapers.py --size 5120x2880                # main branch
 python3 tools/make_wallpapers.py --size 5120x2160                # ultrawide branch
 python3 tools/make_wallpapers.py --size 2880x1920 --inset 0      # one exact screen
-python3 tools/make_wallpapers.py --only 8 --out /tmp/test        # one sheet
+python3 tools/make_wallpapers.py --only 12 --out /tmp/test       # one sheet
 python3 tools/make_previews.py                                   # README images
 ```
 
@@ -203,9 +213,10 @@ Needs `python-cairo`, `python-numpy`, `python-pillow` and the Nimbus Sans font
 | File | Contains |
 |------|----------|
 | `tools/sheet.py` | Drawing helpers, palettes, legend, emblem, output |
-| `tools/devices.py` | Sheets 01–06, and which palette each sheet gets |
-| `tools/leisure.py` | Sheets 07–11 |
-| `tools/foibles.py` | Sheets 12–14 |
+| `tools/order.py` | The order of the sheets and the palette of each |
+| `tools/devices.py` | The six serious sheets |
+| `tools/leisure.py` | The five playful ones |
+| `tools/foibles.py` | The three jokes |
 | `tools/classic.py` | An earlier set, not shipped: `--set classic` |
 
 Add your own backgrounds in `~/.config/omarchy/backgrounds/destiny/`.

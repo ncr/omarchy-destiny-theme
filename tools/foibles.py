@@ -12,11 +12,11 @@ from sheet import ARC, GOLD, RED, WHITE, polar
 
 
 # ---------------------------------------------------------------------------
-# 12  Proxy
+# Proxy
 # ---------------------------------------------------------------------------
 
 def proxy(size):
-    s = start(size, 12, 1212)
+    s = start(size, "proxy", 1212)
     mx, my, lx, rx = centres(s)
     s.begin_main(mx, my)
     framing(s, mx, my - 20, 478, a0=110, thick=(200, 245), thin=(320, 355))
@@ -157,7 +157,7 @@ def proxy(size):
 
 
 # ---------------------------------------------------------------------------
-# 13  Greener
+# Greener
 # ---------------------------------------------------------------------------
 
 def gnome(s, x, g, lens=False):
@@ -183,7 +183,7 @@ def mast(s, x, g, h, toward, color):
 
 
 def greener(size):
-    s = start(size, 13, 1313)
+    s = start(size, "greener", 1313)
     mx, my, lx, rx = centres(s)
     s.begin_main(mx, my)
     framing(s, mx, my - 20, 478, a0=200, thick=(150, 190), thin=(20, 55))
@@ -313,11 +313,11 @@ def greener(size):
 
 
 # ---------------------------------------------------------------------------
-# 14  Truth lamp
+# Truth lamp
 # ---------------------------------------------------------------------------
 
 def truth_lamp(size):
-    s = start(size, 14, 1414)
+    s = start(size, "truth-lamp", 1414)
     mx, my, lx, rx = centres(s)
     s.begin_main(mx, my)
     framing(s, mx, my - 20, 478, a0=95, thick=(35, 70), thin=(310, 345))
@@ -441,7 +441,7 @@ def truth_lamp(size):
 
 
 SHEETS = [
-    ("12-proxy", proxy),
-    ("13-greener", greener),
-    ("14-truth-lamp", truth_lamp),
+    ("proxy", proxy),
+    ("greener", greener),
+    ("truth-lamp", truth_lamp),
 ]
