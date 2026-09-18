@@ -11,11 +11,11 @@ from sheet import ARC, GOLD, WHITE, polar
 
 
 # ---------------------------------------------------------------------------
-# 07  Sky racer
+# Sky racer
 # ---------------------------------------------------------------------------
 
 def sky_racer(size):
-    s = start(size, 7, 707)
+    s = start(size, "sky-racer", 707)
     mx, my, lx, rx = centres(s)
     s.begin_main(mx, my)
     framing(s, mx, my, 478, a0=100, thick=(205, 250), thin=(330, 372))
@@ -160,11 +160,11 @@ def sky_racer(size):
 
 
 # ---------------------------------------------------------------------------
-# 08  Volumetric stage
+# Volumetric stage
 # ---------------------------------------------------------------------------
 
 def volumetric_stage(size):
-    s = start(size, 8, 808)
+    s = start(size, "volumetric-stage", 808)
     mx, my, lx, rx = centres(s)
     s.begin_main(mx, my)
     framing(s, mx, my - 30, 480, a0=30, thick=(200, 240), thin=(305, 345))
@@ -291,7 +291,7 @@ def volumetric_stage(size):
 
 
 # ---------------------------------------------------------------------------
-# 09  Presence rig
+# Presence rig
 # ---------------------------------------------------------------------------
 
 def limb(s, p1, p2, r1, r2, a=0.9, w=1.0, fill=0.05, dash=None):
@@ -313,7 +313,7 @@ def cuff(s, p1, p2, f0, f1, half, a=0.9, fill=0.3, color=ARC):
 
 
 def presence_rig(size):
-    s = start(size, 9, 909)
+    s = start(size, "presence-rig", 909)
     mx, my, lx, rx = centres(s)
     s.begin_main(mx, my)
     framing(s, mx, my - 30, 478, a0=20, thick=(195, 235), thin=(300, 340))
@@ -463,11 +463,11 @@ def presence_rig(size):
 
 
 # ---------------------------------------------------------------------------
-# 10  Aroma organ
+# Aroma organ
 # ---------------------------------------------------------------------------
 
 def aroma_organ(size):
-    s = start(size, 10, 1010)
+    s = start(size, "aroma-organ", 1010)
     mx, my, lx, rx = centres(s)
     my -= 30
     s.begin_main(mx, my)
@@ -585,7 +585,7 @@ def aroma_organ(size):
 
 
 # ---------------------------------------------------------------------------
-# 11  Bounder
+# Bounder
 # ---------------------------------------------------------------------------
 
 def spindle(s, p1, p2, off, width, color=ARC):
@@ -603,7 +603,7 @@ def spindle(s, p1, p2, off, width, color=ARC):
 
 
 def bounder(size):
-    s = start(size, 11, 1111)
+    s = start(size, "bounder", 1111)
     mx, my, lx, rx = centres(s)
     s.begin_main(mx, my)
     framing(s, mx, my - 30, 478, a0=330, thick=(190, 232), thin=(120, 160))
@@ -743,9 +743,9 @@ def bounder(size):
 
 
 SHEETS = [
-    ("07-sky-racer", sky_racer),
-    ("08-volumetric-stage", volumetric_stage),
-    ("09-presence-rig", presence_rig),
-    ("10-aroma-organ", aroma_organ),
-    ("11-bounder", bounder),
+    ("sky-racer", sky_racer),
+    ("volumetric-stage", volumetric_stage),
+    ("presence-rig", presence_rig),
+    ("aroma-organ", aroma_organ),
+    ("bounder", bounder),
 ]

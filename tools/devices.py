@@ -9,26 +9,20 @@ import math
 
 import cairo
 
+import order
 from sheet import ARC, GOLD, SUN, WHITE, Sheet, polar
 
-TOTAL = 14
 
 
-# One mood per sheet, so that cycling wallpapers changes how the desktop feels.
-SHEET_PALETTE = {
-    1: "teal", 2: "indigo", 3: "navy", 4: "plum", 5: "rust", 6: "olive",
-    7: "petrol", 8: "violet", 9: "graphite", 10: "wine", 11: "royal",
-    12: "sand", 13: "grass", 14: "umber",
-}
-
-
-def start(size, no, seed):
+def start(size, sheet, seed):
+    """Open a sheet: palette, background, grid and frame. The number printed on
+    the sheet comes from its place in order.ORDER."""
     s = Sheet(size[0], size[1], seed=seed)
-    s.set_palette(SHEET_PALETTE[no])
+    s.set_palette(order.palette(sheet))
     s.background()
     s.begin_lines()
     s.grid()
-    s.frame(no, TOTAL)
+    s.frame(order.number(sheet), order.TOTAL)
     return s
 
 
@@ -79,7 +73,7 @@ def truss(s, x1, y1, x2, y2, depth=10, bay=20, a=0.7):
 
 
 # ---------------------------------------------------------------------------
-# 01  Organ foundry
+# Organ foundry
 # ---------------------------------------------------------------------------
 
 def bean(cx, cy, R, stretch=1.3, notch=0.30):
@@ -91,7 +85,7 @@ def bean(cx, cy, R, stretch=1.3, notch=0.30):
 
 
 def organ_foundry(size):
-    s = start(size, 1, 101)
+    s = start(size, "organ-foundry", 101)
     mx, my, lx, rx = centres(s)
     s.begin_main(mx, my)
     framing(s, mx, my - 30, 470)
@@ -248,11 +242,11 @@ def organ_foundry(size):
 
 
 # ---------------------------------------------------------------------------
-# 02  Quantum simulator
+# Quantum simulator
 # ---------------------------------------------------------------------------
 
 def quantum_simulator(size):
-    s = start(size, 2, 202)
+    s = start(size, "quantum-simulator", 202)
     mx, my, lx, rx = centres(s)
     s.begin_main(mx, my)
     framing(s, mx, my - 20, 480, a0=300, thick=(160, 205), thin=(330, 368))
@@ -401,11 +395,11 @@ def quantum_simulator(size):
 
 
 # ---------------------------------------------------------------------------
-# 03  Tether climber
+# Tether climber
 # ---------------------------------------------------------------------------
 
 def tether_climber(size):
-    s = start(size, 3, 303)
+    s = start(size, "tether-climber", 303)
     mx, my, lx, rx = centres(s)
     s.begin_main(mx, my)
     framing(s, mx, my - 30, 470, a0=20, thick=(195, 240), thin=(300, 345))
@@ -548,11 +542,11 @@ def tether_climber(size):
 
 
 # ---------------------------------------------------------------------------
-# 04  Cortical mesh
+# Cortical mesh
 # ---------------------------------------------------------------------------
 
 def cortical_mesh(size):
-    s = start(size, 4, 404)
+    s = start(size, "cortical-mesh", 404)
     mx, my, lx, rx = centres(s)
     s.begin_main(mx, my)
     framing(s, mx, my, 478, a0=110, thick=(250, 300), thin=(40, 80))
@@ -705,11 +699,11 @@ def cortical_mesh(size):
 
 
 # ---------------------------------------------------------------------------
-# 05  Fusion transport
+# Fusion transport
 # ---------------------------------------------------------------------------
 
 def fusion_transport(size):
-    s = start(size, 5, 505)
+    s = start(size, "fusion-transport", 505)
     mx, my, lx, rx = centres(s)
     my -= 10
     s.begin_main(mx + 80, my)
@@ -859,11 +853,11 @@ def fusion_transport(size):
 
 
 # ---------------------------------------------------------------------------
-# 06  Air refinery
+# Air refinery
 # ---------------------------------------------------------------------------
 
 def air_refinery(size):
-    s = start(size, 6, 606)
+    s = start(size, "air-refinery", 606)
     mx, my, lx, rx = centres(s)
     s.begin_main(mx, my)
     framing(s, mx, my - 30, 476, a0=95, thick=(225, 262), thin=(330, 372))
@@ -1020,10 +1014,10 @@ def air_refinery(size):
 
 
 SHEETS = [
-    ("01-organ-foundry", organ_foundry),
-    ("02-quantum-simulator", quantum_simulator),
-    ("03-tether-climber", tether_climber),
-    ("04-cortical-mesh", cortical_mesh),
-    ("05-fusion-transport", fusion_transport),
-    ("06-air-refinery", air_refinery),
+    ("organ-foundry", organ_foundry),
+    ("quantum-simulator", quantum_simulator),
+    ("tether-climber", tether_climber),
+    ("cortical-mesh", cortical_mesh),
+    ("fusion-transport", fusion_transport),
+    ("air-refinery", air_refinery),
 ]
