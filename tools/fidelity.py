@@ -245,8 +245,8 @@ def seated(s, x, y, facing=1):
         ("C",-32,97,-28,115,-23,133),("C",-19,147,-21,160,-26,177),
         ("C",-33,195,-29,205,-15,209),("C",4,213,22,206,43,208),
         ("C",65,210,86,211,105,212),("C",106,226,110,236,110,246),
-        ("C",108,274,110,300,112,325),("C",108,330,108,340,113,344),
-        ("L",159,344),("C",166,343,164,338,157,336),
+        ("C",108,274,110,300,112,325),("C",108,332,108,342,113,346),
+        ("L",159,346),("C",166,345,164,340,157,338),
         ("C",142,332,137,323,132,320),("C",127,291,141,271,140,250),
         ("C",140,238,134,225,134,214),("C",139,199,132,185,119,180),
         ("C",91,170,56,170,33,169),("C",28,153,30,137,32,120),
@@ -521,29 +521,13 @@ def enrich(s, name, mx, my):
         for x in range(-400,401,40):
             s.ln(x,252,x,264,.4,.5)
     elif name == "presence-rig":
-        panel(s,-18,-210,36,48)
+        # Figure construction is authored as a continuous envelope in human_figures.
         for sign in (-1,1):
-            s.bez((sign*67,-236),(sign*80,-201),(sign*48,-150),(sign*48,-85),.65,.65)
-            s.bez((sign*48,-85),(sign*36,-60),(sign*52,-50),(sign*56,-32),.5,.55)
-            for k in range(7):
-                y=-150+k*11
-                s.bez((sign*10,y),(sign*18,y+4),(sign*26,y+4),(sign*37,y),.35,.45)
             for y in range(-366,263,32):
                 bolt(s,sign*430,y,2)
             panel(s,sign*430-7,-170,14,60,9)
-        s.ellipse(0,-300,28,25,a0=192,a1=348,a=.55,w=.5)
         for x in range(-380,381,20):
             s.circ(x,264,2,.5,.4)
-        # Flexible textile around the clavicles, abdomen and pelvis.
-        for sign in (-1,1):
-            for k in range(4):
-                s.bez((sign*12,-242+k*6),(sign*32,-247+k*6),(sign*55,-239+k*6),(sign*72,-230+k*6),.38,.5)
-            s.bez((sign*10,-76),(sign*22,-86),(sign*50,-72),(sign*55,-45),.5,.65)
-            for k in range(4):
-                s.bez((sign*12,-65+k*6),(sign*25,-58+k*6),(sign*39,-62+k*5),(sign*46,-44+k*4),.3,.45)
-        for x,y in ((-86,-236),(36,-30),(-50,104),(62,96)):
-            optical_target(s,x,y,6)
-        optical_target(s,0,-232,6.5)
     elif name == "aroma-organ":
         for k in range(96):
             a=k*3.75; r=338 if k%2==0 else 292
@@ -571,17 +555,8 @@ def enrich(s, name, mx, my):
             s.bez((10+off,191),(-81+off,210),(-84+off,278),(52+off,315),.25,.4)
         cable(s,(-127,-242),(-116,-195),(-43,-213),(-27,-239))
     elif name == "proxy":
-        for x,y,r in ((34,-178,13),(104,-104,9),(-6,20,14),(112,96,11),(74,226,8)):
-            bearing(s,x,y,r,6)
-        for x,y,r in ((34,-178,6),(-6,20,6),(112,96,5)):
-            optical_target(s,x,y,r)
-        for sign in (-1,1):
-            s.bez((16+sign*32,-158),(8+sign*45,-115),(sign*39,-61),(-4+sign*35,-8),.55,.55)
-        for y in range(-156,-124,7):
-            s.ln(10,y,37,y+6,.5,.5)
-        cable(s,(120,115),(131,168),(95,193),(80,211))
-        for k in range(8):
-            s.ln(115+k*4,246+k*.3,113+k*4,251+k*.3,.6,.6)
+        # The articulated dummy, neck and load cells live in human_figures.
+        pass
     elif name == "greener":
         g=150
         for x,h,sgn in ((-64,318,1),(76,336,-1)):

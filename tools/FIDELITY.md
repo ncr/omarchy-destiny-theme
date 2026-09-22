@@ -49,7 +49,8 @@ The Truth Lamp table height and chair geometry follow the revised seated pose.
 
 Opaque contours restore the aligned background underneath them. Objects retain
 physical layering; table settings are drawn after the figures. Mechanical
-shells (Proxy) remain distinct from human anatomy (Presence Rig and Bounder).
+shells (Proxy) and wearable reference bodies (Presence Rig) share the accepted
+crash-dummy convention; Bounder retains its quiet anatomical leg envelope.
 Shared view frames use quiet registration corners and datum axes. Magnified
 views retain their boundaries but lose unrelated circular graduations. Do not
 invent dimensions, degree values or NASA branding. Preserve the original
@@ -65,6 +66,18 @@ crash-dummy photo references inform a separate rigid head shell, one subdued
 rear access-cap seam in profile, and a recessed neck shaft with curved collars.
 Keep the accepted blank frontal face, a minimal lateral nose cue and original narrative text; the
 dummy treatment is a drawing convention, not a rewrite of the fictional story.
+
+`human_figures.py` owns the articulated Proxy and Presence Rig reference bodies.
+Paired components share dimensions and contours. Proxy's elbows and knees are
+solved from fixed segment lengths; their bend direction must remain consistent
+in the side elevation. Hands are compact moulded envelopes with an integral
+thumb and a connected wrist spigot. Preserve the reviewed thumb orientation.
+The rear hand follows its forearm axis. Presence Rig uses mirrored front-view
+shoes, with soles on the roller crowns; Proxy uses rotated side-view shoes.
+Keep Proxy's dashed, cancelled head symbol and the original NONE FITTED caption.
+Truth Lamp's seated soles meet the floor. After figure changes, review the
+whole silhouette as well as enlarged joints, and run the label audit at both
+5120x2160 and 5120x2880.
 Visual references: [NHTSA crash-test dummies](https://www.nhtsa.gov/nhtsas-crash-test-dummies)
 and [Humanetics THOR-50M](https://www.humaneticsgroup.com/products/anthropomorphic-test-devices/frontal-impact/thor-50m/thor-50m).
 

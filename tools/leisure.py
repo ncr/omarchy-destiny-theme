@@ -369,62 +369,8 @@ def presence_rig(size):
     hip = {-1: (mx - 36, my - 30), 1: (mx + 36, my - 30)}
     kn = {-1: (mx - 50, my + 104), 1: (mx + 62, my + 96)}
     an = {-1: (mx - 52, my + 220), 1: (mx + 84, my + 214)}
-    def torso_path():
-        c=s.c
-        c.move_to(mx-12,my-256)
-        c.curve_to(mx-40,my-256,mx-75,my-258,mx-84,my-244)
-        c.curve_to(mx-99,my-217,mx-63,my-170,mx-58,my-132)
-        c.curve_to(mx-49,my-94,mx-63,my-57,mx-64,my-24)
-        c.curve_to(mx-32,my-12,mx+32,my-12,mx+64,my-24)
-        c.curve_to(mx+63,my-57,mx+49,my-94,mx+58,my-132)
-        c.curve_to(mx+63,my-170,mx+99,my-217,mx+84,my-244)
-        c.curve_to(mx+75,my-258,mx+40,my-256,mx+12,my-256)
-        c.close_path()
-    torso_path()
-    s._ink(.05,WHITE);s.c.fill_preserve();s._stroke(.95,1.2,None,WHITE)
-    s.c.save()
-    torso_path()
-    s.c.clip()
-    for i in range(-10, 11):
-        for j in range(0, 26):
-            s.dot(mx + i * 9 + (4.5 if j % 2 else 0), my - 246 + j * 9, 0.9, 0.55)
-    s.c.restore()
-    s.rect(mx - 22, my - 214, 44, 56, 0.9, 0.8, fill=0.14)
-    s.rect(mx - 12, my - 200, 24, 24, 0.9, 0.6, color=ARC)
-    front_head(s, head[0], head[1])
-    for side in (-1, 1):
-        s.ln(mx + side*12, my - 263, mx + side*12, my - 256, .7, .75)
-    s.band(head[0], head[1], 22, 34, 205, 335, 0.9, 0.7, fill=0.35, color=ARC)
-    for sgn in (-1, 1):
-        s.rect(head[0] + sgn * 33 - 4, head[1] + 2, 8, 16, 0.95, 0.7, fill=0.7, color=GOLD)
-        anatomical_segment(s, sh[sgn], el[sgn], 19, 15, "upper-arm")
-        anatomical_segment(s, el[sgn], wr[sgn], 15, 11, "forearm")
-        anatomical_segment(s, hip[sgn], kn[sgn], 27, 19, "thigh")
-        anatomical_segment(s, kn[sgn], an[sgn], 19, 13, "calf")
-        for p1, p2, half in ((sh[sgn], el[sgn], 21), (el[sgn], wr[sgn], 17), (hip[sgn], kn[sgn], 29), (kn[sgn], an[sgn], 21)):
-            for f0 in (0.28, 0.58):
-                cuff(s, p1, p2, f0, f0 + 0.10, half)
-        for j, r in ((sh[sgn], 12), (el[sgn], 10), (hip[sgn], 13), (kn[sgn], 12), (an[sgn], 9)):
-            s.circ(j[0], j[1], r, 0.9, 0.8, fill=0.18)
-        hx, hy = wr[sgn][0] + sgn * 6, wr[sgn][1] + 22
-        hand(s, hx, hy - 13, .88, -sgn * 10)
-        for k in range(3):
-            s.ln(hx-5+k*4,hy-7,hx-5+k*4,hy+7,.6,.45,color=ARC)
-        # Heel and instep connect to the ankle envelope and meet the roller floor.
-        s.c.save()
-        s.c.translate(*an[sgn])
-        s.c.scale(sgn,1)
-        h=floor-an[sgn][1]-2
-        contour(s,[("M",-12,-6),("L",-12,h-8),
-            ("C",-15,h-3,-11,h,-6,h),("L",42,h),
-            ("C",47,h-1,45,h-5,39,h-7),
-            ("C",26,h-11,19,7,11,2),("L",10,-6)],a=.7,w=.75,fill=.012)
-        s.ln(-8,h-3,41,h-3,.35,.4)
-        s.c.restore()
-
-    for sgn in (-1, 1):
-        joint_chain(s, [sh[sgn], el[sgn], wr[sgn]])
-        joint_chain(s, [hip[sgn], kn[sgn], an[sgn]])
+    from human_figures import presence_body
+    presence_body(s, mx, my)
 
     enrich(s, "presence-rig", mx, my)
 

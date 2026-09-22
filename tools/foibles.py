@@ -30,22 +30,16 @@ def proxy(size):
         s.fade_ln(x0, yy, x0 - 300 + k * 20, yy, 0.45, 0.0, 0.6)
 
     hipc, sh = (mx - 6, my + 20), (mx + 34, my - 178)
-    # far-side arm and leg first, fainter
     e2, w2 = (mx - 44, my - 96), (mx - 108, my - 48)
-    k2, a2 = (mx - 64, my + 138), (mx - 178, my + 236)
-    limb(s, sh, e2, 17, 14, a=0.55, fill=0.03)
-    limb(s, e2, w2, 14, 10, a=0.55, fill=0.03)
-    hand(s, w2[0] - 8, w2[1] + 8, .55, 45, a=.6)
-    for r in (20, 28, 36):
-        s.arc(w2[0] - 8, w2[1] + 8, r, 140, 220, 0.5, 0.6)
-    limb(s, hipc, k2, 26, 19, a=0.55, fill=0.03)
-    limb(s, k2, a2, 19, 12, a=0.55, fill=0.03)
-    s.poly([(a2[0] - 12, a2[1] - 6), (a2[0] + 16, a2[1] + 10), (mx - 122, g - 2), (mx - 152, g - 2)], 0.6, 0.8, fill=0.05)
-    for j, r in ((e2, 9), (k2, 11), (a2, 8)):
-        s.circ(j[0], j[1], r, 0.55, 0.7, fill=0.1)
+    k1, a1 = (mx + 112, my + 96), (mx + 74, my + 226)
+    e1, w1 = (mx + 104, my - 104), (mx + 172, my - 160)
+    from human_figures import proxy_body, proxy_pose
+    pose = proxy_pose()
+    knee = pose['near']['knee']
+    k1 = (mx+knee[0], my+knee[1])
+    proxy_body(s, mx, my)
 
     # torso with the owner's race number
-    limb(s, hipc, sh, 46, 54, fill=0.07)
     s.c.save()
     s.c.translate((hipc[0] + sh[0]) / 2 + 6, (hipc[1] + sh[1]) / 2 - 10)
     s.c.rotate(math.radians(11.4))
@@ -53,24 +47,10 @@ def proxy(size):
     s.text_mid("114", 0, 2, 24, track=0.06, a=0.95, align="c", bold=True)
     s.text("CITY 10K", 0, -15, 5.5, a=0.7, align="c")
     s.c.restore()
-    s.ln(sh[0] + 4, sh[1] - 50, sh[0] + 12, sh[1] - 88, 0.9, 1.0)
-    s.ellipse(sh[0] + 12, sh[1] - 92, 22, 7, a=0.95, w=1.0)
-    s.ellipse(sh[0] + 12, sh[1] - 92, 8, 2.5, a=0.9, w=0.7, color=ARC)
+    # The absent head is a diagram symbol, visibly separate from the mount.
+    from human_figures import absent_head
+    absent_head(s, sh[0]+12, sh[1]-94)
 
-    # near-side leg and arm
-    k1, a1 = (mx + 112, my + 96), (mx + 74, my + 226)
-    limb(s, hipc, k1, 27, 20, fill=0.07)
-    limb(s, k1, a1, 20, 13, fill=0.07)
-    s.poly([(a1[0] - 12, a1[1] + 2), (a1[0] + 14, a1[1] - 6), (a1[0] + 62, a1[1] + 24), (a1[0] + 56, a1[1] + 36), (a1[0] - 10, a1[1] + 20)],
-           0.95, 1.0, fill=0.08)
-    e1, w1 = (mx + 104, my - 104), (mx + 172, my - 160)
-    limb(s, sh, e1, 18, 15, fill=0.07)
-    limb(s, e1, w1, 15, 11, fill=0.07)
-    cuff(s, e1, w1, 0.52, 0.98, 14, fill=0.16, color=ARC)
-    cuff(s, e1, w1, 0.70, 0.86, 17, fill=0.6, color=GOLD)
-    hand(s, w1[0] + 9, w1[1] - 8, .55, -130)
-    for j, r in ((sh, 14), (e1, 10), (hipc, 15), (k1, 12), (a1, 9)):
-        s.circ(j[0], j[1], r, 0.95, 0.9, fill=0.18)
     px, py = w1[0] + 40, w1[1] - 44
     s.poly([(px, py), (px + 14, py), (px + 19, py - 12), (px + 25, py + 10), (px + 30, py), (px + 50, py)], 0.95, 0.9, close=False, color=GOLD)
     s.text("142 bpm", px + 56, py + 3, 7, a=0.9, color=GOLD)
@@ -81,9 +61,14 @@ def proxy(size):
     s.leader(mx + 152, my - 142, 150, 60, 120, "OWNER'S WATCH", "THE ONLY PART THE INSURER SEES")
     s.leader(mx + 130, my - 124, 160, 130, 120, "LEFT WRIST", "SKIN, WARMTH, PULSE AND LIGHT SWEAT")
     s.leader(mx + 40, my - 60, 270, 130, 110, "CHEST", "BARE ALUMINIUM / NOBODY CHECKS")
-    s.leader(k1[0] + 8, k1[1] + 30, 170, 80, 120, "RIGHT KNEE", "COPIES THE OWNER'S LIMP FROM A 2041 SKI TRIP")
-    s.leader(w2[0] - 30, w2[1] + 8, -150, -70, -120, "WAVING HAND", "NEIGHBOURS ARE WITNESSES")
-    s.leader(mx - 136, g - 4, -110, 60, -110, "FOOT", "WEARS OUT THE OWNER'S OWN SHOES")
+    s.leader(k1[0] + 8, k1[1] + 30, 170+112-knee[0], 80+96-knee[1], 120, "RIGHT KNEE", "COPIES THE OWNER'S LIMP FROM A 2041 SKI TRIP")
+    hand_angle = math.radians(pose['far']['hand_angle'])
+    hx = -25*math.sin(hand_angle); hy = 25*math.cos(hand_angle)
+    s.leader(w2[0] + hx, w2[1] + hy, -180-hx, -62-hy, -120, "WAVING HAND", "NEIGHBOURS ARE WITNESSES")
+    foot = pose['far']; angle = math.radians(foot['foot_angle'])
+    fx = foot['ankle'][0] + 51*math.cos(angle) - 23*math.sin(angle)
+    fy = foot['ankle'][1] + 51*math.sin(angle) + 23*math.cos(angle)
+    s.leader(mx + fx, my + fy, -246-fx, 356-fy, -110, "FOOT", "WEARS OUT THE OWNER'S OWN SHOES")
     s.leader(mx - 30, my - 120, -250, -150, -110, "RACE NUMBER", "ENTERED UNDER THE OWNER'S NAME")
     s.end_main()
 
