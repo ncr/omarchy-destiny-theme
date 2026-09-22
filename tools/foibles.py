@@ -8,6 +8,7 @@ import math
 
 from devices import centres, framing, start
 from leisure import cuff, limb
+from fidelity import enrich, seated, diner, dog, contour, hand, front_head
 from sheet import ARC, GOLD, RED, WHITE, polar
 
 
@@ -34,7 +35,7 @@ def proxy(size):
     k2, a2 = (mx - 64, my + 138), (mx - 178, my + 236)
     limb(s, sh, e2, 17, 14, a=0.55, fill=0.03)
     limb(s, e2, w2, 14, 10, a=0.55, fill=0.03)
-    s.circ(w2[0] - 8, w2[1] + 8, 11, 0.6, 0.7, fill=0.05)
+    hand(s, w2[0] - 8, w2[1] + 8, .55, 45, a=.6)
     for r in (20, 28, 36):
         s.arc(w2[0] - 8, w2[1] + 8, r, 140, 220, 0.5, 0.6)
     limb(s, hipc, k2, 26, 19, a=0.55, fill=0.03)
@@ -67,12 +68,14 @@ def proxy(size):
     limb(s, e1, w1, 15, 11, fill=0.07)
     cuff(s, e1, w1, 0.52, 0.98, 14, fill=0.16, color=ARC)
     cuff(s, e1, w1, 0.70, 0.86, 17, fill=0.6, color=GOLD)
-    s.circ(w1[0] + 9, w1[1] - 8, 12, 0.95, 0.9, fill=0.08)
+    hand(s, w1[0] + 9, w1[1] - 8, .55, -130)
     for j, r in ((sh, 14), (e1, 10), (hipc, 15), (k1, 12), (a1, 9)):
         s.circ(j[0], j[1], r, 0.95, 0.9, fill=0.18)
     px, py = w1[0] + 40, w1[1] - 44
     s.poly([(px, py), (px + 14, py), (px + 19, py - 12), (px + 25, py + 10), (px + 30, py), (px + 50, py)], 0.95, 0.9, close=False, color=GOLD)
     s.text("142 bpm", px + 56, py + 3, 7, a=0.9, color=GOLD)
+
+    enrich(s, "proxy", mx, my)
 
     s.leader(sh[0] + 30, sh[1] - 94, 170, -50, 120, "HEAD", "NONE FITTED / NO TRACKER ASKS FOR ONE")
     s.leader(mx + 152, my - 142, 150, 60, 120, "OWNER'S WATCH", "THE ONLY PART THE INSURER SEES")
@@ -132,7 +135,7 @@ def proxy(size):
     s.detail_ring(qx, qy, 170)
     s.rect(qx - 74, qy - 112, 148, 214, 0.95, 1.1, fill=0.04)
     s.rect(qx - 50, qy - 100, 100, 40, 0.8, 0.7, fill=0.08)
-    s.circ(qx - 4, qy - 80, 17, 0.95, 1.0, fill=0.15)
+    front_head(s, qx - 4, qy - 80, .48)
     s.poly([(qx - 74, qy - 46), (qx + 74, qy - 52), (qx + 74, qy + 102), (qx - 74, qy + 102)], 0.9, 0.9, fill=0.07)
     s.bez((qx - 60, qy - 30), (qx - 20, qy + 10), (qx + 30, qy - 10), (qx + 60, qy + 40), 0.4, 0.5)
     s.bez((qx - 50, qy + 30), (qx - 10, qy + 60), (qx + 20, qy + 40), (qx + 50, qy + 84), 0.4, 0.5)
@@ -140,7 +143,7 @@ def proxy(size):
     s.rect(qx + 97, qy - 98, 24, 34, 0.95, 0.8, fill=0.2, color=ARC)
     s.text("10.0 km", qx + 109, qy - 42, 7, a=0.95, align="c", color=ARC)
     s.text("DONE", qx + 109, qy - 30, 6, a=0.7, align="c", color=ARC)
-    for i, (ox, oy, sz) in enumerate(((-36, -112, 9), (-52, -128, 12), (-72, -148, 16))):
+    for i, (ox, oy, sz) in enumerate(((-36, -121, 9), (-52, -137, 12), (-72, -180, 16))):
         s.text("Z", qx + ox, qy + oy, sz, track=0, a=0.85 - i * 0.2, bold=True)
     s.view_label(qx, qy + 210, "C", "THE OWNER", "06:40, THE SAME MORNING")
 
@@ -161,12 +164,23 @@ def proxy(size):
 # ---------------------------------------------------------------------------
 
 def gnome(s, x, g, lens=False):
-    s.poly([(x - 13, g), (x + 13, g), (x + 9, g - 22), (x - 9, g - 22)], 0.9, 0.8, fill=0.10)
-    s.circ(x, g - 30, 9, 0.9, 0.8, fill=0.12)
-    s.poly([(x - 10, g - 36), (x + 10, g - 36), (x + 2, g - 62)], 0.9, 0.8, fill=0.2)
-    s.arc(x, g - 27, 8, 20, 160, 0.7, 0.6)
+    s.c.save();s.c.translate(x,g)
+    contour(s,[("M",-15,0),("C",-18,-5,-12,-8,-10,-9),("L",-12,-21),
+        ("C",-12,-30,-5,-34,0,-34),("C",8,-35,13,-26,13,-20),
+        ("L",10,-8),("C",22,-5,18,0,14,0),("L",3,0),("L",0,-8),("L",-2,0)],w=.8,fill=.1,close=True)
+    contour(s,[("M",-11,-37),("C",-8,-49,-1,-59,4,-63),
+        ("C",3,-52,12,-46,11,-37),("C",5,-33,-5,-33,-11,-37)],w=.8,fill=.14,close=True)
+    contour(s,[("M",-8,-29),("C",-10,-20,-3,-13,0,-12),
+        ("C",7,-17,9,-21,7,-29)],a=.7,w=.65)
+    s.ellipse(0,-31,3.4,4,a=.8,w=.55)
+    for k in (-4,0,4):
+        s.bez((k,-25),(k+2,-20),(k,-19),(0,-15),.4,.4)
+    s.bez((-9,-23),(-14,-20),(-13,-16),(-9,-15),.7,.5)
+    s.bez((10,-23),(15,-20),(14,-16),(10,-15),.7,.5)
     if lens:
-        s.dot(x - 3, g - 31, 1.8, 0.95, ARC)
+        s.circ(-4,-32,2.2,.9,.4,color=ARC)
+        s.dot(-4,-32,.8,.95,ARC)
+    s.c.restore()
 
 
 def mast(s, x, g, h, toward, color):
@@ -240,6 +254,8 @@ def greener(size):
     for sx_ in (mx - 300, mx - 140, mx + 200, mx + 400):
         s.ln(sx_, g, sx_, g - 9, 0.9, 0.9)
         s.ln(sx_ - 6, g - 9, sx_ + 6, g - 9, 0.9, 0.9)
+
+    enrich(s, "greener", mx, my)
 
     s.leader(lens1[0] - 18, lens1[1] - 6, -150, -70, -120, "PERISCOPE CAMERA", "READS THE NEIGHBOUR'S GREEN BY STARLIGHT")
     s.leader(lens2[0] + 20, lens2[1] - 6, 150, -30, 120, "THE NEIGHBOUR'S UNIT", "BOUGHT THREE WEEKS LATER / 18 mm TALLER")
@@ -321,7 +337,7 @@ def truth_lamp(size):
     mx, my, lx, rx = centres(s)
     s.begin_main(mx, my)
     framing(s, mx, my - 20, 478, a0=95, thick=(35, 70), thin=(310, 345))
-    ceil, top, g = my - 410, my + 50, my + 300
+    ceil, top, g = my - 410, my + 87, my + 300
 
     s.ln(mx - 440, ceil, mx + 440, ceil, 0.8, 0.9)
     for k in range(-22, 23):
@@ -344,43 +360,31 @@ def truth_lamp(size):
     s.rect(mx - 336, top, 672, 16, 0.95, 1.2, fill=0.14)
     for sgn in (-1, 1):
         s.rect(mx + sgn * 250 - 8, top + 16, 16, g - top - 16, 0.9, 0.9, fill=0.08)
-    for k in range(5):
-        x = mx - 264 + k * 132
-        s.ellipse(x, top - 4, 32, 5, a=0.9, w=0.8)
-        s.ln(x + 46, top, x + 46, top - 22, 0.8, 0.7)
-        s.poly([(x + 36, top - 44), (x + 38, top - 26), (x + 46, top - 22), (x + 54, top - 26), (x + 56, top - 44)], 0.8, 0.7, close=False)
-
     # three people on the far side, one at each end
     far = [mx - 182, mx, mx + 182]
     for i, x in enumerate(far):
-        s.poly([(x - 72, top), (x - 54, my - 2), (x - 15, my - 14), (x + 15, my - 14), (x + 54, my - 2), (x + 72, top)], 0.9, 1.0, fill=0.05)
-        s.circ(x, my - 46, 31, 0.95, 1.1, fill=0.06)
+        diner(s, x, my - 46, i)
         s.ln(mx + (x - mx) * 0.3, my - 159, x, my - 78, 0.35, 0.45, dash=[2, 4], color=ARC)
     liar = far[2]
     s.circ(liar, my - 46, 42, 0.95, 1.1, dash=[5, 3], color=RED)
     s.dot(liar, my - 40, 3.2, 0.95, RED)
     ends = {-1: mx - 400, 1: mx + 400}
     for sgn, x in ends.items():
-        limb(s, (x, my - 8), (x, my + 124), 30, 36, fill=0.05)
-        s.circ(x + sgn * -4, my - 46, 30, 0.95, 1.1, fill=0.06)
-        limb(s, (x - sgn * 6, my + 128), (x - sgn * 104, my + 134), 20, 16, fill=0.05)
-        limb(s, (x - sgn * 104, my + 134), (x - sgn * 112, g - 8), 16, 11, fill=0.05)
-        s.ln(x + sgn * 40, my - 40, x + sgn * 40, g, 0.8, 0.9)
-        s.ln(x + sgn * 40, my + 148, x - sgn * 60, my + 148, 0.8, 0.9)
-        s.ln(x - sgn * 60, my + 148, x - sgn * 60, g, 0.8, 0.9)
+        seated(s, x, my - 46, facing=-sgn)
         s.ln(mx + sgn * 120, my - 165, x - sgn * 8, my - 74, 0.35, 0.45, dash=[2, 4], color=ARC)
-    s.circ(ends[-1] + 28, my - 62, 13, 0.95, 1.0, fill=0.10)
     s.circ(ends[-1] + 4, my - 46, 40, 0.8, 0.8, dash=[2, 4], color=ARC)
+
+    for k in range(5):
+        x = mx - 264 + k * 132
+        s.ellipse(x, top - 4, 32, 5, a=0.9, w=0.8)
+        s.ln(x + 46, top, x + 46, top - 22, 0.8, 0.7)
+        s.poly([(x + 36, top - 44), (x + 38, top - 26), (x + 46, top - 22), (x + 54, top - 26), (x + 56, top - 44)], 0.8, 0.7, close=False)
 
     # the dog
     dx_, dy_ = mx + 96, g - 46
-    s.rect(dx_ - 46, dy_ - 18, 92, 36, 0.9, 0.9, fill=0.06)
-    s.circ(dx_ + 58, dy_ - 22, 17, 0.9, 0.9, fill=0.06)
-    s.poly([(dx_ + 50, dy_ - 36), (dx_ + 44, dy_ - 56), (dx_ + 62, dy_ - 40)], 0.9, 0.8, fill=0.12)
-    s.bez((dx_ - 46, dy_ - 12), (dx_ - 70, dy_ - 20), (dx_ - 74, dy_ - 44), (dx_ - 62, dy_ - 56), 0.9, 0.9)
-    for lx_ in (-36, -22, 22, 36):
-        s.ln(dx_ + lx_, dy_ + 18, dx_ + lx_, g, 0.9, 0.9)
-    s.dot(dx_ + 64, dy_ - 25, 1.8, 0.9)
+    dog(s, dx_, dy_)
+
+    enrich(s, "truth-lamp", mx, my)
 
     s.leader(mx - 124, my - 166, -170, -70, -120, "MICROPHONE RING", "HEARS THE HALF SECOND BEFORE \"OF COURSE NOT\"")
     s.leader(mx + 124, my - 166, 170, -90, 120, "THERMAL CAMERAS", "NOSES COOL BY 0.4 °C WHEN THEIR OWNERS LIE")

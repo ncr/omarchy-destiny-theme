@@ -116,6 +116,7 @@ class Sheet:
         self.cy = self.H / 2
         self.wide = self.W > 2300  # room for secondary views left and right
         self.inset = 0 if self.wide else Sheet.side_inset
+        self.seed = seed
         self.rng = random.Random(seed)
         self.set_palette("navy")
         self.surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, width_px, height_px)
@@ -128,6 +129,25 @@ class Sheet:
 
     def _ink(self, a, color):
         self.c.set_source_rgba(color[0], color[1], color[2], a)
+
+    def knockout(self):
+        """Hide previous construction behind an opaque illustrated contour.
+
+        Keep the current path. The background is aligned in device space, so
+        local translations, mirrored figures and 16:9 fitting cannot move it.
+        """
+        if not hasattr(self, "_bg"):
+            return
+        if not hasattr(self, "_bg_surface"):
+            w, h = self.px
+            self._bg_surface = cairo.ImageSurface.create_for_data(
+                self._bg, cairo.FORMAT_ARGB32, w, h, self.surface.get_stride())
+        self.c.save()
+        self.c.clip_preserve()
+        self.c.identity_matrix()
+        self.c.set_source_surface(self._bg_surface, 0, 0)
+        self.c.paint()
+        self.c.restore()
 
     def _stroke(self, a, w, dash, color):
         self._ink(a, color)
@@ -323,6 +343,12 @@ class Sheet:
 
     def leader(self, x, y, dx, dy, run, label, sub=None, a=0.6, color=WHITE):
         """Dot on the part, a slanted line away from it, a horizontal run, a label."""
+        from label_layout import LABEL_OFFSETS, COMPACT_OFFSETS
+        ox, oy = LABEL_OFFSETS.get(getattr(self, "subject", ""), {}).get(label, (0, 0))
+        if not self.wide:
+            cx, cy = COMPACT_OFFSETS.get(getattr(self, "subject", ""), {}).get(label, (0, 0))
+            ox, oy = ox + cx, oy + cy
+        dx, dy = dx + ox, dy + oy
         self.dot(x, y, 1.8, 0.9, color)
         ex, ey = x + dx, y + dy
         self.c.move_to(x, y)
@@ -331,17 +357,17 @@ class Sheet:
         self._stroke(a, 0.5, None, color)
         left = run < 0
         tx = ex + run if left else ex
-        tx += 2 if not left else 0
+        tx += 6 if not left else 0
         if left:
-            self.text(label, ex - 2, ey - 5, 7.5, a=0.85, align="r")
+            self.text(label, ex - 6, ey - 7, 7.5, a=0.85, align="r")
             if sub:
-                self.text(sub, ex - 2, ey + 11, 6.5, a=0.45, align="r")
+                self.text(sub, ex - 6, ey + 11, 6.5, a=0.45, align="r")
         else:
-            self.text(label, tx, ey - 5, 7.5, a=0.85)
+            self.text(label, tx, ey - 7, 7.5, a=0.85)
             if sub:
                 self.text(sub, tx, ey + 11, 6.5, a=0.45)
 
-    def dim(self, x1, y1, x2, y2, label, off=0, a=0.45):
+    def dim(self, x1, y1, x2, y2, label, off=0, a=0.45, label_shift=0, label_offset=5):
         """Dimension line between two points with end ticks and a centred label."""
         ang = math.atan2(y2 - y1, x2 - x1)
         nx, ny = -math.sin(ang), math.cos(ang)
@@ -354,7 +380,10 @@ class Sheet:
             self.ln(px - 3 * (math.cos(ang) + nx), py - 3 * (math.sin(ang) + ny),
                     px + 3 * (math.cos(ang) + nx), py + 3 * (math.sin(ang) + ny), a + 0.2, 0.6)
         mx, my = (ax + bx) / 2, (ay + by) / 2
-        self.text(label, mx - nx * 5, my - ny * 5, 6.5, a=a + 0.2, align="c", rot=math.degrees(ang))
+        mx += math.cos(ang) * label_shift
+        my += math.sin(ang) * label_shift
+        self.text(label, mx - nx * label_offset, my - ny * label_offset,
+                  6.5, a=a + 0.2, align="c", rot=math.degrees(ang))
 
     def table(self, x, y, rows, key_w=92, size=7, lead=15, a=0.6):
         """Two-column list of KEY / value pairs."""
@@ -538,8 +567,10 @@ class Sheet:
         self.c.restore()
 
     def detail_ring(self, x, y, r):
-        self.circ(x, y, r, 0.8, 0.9)
-        self.ticks(x, y, r, 72, 4, 0.35, 0.45, major=6, major_len=8)
+        # Boundary of a magnified detail, not a graduated angular instrument.
+        self.circ(x, y, r, 0.55, 0.65)
+        for angle in (0, 90, 180, 270):
+            self.ln(*polar(x,y,r+3,angle),*polar(x,y,r+10,angle),.4,.45)
 
     def emblem(self, x, y, t=0.0, r=140):
         """The Omarchy wordmark inside a set of segmented rings.
@@ -632,7 +663,7 @@ class Sheet:
 
     # -- output ----------------------------------------------------------
 
-    def save(self, path, glow=0.55, grain=2.2, quality=93):
+    def save(self, path, glow=0.28, grain=1.6, quality=93):
         """Add a soft bloom around the lines and a fine grain, then write the file.
 
         The grain also hides the banding an 8-bit dark gradient would show.
@@ -642,13 +673,33 @@ class Sheet:
         buf = np.frombuffer(self.surface.get_data(), np.uint8).reshape(h, w, 4)
         rgb = buf[:, :, [2, 1, 0]].astype(np.float32)
         img = self._final(rgb, glow, grain)
-        Image.fromarray(img, "RGB").save(path, quality=quality, method=6)
+        # Thin coloured lines must survive export without chroma subsampling.
+        options = dict(quality=quality, method=6)
+        if os.fspath(path).lower().endswith(".webp"):
+            options["lossless"] = True
+        Image.fromarray(img, "RGB").save(path, **options)
 
     def _final(self, rgb, glow, grain):
-        rng = np.random.default_rng(7)
+        rng = np.random.default_rng(self.seed)
         if glow and self._lines is not None:
-            rgb = rgb + self._lines * glow
-        rgb += rng.normal(0.0, grain, rgb.shape[:2])[:, :, None]
+            rgb += self._lines * glow
+        if grain:
+            h, w = rgb.shape[:2]
+            # Photographic grain at three scales: no damage, sepia or scratches.
+            # Coarser structure follows design units, fine grain remains native.
+            texture = np.zeros((h, w), np.float32)
+            for step, amplitude in ((1.6, .60), (9, .34), (48, .16)):
+                tw, th = max(2, round(w/(step*self.s))), max(2, round(h/(step*self.s)))
+                noise = rng.normal(128, 24, (th, tw)).clip(0,255).astype(np.uint8)
+                field = Image.fromarray(noise).resize((w,h), Image.Resampling.BICUBIC)
+                texture += (np.asarray(field, dtype=np.float32)-128)*(amplitude/24)
+            # A slight density variation makes the ink less digitally perfect,
+            # while keeping glyph outlines and all geometry in their exact places.
+            if hasattr(self, "_bg"):
+                bg = self._bg[:, :, [2,1,0]].astype(np.float32)
+                rgb += (rgb-bg) * (texture*.025)[:, :, None]
+            texture += rng.normal(0, .72, (h,w)).astype(np.float32)
+            rgb += (texture*grain)[:, :, None]
         return np.clip(rgb + 0.5, 0, 255).astype(np.uint8)
 
     _lines = None
@@ -664,5 +715,7 @@ class Sheet:
         w, h = self.px
         now = np.frombuffer(self.surface.get_data(), np.uint8).reshape(h, w, 4)
         diff = np.clip(now[:, :, [2, 1, 0]].astype(np.int16) - self._bg[:, :, [2, 1, 0]].astype(np.int16), 0, 255)
-        im = Image.fromarray(diff.astype(np.uint8), "RGB").filter(ImageFilter.GaussianBlur(radius * self.s))
-        self._lines = np.asarray(im, dtype=np.float32)
+        im = Image.fromarray(diff.astype(np.uint8), "RGB")
+        wide = im.filter(ImageFilter.GaussianBlur(radius * self.s))
+        tight = im.filter(ImageFilter.GaussianBlur(.7 * self.s))
+        self._lines = np.asarray(wide, dtype=np.float32)*.65 + np.asarray(tight, dtype=np.float32)*.35

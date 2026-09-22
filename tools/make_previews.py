@@ -11,6 +11,8 @@ import os
 import re
 import subprocess
 
+from PIL import Image
+
 from sheet import Sheet
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
@@ -65,8 +67,10 @@ def thumbnails():
             subprocess.run(["magick", os.path.join(src, name), "-resize", "1600x", "-quality", "82",
                             "-define", "webp:method=6", os.path.join(OUT, name)], check=True)
     files = sorted(f for f in os.listdir(OUT) if re.match(r"\d\d-.*\.webp$", f))
+    with Image.open(os.path.join(src, files[0])) as image:
+        cell_height = round(1200 * image.height / image.width)
     subprocess.run(["magick", "montage"] + [os.path.join(OUT, f) for f in files] +
-                   ["-tile", "2x7", "-geometry", "1200x506+8+8", "-background", "#0a0c10",
+                   ["-tile", "2x7", "-geometry", f"1200x{cell_height}+8+8", "-background", "#0a0c10",
                     "-quality", "84", os.path.join(OUT, "wallpapers.webp")], check=True)
 
 
