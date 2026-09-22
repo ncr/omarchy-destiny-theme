@@ -7,6 +7,7 @@ yet, plausible within about fifty years. Nothing here saves the world.
 import math
 
 from devices import centres, framing, start, truss
+from fidelity import enrich, contour, hand, front_head, anatomical_segment, joint_chain
 from sheet import ARC, GOLD, WHITE, polar
 
 
@@ -51,8 +52,15 @@ def sky_racer(size):
         turn = 1 if i % 2 else -1
         for k in range(7):
             d = k * 360 / 7 + i * 13
-            s.bez(polar(x, y, 15, d), polar(x, y, r * 0.45, d + turn * 10), polar(x, y, r * 0.75, d + turn * 26),
-                  polar(x, y, r - 10, d + turn * 40), 0.7, 0.7)
+            # Both edges of an aerofoil, with a tapered root and swept tip.
+            c.move_to(*polar(x,y,15,d))
+            c.curve_to(*polar(x,y,r*.45,d+turn*10), *polar(x,y,r*.75,d+turn*26), *polar(x,y,r-10,d+turn*40))
+            c.line_to(*polar(x,y,r-10,d+turn*49))
+            c.curve_to(*polar(x,y,r*.72,d+turn*46), *polar(x,y,r*.38,d+turn*35), *polar(x,y,15,d+turn*22))
+            c.close_path()
+            s._ink(.10,WHITE); c.fill_preserve(); s._stroke(.72,.7,None,WHITE)
+            s.bez(polar(x,y,22,d+turn*10), polar(x,y,r*.45,d+turn*24), polar(x,y,r*.75,d+turn*38),
+                  polar(x,y,r-16,d+turn*44),.35,.4)
         for k in range(3):
             s.ln(*polar(x, y, 15, k * 120 + 30), *polar(x, y, r - 9, k * 120 + 30), 0.3, 0.45, dash=[3, 3])
         s.circ(x, y, 15, 0.95, 0.9, fill=0.18)
@@ -86,13 +94,15 @@ def sky_racer(size):
         s.rect(mx + sgn * 24 - 7, my + 10, 14, 120, 0.6, 0.5, dash=[4, 3], color=GOLD)
         s.ln(mx + sgn * 64, my - 120, mx + sgn * 64, my + 150, 0.3, 0.5, dash=[8, 4])
 
+    enrich(s, "sky-racer", mx, my)
+
     s.leader(mx + 305 + 60, my + 15 - 60, 100, -150, 110, "RIM-DRIVEN FAN", "6 OFF / 95 kW EACH")
     s.leader(mx + 26, my - 100, 150, -250, 120, "CRASH CELL", "PILOT, SEAT AND HARNESS")
     s.leader(mx + 24, my + 100, 330, 130, 110, "LITHIUM-AIR PACK", "1 100 Wh PER kg")
     s.leader(mx, my - 196, -150, -150, -120, "SENSING ARRAY", "14 HEADS / SEES 200 m")
     s.leader(*polar(mx, my, 440, 160), -70, -60, -90, "KEEP-CLEAR ENVELOPE", "NOTHING COMES CLOSER THAN 3 m")
     s.leader(mx - 150, my + 140, -190, 160, -110, "FOLDING ARM", "WOVEN NANOTUBE FIBRE")
-    s.dim(mx - 403, my + 440, mx + 403, my + 440, "SPAN 4.6 m", a=0.4)
+    s.dim(mx - 403, my + 440, mx + 403, my + 440, "SPAN 4.6 m", a=0.4, label_shift=80, label_offset=-16)
     s.end_main()
 
     s.legend("SKY RACER", "CLASS SR-1   /   ONE-SEAT ELECTRIC RACING COPTER",
@@ -146,7 +156,7 @@ def sky_racer(size):
         ang = math.degrees(math.atan2(y2 - y, x2 - x)) + 90
         a_, b_ = polar(x, y, 11, ang), polar(x, y, 11, ang + 180)
         s.ln(a_[0], a_[1], b_[0], b_[1], 0.95, 1.6, color=GOLD if g == 0 else WHITE)
-        tx, ty = polar(x, y, 22, ang)
+        tx, ty = polar(x, y, 30 if g == 1 else 22, ang)
         s.text(f"{g + 1}", tx, ty + 3, 6.5, track=0, a=0.7, align="c")
     s.view_label(qx, qy + 210, "C", "COURSE", "9 GATES / 2.4 km / 30 – 180 m ABOVE GROUND")
 
@@ -225,13 +235,15 @@ def volumetric_stage(size):
             x = mx - 380 + k * 19.5 + row * 9.7
             s.circ(x, deck + 50 + row * 22, 5.5, 0.4 - row * 0.08, 0.5, fill=0.05)
 
+    enrich(s, "volumetric-stage", mx, my)
+
     s.leader(heads[0][0] + 10, heads[0][1], -150, -90, -120, "EMITTER HEAD", "INFRARED / STEERED ON A CHIP")
     s.leader(mx - 427, my - 100, -60, 60, -100, "TOWER", "24 m")
     s.leader(mx + 100, my - 357, 140, -60, 120, "BRIDGE", "7 HEADS POINTING DOWN")
     s.leader(mx + 336, my - 120, 120, -40, 110, "IMAGE VOLUME", "40 × 22 × 18 m")
     s.leader(right[1], right[2], 46, -80, 46, "VOXEL", None)
     s.leader(mx + 240, deck - 8, 250, 70, 110, "HAZE UNIT", "LIGHT-CONVERTING PARTICLES")
-    s.dim(mx - 336, my - 420, mx + 336, my - 420, "40 m", a=0.4)
+    s.dim(mx - 336, my - 420, mx + 336, my - 420, "40 m", a=0.4, label_shift=70)
     s.ln(mx - 336, my - 296, mx - 336, my - 426, 0.1, 0.4)
     s.ln(mx + 336, my - 296, mx + 336, my - 426, 0.1, 0.4)
     s.end_main()
@@ -277,8 +289,8 @@ def volumetric_stage(size):
         else:
             s.circ(x, y, s.rng.uniform(1.5, 3), 0.35, 0.45)
     s.end_clip()
-    s.ln(qx - 120, qy + 140, qx - 60, qy + 140, 0.9, 1.0)
-    s.text("1 mm", qx - 90, qy + 132, 6.5, a=0.8, align="c")
+    s.ln(qx - 120, qy + 188, qx - 60, qy + 188, 0.9, 1.0)
+    s.text("1 mm", qx - 90, qy + 180, 6.5, a=0.8, align="c")
     s.view_label(qx, qy + 210, "C", "ONE VOXEL", "PARTICLES GLOW ONLY INSIDE THE CROSSING")
 
     s.chart(rx - 170, 600, 260, 150, "LIGHT FROM ONE PARTICLE",
@@ -295,11 +307,24 @@ def volumetric_stage(size):
 # ---------------------------------------------------------------------------
 
 def limb(s, p1, p2, r1, r2, a=0.9, w=1.0, fill=0.05, dash=None):
-    """A tapered body segment between two joints."""
-    ang = math.atan2(p2[1] - p1[1], p2[0] - p1[0])
-    nx, ny = -math.sin(ang), math.cos(ang)
-    s.poly([(p1[0] + nx * r1, p1[1] + ny * r1), (p2[0] + nx * r2, p2[1] + ny * r2),
-            (p2[0] - nx * r2, p2[1] - ny * r2), (p1[0] - nx * r1, p1[1] - ny * r1)], a, w, True, fill, dash)
+    """A curved tapered shell with a longitudinal construction seam."""
+    dx, dy = p2[0]-p1[0], p2[1]-p1[1]
+    length = math.hypot(dx, dy)
+    if not length:
+        return
+    nx, ny = -dy/length, dx/length
+    def point(f, r):
+        return p1[0]+dx*f+nx*r, p1[1]+dy*f+ny*r
+    c = s.c
+    c.move_to(*point(0,r1))
+    c.curve_to(*point(.26,r1*1.12), *point(.72,r2*1.12), *point(1,r2))
+    c.curve_to(*point(1.06,r2*.45), *point(1.06,-r2*.45), *point(1,-r2))
+    c.curve_to(*point(.72,-r2*1.12), *point(.26,-r1*1.12), *point(0,-r1))
+    c.curve_to(*point(-.04,-r1*.4), *point(-.04,r1*.4), *point(0,r1))
+    c.close_path()
+    s._ink(fill, WHITE); c.fill_preserve()
+    s._stroke(a,w,dash,WHITE)
+    s.bez(point(.1,r1*.62),point(.3,r1*.75),point(.7,r2*.75),point(.9,r2*.62),a*.4,w*.5,dash=dash)
 
 
 def cuff(s, p1, p2, f0, f1, half, a=0.9, fill=0.3, color=ARC):
@@ -334,7 +359,7 @@ def presence_rig(size):
     s.ln(mx, my - 427, mx, my - 420, 0.8, 0.7)
     for sgn in (-1, 1):
         s.arrow(mx + sgn * 30 + 26, floor + 40, mx + sgn * 30 - 26, floor + 40, 0.8, 0.7, head=6, color=ARC)
-    s.text("FLOOR RUNS AT −1.4 m/s", mx, floor + 62, 6.5, a=0.8, align="c", color=ARC)
+    s.text("FLOOR RUNS AT −1.4 m/s", mx + 100, floor + 62, 6.5, a=0.8, align="c", color=ARC)
 
     # the player in the suit
     head = (mx, my - 300)
@@ -344,13 +369,21 @@ def presence_rig(size):
     hip = {-1: (mx - 36, my - 30), 1: (mx + 36, my - 30)}
     kn = {-1: (mx - 50, my + 104), 1: (mx + 62, my + 96)}
     an = {-1: (mx - 52, my + 220), 1: (mx + 84, my + 214)}
-    torso = [(mx - 84, my - 250), (mx + 84, my - 250), (mx + 56, my - 74), (mx + 64, my - 24), (mx - 64, my - 24), (mx - 56, my - 74)]
-    s.poly(torso, 0.95, 1.2, fill=0.05)
+    def torso_path():
+        c=s.c
+        c.move_to(mx-12,my-256)
+        c.curve_to(mx-40,my-256,mx-75,my-258,mx-84,my-244)
+        c.curve_to(mx-99,my-217,mx-63,my-170,mx-58,my-132)
+        c.curve_to(mx-49,my-94,mx-63,my-57,mx-64,my-24)
+        c.curve_to(mx-32,my-12,mx+32,my-12,mx+64,my-24)
+        c.curve_to(mx+63,my-57,mx+49,my-94,mx+58,my-132)
+        c.curve_to(mx+63,my-170,mx+99,my-217,mx+84,my-244)
+        c.curve_to(mx+75,my-258,mx+40,my-256,mx+12,my-256)
+        c.close_path()
+    torso_path()
+    s._ink(.05,WHITE);s.c.fill_preserve();s._stroke(.95,1.2,None,WHITE)
     s.c.save()
-    s.c.move_to(*torso[0])
-    for p in torso[1:]:
-        s.c.line_to(*p)
-    s.c.close_path()
+    torso_path()
     s.c.clip()
     for i in range(-10, 11):
         for j in range(0, 26):
@@ -358,29 +391,42 @@ def presence_rig(size):
     s.c.restore()
     s.rect(mx - 22, my - 214, 44, 56, 0.9, 0.8, fill=0.14)
     s.rect(mx - 12, my - 200, 24, 24, 0.9, 0.6, color=ARC)
-    s.rect(mx - 9, my - 268, 18, 20, 0.8, 0.7)
-    s.circ(head[0], head[1], 34, 0.95, 1.2, fill=0.06)
+    front_head(s, head[0], head[1])
+    for side in (-1, 1):
+        s.ln(mx + side*12, my - 263, mx + side*12, my - 256, .7, .75)
     s.band(head[0], head[1], 22, 34, 205, 335, 0.9, 0.7, fill=0.35, color=ARC)
     for sgn in (-1, 1):
         s.rect(head[0] + sgn * 33 - 4, head[1] + 2, 8, 16, 0.95, 0.7, fill=0.7, color=GOLD)
-        limb(s, sh[sgn], el[sgn], 19, 15)
-        limb(s, el[sgn], wr[sgn], 15, 11)
-        limb(s, hip[sgn], kn[sgn], 27, 19)
-        limb(s, kn[sgn], an[sgn], 19, 13)
+        anatomical_segment(s, sh[sgn], el[sgn], 19, 15, "upper-arm")
+        anatomical_segment(s, el[sgn], wr[sgn], 15, 11, "forearm")
+        anatomical_segment(s, hip[sgn], kn[sgn], 27, 19, "thigh")
+        anatomical_segment(s, kn[sgn], an[sgn], 19, 13, "calf")
         for p1, p2, half in ((sh[sgn], el[sgn], 21), (el[sgn], wr[sgn], 17), (hip[sgn], kn[sgn], 29), (kn[sgn], an[sgn], 21)):
             for f0 in (0.28, 0.58):
                 cuff(s, p1, p2, f0, f0 + 0.10, half)
         for j, r in ((sh[sgn], 12), (el[sgn], 10), (hip[sgn], 13), (kn[sgn], 12), (an[sgn], 9)):
             s.circ(j[0], j[1], r, 0.9, 0.8, fill=0.18)
         hx, hy = wr[sgn][0] + sgn * 6, wr[sgn][1] + 22
-        s.circ(hx, hy, 15, 0.9, 0.9, fill=0.08)
-        for k in range(-2, 3):
-            s.ln(*polar(hx, hy, 15, 90 + k * 22 - sgn * 10), *polar(hx, hy, 34, 90 + k * 24 - sgn * 10), 0.85, 0.8)
-        for k in range(12):
-            s.dot(*polar(hx, hy, s.rng.uniform(2, 12), s.rng.uniform(0, 360)), 1.0, 0.9, ARC)
-        fx = an[sgn][0]
-        s.poly([(fx - 16, an[sgn][1] + 8), (fx + sgn * 44, an[sgn][1] + 20), (fx + sgn * 46, floor - 4), (fx - 16, floor - 4)],
-               0.9, 0.9, fill=0.10)
+        hand(s, hx, hy - 13, .88, -sgn * 10)
+        for k in range(3):
+            s.ln(hx-5+k*4,hy-7,hx-5+k*4,hy+7,.6,.45,color=ARC)
+        # Heel and instep connect to the ankle envelope and meet the roller floor.
+        s.c.save()
+        s.c.translate(*an[sgn])
+        s.c.scale(sgn,1)
+        h=floor-an[sgn][1]-2
+        contour(s,[("M",-12,-6),("L",-12,h-8),
+            ("C",-15,h-3,-11,h,-6,h),("L",42,h),
+            ("C",47,h-1,45,h-5,39,h-7),
+            ("C",26,h-11,19,7,11,2),("L",10,-6)],a=.7,w=.75,fill=.012)
+        s.ln(-8,h-3,41,h-3,.35,.4)
+        s.c.restore()
+
+    for sgn in (-1, 1):
+        joint_chain(s, [sh[sgn], el[sgn], wr[sgn]])
+        joint_chain(s, [hip[sgn], kn[sgn], an[sgn]])
+
+    enrich(s, "presence-rig", mx, my)
 
     s.leader(head[0] + 24, head[1] - 12, 190, -70, 110, "HEADSET", "SIGHT AND SOUND")
     s.leader(head[0] + 36, head[1] + 10, 250, 10, 120, "INNER-EAR PADS", "A FEW mA, FELT AS ACCELERATION")
@@ -447,10 +493,10 @@ def presence_rig(size):
     for d in range(1, 5):
         s.poly([(x, y + d * 22) for x, y in skin], 0.3 - d * 0.05, 0.5, close=False)
     s.end_clip()
-    s.text("SUIT", qx - 150, qy - 80, 6.5, a=0.6)
+    s.text("SUIT", qx - 130, qy - 90, 6.5, a=0.6)
     s.text("SKIN", qx - 150, qy + 120, 6.5, a=0.6)
-    s.ln(qx + 60, qy + 140, qx + 120, qy + 140, 0.9, 1.0)
-    s.text("1 mm", qx + 90, qy + 132, 6.5, a=0.8, align="c")
+    s.ln(qx + 60, qy + 188, qx + 120, qy + 188, 0.9, 1.0)
+    s.text("1 mm", qx + 90, qy + 180, 6.5, a=0.8, align="c")
     s.view_label(qx, qy + 210, "C", "TACTILE SKIN", "SECTION / THREE POINTS PRESSING")
 
     s.chart(rx - 170, 600, 260, 150, "ARM RESISTANCE, PUSHING A DOOR",
@@ -526,6 +572,8 @@ def aroma_organ(size):
     s.arrow(mx - 170, my + 428, mx - 134, my + 428, 0.7, 0.7, head=6)
     s.arrow(mx + 134, my + 428, mx + 176, my + 428, 0.7, 0.7, head=6)
 
+    enrich(s, "aroma-organ", mx, my)
+
     s.leader(*polar(mx, my, 338, 12 * 3.75), 120, 60, 110, "BASE ODORANT", "96 CARTRIDGES / 6 MONTHS EACH")
     s.leader(*polar(mx, my, 250, 300), 260, -70, 110, "VALVE RING", "DOSES OF 5 pl")
     s.leader(*polar(mx, my, 152, 330), 330, -40, 110, "MANIFOLD", None)
@@ -533,7 +581,7 @@ def aroma_organ(size):
     s.leader(mx - 16, my - 16, -330, -300, -110, "HEATED OUTLET", "TO THE NOSE PIECE OR THE ROOM DUCT")
     s.leader(fx - 20, fy + 10, -190, 30, -110, "CLEARING FAN", None)
     s.leader(mx + 100, my + 440, 170, 30, 110, "SCRUBBER", "DESTROYS THE LAST SMELL IN 0.4 s")
-    s.dim(mx - 388, my - 440, mx + 388, my - 440, "Ø 310 mm", a=0.4)
+    s.dim(mx - 388, my - 440, mx + 388, my - 440, "Ø 310 mm", a=0.4, label_shift=70)
     s.end_main()
 
     s.legend("AROMA ORGAN", "MODEL AO-96   /   SMELL AND FLAVOUR ON CUE",
@@ -615,11 +663,10 @@ def bounder(size):
     for k in range(-21, 22):
         s.ln(mx + k * 20, g, mx + k * 20 - 9, g + 11, 0.3, 0.45)
 
-    # the athlete, dashed
-    for p1, p2, ry in ((H, K, 48), (K, A, 35)):
-        ang = math.degrees(math.atan2(p2[1] - p1[1], p2[0] - p1[0]))
-        s.ellipse((p1[0] + p2[0]) / 2, (p1[1] + p2[1]) / 2, math.hypot(p2[0] - p1[0], p2[1] - p1[1]) / 2 + 8, ry,
-                  rot=ang, a=0.3, w=0.6, dash=[5, 4])
+    # The wearer's anatomical envelope remains subordinate to the mechanism.
+    anatomical_segment(s, H, K, 48, 27, "thigh", a=.3, w=.55, ghost=True)
+    anatomical_segment(s, K, A, 27, 14, "calf", a=.3, w=.55, ghost=True)
+    joint_chain(s, [H, K, A])
     s.poly([(A[0] - 28, A[1] + 4), (A[0] + 74, A[1] + 34), (A[0] + 80, A[1] + 52), (A[0] - 28, A[1] + 52)], 0.3, 0.6, dash=[5, 4])
     s.poly([(mx - 86, my - 330), (mx - 74, my - 450)], 0.3, 0.6, close=False, dash=[5, 4])
     s.poly([(mx + 70, my - 330), (mx + 78, my - 450)], 0.3, 0.6, close=False, dash=[5, 4])
@@ -666,6 +713,8 @@ def bounder(size):
     for k in range(1, 8):
         s.ln(T[0] - 46 + k * 7.5, g - 6, T[0] - 46 + k * 7.5, g, 0.4, 0.4)
 
+    enrich(s, "bounder", mx, my)
+
     s.leader(mx - 134, my - 300, -130, -60, -110, "PACK", "CELLS AND CONTROLLER / 2.2 kg")
     s.leader(H[0] + 22, H[1] - 10, 230, -80, 110, "HIP DRIVE", None)
     s.leader(f1[0][0] * 0.5 + f1[1][0] * 0.5 - 12, f1[0][1] * 0.5 + f1[1][1] * 0.5 + 6, -230, 10, -110, "NERVE-SIGNAL CUFF",
@@ -698,7 +747,7 @@ def bounder(size):
     for m_ in range(0, 7):
         s.ln(ax, gy - m_ * 50, ax + (8 if m_ % 2 == 0 else 4), gy - m_ * 50, 0.6, 0.5)
         if m_ % 2 == 0:
-            s.text(f"{m_} m", ax - 8, gy - m_ * 50 + 3, 6.5, a=0.7, align="r")
+            s.text(f"{m_} m", ax - 14, gy - m_ * 50 + 3, 6.5, a=0.7, align="r")
     for bx, h, half, col, lab, sub in ((lx - 80, 2.45, 46, WHITE, "2.45 m", "UNAIDED RECORD"), (lx + 90, 6.2, 70, ARC, "6.2 m", "WITH B-4")):
         top = gy - h * 50
         for sgn in (-1, 1):
@@ -727,8 +776,8 @@ def bounder(size):
         s.poly([(x, off + 46 * math.sin(x / 38.0)) for x in range(-200, 201, 4)], 0.25, 0.5, close=False, dash=[3, 3])
     s.c.restore()
     s.end_clip()
-    s.ln(qx - 120, qy + 140, qx - 60, qy + 140, 0.9, 1.0)
-    s.text("50 µm", qx - 90, qy + 132, 6.5, a=0.8, align="c")
+    s.ln(qx - 120, qy + 188, qx - 60, qy + 188, 0.9, 1.0)
+    s.text("50 µm", qx - 90, qy + 180, 6.5, a=0.8, align="c")
     s.view_label(qx, qy + 210, "C", "MUSCLE YARN", "TWISTED, THEN COILED / SHORTENS WHEN CHARGED")
 
     def force(t):

@@ -13,7 +13,8 @@ for. Every sheet has its own colour mood.
 
 ![All fourteen wallpapers](previews/wallpapers.webp)
 
-*The sheets are shown here in their 21:9 version, which has the extra views.*
+*The gallery follows this branch's aspect ratio. The 21:9 version includes
+extra views; the 16:9 version uses the compact layout.*
 
 Only the drawing technique is borrowed from the game — thin white line work,
 tick rings, leader lines, spaced capitals. No weapon, character, place, symbol
@@ -60,8 +61,8 @@ For any other shape, render a set for your exact screen — see
 
 ## Screenshots
 
-Taken on a running Omarchy 4.0.4 desktop. The two wide ones show the
-`ultrawide` branch.
+Taken on a running Omarchy 4.0.4 desktop, before the current wallpaper revision.
+The two wide ones show the `ultrawide` branch.
 
 ![fastfetch over the Quantum Simulator sheet](previews/desktop-about.webp)
 
@@ -194,6 +195,12 @@ plays video backgrounds.
 The wallpapers are drawn by a program, and the result is deterministic: the
 same command gives byte-identical files.
 
+The current sheets use detailed technical contours, schematic crash-test
+figures, locally fading construction lines and restrained grain. Text is set
+deterministically in Nimbus Sans and the Omarchy wordmark uses the original
+SVG. `--style original` selects the preceding line treatment. See
+[the drawing conventions](tools/FIDELITY.md) for rendering and label checks.
+
 ```bash
 python3 tools/make_wallpapers.py --size 5120x2880                # main branch
 python3 tools/make_wallpapers.py --size 5120x2160                # ultrawide branch
@@ -214,6 +221,9 @@ Needs `python-cairo`, `python-numpy`, `python-pillow` and the Nimbus Sans font
 |------|----------|
 | `tools/sheet.py` | Drawing helpers, palettes, legend, emblem, output |
 | `tools/order.py` | The order of the sheets and the palette of each |
+| `tools/fidelity.py` | Authored construction details and schematic figures |
+| `tools/starmap.py`, `tools/starmap_study.py` | Line hierarchy and spatial ink variation |
+| `tools/label_layout.py`, `tools/verify_wallpaper_layout.py` | Label placement and clearance checks |
 | `tools/devices.py` | The six serious sheets |
 | `tools/leisure.py` | The five playful ones |
 | `tools/foibles.py` | The three jokes |

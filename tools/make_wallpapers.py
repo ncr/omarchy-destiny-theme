@@ -27,6 +27,8 @@ def main():
     ap.add_argument("--size", default="5120x2160")
     ap.add_argument("--only", type=int)
     ap.add_argument("--set", default="devices", choices=["devices", "classic"])
+    ap.add_argument("--style", default="starmap", choices=["starmap", "original"],
+                    help="accepted line treatment; original reproduces the clear-labels masters")
     ap.add_argument("--out", default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "backgrounds"))
     ap.add_argument("--ext", default="webp", choices=["webp", "png", "jpg"])
     ap.add_argument("--inset", type=int, help="keep legend and emblem this many units from the sides; "
@@ -41,6 +43,9 @@ def main():
         from order import ORDER
         drawn = dict(devices.SHEETS + leisure.SHEETS + foibles.SHEETS)
         SHEETS = [(f"{i:02d}-{name}", drawn[name]) for i, (name, _) in enumerate(ORDER, 1)]
+        if args.style == "starmap":
+            from starmap import install
+            install()
     size = tuple(int(v) for v in args.size.lower().split("x"))
     from sheet import Sheet
     is_16_9 = abs(size[0] / size[1] - 16 / 9) < 0.01

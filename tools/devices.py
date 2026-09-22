@@ -10,6 +10,7 @@ import math
 import cairo
 
 import order
+from fidelity import enrich
 from sheet import ARC, GOLD, SUN, WHITE, Sheet, polar
 
 
@@ -18,6 +19,7 @@ def start(size, sheet, seed):
     """Open a sheet: palette, background, grid and frame. The number printed on
     the sheet comes from its place in order.ORDER."""
     s = Sheet(size[0], size[1], seed=seed)
+    s.subject = sheet
     s.set_palette(order.palette(sheet))
     s.background()
     s.begin_lines()
@@ -32,15 +34,18 @@ def centres(s):
 
 
 def framing(s, x, y, r, a0=150, thick=(200, 252), thin=(20, 64)):
-    """Faint circle, a partial tick ring, two heavier arcs and the centre lines."""
-    s.circ(x, y, r, 0.09, 0.5)
-    s.arc(x, y, r - 22, a0, a0 + 120, 0.28, 0.5)
-    s.ticks(x, y, r - 22, 61, 4, 0.3, 0.45, major=5, major_len=9, a0=a0, a1=a0 + 120)
-    s.arc(x, y, r + 6, thick[0], thick[1], 0.75, 2.2)
-    s.arc(x, y, r + 6, thick[1] + 5, thick[1] + 9, 0.75, 2.2)
-    s.arc(x, y, r + 6, thin[0], thin[1], 0.4, 1.1)
-    s.ln(x - r - 40, y, x + r + 40, y, 0.13, 0.5, dash=[18, 4, 3, 4])
-    s.ln(x, y - r - 30, x, y + r + 30, 0.13, 0.5, dash=[18, 4, 3, 4])
+    """Quiet view registration and datum axes, without decorative dial scales.
+
+    The old angular arguments remain accepted by existing sheet definitions.
+    They no longer imply an angular measurement around an unrelated subject.
+    """
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            xx, yy = x + sx*r, y + sy*r
+            s.ln(xx-sx*13, yy, xx, yy, .20, .5)
+            s.ln(xx, yy-sy*13, xx, yy, .20, .5)
+    s.ln(x-r-20, y, x+r+20, y, .11, .4, dash=[20,4,2,4])
+    s.ln(x, y-r-12, x, y+r+12, .11, .4, dash=[20,4,2,4])
 
 
 def tree(s, x, y, ang, length, depth, spread=28, shrink=0.74, a=0.9, w=1.0, color=ARC, keep=None):
@@ -185,6 +190,8 @@ def organ_foundry(size):
     for x in (mx - 240, mx + 210):
         s.poly([(x, my + 292), (x + 30, my + 292), (x + 24, my + 308), (x + 6, my + 308)], 0.7, 0.6)
     s.ln(mx - 420, my + 308, mx + 420, my + 308, 0.6, 0.7)
+
+    enrich(s, "organ-foundry", mx, my)
 
     s.leader(mx + 46, my - 252, 232, -92, 110, "PRINT HEAD", "6 BIO-INKS / 10 µm VOXEL")
     s.leader(mx - 150, my - 372, -150, -36, -120, "CELL CARTRIDGES", "GROWN FROM THE PATIENT'S SKIN")
@@ -334,6 +341,8 @@ def quantum_simulator(size):
     for k in range(45):
         s.ln(sx, my - 395 + k * 10, sx + 4, my - 395 + k * 10, 0.3, 0.4)
 
+    enrich(s, "quantum-simulator", mx, my)
+
     s.leader(mx + 150, my - 440, 130, -30, 110, "PULSE-TUBE COOLER", "NO LIQUID HELIUM TO REFILL")
     s.leader(mx + 69, my - 212, 250, -60, 120, "CONTROL CHIPS", "AT 4 K, BESIDE THE WIRING")
     s.leader(mx + 50, my - 150, 270, 20, 120, "OPTICAL LINK", "TO NEIGHBOUR CRYOSTATS")
@@ -475,6 +484,8 @@ def tether_climber(size):
     s.text("ALT 12 400 km", sx + 14, ya + 3, 7, a=0.9, color=ARC)
     s.text("ALTITUDE", sx - 8, my - 400, 6.5, a=0.5, align="r")
 
+    enrich(s, "tether-climber", mx, my)
+
     s.leader(mx - 6, my - 440, -140, 30, -110, "RIBBON", "1 m WIDE / 12 µm THICK")
     s.leader(mx + 56, my - 340, 200, -50, 110, "DEBRIS SHIELD", None)
     s.leader(mx + 110, my - 200, 170, -30, 110, "CARGO POD", "20 t / 6 CONTAINERS")
@@ -511,8 +522,9 @@ def tether_climber(size):
     s.ellipse(ex, 380, 210, 34, a=0.25, w=0.5, dash=[3, 4])
     for y, lab, sub in ((620, "OCEAN ANCHOR", "0 km"), (380, "GEO STATION", "35 786 km"), (top, "COUNTERWEIGHT", "100 000 km")):
         s.rect(ex - 6, y - 6, 12, 12, 0.95, 0.8, fill=0.3)
-        s.text(lab, ex + 18, y - 1, 7.5, a=0.85)
-        s.text(sub, ex + 18, y + 11, 6.5, a=0.45)
+        lift = 16 if lab == "OCEAN ANCHOR" else 0
+        s.text(lab, ex + 18, y - 1 - lift, 7.5, a=0.85)
+        s.text(sub, ex + 18, y + 11 - lift, 6.5, a=0.45)
     s.diamond(ex, 540, 6, 0.95, 0.8, fill=0.9, color=ARC)
     s.text("CLIMBER", ex - 16, 543, 7.5, a=0.9, align="r", color=ARC)
     s.view_label(lx - 170, 110, "B", "SYSTEM", "NOT TO SCALE", align="l")
@@ -605,6 +617,8 @@ def cortical_mesh(size):
     s.cross(px, py, 13, 0.5, 0.45)
 
     x, y = node(18, rings[5])
+    enrich(s, "cortical-mesh", mx, my)
+
     s.leader(x, y, -170, 90, -110, "MESH THREAD", "POLYMER AND GOLD / 1 µm THICK")
     x, y = node(3, rings[6])
     s.leader(x, y, 150, -60, 110, "RECORDING SITE", "ONE PER NEURON-SIZED NODE")
@@ -612,7 +626,7 @@ def cortical_mesh(size):
     s.leader(*polar(mx, my, 58, 200), -300, -250, -110, "POWER COIL", "DRIVEN BY ULTRASOUND")
     s.leader(px, py, -290, 170, -110, "INSERTION PORT", "Ø 2 mm")
     s.leader(mx - 60, my + 50, -260, 330, -110, "SEALED CAN", "TITANIUM / Ø 18 mm")
-    s.dim(mx - 462, my + 400, mx - 462, my - 400, "Ø 64 mm UNFOLDED", a=0.4)
+    s.dim(mx - 462, my + 400, mx - 462, my - 400, "Ø 64 mm UNFOLDED", a=0.4, label_shift=90)
     s.end_main()
 
     s.legend("CORTICAL MESH", "MODEL CM-6   /   NEURAL INTERFACE, ONE MILLION CHANNELS",
@@ -692,8 +706,8 @@ def cortical_mesh(size):
     s.circ(qx + 10, qy, 17, 0.95, 1.0, fill=0.35, color=ARC)
     s.circ(qx + 10, qy, 26, 0.4, 0.5, dash=[2, 3], color=ARC)
     s.end_clip()
-    s.ln(qx - 120, qy + 140, qx - 60, qy + 140, 0.9, 1.0)
-    s.text("20 µm", qx - 90, qy + 132, 6.5, a=0.8, align="c")
+    s.ln(qx - 120, qy + 188, qx - 60, qy + 188, 0.9, 1.0)
+    s.text("20 µm", qx - 90, qy + 180, 6.5, a=0.8, align="c")
     s.view_label(qx, qy + 210, "C", "ONE NODE", "SCALE 1 000 : 1")
     return s
 
@@ -782,6 +796,8 @@ def fusion_transport(size):
             s.bez((mx + 610, my + sgn * 40 * q), (mx + 680, my + sgn * 44 * q), (mx + 730, my + sgn * 120 * q),
                   (mx + 800, my + sgn * 230 * q), al, 0.5, color=ARC)
 
+    enrich(s, "fusion-transport", mx, my)
+
     s.leader(x0 + 205, my - 176, -40, -70, -100, "CREW RING", "6 CREW / 0.4 g AT 2 rpm")
     s.leader(x0 + 5, my + 62, 40, 110, 100, "DUST SHIELD", None)
     s.leader(x0 + 414, my + 106, 30, 120, 110, "PROPELLANT TANKS", "DEUTERIUM AND HELIUM-3")
@@ -820,8 +836,8 @@ def fusion_transport(size):
     s.circ(*m_, 4, 0.95, 0.8, fill=0.5)
     s.text("EARTH", e[0] - 10, e[1] - 8, 6.5, a=0.7, align="r")
     s.text("MARS", m_[0] + 10, m_[1] + 12, 6.5, a=0.7)
-    s.text("75 d", sx_ - 40, sy_ + 96, 7, a=0.9, color=ARC)
-    s.text("259 d, UNPOWERED", sx_ - 70, sy_ + 150, 6.5, a=0.45, align="c")
+    s.text("75 d", sx_ - 170, sy_ + 100, 7, a=0.9, color=ARC)
+    s.text("259 d, UNPOWERED", sx_ - 40, sy_ + 175, 6.5, a=0.45, align="c")
     s.view_label(lx, 520, "B", "TRANSIT", "POWERED ARC AGAINST COASTING ELLIPSE")
 
     def speed(t):
@@ -848,7 +864,7 @@ def fusion_transport(size):
     s.circ(qx, qy, 18, 0.95, 1.0, fill=0.2)
     s.circ(qx, qy, 34, 0.5, 0.5, dash=[3, 3])
     s.ticks(qx, qy, 104, 72, 4, 0.3, 0.45, major=6, major_len=8)
-    s.view_label(qx, qy + 250, "C", "FRONT VIEW", "SCALE 1 : 1 000")
+    s.view_label(qx, qy - 225, "C", "FRONT VIEW", "SCALE 1 : 1 000")
     return s
 
 
@@ -937,6 +953,8 @@ def air_refinery(size):
     s.poly([(mx + 62, g - 30), (mx + 118, g - 30), (mx + 118, g - 62), (mx + 130, g - 62)], 0.9, 0.9, close=False, color=GOLD)
     s.ln(mx + 222, g - 62, mx + 242, g - 54, 0.8, 0.7, color=GOLD)
 
+    enrich(s, "air-refinery", mx, my)
+
     s.leader(mx + 160, my - 330, 150, -70, 120, "AIR CONTACTOR", "SORBENT PANELS / RELEASE AT 60 °C")
     s.leader(mx + 30, my - 120, 250, -40, 120, "ENZYME BEDS", "CO₂ TO FORMATE")
     s.leader(mx + 30, my + 98, 250, -30, 120, "CATALYST BEDS", "FORMATE AND H₂ TO C8 – C16 CHAINS")
@@ -944,7 +962,7 @@ def air_refinery(size):
     s.leader(mx - 330, g - 24, -30, -130, -80, "MIRROR FIELD", "40 ha")
     s.leader(mx - 130, g - 70, -80, -90, -100, "ELECTROLYSER", "WATER TO H₂ AND O₂")
     s.leader(mx + 280, g - 92, 70, -100, 110, "PRODUCT TANKS", "JET FUEL / 36 t PER DAY")
-    s.dim(mx - 300, g, mx - 300, my - 394, "118 m", a=0.4)
+    s.dim(mx - 300, g, mx - 300, my - 394, "118 m", a=0.4, label_shift=40)
     s.end_main()
 
     s.legend("AIR REFINERY", "UNIT AR-1   /   CARBON DIOXIDE TO JET FUEL",
@@ -975,8 +993,8 @@ def air_refinery(size):
             pts.append(polar(pts[-1][0], pts[-1][1], 5, ang))
         s.poly(pts, 0.9, 0.9, close=False, color=ARC)
     s.end_clip()
-    s.ln(dx - 110, dy + 128, dx - 50, dy + 128, 0.9, 1.0)
-    s.text("200 nm", dx - 80, dy + 120, 6.5, a=0.8, align="c")
+    s.ln(dx - 110, dy + 168, dx - 50, dy + 168, 0.9, 1.0)
+    s.text("200 nm", dx - 80, dy + 160, 6.5, a=0.8, align="c")
     s.view_label(dx, dy + 190, "B", "BED PELLET", "ENZYMES FIXED IN POROUS SILICA")
 
     s.chart(rx - 170, 670, 260, 100, "FUEL OUTPUT OVER ONE DAY",
