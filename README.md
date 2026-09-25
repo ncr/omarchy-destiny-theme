@@ -46,11 +46,12 @@ For the theme **with its companion app**, run this after installing the theme:
 python3 ~/.config/omarchy/themes/destiny/companion/install.py
 ```
 
-The installer opens Destiny Wallpapers automatically. At first launch it
-compares formats against **all connected monitors** and preselects the
-recommendation. Green means no enlargement; red means enlargement can soften
-the image; amber separately flags cropping from different proportions.
-Click **Apply and open** to use the choice. Cancel changes nothing.
+The installer opens Destiny Wallpapers automatically. First-launch setup runs
+in the terminal with two options: **Perfectly good** (smallest suitable set)
+and **I don't care, I want the biggest everything** (highest matching
+resolution). Both show their MB; one sentence explains the recommendation.
+Enter applies, Escape cancels. The application menu opens the default terminal
+for this step; subsequent launches go straight to the gallery.
 
 Both native formats live on **main**; there is no separate ultrawide branch:
 
@@ -68,7 +69,7 @@ Resolution quality and text readability are assessed separately. Omarchy
 currently shares one wallpaper across monitors; the app first avoids
 upscaling on any screen, then minimizes cropping. Among equally suitable
 sets it recommends the smallest total file size, not the highest resolution.
-Each option shows the actual total MB and average MB per wallpaper. All formats
+Each option shows the actual total MB. All formats
 remain bundled; the selection does not remove other formats from disk. Changing focus does not
 change the recommendation. The viewer always fits the complete sheet.
 
@@ -212,7 +213,7 @@ An optional fullscreen browser with keyboard navigation, automatic screen-format
 selection and a first-launch explanation. Install and open it from this checkout:
 
 ```bash
-omarchy pkg add imv gtk4 python-gobject  # only if missing
+omarchy pkg add imv gum  # only if missing
 python3 companion/install.py
 ```
 

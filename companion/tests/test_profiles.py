@@ -135,14 +135,25 @@ class Profiles(unittest.TestCase):
         self.assertEqual(p['recommended'], '16-9')
         self.assertEqual(p['options'][0]['displays'][0]['factor'], 1.5)
 
-    def test_dialog_choice_changes_actual_files_and_saved_preference(self):
-        with patch.object(wp, 'read_setup', return_value={}), patch.object(wp, 'announce', return_value='wide'), \
+    def test_biggest_policy_persists_and_selects_larger_matching_set(self):
+        self.add_sized_profile('1080', [1920,1080], 1)
+        p = self.plan()
+        self.assertEqual(p['recommended'], '1080')
+        self.assertEqual(p['biggest'], '16-9')
+        with patch.object(wp, 'read_setup', return_value={}), patch.object(wp, 'announce', return_value='biggest'), \
              patch.object(wp, 'sync') as sync, patch.object(wp, 'save_setup') as save:
-            result = wp.initialize(self.root, self.plan())
-            self.assertEqual(result['profile'], 'wide')
-            self.assertIn('/wide/', result['files'][0])
-            self.assertEqual(sync.call_args.args[0]['profile'], 'wide')
-            self.assertEqual(save.call_args.args[0]['profile'], 'wide')
+            result = wp.initialize(self.root, p)
+            self.assertEqual(result['profile'], '16-9')
+            self.assertIn('/16-9/', result['files'][0])
+            self.assertEqual(sync.call_args.args[0]['profile'], '16-9')
+            self.assertEqual(save.call_args.args[0]['profile'], 'biggest')
+
+    def test_reason_explains_larger_file_and_biggest_keeps_proportions(self):
+        self.add_sized_profile('cheap-wide', [5120,2160], 1)
+        self.assertIn('crops 25%', self.plan()['reason'])
+        self.assertIn('whole sheet', self.plan()['reason'])
+        p = wp.plan(self.root, requested='biggest', detected=[self.screen(5120,2160)])
+        self.assertIn(p['profile'], ('wide', 'cheap-wide'))
 
     def test_incomplete_profile_not_mixed_and_escape_rejected(self):
         (self.root/'16-9/one.webp').unlink()
@@ -206,12 +217,12 @@ class Profiles(unittest.TestCase):
             save.assert_not_called()
 
     def test_setup_once_and_retry_when_detection_unavailable(self):
-        with patch.object(wp, 'read_setup', return_value={'version':3, 'root':str(self.root)}), \
+        with patch.object(wp, 'read_setup', return_value={'version':4, 'root':str(self.root)}), \
              patch.object(wp, 'announce') as announce, patch.object(wp, 'sync'), patch.object(wp, 'save_setup') as save:
             self.assertTrue(wp.initialize(self.root, self.plan()))
             announce.assert_not_called()
             save.assert_called_once()
-        with patch.object(wp, 'read_setup', return_value={}), patch.object(wp, 'announce', return_value='16-9'), \
+        with patch.object(wp, 'read_setup', return_value={}), patch.object(wp, 'announce', return_value='auto'), \
              patch.object(wp, 'sync'), patch.object(wp, 'save_setup') as save:
             wp.initialize(self.root, wp.plan(self.root, detected=[]))
             save.assert_not_called()

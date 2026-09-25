@@ -62,8 +62,8 @@ def main():
     ap.add_argument('--dir', type=Path, help='View a different render directory')
     ap.add_argument('--render', action='store_true', help='Regenerate the development set before opening')
     ap.add_argument('--list', action='store_true', help='List the selected collection and exit')
-    ap.add_argument('--configure', action='store_true', help='Compare formats for all monitors again')
-    ap.add_argument('--profile', help='Automatic by default; override with wide or 16-9')
+    ap.add_argument('--configure', action='store_true', help='Choose Perfectly good or Biggest in the terminal')
+    ap.add_argument('--profile', help='Automatic by default; use biggest, wide or 16-9 to override')
     ap.add_argument('--monitor', help="Prefer this monitor's proportions; assess resolution on all monitors")
     ap.add_argument('--show-plan', action='store_true', help='Print automatic setup as JSON without changing anything')
     ap.add_argument('--sync-backgrounds', action='store_true', help='Refresh an already configured Destiny desktop without opening the viewer')
@@ -85,7 +85,7 @@ def main():
             previous = wp.read_setup()
             requested = args.profile or previous.get('profile', 'auto')
             monitor = args.monitor or previous.get('monitor')
-            if args.sync_backgrounds and (previous.get('version') != 3 or previous.get('root') != str(ROOT)):
+            if args.sync_backgrounds and (previous.get('version') != 4 or previous.get('root') != str(ROOT)):
                 return
             detected = wp.monitors()
             # A remembered external screen may be unplugged; explicit CLI typos

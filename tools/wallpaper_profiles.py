@@ -98,6 +98,29 @@ def quality_score(option, preferred=None):
             option['size'][0]*option['size'][1], option['profile'])
 
 
+def recommendation_reason(option, options):
+    rows = option['displays']
+    if not rows:
+        return 'No monitors detected; the desktop will stay unchanged.'
+    if option['upscale']:
+        return f"No set is large enough; this needs the least enlargement ({max(r['factor'] for r in rows):.2f}×)."
+    cheaper = sorted((o for o in options if o['total_bytes'] is not None and option['total_bytes'] is not None and o['total_bytes'] < option['total_bytes']), key=lambda o:o['total_bytes'])
+    for other in cheaper:
+        enlarged = [r for r in other['displays'] if r['upscale']]
+        if enlarged:
+            row = max(enlarged, key=lambda r:r['factor'])
+            return f"The cheaper set needs {row['factor']:.2f}× enlargement on {row['name']}; this one does not."
+        crop = max(r['crop'] for r in other['displays'])
+        own_crop = max(r['crop'] for r in rows)
+        if crop > own_crop + .01:
+            return (f"The cheaper {other['label']} set crops {crop:.0%} of the image; " +
+                    ('this set keeps the whole sheet.' if own_crop < .01 else f'this set limits cropping to {own_crop:.0%}.'))
+    crop = max(r['crop'] for r in rows)
+    if crop > .01:
+        return f"Smallest set with the best available fit; mixed screen proportions still crop up to {crop:.0%}."
+    return f"Smallest set that fits all {len(rows)} displays without enlargement or cropping."
+
+
 def plan(root, requested='auto', monitor=None, detected=None):
     manifest, available = profiles(root)
     detected = monitors() if detected is None else detected
@@ -105,7 +128,11 @@ def plan(root, requested='auto', monitor=None, detected=None):
         raise ValueError(f'Monitor {monitor!r} is not connected')
     options = sorted([assess(p, detected) for p in available], key=lambda o: quality_score(o, monitor))
     recommended = options[0]['profile'] if detected else manifest['default']
-    choice = requested if requested != 'auto' else recommended
+    recommended_option = next((o for o in options if o['profile']==recommended), options[0])
+    ratio = recommended_option['size'][0]/recommended_option['size'][1]
+    matching = [o for o in options if abs(o['size'][0]/o['size'][1]-ratio) < .000001]
+    biggest = max(matching, key=lambda o:(o['size'][0]*o['size'][1], o['total_bytes'] or 0, o['profile']))['profile']
+    choice = biggest if requested == 'biggest' else (requested if requested != 'auto' else recommended)
     profile = next((p for p in available if p['id'] == choice), None)
     if profile is None:
         if requested != 'auto':
@@ -121,7 +148,8 @@ def plan(root, requested='auto', monitor=None, detected=None):
         warnings.append('Monitor detection is unavailable. Using the shipped default; desktop settings will stay unchanged.')
     if len(detected) > 1:
         warnings.append('One shared wallpaper is used on all monitors. The recommendation considers every connected display.')
-    return dict(profile=profile['id'], recommended=recommended, options=options,
+    return dict(profile=profile['id'], recommended=recommended, biggest=biggest,
+                reason=recommendation_reason(recommended_option, options), options=options,
                 label=profile['label'], size=profile['size'], count=len(profile['paths']),
                 screen=detected[0] if detected else None, monitors=detected, warnings=warnings,
                 files=[str(p) for p in profile['paths']], hashes=[r['sha256'] for r in profile['files']])
@@ -165,7 +193,7 @@ def save_setup(data):
 
 
 def announce(p, apply):
-    from wallpaper_setup_ui import choose_profile
+    from wallpaper_setup_cli import choose_profile
     return choose_profile(p, apply)
 
 
@@ -207,14 +235,15 @@ def sync(p, current=None):
 
 def initialize(root, p, requested='auto', monitor=None, configure=False):
     previous = read_setup()
-    if configure or previous.get('version') != 3 or previous.get('root') != str(root):
+    if configure or previous.get('version') != 4 or previous.get('root') != str(root):
         choice = announce(p, bool(p['screen']) and active_destiny(current_dir()))
         if not choice:
             return None
-        # Choosing the recommendation keeps future selection automatic.
-        requested = 'auto' if choice == p['recommended'] else choice
+        if choice not in ('auto', 'biggest'):
+            raise ValueError('Invalid setup choice')
+        requested = choice
         p = plan(root, requested, monitor, p['monitors'])
     sync(p)
     if p['screen']:
-        save_setup(dict(version=3, root=str(root), profile=requested, monitor=monitor))
+        save_setup(dict(version=4, root=str(root), profile=requested, monitor=monitor))
     return p

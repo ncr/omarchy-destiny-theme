@@ -5,7 +5,7 @@ The theme installed through Omarchy's menu is data only: it cannot install or
 launch this app by itself. Explicitly run the companion installer once:
 
 ```sh
-omarchy pkg add imv gtk4 python-gobject          # only if missing
+omarchy pkg add imv gum          # only if missing
 python3 companion/install.py
 ```
 
@@ -14,40 +14,34 @@ application menu, and opens it automatically in a graphical session. Use
 `--no-launch` to install without opening it. No sudo, permanent viewer autostart,
 or compositor configuration changes are involved.
 
-## First launch
+## First launch: two choices in a terminal
 
-The app reads all connected monitors from Hyprland, including rotation and
-scale. It first avoids enlargement on **any** screen, then minimizes the worst
-crop and the area-weighted crop. Among equally suitable sets it prefers the
-smallest total file size, then the fewest pixels if sizes tie. It never follows
-window focus. An adequate smaller source is preferred over unnecessary extra
-resolution; an undersized source still loses to one that needs no enlargement.
+Setup runs in your current terminal, or opens the default terminal when started
+from the application menu. There is no GTK setup window or countdown.
 
-Each option shows the actual sum of its image-file sizes and average size per
-wallpaper, in decimal MB (1 MB = 1,000,000 bytes). These are compressed file
-sizes, not decoded memory use or estimated download savings. Both formats are
-currently bundled, so selecting one does not delete the other from the checkout.
+- **Perfectly good** — the smallest suitable set for all connected monitors.
+- **I don't care, I want the biggest everything** — the highest resolution
+  available in the matching aspect ratio.
 
-A compact floating window presents formats as cards, with prominent total MB,
-a persistent action footer and expandable display details. It adapts its size
-to the desktop; long lists scroll without hiding the action buttons.
-Every card lists the connected monitors:
-green means native or reduced resolution, red warns about enlargement, and
-amber separately warns about cropping. Every colour also has a written label.
-The recommended option is preselected. **Apply and open** confirms it; Cancel
-or Escape makes no changes. There is no countdown. Choosing the recommendation
-keeps future selection automatic; another choice becomes a manual override.
-Use `--configure` to reopen this comparison. Existing v2 installations see the
-new comparison once. The theme hook only runs after completing this setup.
+Each choice shows its total MB. One short reason explains the recommendation,
+including why a smaller file loses if it would crop content or require
+upscaling. If both policies currently resolve to the same set, setup says so.
+Arrow keys choose; Enter applies; Escape cancels. Without `gum`, a simple
+numbered prompt works too. The selected policy is remembered, so new exports
+and monitor changes can be handled without asking for a resolution again.
+`--configure` reopens setup; `--show-plan` provides the full read-only details.
+Existing graphical-setup installations see the terminal choice once.
 
-Both complete native formats (42 sheets each) ship on **main**:
-5120×2880 (16:9) and 5120×2160 (ultrawide). No separate branch is needed.
-These are independently composed masters, not upscales.
-**Readable reflow for 1080p and 1440p is still pending.** Even green resolution
-status does not guarantee readable labels on a small display; the comparison
-reports estimated text size independently. A portrait monitor can still crop
-most of a landscape sheet. If every source is too small, the least enlargement
-is recommended and still shown in red.
+Automatic selection considers every monitor, not window focus. It avoids
+upscaling first, minimizes cropping, then chooses the smallest file total.
+The biggest policy selects the highest pixel count in that same aspect ratio;
+it does not switch to the wrong proportions just to use a larger file.
+
+Both native formats (42 sheets each) ship on **main**: 5120×2880 (16:9) and
+5120×2160 (ultrawide). MB describes compressed image files, not RAM or download
+savings; selecting a set does not delete the other bundled format.
+**Readable reflow for 1080p and 1440p is still pending.** Resolution and small
+text legibility are different things; detailed estimates remain in `--show-plan`.
 
 Hyprland's synthetic FALLBACK output is not treated as a physical monitor.
 Without monitor detection, the app can browse the default but leaves the
@@ -80,9 +74,10 @@ window class. This app does not install a global keybinding.
 ```sh
 destiny-wallpapers truth-lamp
 destiny-wallpapers 3                  # Collection position, not filename number
-destiny-wallpapers --configure        # Reopen the coloured comparison
+destiny-wallpapers --configure        # Reopen the two-choice terminal setup
 destiny-wallpapers --show-plan        # JSON; no changes or setup dialog
 destiny-wallpapers --list             # All 42 chosen files; read-only
+destiny-wallpapers --profile biggest   # Prefer highest matching resolution
 destiny-wallpapers --profile 16-9      # Remember a manual override
 destiny-wallpapers --profile auto     # Resume automatic aspect selection
 destiny-wallpapers --monitor DP-1     # Prefer its proportions; still avoid upscaling on all screens
