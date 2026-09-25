@@ -36,7 +36,7 @@ class CLI(unittest.TestCase):
             screen=Screen([cli.curses.KEY_DOWN,'2','\n'])
             self.assertEqual(cli.tui(screen,PLAN,True),'auto')
             self.assertTrue(any('Optimal set' in text for text in screen.lines))
-            self.assertTrue(any('OPTIMAL SET' in text for text in screen.lines))
+            self.assertFalse(any('ALTERNATIVE' in text or 'COMPARISON' in text or '3840' in text for text in screen.lines))
             self.assertIsNone(cli.tui(Screen(['\x1b']),PLAN,True))
             self.assertEqual(cli.tui(Screen(['\n'],(10,35)),PLAN,False),'auto')
 

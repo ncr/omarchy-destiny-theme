@@ -21,12 +21,11 @@ There is no resolution or quality-policy chooser. The app evaluates all
 connected monitors, first avoiding enlargement, then minimizing cropping,
 then selecting the smallest file total among equally suitable sets.
 
-The screen shows resolution, total MB and what Enter will do. A side-by-side
-comparison shows the optimal format and an alternative on each monitor:
-solid green is visible image; amber hatching is cropped away. Exact crop
-percentages and enlargement appear beside each diagram. Alternatives are
-read-only explanations, not selectable options. PgUp/PgDn pages additional
-monitors; [ and ] cycle comparison formats when more than two are available.
+The screen shows only the optimal set: resolution, total MB and what Enter
+will do. Each monitor has a diagram of the resulting wallpaper: solid green
+is visible image; amber hatching is cropped away. Exact crop percentages and
+enlargement appear beside the diagram when relevant. No alternative sets or
+comparisons are displayed. PgUp/PgDn pages additional monitors.
 
 Enter continues; Escape cancels without changes. From the application menu,
 Foot opens full-screen with a large 20-point font, falling back to the default

@@ -21,6 +21,17 @@ def size_label(option):
     return f'{value/1_000_000:.1f} MB' if value is not None else 'Size unknown'
 
 
+def fit_summary(option):
+    displays=option.get('displays',[])
+    if not displays:
+        return 'No monitors detected; desktop stays unchanged.'
+    if any(d['upscale'] for d in displays):
+        return 'Best available resolution; some screens need enlargement.'
+    if any(d['crop']>.000001 for d in displays):
+        return 'Matched to your screens; some edges are cropped as shown below.'
+    return 'Full image on every screen, without enlargement.'
+
+
 def crop_geometry(size, display):
     """Centred cover viewport, as fractions of the original wallpaper."""
     w, h = size
@@ -30,7 +41,7 @@ def crop_geometry(size, display):
     return (1-visible_w)/2, (1-visible_h)/2, visible_w, visible_h
 
 
-def draw_menu(screen, plan, apply, colors, page=0, alternative=0):
+def draw_menu(screen, plan, apply, colors, page=0):
     height, width = screen.getmaxyx()
     screen.erase()
     bold = curses.A_BOLD
@@ -48,7 +59,7 @@ def draw_menu(screen, plan, apply, colors, page=0, alternative=0):
         put(0, 1, 'DESTINY WALLPAPERS', bold|accent)
         put(2,1,'Optimal set',bold|accent)
         y=3
-        for text in (detail,action,'Why: '+plan['reason']):
+        for text in (detail,action,fit_summary(chosen)):
             for line in textwrap.wrap(text,max(8,width-3)):
                 if y>=height-3: break
                 put(y,1,line);y+=1
@@ -56,24 +67,15 @@ def draw_menu(screen, plan, apply, colors, page=0, alternative=0):
         put(height-3,1,'Enlarge terminal for the crop diagrams.',accent)
         put(height-2,1,'ENTER Continue · ESC Cancel',bold)
         return
-    panel = min(108, width-6)
+    panel = min(84, width-6)
     left = (width-panel)//2
-    put(0,left,'DESTINY / WALLPAPERS',bold|accent)
-    put(2,left,'Optimal set',bold|accent)
-    put(2,left+panel-len(detail)-1,detail,bold)
+    put(1,left,'DESTINY / WALLPAPERS',bold|accent)
+    put(4,left,'Optimal set',bold|accent)
+    put(4,left+panel-len(detail)-1,detail,bold)
     count=plan.get('count',chosen.get('file_count',0))
-    put(3,left,f'{count} wallpapers · '+action)
-    put(5,left,'Priority: avoid enlargement → minimize cropping → save disk space',bold)
-    for i,line in enumerate(textwrap.wrap(plan['reason'],panel)[:2]):
-        put(7+i,left,line)
-    others = [o for o in plan['options'] if o['profile']!=chosen['profile']]
-    columns = [chosen]+([others[alternative % len(others)]] if others else [])
-    col_width = panel//len(columns)
-    for i,o in enumerate(columns):
-        label=' × '.join(map(str,o.get('size',[])))
-        mb=f"{o['total_bytes']/1_000_000:.1f} MB" if o.get('total_bytes') is not None else 'Size unknown'
-        put(10,left+i*col_width,label+' / '+mb,bold)
-        put(11,left+i*col_width,'OPTIMAL SET' if i==0 else 'ALTERNATIVE / FOR COMPARISON',accent)
+    put(5,left,f'{count} wallpapers · Automatically matched to your monitors')
+    put(7,left,fit_summary(chosen))
+    put(8,left,action)
     screens=chosen.get('displays',[])
     per_page=max(1,(height-17)//7)
     pages=max(1,(len(screens)+per_page-1)//per_page)
@@ -81,32 +83,32 @@ def draw_menu(screen, plan, apply, colors, page=0, alternative=0):
     for row,display in enumerate(screens[page*per_page:(page+1)*per_page]):
         y=13+row*7
         put(y,left,f"{display['name']}  {display['width']} × {display['height']}",bold)
-        for col,o in enumerate(columns):
-            d=next(r for r in o['displays'] if r['name']==display['name'])
-            x=left+col*col_width
-            # Character cells are approximately twice as tall as they are wide.
-            # Same graphic height and proportional width preserve source aspect.
-            gh=4
-            gw=max(3,min(22,round(gh*2*o['size'][0]/o['size'][1])))
-            cx,cy,vw,vh=crop_geometry(o['size'],d)
-            for gy in range(gh):
-                for gx in range(gw):
-                    kept=cx <= (gx+.5)/gw <= cx+vw and cy <= (gy+.5)/gh <= cy+vh
-                    put(y+1+gy,x+gx,'█' if kept else '▒',good if kept else warning)
-            tx=x+gw+2
-            crop=d['crop']
-            put(y+1,tx,'Full image' if crop<.000001 else f'{crop:.0%} cropped',bold|(good if crop<.000001 else warning))
-            put(y+2,tx,'No enlargement' if not d['upscale'] else f"Enlarged {d['factor']:.2f}×",warning if d['upscale'] else normal)
-            if crop>.000001:
-                put(y+3,tx,'Sides removed' if cx>cy else 'Top/bottom removed',warning)
+        d=display
+        x=left
+        # Character cells are approximately twice as tall as they are wide.
+        # Same graphic height and proportional width preserve source aspect.
+        gh=4
+        gw=max(3,min(22,round(gh*2*chosen['size'][0]/chosen['size'][1])))
+        cx,cy,vw,vh=crop_geometry(chosen['size'],d)
+        for gy in range(gh):
+            for gx in range(gw):
+                kept=cx <= (gx+.5)/gw <= cx+vw and cy <= (gy+.5)/gh <= cy+vh
+                put(y+1+gy,x+gx,'█' if kept else '▒',good if kept else warning)
+        tx=x+gw+2
+        crop=d['crop']
+        put(y+1,tx,'Full image' if crop<.000001 else f'{crop:.0%} cropped',bold|(good if crop<.000001 else warning))
+        put(y+2,tx,'No enlargement' if not d['upscale'] else f"Enlarged {d['factor']:.2f}×",warning if d['upscale'] else normal)
+        if crop>.000001:
+            put(y+3,tx,'Sides removed' if cx>cy else 'Top/bottom removed',warning)
     if not screens:
         put(14,left,'No monitors detected; desktop stays unchanged.',warning)
     put(height-4,left,'█ Visible image',good)
-    put(height-4,left+20,'▒ Cropped away',warning)
-    put(height-4,left+40,'One wallpaper shared by all screens',muted)
+    if any(d['crop']>.000001 for d in screens):
+        put(height-4,left+20,'▒ Cropped away',warning)
+    if not any(d['crop']>.000001 for d in screens):
+        put(height-4,left+20,'One wallpaper shared by all screens',muted)
     controls='ENTER '+('Apply optimal set & open' if apply else 'Open gallery')+'   ESC Cancel'
     if pages>1: controls+=f'   PgUp/Dn Screens {page+1}/{pages}'
-    if len(others)>1: controls+='   [ ] Formats'
     put(height-2,left,controls,bold|accent)
 
 
@@ -127,15 +129,13 @@ def tui(screen, plan, apply):
         curses.init_pair(5,curses.COLOR_GREEN,-1)
         curses.init_pair(6,curses.COLOR_YELLOW,-1)
         colors = tuple(curses.color_pair(i) for i in range(1,7))
-    page = alternative = 0
+    page = 0
     while True:
-        draw_menu(screen,plan,apply,colors,page,alternative)
+        draw_menu(screen,plan,apply,colors,page)
         screen.refresh()
         key = screen.get_wch()
         if key in (curses.KEY_NPAGE,curses.KEY_PPAGE):
             page += 1 if key==curses.KEY_NPAGE else -1
-        elif key in ('[',']'):
-            alternative += 1 if key==']' else -1
         elif key in ('\n','\r',curses.KEY_ENTER):
             return 'auto'
         elif key in ('\x1b','q','Q'):
@@ -152,7 +152,7 @@ def prompt(plan, apply):
     option=optimal_set(plan)
     print('DESTINY WALLPAPERS / Optimal set')
     print(' × '.join(map(str,option.get('size',[])))+' / '+size_label(option))
-    print('Why: '+plan['reason'])
+    print(fit_summary(option))
     print('Update Destiny desktop + open gallery' if apply else 'Open gallery; desktop stays unchanged')
     try:
         while True:
