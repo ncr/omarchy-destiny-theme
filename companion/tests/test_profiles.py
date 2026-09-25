@@ -81,6 +81,46 @@ class Profiles(unittest.TestCase):
         self.assertEqual(low_result['displays'][1]['factor'], 2)
         self.assertFalse(p['options'][0]['upscale'])
 
+    def add_sized_profile(self, id, dimensions, bytes_per_file):
+        entries = []
+        (self.root/id).mkdir()
+        for key in ['one', 'two']:
+            path = self.root/id/f'{key}.webp'
+            path.write_bytes(b'x'*bytes_per_file)
+            entries.append(dict(id=key, file=str(path.relative_to(self.root)),
+                                sha256=hashlib.sha256(path.read_bytes()).hexdigest()))
+        self.manifest['profiles'].append(dict(id=id, label=id, files=entries,
+                                              size=dimensions, min_text_px=14))
+        self.save()
+
+    def test_smallest_sufficient_set_for_every_monitor(self):
+        # Sizes are controlled test data: 1080p < 4K < 5K.
+        self.add_sized_profile('1080', [1920,1080], 1)
+        self.add_sized_profile('4k', [3840,2160], 3)
+        self.assertEqual(self.plan()['recommended'], '1080')
+        screens = [self.screen(), {**self.screen(3840,2160), 'name':'DP-2'}]
+        p = wp.plan(self.root, detected=screens)
+        self.assertEqual(p['recommended'], '4k')
+        self.assertFalse(p['options'][0]['upscale'])
+
+    def test_file_sizes_are_measured_not_estimated(self):
+        self.add_sized_profile('4k', [3840,2160], 1234)
+        option = next(o for o in self.plan()['options'] if o['profile']=='4k')
+        self.assertEqual(option['total_bytes'], 2468)
+        self.assertEqual(option['average_bytes'], 1234)
+        self.assertEqual(option['file_count'], 2)
+        (self.root/'4k/one.webp').write_bytes(b'x'*4321)
+        option = next(o for o in self.plan()['options'] if o['profile']=='4k')
+        self.assertEqual(option['total_bytes'], 5555)
+
+    def test_equal_file_sizes_prefer_fewer_sufficient_pixels(self):
+        self.add_sized_profile('4k', [3840,2160], 8)  # Same bytes as 16-9 fixture.
+        self.assertEqual(self.plan()['recommended'], '4k')
+
+    def test_tiny_cropped_set_does_not_beat_full_sheet(self):
+        self.add_sized_profile('tiny-wide', [5120,2160], 1)
+        self.assertEqual(self.plan()['recommended'], '16-9')
+
     def test_more_than_two_screens_and_portrait_crop(self):
         screens = [self.screen(), {**self.screen(3840,2160), 'name':'DP-2'},
                    {**self.screen(1080,1920), 'name':'DP-3'},

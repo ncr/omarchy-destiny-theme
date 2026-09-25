@@ -37,7 +37,7 @@ class SetupWindow(Gtk.Window):
         outer.append(label('<span size="x-large" weight="bold">Which wallpaper format should we use?</span>', True))
         if demo:
             outer.append(label(f'<span foreground="{AMBER}" weight="bold">TEST — {escape(demo)}</span>', True))
-        outer.append(label('Recommended for all connected monitors. Higher-resolution images can be reduced; enlarging a smaller image can soften the linework.'))
+        outer.append(label('We recommend the smallest set that avoids enlargement on every monitor and fits their proportions best. Extra resolution is optional.'))
         scroll = Gtk.ScrolledWindow(vexpand=True, hexpand=True)
         self.scroller = scroll
         scroll.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
@@ -65,6 +65,10 @@ class SetupWindow(Gtk.Window):
             button.connect('toggled', self.selected, option['profile'])
             self.buttons[option['profile']] = button
             box.append(button)
+            if option['total_bytes'] is not None:
+                box.append(label(f"{option['file_count']} wallpapers · {option['total_bytes']/1_000_000:.1f} MB total · {option['average_bytes']/1_000_000:.2f} MB per wallpaper on average"))
+            else:
+                box.append(label('File size unavailable — no image files supplied for this test option.'))
             if not option['displays']:
                 box.append(label('Quality cannot be assessed without a detected screen.'))
             for row in option['displays']:
@@ -80,6 +84,7 @@ class SetupWindow(Gtk.Window):
                     text += f"\nSmallest labels in the full-sheet viewer: ~{row['text_px']:.1f} px. Larger-type layouts are still pending."
                 box.append(label(text, True))
         self.buttons[plan['profile']].set_active(True)
+        content.append(label('Sizes describe the image files (1 MB = 1,000,000 bytes), not memory use. All published formats are currently bundled; choosing one does not remove the others.'))
         outer.append(label('Apply this format to the active Destiny desktop and open the viewer. Keep the current sheet and custom wallpapers.' if apply else
                            'Open the viewer with this format. Your desktop theme stays unchanged.'))
         controls = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12, halign=Gtk.Align.END)

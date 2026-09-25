@@ -66,7 +66,10 @@ Use `--no-launch` to install without opening the app, and
 Readable reflow with larger type for 1080p and 1440p remains in development.
 Resolution quality and text readability are assessed separately. Omarchy
 currently shares one wallpaper across monitors; the app first avoids
-upscaling on any screen, then minimizes cropping. Changing focus does not
+upscaling on any screen, then minimizes cropping. Among equally suitable
+sets it recommends the smallest total file size, not the highest resolution.
+Each option shows the actual total MB and average MB per wallpaper. All formats
+remain bundled; the selection does not remove other formats from disk. Changing focus does not
 change the recommendation. The viewer always fits the complete sheet.
 
 [Companion setup, controls and limitations](companion/README.md).

@@ -18,8 +18,15 @@ or compositor configuration changes are involved.
 
 The app reads all connected monitors from Hyprland, including rotation and
 scale. It first avoids enlargement on **any** screen, then minimizes the worst
-crop and the area-weighted crop. It never follows window focus. With matching
-proportions, a high-resolution source is preferred over enlarging a low one.
+crop and the area-weighted crop. Among equally suitable sets it prefers the
+smallest total file size, then the fewest pixels if sizes tie. It never follows
+window focus. An adequate smaller source is preferred over unnecessary extra
+resolution; an undersized source still loses to one that needs no enlargement.
+
+Each option shows the actual sum of its image-file sizes and average size per
+wallpaper, in decimal MB (1 MB = 1,000,000 bytes). These are compressed file
+sizes, not decoded memory use or estimated download savings. Both formats are
+currently bundled, so selecting one does not delete the other from the checkout.
 
 A scrollable comparison lists every monitor under each available format:
 green means native or reduced resolution, red warns about enlargement, and

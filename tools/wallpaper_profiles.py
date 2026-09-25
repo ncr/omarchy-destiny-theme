@@ -62,6 +62,10 @@ def profiles(root):
 def assess(profile, screens):
     """Physical pixel density for desktop cover, independent of UI scaling."""
     w, h = profile['size']
+    paths = profile.get('paths', [])
+    # Measure the files users actually have, rather than guessing from pixels
+    # or treating compressed file size as decoded RAM use.
+    sizes = [p.stat().st_size for p in paths]
     rows = []
     for m in screens:
         fill = max(m['width']/w, m['height']/h)
@@ -72,22 +76,26 @@ def assess(profile, screens):
                          text_px=profile['min_text_px']*fit/m['scale'],
                          upscale=fill > 1.000001))
     return dict(profile=profile['id'], label=profile['label'], size=profile['size'],
+                total_bytes=sum(sizes) if sizes else None, file_count=len(sizes),
+                average_bytes=sum(sizes)/len(sizes) if sizes else None,
                 displays=rows, upscale=any(r['upscale'] for r in rows))
 
 
 def quality_score(option, preferred=None):
     rows = option['displays']
     if not rows:
-        return (0, 0, 0, 0, 0, option['profile'])
+        return (0, 0, 0, 0, 0, 0, option['profile'])
     # First avoid enlargement on ANY display. Then minimize worst cropping and
-    # area-weighted cropping. Focus changes must never alter the recommendation.
+    # area-weighted cropping. Among equally suitable sets, prefer fewer bytes,
+    # then fewer pixels. Focus changes must never alter the recommendation.
     worst_scale = max(1., max(r['factor'] for r in rows))
     relevant = [r for r in rows if r['name'] == preferred] if preferred else rows
     crop = max(r['crop'] for r in relevant)
     area = sum(r['width']*r['height'] for r in relevant)
     average = sum(r['crop']*r['width']*r['height'] for r in relevant)/area
     return (option['upscale'], round(worst_scale, 6), round(crop, 6), round(average, 6),
-            -option['size'][0]*option['size'][1], option['profile'])
+            option['total_bytes'] if option['total_bytes'] is not None else math.inf,
+            option['size'][0]*option['size'][1], option['profile'])
 
 
 def plan(root, requested='auto', monitor=None, detected=None):
