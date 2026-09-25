@@ -1,4 +1,7 @@
 """Monitor selection and first-run setup for the optional wallpaper companion."""
+import base64
+import time
+import fcntl
 import hashlib
 import json
 import math
@@ -197,6 +200,24 @@ def announce(p, apply):
     return choose_profile(p, apply)
 
 
+def refresh_desktop(target, current):
+    subprocess.run(['omarchy','theme','bg','set',str(target)],check=True,timeout=15)
+    # The shell ignores set(path) when the path is unchanged. Use its existing
+    # theme-transition API with an uncached snapshot and the same final path.
+    # The canonical link stays intact for Omarchy's next-background command.
+    shell=shutil.which('omarchy-shell')
+    if not shell:return
+    def payload(name):
+        path=current/'theme'/name
+        return base64.b64encode(path.read_bytes() if path.is_file() else b'').decode()
+    with tempfile.TemporaryDirectory(prefix='destiny-refresh-') as directory:
+        snapshot=Path(directory)/target.name
+        shutil.copyfile(target,snapshot)
+        result=subprocess.run(['omarchy','shell','-q','background','themeTransition','',str(snapshot),str(target),
+                               payload('colors.toml'),payload('shell.json')],check=False,timeout=10)
+        if result.returncode==0:time.sleep(3)
+
+
 def sync(p, current=None):
     """Replace only this collection's files in Omarchy's disposable theme stage."""
     current = current or current_dir()
@@ -228,8 +249,8 @@ def sync(p, current=None):
         changed = bool(pending)
     # Keep custom user wallpapers selected. Owned sheets always use stage paths,
     # so Omarchy's next-background operation can match its current-file list.
-    if changed and selected in {s.name for s in sources}:
-        subprocess.run(['omarchy', 'theme', 'bg', 'set', str(destination/selected)], check=True, timeout=15)
+    if selected in {s.name for s in sources} and (changed or (current/'background').resolve() != (destination/selected).resolve()):
+        refresh_desktop(destination/selected,current)
     return changed
 
 
@@ -239,10 +260,12 @@ def notify_selection(p, desktop):
     if not notifier and not fallback:
         return
     resolution=' × '.join(map(str,p['size']))
-    title=('Optimal wallpaper resolution selected' if p['profile']==p['recommended']
-           else 'Wallpaper resolution updated')
+    title=('Optimal desktop wallpaper resolution applied' if p['profile']==p['recommended']
+           else 'Desktop wallpaper resolution applied')
     title+=': '+resolution
-    scope='' if desktop else 'Gallery only. '
+    if not desktop:
+        return
+    scope=''
     command=shutil.which('destiny-wallpapers')
     if notifier and command:
         args=[notifier,'--app-name','Destiny Wallpapers','-t','9000',title,
@@ -256,6 +279,14 @@ def notify_selection(p, desktop):
 
 
 def initialize(root, p, requested='auto', monitor=None, configure=False):
+    lock=setup_path().with_suffix('.lock')
+    lock.parent.mkdir(parents=True,exist_ok=True)
+    with lock.open('a') as handle:
+        fcntl.flock(handle,fcntl.LOCK_EX)
+        return _initialize(root,p,requested,monitor,configure)
+
+
+def _initialize(root, p, requested='auto', monitor=None, configure=False):
     previous = read_setup()
     # Old chooser preferences migrate to automatic; only explicit new settings
     # can establish a manual override.
@@ -271,12 +302,13 @@ def initialize(root, p, requested='auto', monitor=None, configure=False):
             raise ValueError('Invalid wallpaper setting')
         requested=choice
         p=plan(root,requested,monitor,p['monitors'])
-    sync(p)
+    updated=sync(p)
     if p['screen']:
         changed=(previous.get('version')!=6 or previous.get('root')!=str(root)
-                 or previous.get('selected')!=p['profile'])
+                 or previous.get('selected')!=p['profile']
+                 or (desktop and (updated or previous.get('desktop_selected')!=p['profile'])))
         save_setup(dict(version=6,root=str(root),profile=requested,monitor=monitor,
-                        selected=p['profile']))
+                        selected=p['profile'],desktop_selected=p['profile'] if desktop else previous.get('desktop_selected')))
         if changed:
             notify_selection(p,desktop)
     return p

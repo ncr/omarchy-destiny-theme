@@ -11,7 +11,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 MARKER = '# Destiny Wallpapers companion'
-RUNTIME = ('view_wallpapers.py', 'wallpaper_profiles.py', 'wallpaper_setup_cli.py', 'wallpaper-viewer.ini')
+RUNTIME = ('view_wallpapers.py', 'wallpaper_profiles.py', 'wallpaper_desktop.py', 'wallpaper_setup_cli.py', 'wallpaper-viewer.ini')
 
 
 def desktop_quote(value):
@@ -31,12 +31,19 @@ def main():
     launcher = prefix/'bin/destiny-wallpapers'
     desktop = prefix/'share/applications/destiny-wallpapers.desktop'
     local = prefix == (Path.home()/'.local').resolve()
+    service = Path.home()/'.config/systemd/user/destiny-wallpapers-desktop.service'
+    if local and service.exists() and MARKER not in service.read_text():
+        ap.error(f'Refusing to replace an unrelated service: {service}')
     hook = Path.home()/'.config/omarchy/hooks/theme-set.d/destiny-wallpapers'
     if local and hook.exists() and MARKER not in hook.read_text():
         ap.error(f'Refusing to replace an unrelated hook: {hook}')
     if args.uninstall:
         if not (app/'install.json').is_file():
             ap.error('No companion installation recorded at this prefix')
+        if local and service.is_file():
+            subprocess.run(['systemctl','--user','disable','--now',service.name],check=True)
+            service.unlink()
+            subprocess.run(['systemctl','--user','daemon-reload'],check=True)
         if launcher.is_file() and MARKER in launcher.read_text():launcher.unlink()
         if desktop.is_file() and 'StartupWMClass=destiny-wallpapers' in desktop.read_text():desktop.unlink()
         if local and hook.is_file() and MARKER in hook.read_text():hook.unlink()
@@ -75,6 +82,19 @@ def main():
             hook_source.write_text('#!/bin/sh\n'+MARKER+'\n'
                 '[ "$1" = destiny ] || exit 0\nexec '+shlex.quote(str(launcher))+' --sync-backgrounds\n')
             subprocess.run(['omarchy', 'hook', 'install', 'theme-set', str(hook_source)], check=True)
+        if local:
+            def unit_quote(value):
+                return '"'+str(value).replace('\\','\\\\').replace('"','\\"').replace('%','%%')+'"'
+            service.parent.mkdir(parents=True,exist_ok=True)
+            service.write_text(MARKER+'\n[Unit]\nDescription=Automatic Destiny desktop wallpaper resolution\n'
+                '\n[Service]\nType=simple\nExecStart=:'+
+                ' '.join(unit_quote(x) for x in (sys.executable,app/'wallpaper_desktop.py','--root',ROOT))+
+                '\nRestart=on-failure\nRestartSec=5\n'
+                '\n[Install]\nWantedBy=default.target\n')
+            subprocess.run(['systemctl','--user','daemon-reload'],check=True)
+            subprocess.run(['systemctl','--user','enable',service.name],check=True)
+            subprocess.run(['systemctl','--user','restart',service.name],check=True)
+            print('Automatic desktop updates enabled (monitor checks every 10 seconds).')
         (app/'install.json').write_text(json.dumps({'theme_root':str(ROOT),'prefix':str(prefix),'version':6},indent=2)+'\n')
         print(f'Installed Destiny Wallpapers: {launcher}\nWallpaper source: {ROOT}')
     refresh = shutil.which('update-desktop-database')

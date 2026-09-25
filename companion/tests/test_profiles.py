@@ -11,6 +11,7 @@ from unittest.mock import patch
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT/'tools'))
 import wallpaper_profiles as wp
+import wallpaper_desktop as wd
 
 
 class Profiles(unittest.TestCase):
@@ -21,6 +22,9 @@ class Profiles(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
+        state=patch.object(wp,'setup_path',return_value=self.root/'state/setup.json')
+        state.start()
+        self.addCleanup(state.stop)
         docs = self.root/'docs/collection'
         docs.mkdir(parents=True)
         (docs/'catalog.json').write_text(json.dumps({'finalized': [{'id': 'one'}, {'id': 'two'}]}))
@@ -144,7 +148,7 @@ class Profiles(unittest.TestCase):
         self.assertEqual(p['profile'], '16-9')
         previous=dict(version=4,root=str(self.root),profile='biggest')
         with patch.object(wp, 'read_setup', return_value=previous), patch.object(wp, 'announce', return_value='auto') as announce, \
-             patch.object(wp, 'sync') as sync, patch.object(wp, 'save_setup') as save:
+             patch.object(wp, 'sync',return_value=False) as sync, patch.object(wp, 'save_setup') as save:
             result = wp.initialize(self.root, p, requested='biggest')
             self.assertEqual(result['profile'], '1080')
             announce.assert_not_called()
@@ -179,16 +183,56 @@ class Profiles(unittest.TestCase):
         (current/'background').symlink_to(dest/'one.webp')
         return current, dest
 
+    def test_desktop_watcher_updates_without_gallery_and_on_monitor_change(self):
+        current,dest=self.stage()
+        screens=[self.screen()]
+        watcher=wd.DesktopWatcher(self.root)
+        with patch.object(wp,'current_dir',return_value=current), patch.object(wp,'monitors',side_effect=lambda:screens), patch.object(wp,'refresh_desktop') as refresh, patch.object(wp,'announce',side_effect=AssertionError('No gallery setup allowed')):
+            self.assertTrue(watcher.tick())
+            self.assertEqual((dest/'one.webp').read_bytes(),b'16-9-one')
+            self.assertFalse(watcher.tick())
+            self.assertEqual(refresh.call_count,1)
+            screens[0]['focused']=False
+            self.assertFalse(watcher.tick())
+            screens[:]=[self.screen(5120,2160)]
+            self.assertTrue(watcher.tick())
+            self.assertEqual((dest/'one.webp').read_bytes(),b'wide-one')
+            self.assertEqual((current/'background').resolve(),dest/'one.webp')
+            self.assertEqual((dest/'custom.webp').read_bytes(),b'keep')
+            self.assertEqual(refresh.call_count,2)
+            screens.clear()
+            self.assertFalse(watcher.tick())
+            screens[:]=[self.screen()]
+            self.assertTrue(watcher.tick())
+            self.assertEqual((dest/'one.webp').read_bytes(),b'16-9-one')
+
     def test_sync_preserves_custom_and_selected_idempotently(self):
         current, dest = self.stage()
-        with patch.object(wp.subprocess, 'run') as run:
+        with patch.object(wp,'refresh_desktop') as run:
             self.assertTrue(wp.sync(self.plan(), current))
-            self.assertEqual(run.call_args.args[0][-1], str(dest/'one.webp'))
+            self.assertEqual(run.call_args.args[0],dest/'one.webp')
             self.assertFalse(wp.sync(self.plan(), current))
             self.assertEqual(run.call_count, 1)
         self.assertEqual((dest/'custom.webp').read_bytes(), b'keep')
         self.assertEqual((dest/'one.webp').read_bytes(), b'16-9-one')
         self.assertFalse((dest/'one.webp').is_symlink())
+
+    def test_refresh_uses_uncached_snapshot_and_preserves_canonical_path(self):
+        current,dest=self.stage()
+        target=dest/'one.webp'
+        calls=[]
+        def run(args,**kwargs):
+            calls.append(args)
+            if 'themeTransition' in args:
+                snapshot=Path(args[6])
+                self.assertNotEqual(snapshot,target)
+                self.assertEqual(snapshot.read_bytes(),target.read_bytes())
+                self.assertEqual(args[7],str(target))
+            return subprocess.CompletedProcess(args,0)
+        with patch.object(wp.shutil,'which',return_value='/usr/bin/omarchy-shell'),patch.object(wp.subprocess,'run',side_effect=run),patch.object(wp.time,'sleep'):
+            wp.refresh_desktop(target,current)
+        self.assertEqual(calls[0],['omarchy','theme','bg','set',str(target)])
+        self.assertEqual(len(calls),2)
 
     def test_other_theme_and_no_monitor_are_untouched(self):
         current, dest = self.stage()
@@ -215,27 +259,27 @@ class Profiles(unittest.TestCase):
 
     def test_cancel_does_not_sync_or_save(self):
         with patch.object(wp, 'read_setup', return_value={}), patch.object(wp, 'announce', return_value=False), \
-             patch.object(wp, 'sync') as sync, patch.object(wp, 'save_setup') as save:
+             patch.object(wp, 'sync',return_value=False) as sync, patch.object(wp, 'save_setup') as save:
             self.assertFalse(wp.initialize(self.root, self.plan(),configure=True))
             sync.assert_not_called()
             save.assert_not_called()
 
     def test_setup_once_and_retry_when_detection_unavailable(self):
-        with patch.object(wp, 'read_setup', return_value={'version':6, 'root':str(self.root),'selected':'16-9'}), \
-             patch.object(wp, 'announce') as announce, patch.object(wp, 'sync'), patch.object(wp, 'save_setup') as save:
+        with patch.object(wp, 'read_setup', return_value={'version':6, 'root':str(self.root),'selected':'16-9','desktop_selected':'16-9'}), \
+             patch.object(wp, 'announce') as announce, patch.object(wp, 'sync',return_value=False), patch.object(wp, 'save_setup') as save:
             self.assertTrue(wp.initialize(self.root, self.plan()))
             announce.assert_not_called()
             save.assert_called_once()
             self.notify.assert_not_called()
         with patch.object(wp, 'read_setup', return_value={}), patch.object(wp, 'announce', return_value='auto'), \
-             patch.object(wp, 'sync'), patch.object(wp, 'save_setup') as save:
+             patch.object(wp, 'sync',return_value=False), patch.object(wp, 'save_setup') as save:
             wp.initialize(self.root, wp.plan(self.root, detected=[]))
             save.assert_not_called()
 
     def test_manual_settings_persist_and_notification_does_not_repeat(self):
         previous={}
         def save(value):previous.update(value)
-        with patch.object(wp,'read_setup',side_effect=lambda:dict(previous)), patch.object(wp,'save_setup',side_effect=save), patch.object(wp,'sync'), patch.object(wp,'announce',return_value='wide') as prompt:
+        with patch.object(wp,'read_setup',side_effect=lambda:dict(previous)), patch.object(wp,'save_setup',side_effect=save), patch.object(wp,'sync',return_value=False), patch.object(wp,'announce',return_value='wide') as prompt:
             wp.initialize(self.root,self.plan())
             prompt.assert_not_called()
             self.notify.assert_called_once()

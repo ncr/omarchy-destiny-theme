@@ -65,7 +65,7 @@ def main():
     ap.add_argument('--configure', action='store_true', help='Change wallpaper resolution settings')
     ap.add_argument('--monitor', help="Prefer this monitor's proportions; assess resolution on all monitors")
     ap.add_argument('--show-plan', action='store_true', help='Print automatic setup as JSON without changing anything')
-    ap.add_argument('--sync-backgrounds', action='store_true', help='Refresh an already configured Destiny desktop without opening the viewer')
+    ap.add_argument('--sync-backgrounds', action='store_true', help='Automatically match the Destiny desktop to connected monitors without opening the viewer')
     args = ap.parse_args()
     directory = args.dir.expanduser().resolve() if args.dir else DEVELOPMENT
     if args.render and args.collection == 'finalized':
@@ -88,8 +88,6 @@ def main():
                 if requested not in {p['id'] for p in available}:
                     requested = 'auto'
             monitor = args.monitor or previous.get('monitor')
-            if args.sync_backgrounds and (previous.get('version') != 6 or previous.get('root') != str(ROOT)):
-                return
             detected = wp.monitors()
             # A remembered external screen may be unplugged; explicit CLI typos
             # remain errors, but normal launches fall back to a connected screen.

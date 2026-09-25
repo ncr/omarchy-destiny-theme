@@ -46,8 +46,9 @@ For the theme **with its companion app**, run this after installing the theme:
 python3 ~/.config/omarchy/themes/destiny/companion/install.py
 ```
 
-The installer opens Destiny Wallpapers automatically. The app selects the
-optimal wallpaper resolution and goes straight to the gallery. A brief
+The companion automatically applies the optimal renders to the Destiny
+desktop at installation, login and monitor changes. Its background service
+works independently of the optional gallery. A brief
 notification confirms the resolution on first selection or when it changes.
 Click it to open settings, or run `destiny-wallpapers --configure`.
 There is no first-run setup screen.
