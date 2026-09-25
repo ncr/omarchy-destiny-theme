@@ -73,7 +73,7 @@ def main():
             hook_source.write_text('#!/bin/sh\n'+MARKER+'\n'
                 '[ "$1" = destiny ] || exit 0\nexec '+shlex.quote(str(launcher))+' --sync-backgrounds\n')
             subprocess.run(['omarchy', 'hook', 'install', 'theme-set', str(hook_source)], check=True)
-        (app/'install.json').write_text(json.dumps({'theme_root':str(ROOT),'prefix':str(prefix),'version':4},indent=2)+'\n')
+        (app/'install.json').write_text(json.dumps({'theme_root':str(ROOT),'prefix':str(prefix),'version':5},indent=2)+'\n')
         print(f'Installed Destiny Wallpapers: {launcher}\nWallpaper source: {ROOT}')
     refresh = shutil.which('update-desktop-database')
     if refresh and desktop.parent.is_dir():

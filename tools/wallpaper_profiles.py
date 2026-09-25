@@ -235,15 +235,15 @@ def sync(p, current=None):
 
 def initialize(root, p, requested='auto', monitor=None, configure=False):
     previous = read_setup()
-    if configure or previous.get('version') != 4 or previous.get('root') != str(root):
+    requested = 'auto'
+    p = plan(root, requested, monitor, p['monitors'])
+    if configure or previous.get('version') != 5 or previous.get('root') != str(root):
         choice = announce(p, bool(p['screen']) and active_destiny(current_dir()))
         if not choice:
             return None
-        if choice not in ('auto', 'biggest'):
-            raise ValueError('Invalid setup choice')
-        requested = choice
-        p = plan(root, requested, monitor, p['monitors'])
+        if choice != 'auto':
+            raise ValueError('Invalid setup confirmation')
     sync(p)
     if p['screen']:
-        save_setup(dict(version=4, root=str(root), profile=requested, monitor=monitor))
+        save_setup(dict(version=5, root=str(root), profile=requested, monitor=monitor))
     return p

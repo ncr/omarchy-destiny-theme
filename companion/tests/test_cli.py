@@ -16,9 +16,9 @@ PLAN = dict(recommended='small', biggest='big', reason='Smallest set that fits b
 
 
 class CLI(unittest.TestCase):
-    def test_exactly_two_choices(self):
-        self.assertEqual(cli.choices(PLAN), [('Smallest suitable set','80.0 MB','auto'),
-            ("Highest resolution",'280.0 MB','biggest')])
+    def test_only_optimal_set_is_offered(self):
+        self.assertEqual(cli.optimal_set(PLAN)['profile'],'small')
+        self.assertEqual(cli.size_label(cli.optimal_set(PLAN)),'80.0 MB')
 
     def test_tui_navigation_and_cancel(self):
         class Screen:
@@ -33,10 +33,10 @@ class CLI(unittest.TestCase):
             def keypad(self,value):pass
             def get_wch(self):return next(self.keys)
         with patch.object(cli.curses,'curs_set'),patch.object(cli.curses,'has_colors',return_value=False):
-            screen=Screen([cli.curses.KEY_DOWN,'\n'])
-            self.assertEqual(cli.tui(screen,PLAN,True),'biggest')
-            self.assertTrue(any('Smallest suitable set' in text for text in screen.lines))
-            self.assertTrue(any('SELECTED FORMAT' in text for text in screen.lines))
+            screen=Screen([cli.curses.KEY_DOWN,'2','\n'])
+            self.assertEqual(cli.tui(screen,PLAN,True),'auto')
+            self.assertTrue(any('Optimal set' in text for text in screen.lines))
+            self.assertTrue(any('OPTIMAL SET' in text for text in screen.lines))
             self.assertIsNone(cli.tui(Screen(['\x1b']),PLAN,True))
             self.assertEqual(cli.tui(Screen(['\n'],(10,35)),PLAN,False),'auto')
 
@@ -67,12 +67,12 @@ class CLI(unittest.TestCase):
             result=Path(args[args.index('--result')+1])
             request=json.loads(Path(args[args.index('--request')+1]).read_text())
             self.assertEqual(request['plan'],PLAN)
-            result.write_text('"biggest"')
+            result.write_text('"auto"')
             return subprocess.CompletedProcess(args,0)
         with patch('sys.stdin.isatty',return_value=False),patch.dict(os.environ,{'WAYLAND_DISPLAY':'wayland-1'}), \
              patch.object(cli.shutil,'which',return_value='/usr/bin/xdg-terminal-exec'), \
              patch.object(cli.subprocess,'run',side_effect=terminal):
-            self.assertEqual(cli.choose_profile(PLAN,True),'biggest')
+            self.assertEqual(cli.choose_profile(PLAN,True),'auto')
 
     def test_terminal_closed_without_result_is_cancel(self):
         with patch('sys.stdin.isatty',return_value=False),patch.dict(os.environ,{'WAYLAND_DISPLAY':'wayland-1'}), \

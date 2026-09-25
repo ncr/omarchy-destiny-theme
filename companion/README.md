@@ -14,35 +14,29 @@ application menu, and opens it automatically in a graphical session. Use
 `--no-launch` to install without opening it. No sudo, permanent viewer autostart,
 or compositor configuration changes are involved.
 
-## First launch: two choices in a full-screen TUI
+## First launch: Optimal set
 
-Setup uses a full-screen TUI with bold choices and a strong selection highlight.
-It runs in your current terminal. From the application menu, it opens Foot
-full-screen with a large 20-point font, falling back to the default terminal.
-This font setting applies only to the setup window; no terminal config changes.
+The full-screen TUI explains one automatic selection: **Optimal set**.
+There is no resolution or quality-policy chooser. The app evaluates all
+connected monitors, first avoiding enlargement, then minimizing cropping,
+then selecting the smallest file total among equally suitable sets.
 
-- **Smallest suitable set** — the smallest suitable set for all connected monitors.
-- **Highest resolution** — the highest resolution
-  available in the matching aspect ratio.
+The screen shows resolution, total MB and what Enter will do. A side-by-side
+comparison shows the optimal format and an alternative on each monitor:
+solid green is visible image; amber hatching is cropped away. Exact crop
+percentages and enlargement appear beside each diagram. Alternatives are
+read-only explanations, not selectable options. PgUp/PgDn pages additional
+monitors; [ and ] cycle comparison formats when more than two are available.
 
-Each choice shows its resolution and total MB. A side-by-side comparison shows
-the selected format and an alternative on each monitor: solid green is visible
-image; amber hatching is cropped away. Exact crop percentages and enlargement
-are displayed beside each diagram. PgUp/PgDn pages additional monitors;
-[ and ] cycle alternatives when more than two formats are available.
-Small terminals retain a compact text summary; enlarge to see the diagrams.
-If both policies currently resolve to the same set, setup says so.
-Arrow keys choose; Enter applies; Escape cancels. Python's standard curses
-module renders the TUI; a numbered prompt supports non-interactive terminals.
-The selected policy is remembered, so new exports
-and monitor changes can be handled without asking for a resolution again.
-`--configure` reopens setup; `--show-plan` provides the full read-only details.
-Existing graphical-setup installations see the terminal choice once.
+Enter continues; Escape cancels without changes. From the application menu,
+Foot opens full-screen with a large 20-point font, falling back to the default
+terminal. This font setting applies only to setup, without config changes.
+An existing terminal uses its own font. Small terminals show a compact summary.
+Python's standard curses module renders the TUI.
 
-Automatic selection considers every monitor, not window focus. It avoids
-upscaling first, minimizes cropping, then chooses the smallest file total.
-The biggest policy selects the highest pixel count in that same aspect ratio;
-it does not switch to the wrong proportions just to use a larger file.
+`--configure` reopens the explanation; `--show-plan` provides full read-only
+details. Earlier size-policy preferences are replaced by automatic selection
+when the user confirms the new setup. Subsequent launches adapt automatically.
 
 Both native formats (42 sheets each) ship on **main**: 5120×2880 (16:9) and
 5120×2160 (ultrawide). MB describes compressed image files, not RAM or download
@@ -65,7 +59,7 @@ Omarchy currently displays one shared wallpaper on all monitors. Selection
 considers the whole monitor arrangement, not a separate profile per output. Other aspect
 ratios may crop on the desktop; the viewer always fits the complete sheet.
 
-## Controls and overrides
+## Controls
 
 | Key | Action |
 |---|---|
@@ -81,12 +75,9 @@ window class. This app does not install a global keybinding.
 ```sh
 destiny-wallpapers truth-lamp
 destiny-wallpapers 3                  # Collection position, not filename number
-destiny-wallpapers --configure        # Reopen the two-choice terminal setup
+destiny-wallpapers --configure        # Review the optimal set
 destiny-wallpapers --show-plan        # JSON; no changes or setup dialog
 destiny-wallpapers --list             # All 42 chosen files; read-only
-destiny-wallpapers --profile biggest   # Prefer highest matching resolution
-destiny-wallpapers --profile 16-9      # Remember a manual override
-destiny-wallpapers --profile auto     # Resume automatic aspect selection
 destiny-wallpapers --monitor DP-1     # Prefer its proportions; still avoid upscaling on all screens
 destiny-wallpapers --dir /path/to/numbered-images
 python3 companion/install.py --uninstall

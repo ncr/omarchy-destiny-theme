@@ -1,4 +1,4 @@
-"""Two choices in the user's terminal; no graphical setup toolkit."""
+"""Explain the automatically selected wallpaper set in a terminal UI."""
 import argparse
 import curses
 import json
@@ -12,13 +12,13 @@ import tempfile
 import textwrap
 
 
-def choices(plan):
-    by_id = {o['profile']: o for o in plan['options']}
-    def size(id):
-        value = by_id[id]['total_bytes']
-        return f'{value/1_000_000:.1f} MB' if value is not None else 'Size unknown'
-    return [('Smallest suitable set', size(plan['recommended']), 'auto'),
-            ('Highest resolution', size(plan['biggest']), 'biggest')]
+def optimal_set(plan):
+    return next(o for o in plan['options'] if o['profile']==plan['recommended'])
+
+
+def size_label(option):
+    value=option.get('total_bytes')
+    return f'{value/1_000_000:.1f} MB' if value is not None else 'Size unknown'
 
 
 def crop_geometry(size, display):
@@ -30,7 +30,7 @@ def crop_geometry(size, display):
     return (1-visible_w)/2, (1-visible_h)/2, visible_w, visible_h
 
 
-def draw_menu(screen, plan, apply, selected, colors, page=0, alternative=0):
+def draw_menu(screen, plan, apply, colors, page=0, alternative=0):
     height, width = screen.getmaxyx()
     screen.erase()
     bold = curses.A_BOLD
@@ -41,41 +41,31 @@ def draw_menu(screen, plan, apply, selected, colors, page=0, alternative=0):
                 screen.addstr(y, x, text[:width-x-1], style)
             except curses.error:
                 pass
-    items = choices(plan)
-    by_id = {o['profile']:o for o in plan['options']}
+    chosen = optimal_set(plan)
+    detail=' × '.join(map(str,chosen.get('size',[])))+'  /  '+size_label(chosen)
+    action = 'Update Destiny desktop + open gallery' if apply else 'Open gallery; desktop stays unchanged'
     if height < 28 or width < 90:
         put(0, 1, 'DESTINY WALLPAPERS', bold|accent)
-        y = 2
-        for i, (title, size, policy) in enumerate(items):
-            option = by_id[plan['recommended' if policy=='auto' else 'biggest']]
-            style = bold | (highlight if i == selected else normal)
-            for line in textwrap.wrap(('> ' if i == selected else '  ')+title+'  '+size, max(8,width-3)):
-                put(y, 1, line, style); y += 1
-            if 'size' in option:
-                put(y,3,' × '.join(map(str,option['size'])),style); y+=1
-            y += 1
-        for line in textwrap.wrap('Why: '+plan['reason'], max(8,width-3)):
-            if y >= height-3: break
-            put(y, 1, line); y += 1
-        put(height-3,1,'Enlarge terminal for the visual crop comparison.',accent)
-        put(height-2,1,'↑↓ Choose · Enter select · Esc cancel',bold)
+        put(2,1,'Optimal set',bold|accent)
+        y=3
+        for text in (detail,action,'Why: '+plan['reason']):
+            for line in textwrap.wrap(text,max(8,width-3)):
+                if y>=height-3: break
+                put(y,1,line);y+=1
+            y+=1
+        put(height-3,1,'Enlarge terminal for the crop diagrams.',accent)
+        put(height-2,1,'ENTER Continue · ESC Cancel',bold)
         return
     panel = min(108, width-6)
     left = (width-panel)//2
     put(0,left,'DESTINY / WALLPAPERS',bold|accent)
-    for i,(title,mb,policy) in enumerate(items):
-        option = by_id[plan['recommended' if policy=='auto' else 'biggest']]
-        y=2+i*3
-        style=bold|(highlight if i==selected else normal)
-        put(y,left,' '*panel,style)
-        put(y,left,('▶ ' if i==selected else '  ')+title,style)
-        detail=' × '.join(map(str,option.get('size',[])))+'  /  '+mb
-        put(y,left+panel-len(detail)-1,detail,style)
-        subtitle = 'Recommended · lowest file size with the best fit on your screens' if i==0 else 'Maximum pixel count in the same aspect ratio'
-        put(y+1,left+2,subtitle)
-    same = plan['recommended']==plan['biggest']
-    put(8,left,'Both settings use the same files today.' if same else 'Choose a size policy above; compare the available formats below.',accent)
-    chosen = by_id[plan['recommended' if selected==0 else 'biggest']]
+    put(2,left,'Optimal set',bold|accent)
+    put(2,left+panel-len(detail)-1,detail,bold)
+    count=plan.get('count',chosen.get('file_count',0))
+    put(3,left,f'{count} wallpapers · '+action)
+    put(5,left,'Priority: avoid enlargement → minimize cropping → save disk space',bold)
+    for i,line in enumerate(textwrap.wrap(plan['reason'],panel)[:2]):
+        put(7+i,left,line)
     others = [o for o in plan['options'] if o['profile']!=chosen['profile']]
     columns = [chosen]+([others[alternative % len(others)]] if others else [])
     col_width = panel//len(columns)
@@ -83,7 +73,7 @@ def draw_menu(screen, plan, apply, selected, colors, page=0, alternative=0):
         label=' × '.join(map(str,o.get('size',[])))
         mb=f"{o['total_bytes']/1_000_000:.1f} MB" if o.get('total_bytes') is not None else 'Size unknown'
         put(10,left+i*col_width,label+' / '+mb,bold)
-        put(11,left+i*col_width,'SELECTED FORMAT' if i==0 else 'OTHER AVAILABLE FORMAT',accent)
+        put(11,left+i*col_width,'OPTIMAL SET' if i==0 else 'ALTERNATIVE / FOR COMPARISON',accent)
     screens=chosen.get('displays',[])
     per_page=max(1,(height-17)//7)
     pages=max(1,(len(screens)+per_page-1)//per_page)
@@ -114,7 +104,7 @@ def draw_menu(screen, plan, apply, selected, colors, page=0, alternative=0):
     put(height-4,left,'█ Visible image',good)
     put(height-4,left+20,'▒ Cropped away',warning)
     put(height-4,left+40,'One wallpaper shared by all screens',muted)
-    controls='↑↓ Choose   ENTER '+('Apply & open' if apply else 'Open gallery')+'   ESC Cancel'
+    controls='ENTER '+('Apply optimal set & open' if apply else 'Open gallery')+'   ESC Cancel'
     if pages>1: controls+=f'   PgUp/Dn Screens {page+1}/{pages}'
     if len(others)>1: controls+='   [ ] Formats'
     put(height-2,left,controls,bold|accent)
@@ -137,22 +127,17 @@ def tui(screen, plan, apply):
         curses.init_pair(5,curses.COLOR_GREEN,-1)
         curses.init_pair(6,curses.COLOR_YELLOW,-1)
         colors = tuple(curses.color_pair(i) for i in range(1,7))
-    selected = 0
     page = alternative = 0
     while True:
-        draw_menu(screen,plan,apply,selected,colors,page,alternative)
+        draw_menu(screen,plan,apply,colors,page,alternative)
         screen.refresh()
         key = screen.get_wch()
-        if key in (curses.KEY_UP,curses.KEY_DOWN,curses.KEY_LEFT,curses.KEY_RIGHT,'j','k','\t'):
-            selected = 1-selected
-        elif key in (curses.KEY_NPAGE,curses.KEY_PPAGE):
+        if key in (curses.KEY_NPAGE,curses.KEY_PPAGE):
             page += 1 if key==curses.KEY_NPAGE else -1
         elif key in ('[',']'):
             alternative += 1 if key==']' else -1
-        elif key in ('1','2'):
-            selected = int(key)-1
         elif key in ('\n','\r',curses.KEY_ENTER):
-            return ('auto','biggest')[selected]
+            return 'auto'
         elif key in ('\x1b','q','Q'):
             return None
         # KEY_RESIZE redraws using the new dimensions on the next iteration.
@@ -164,15 +149,16 @@ def prompt(plan, apply):
             return curses.wrapper(tui, plan, apply)
         except KeyboardInterrupt:
             return None
-    print('DESTINY WALLPAPERS\n')
-    for i,(title,size,_) in enumerate(choices(plan),1):
-        print(f'{i}. {title} — {size}')
-    print('\nWhy: '+plan['reason'])
+    option=optimal_set(plan)
+    print('DESTINY WALLPAPERS / Optimal set')
+    print(' × '.join(map(str,option.get('size',[])))+' / '+size_label(option))
+    print('Why: '+plan['reason'])
+    print('Update Destiny desktop + open gallery' if apply else 'Open gallery; desktop stays unchanged')
     try:
-        answer = input('Choose [1/2, Enter=1, q=cancel]: ').strip().lower()
-        while answer not in ('','1','2','q'):
-            answer = input('Choose 1, 2 or q: ').strip().lower()
-        return None if answer=='q' else ('biggest' if answer=='2' else 'auto')
+        while True:
+            answer=input('Enter to continue, q to cancel: ').strip().lower()
+            if answer in ('','q'):
+                return None if answer=='q' else 'auto'
     except (KeyboardInterrupt,EOFError):
         return None
 
@@ -183,7 +169,7 @@ def choose_profile(plan, apply):
     foot = shutil.which('foot')
     terminal = shutil.which('xdg-terminal-exec')
     if not (foot or terminal) or not (os.environ.get('WAYLAND_DISPLAY') or os.environ.get('DISPLAY')):
-        raise ValueError('Run destiny-wallpapers --configure in a terminal to choose a wallpaper set.')
+        raise ValueError('Run destiny-wallpapers --configure in a terminal to review the optimal wallpaper set.')
     with tempfile.TemporaryDirectory(prefix='destiny-setup-') as directory:
         request, result = Path(directory)/'request.json', Path(directory)/'result.json'
         request.write_text(json.dumps({'plan':plan, 'apply':apply}))
@@ -197,7 +183,7 @@ def choose_profile(plan, apply):
         if not result.is_file():
             return None
         value = json.loads(result.read_text())
-        return value if value in ('auto','biggest') else None
+        return 'auto' if value=='auto' else None
 
 
 def main():
