@@ -28,7 +28,10 @@ wallpaper, in decimal MB (1 MB = 1,000,000 bytes). These are compressed file
 sizes, not decoded memory use or estimated download savings. Both formats are
 currently bundled, so selecting one does not delete the other from the checkout.
 
-A scrollable comparison lists every monitor under each available format:
+A compact floating window presents formats as cards, with prominent total MB,
+a persistent action footer and expandable display details. It adapts its size
+to the desktop; long lists scroll without hiding the action buttons.
+Every card lists the connected monitors:
 green means native or reduced resolution, red warns about enlargement, and
 amber separately warns about cropping. Every colour also has a written label.
 The recommended option is preselected. **Apply and open** confirms it; Cancel
