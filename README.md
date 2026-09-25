@@ -38,29 +38,32 @@ per-section `shell.*.toml` files, neither of which exists in older versions.
 The wallpapers are WebP, which Omarchy displays since the update of 19 August
 2026 (it adds `qt6-imageformats`). If they show up black, run `omarchy update`.
 
-### Ultrawide screens
+### Automatic screen-format selection
 
-Omarchy fits a wallpaper by cropping it, and these sheets keep a legend and an
-emblem near the corners, so one file cannot suit every screen shape. The
-repository has two branches:
-
-| Branch | Wallpapers | For |
-|--------|-----------|-----|
-| `main` | 16:9, 5120×2880 | Native 16:9 layout up to 5K; use an uncropped fit on other aspect ratios. |
-| `ultrawide` | 21:9, 5120×2160 | 3440×1440, 5120×2160 and similar. Full triptych layout at the native ultrawide aspect ratio. |
-
-On an ultrawide screen, switch after installing:
+For the theme **with its companion app**, run this after installing the theme:
 
 ```bash
-git -C ~/.config/omarchy/themes/destiny switch ultrawide
-omarchy theme set destiny
+python3 ~/.config/omarchy/themes/destiny/companion/install.py
 ```
 
-`omarchy theme update` pulls the branch you are on, so you stay on `ultrawide`.
-Run `omarchy theme set destiny` after an update to load new wallpapers.
+The installer opens Destiny Wallpapers automatically. At first launch it
+shows the detected monitor and selected format, then applies that choice
+automatically. Both native formats ship in each branch, so no branch switching
+is needed. A user-local hook preserves the choice when Destiny is reapplied.
+Use `--no-launch` to install without opening the app.
 
-For any other shape, render a set for your exact screen — see
-[Rendering your own](#rendering-your-own).
+| Theme-only branch default | Native wallpaper layout |
+|---|---|
+| `main` | 16:9, 5120×2880 |
+| `ultrawide` | Ultrawide, 5120×2160 |
+
+These are aspect-ratio variants. Readable reflow with larger type for 1080p
+and 1440p remains in development; the companion explicitly reports this when
+labels would become too small. Omarchy currently shares one wallpaper across
+monitors, so selection follows the focused screen. The viewer fits the whole
+sheet, while the desktop may crop it on other aspect ratios.
+
+[Companion setup, controls and limitations](companion/README.md).
 
 ## Screenshots
 
@@ -125,7 +128,7 @@ notifications, the menu and the lock screen use the same gradient.
 | `companion/`, `destiny-wallpapers` | Optional wallpaper browser, user-local installer and menu integration. |
 | `tools/` | The Python program that draws the wallpapers, and a copy of the Omarchy logo it reads. |
 
-Nothing in this repository runs on your machine when the theme is installed:
+Installing only the theme through Omarchy does not execute companion code:
 no Lua, no terminal config, no `vscode.json`.
 
 ### How the menus get their look
@@ -196,11 +199,11 @@ plays video backgrounds.
 
 ### Destiny Wallpapers companion app
 
-An optional fullscreen browser for the wallpaper collection, with keyboard
-navigation and live reload during development. Install from this checkout:
+An optional fullscreen browser with keyboard navigation, automatic screen-format
+selection and a first-launch explanation. Install and open it from this checkout:
 
 ```bash
-omarchy pkg add imv  # only if missing
+omarchy pkg add imv zenity  # only if missing
 python3 companion/install.py
 ```
 

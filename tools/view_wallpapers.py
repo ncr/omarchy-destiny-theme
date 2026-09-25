@@ -62,6 +62,10 @@ def main():
     ap.add_argument('--dir', type=Path, help='View a different render directory')
     ap.add_argument('--render', action='store_true', help='Regenerate the development set before opening')
     ap.add_argument('--list', action='store_true', help='List the selected collection and exit')
+    ap.add_argument('--profile', help='Automatic by default; override with wide or 16-9')
+    ap.add_argument('--monitor', help='Choose a connected monitor instead of the focused screen')
+    ap.add_argument('--show-plan', action='store_true', help='Print automatic setup as JSON without changing anything')
+    ap.add_argument('--sync-backgrounds', action='store_true', help='Refresh an already configured Destiny desktop without opening the viewer')
     args = ap.parse_args()
     directory = args.dir.expanduser().resolve() if args.dir else DEVELOPMENT
     if args.render and args.collection == 'finalized':
@@ -74,7 +78,31 @@ def main():
         directory = ROOT / 'backgrounds'
     try:
         retained = args.collection == 'finalized' and args.dir is None
-        files = finalized_collection() if retained else collection(directory)
+        profile_plan = None
+        if retained and (ROOT/'docs/collection/profiles.json').is_file():
+            import wallpaper_profiles as wp
+            previous = wp.read_setup()
+            requested = args.profile or previous.get('profile', 'auto')
+            monitor = args.monitor or previous.get('monitor')
+            if args.sync_backgrounds and (previous.get('version') != 2 or previous.get('root') != str(ROOT)):
+                return
+            detected = wp.monitors()
+            # A remembered external screen may be unplugged; explicit CLI typos
+            # remain errors, but normal launches fall back to a connected screen.
+            if monitor and not args.monitor and monitor not in {m['name'] for m in detected}:
+                monitor = None
+            profile_plan = wp.plan(ROOT, requested, monitor, detected)
+            if args.show_plan:
+                print(json.dumps(profile_plan, indent=2))
+                return
+            if args.sync_backgrounds:
+                wp.sync(profile_plan)
+                return
+            files = [Path(p) for p in profile_plan['files']]
+        else:
+            if args.profile or args.monitor or args.show_plan or args.sync_backgrounds:
+                ap.error('Monitor profiles require the packaged finalized collection')
+            files = finalized_collection() if retained else collection(directory)
         if not files:
             raise ValueError(f'No numbered wallpapers in {directory}')
         if retained and args.start and args.start.isdecimal():
@@ -92,6 +120,12 @@ def main():
     viewer = shutil.which('imv')
     if not viewer:
         ap.error('imv is required. On Omarchy: omarchy pkg add imv')
+    if profile_plan:
+        try:
+            if not wp.initialize(ROOT, profile_plan, requested, monitor):
+                return
+        except (OSError, ValueError, subprocess.SubprocessError) as exc:
+            ap.error(str(exc))
     env = os.environ.copy()
     env['imv_config'] = str(Path(__file__).with_name('wallpaper-viewer.ini'))
     os.execve(viewer, [viewer, '-f', '-s', 'full', '-b', '000000',
