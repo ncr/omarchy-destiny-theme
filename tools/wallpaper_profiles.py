@@ -7,7 +7,6 @@ from pathlib import Path
 import shutil
 import subprocess
 import tempfile
-import time
 
 
 def monitors():
@@ -60,36 +59,63 @@ def profiles(root):
     return manifest, ready
 
 
+def assess(profile, screens):
+    """Physical pixel density for desktop cover, independent of UI scaling."""
+    w, h = profile['size']
+    rows = []
+    for m in screens:
+        fill = max(m['width']/w, m['height']/h)
+        fit = min(m['width']/w, m['height']/h)
+        crop = max(0., 1 - (m['width']*m['height'])/(w*h*fill*fill))
+        rows.append(dict(name=m['name'], width=m['width'], height=m['height'],
+                         scale=m['scale'], factor=fill, crop=crop,
+                         text_px=profile['min_text_px']*fit/m['scale'],
+                         upscale=fill > 1.000001))
+    return dict(profile=profile['id'], label=profile['label'], size=profile['size'],
+                displays=rows, upscale=any(r['upscale'] for r in rows))
+
+
+def quality_score(option, preferred=None):
+    rows = option['displays']
+    if not rows:
+        return (0, 0, 0, 0, 0, option['profile'])
+    # First avoid enlargement on ANY display. Then minimize worst cropping and
+    # area-weighted cropping. Focus changes must never alter the recommendation.
+    worst_scale = max(1., max(r['factor'] for r in rows))
+    relevant = [r for r in rows if r['name'] == preferred] if preferred else rows
+    crop = max(r['crop'] for r in relevant)
+    area = sum(r['width']*r['height'] for r in relevant)
+    average = sum(r['crop']*r['width']*r['height'] for r in relevant)/area
+    return (option['upscale'], round(worst_scale, 6), round(crop, 6), round(average, 6),
+            -option['size'][0]*option['size'][1], option['profile'])
+
+
 def plan(root, requested='auto', monitor=None, detected=None):
     manifest, available = profiles(root)
     detected = monitors() if detected is None else detected
-    screen = next((m for m in detected if m['name'] == monitor), None) if monitor else next(
-        (m for m in detected if m['focused']), detected[0] if detected else None)
-    if monitor and screen is None:
+    if monitor and monitor not in {m['name'] for m in detected}:
         raise ValueError(f'Monitor {monitor!r} is not connected')
-    if requested != 'auto':
-        profile = next((p for p in available if p['id'] == requested), None)
-        if profile is None:
+    options = sorted([assess(p, detected) for p in available], key=lambda o: quality_score(o, monitor))
+    recommended = options[0]['profile'] if detected else manifest['default']
+    choice = requested if requested != 'auto' else recommended
+    profile = next((p for p in available if p['id'] == choice), None)
+    if profile is None:
+        if requested != 'auto':
             raise ValueError(f'Unavailable profile: {requested}')
-    elif screen:
-        ratio = screen['width']/screen['height']
-        profile = min(available, key=lambda p: abs(math.log((p['size'][0]/p['size'][1])/ratio)))
-    else:
-        profile = next((p for p in available if p['id'] == manifest['default']), available[0])
+        profile = available[0]
+        recommended = profile['id']
+    chosen = next(o for o in options if o['profile'] == profile['id'])
     warnings = []
-    if screen:
-        factor = min(screen['width']/profile['size'][0], screen['height']/profile['size'][1])
-        text_size = profile['min_text_px'] * factor / screen['scale']
-        if text_size < 12:
-            warnings.append(f'Small labels will be about {text_size:.1f} logical pixels. Larger-type layouts for small screens are not published yet.')
-        if abs(screen['width']/screen['height'] - profile['size'][0]/profile['size'][1]) > .04:
-            warnings.append('This screen has no exact aspect-ratio variant. The viewer fits the full sheet; the desktop may crop it.')
-    else:
+    small = [r for r in chosen['displays'] if r['text_px'] < 12]
+    if small:
+        warnings.append(f"Small labels in the full-sheet viewer can be as small as {min(r['text_px'] for r in small):.1f} logical pixels. Larger-type layouts are not published yet.")
+    if not detected:
         warnings.append('Monitor detection is unavailable. Using the shipped default; desktop settings will stay unchanged.')
     if len(detected) > 1:
-        warnings.append('Omarchy currently shares one wallpaper across monitors. Selection follows the focused screen; other screens may crop it.')
-    return dict(profile=profile['id'], label=profile['label'], size=profile['size'], count=len(profile['paths']),
-                screen=screen, monitors=detected, warnings=warnings,
+        warnings.append('One shared wallpaper is used on all monitors. The recommendation considers every connected display.')
+    return dict(profile=profile['id'], recommended=recommended, options=options,
+                label=profile['label'], size=profile['size'], count=len(profile['paths']),
+                screen=detected[0] if detected else None, monitors=detected, warnings=warnings,
                 files=[str(p) for p in profile['paths']], hashes=[r['sha256'] for r in profile['files']])
 
 
@@ -131,35 +157,8 @@ def save_setup(data):
 
 
 def announce(p, apply):
-    screen = p['screen']
-    detected = (f"{screen['name']}: {screen['width']} × {screen['height']}, scale {screen['scale']:g}" if screen else 'Monitor unavailable')
-    text = (f"Detected: {detected}\nSelected: {p['label']} · {p['count']} wallpapers\n\n" +
-            ('The Destiny desktop collection will use this format. Your current sheet will be kept.\n' if apply else
-             'The viewer will use this format. Your desktop theme stays unchanged.\n') +
-            '\n'.join(p['warnings']) +
-            '\n\nSetup continues automatically in 10 seconds, then the viewer opens. Cancel makes no changes.\n'
-            'Later: use --profile or --monitor to override the automatic selection.')
-    zenity = shutil.which('zenity')
-    if not zenity:
-        print(text + '\nInstall zenity to enable the automatic first-run setup.')
-        return False
-    proc = subprocess.Popen([zenity, '--progress', '--title=Destiny Wallpapers — first launch',
-                             '--width=660', '--no-markup', '--text='+text, '--percentage=0', '--auto-close'],
-                            stdin=subprocess.PIPE, text=True)
-    try:
-        for percent in range(0, 101, 10):
-            if proc.poll() is not None:
-                return False
-            proc.stdin.write(f'{percent}\n')
-            proc.stdin.flush()
-            if percent < 100:
-                time.sleep(1)
-        proc.stdin.close()
-        return proc.wait(timeout=5) == 0
-    except (BrokenPipeError, subprocess.TimeoutExpired):
-        proc.terminate()
-        proc.wait()
-        return False
+    from wallpaper_setup_ui import choose_profile
+    return choose_profile(p, apply)
 
 
 def sync(p, current=None):
@@ -198,13 +197,16 @@ def sync(p, current=None):
     return changed
 
 
-def initialize(root, p, requested='auto', monitor=None):
+def initialize(root, p, requested='auto', monitor=None, configure=False):
     previous = read_setup()
-    if previous.get('version') != 2 or previous.get('root') != str(root):
-        if not announce(p, bool(p['screen']) and active_destiny(current_dir())):
-            return False
+    if configure or previous.get('version') != 3 or previous.get('root') != str(root):
+        choice = announce(p, bool(p['screen']) and active_destiny(current_dir()))
+        if not choice:
+            return None
+        # Choosing the recommendation keeps future selection automatic.
+        requested = 'auto' if choice == p['recommended'] else choice
+        p = plan(root, requested, monitor, p['monitors'])
     sync(p)
-    # No monitor: browse fallback, but retry the setup when discovery works.
     if p['screen']:
-        save_setup(dict(version=2, root=str(root), profile=requested, monitor=monitor))
-    return True
+        save_setup(dict(version=3, root=str(root), profile=requested, monitor=monitor))
+    return p

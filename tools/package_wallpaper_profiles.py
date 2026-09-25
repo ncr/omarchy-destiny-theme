@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Ship both verified native formats in either branch, without raster resizing."""
+"""Ship both verified native formats together, without raster resizing."""
 import argparse,hashlib,json,shutil
 from pathlib import Path
 from PIL import Image

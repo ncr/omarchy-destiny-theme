@@ -11,7 +11,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 MARKER = '# Destiny Wallpapers companion'
-RUNTIME = ('view_wallpapers.py', 'wallpaper_profiles.py', 'wallpaper-viewer.ini')
+RUNTIME = ('view_wallpapers.py', 'wallpaper_profiles.py', 'wallpaper_setup_ui.py', 'wallpaper-viewer.ini')
 
 
 def desktop_quote(value):
@@ -47,8 +47,12 @@ def main():
     else:
         if not shutil.which('imv'):
             ap.error('imv is required; on Omarchy run: omarchy pkg add imv')
-        if local and not shutil.which('zenity'):
-            ap.error('zenity is required for first-run setup; run: omarchy pkg add zenity')
+        if local:
+            try:
+                import gi
+                gi.require_version('Gtk', '4.0')
+            except (ImportError, ValueError):
+                ap.error('GTK 4 and PyGObject are required; run: omarchy pkg add gtk4 python-gobject')
         if launcher.exists() and MARKER not in launcher.read_text():
             ap.error(f'Refusing to overwrite an unrelated executable: {launcher}')
         if desktop.exists() and 'StartupWMClass=destiny-wallpapers' not in desktop.read_text():
@@ -72,7 +76,7 @@ def main():
             hook_source.write_text('#!/bin/sh\n'+MARKER+'\n'
                 '[ "$1" = destiny ] || exit 0\nexec '+shlex.quote(str(launcher))+' --sync-backgrounds\n')
             subprocess.run(['omarchy', 'hook', 'install', 'theme-set', str(hook_source)], check=True)
-        (app/'install.json').write_text(json.dumps({'theme_root':str(ROOT),'prefix':str(prefix),'version':2},indent=2)+'\n')
+        (app/'install.json').write_text(json.dumps({'theme_root':str(ROOT),'prefix':str(prefix),'version':3},indent=2)+'\n')
         print(f'Installed Destiny Wallpapers: {launcher}\nWallpaper source: {ROOT}')
     refresh = shutil.which('update-desktop-database')
     if refresh and desktop.parent.is_dir():

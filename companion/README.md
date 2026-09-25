@@ -5,7 +5,7 @@ The theme installed through Omarchy's menu is data only: it cannot install or
 launch this app by itself. Explicitly run the companion installer once:
 
 ```sh
-omarchy pkg add imv zenity          # only if missing
+omarchy pkg add imv gtk4 python-gobject          # only if missing
 python3 companion/install.py
 ```
 
@@ -16,20 +16,32 @@ or compositor configuration changes are involved.
 
 ## First launch
 
-The app reads connected monitors from Hyprland, including rotation and scale.
-It selects the nearest available aspect ratio for the focused monitor and
-presents the detected screen, selected format, and planned desktop changes.
-A ten-second information window continues automatically; Cancel makes no
-changes. No resolution questionnaire is required. Successful setup is remembered.
-A disconnected saved monitor falls back to the focused connected screen.
-Hyprland's synthetic FALLBACK output is not treated as a physical monitor.
+The app reads all connected monitors from Hyprland, including rotation and
+scale. It first avoids enlargement on **any** screen, then minimizes the worst
+crop and the area-weighted crop. It never follows window focus. With matching
+proportions, a high-resolution source is preferred over enlarging a low one.
 
-Both complete native formats (42 sheets each) ship in **either branch**:
-5120×2880 (16:9) and 5120×2160 (ultrawide). Branch switching is unnecessary
-with the companion. These are independently composed masters, not upscales.
-**Readable reflow for 1080p and 1440p is still pending.** The app warns when
-native 5K labels become too small; selecting an aspect ratio alone does not
-solve small-screen typography.
+A scrollable comparison lists every monitor under each available format:
+green means native or reduced resolution, red warns about enlargement, and
+amber separately warns about cropping. Every colour also has a written label.
+The recommended option is preselected. **Apply and open** confirms it; Cancel
+or Escape makes no changes. There is no countdown. Choosing the recommendation
+keeps future selection automatic; another choice becomes a manual override.
+Use `--configure` to reopen this comparison. Existing v2 installations see the
+new comparison once. The theme hook only runs after completing this setup.
+
+Both complete native formats (42 sheets each) ship on **main**:
+5120×2880 (16:9) and 5120×2160 (ultrawide). No separate branch is needed.
+These are independently composed masters, not upscales.
+**Readable reflow for 1080p and 1440p is still pending.** Even green resolution
+status does not guarantee readable labels on a small display; the comparison
+reports estimated text size independently. A portrait monitor can still crop
+most of a landscape sheet. If every source is too small, the least enlargement
+is recommended and still shown in red.
+
+Hyprland's synthetic FALLBACK output is not treated as a physical monitor.
+Without monitor detection, the app can browse the default but leaves the
+desktop unchanged and retries setup when detection works.
 
 If Destiny is active, the app copies the chosen set into Omarchy's staged
 backgrounds while preserving custom files and the currently selected sheet.
@@ -39,7 +51,7 @@ Other themes are never activated or modified. Opening the app checks the
 monitors again; this is not a resident hotplug service.
 
 Omarchy currently displays one shared wallpaper on all monitors. Selection
-follows the focused screen, not a separate profile per output. Other aspect
+considers the whole monitor arrangement, not a separate profile per output. Other aspect
 ratios may crop on the desktop; the viewer always fits the complete sheet.
 
 ## Controls and overrides
@@ -58,11 +70,12 @@ window class. This app does not install a global keybinding.
 ```sh
 destiny-wallpapers truth-lamp
 destiny-wallpapers 3                  # Collection position, not filename number
+destiny-wallpapers --configure        # Reopen the coloured comparison
 destiny-wallpapers --show-plan        # JSON; no changes or setup dialog
 destiny-wallpapers --list             # All 42 chosen files; read-only
 destiny-wallpapers --profile 16-9      # Remember a manual override
 destiny-wallpapers --profile auto     # Resume automatic aspect selection
-destiny-wallpapers --monitor DP-1     # Prefer a connected monitor
+destiny-wallpapers --monitor DP-1     # Prefer its proportions; still avoid upscaling on all screens
 destiny-wallpapers --dir /path/to/numbered-images
 python3 companion/install.py --uninstall
 ```

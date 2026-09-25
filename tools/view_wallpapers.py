@@ -62,8 +62,9 @@ def main():
     ap.add_argument('--dir', type=Path, help='View a different render directory')
     ap.add_argument('--render', action='store_true', help='Regenerate the development set before opening')
     ap.add_argument('--list', action='store_true', help='List the selected collection and exit')
+    ap.add_argument('--configure', action='store_true', help='Compare formats for all monitors again')
     ap.add_argument('--profile', help='Automatic by default; override with wide or 16-9')
-    ap.add_argument('--monitor', help='Choose a connected monitor instead of the focused screen')
+    ap.add_argument('--monitor', help="Prefer this monitor's proportions; assess resolution on all monitors")
     ap.add_argument('--show-plan', action='store_true', help='Print automatic setup as JSON without changing anything')
     ap.add_argument('--sync-backgrounds', action='store_true', help='Refresh an already configured Destiny desktop without opening the viewer')
     args = ap.parse_args()
@@ -84,7 +85,7 @@ def main():
             previous = wp.read_setup()
             requested = args.profile or previous.get('profile', 'auto')
             monitor = args.monitor or previous.get('monitor')
-            if args.sync_backgrounds and (previous.get('version') != 2 or previous.get('root') != str(ROOT)):
+            if args.sync_backgrounds and (previous.get('version') != 3 or previous.get('root') != str(ROOT)):
                 return
             detected = wp.monitors()
             # A remembered external screen may be unplugged; explicit CLI typos
@@ -100,7 +101,7 @@ def main():
                 return
             files = [Path(p) for p in profile_plan['files']]
         else:
-            if args.profile or args.monitor or args.show_plan or args.sync_backgrounds:
+            if args.configure or args.profile or args.monitor or args.show_plan or args.sync_backgrounds:
                 ap.error('Monitor profiles require the packaged finalized collection')
             files = finalized_collection() if retained else collection(directory)
         if not files:
@@ -122,8 +123,12 @@ def main():
         ap.error('imv is required. On Omarchy: omarchy pkg add imv')
     if profile_plan:
         try:
-            if not wp.initialize(ROOT, profile_plan, requested, monitor):
+            chosen_plan = wp.initialize(ROOT, profile_plan, requested, monitor, args.configure)
+            if not chosen_plan:
                 return
+            # The dialog may select a different format. Keep the chosen sheet.
+            files = [Path(p) for p in chosen_plan['files']]
+            first = next(p for p in files if p.name == first.name)
         except (OSError, ValueError, subprocess.SubprocessError) as exc:
             ap.error(str(exc))
     env = os.environ.copy()

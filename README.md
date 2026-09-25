@@ -13,7 +13,7 @@ for. Every sheet has its own colour mood.
 
 ![All 42 wallpapers](previews/wallpapers.webp)
 
-*The gallery follows this branch's aspect ratio. Both native formats retain
+*The gallery previews the default 16:9 layout. Both native formats retain
 the full three-column layout, two service views, individual diagrams and Field Notes.*
 
 Only the drawing technique is borrowed from the game — thin white line work,
@@ -47,28 +47,34 @@ python3 ~/.config/omarchy/themes/destiny/companion/install.py
 ```
 
 The installer opens Destiny Wallpapers automatically. At first launch it
-shows the detected monitor and selected format, then applies that choice
-automatically. Both native formats ship in each branch, so no branch switching
-is needed. A user-local hook preserves the choice when Destiny is reapplied.
-Use `--no-launch` to install without opening the app.
+compares formats against **all connected monitors** and preselects the
+recommendation. Green means no enlargement; red means enlargement can soften
+the image; amber separately flags cropping from different proportions.
+Click **Apply and open** to use the choice. Cancel changes nothing.
 
-| Theme-only branch default | Native wallpaper layout |
+Both native formats live on **main**; there is no separate ultrawide branch:
+
+| Location | Native wallpaper layout |
 |---|---|
-| `main` | 16:9, 5120×2880 |
-| `ultrawide` | Ultrawide, 5120×2160 |
+| `backgrounds/` | 16:9, 5120×2880; theme-only default |
+| `wallpaper-variants/wide/` | Ultrawide, 5120×2160 |
 
-These are aspect-ratio variants. Readable reflow with larger type for 1080p
-and 1440p remains in development; the companion explicitly reports this when
-labels would become too small. Omarchy currently shares one wallpaper across
-monitors, so selection follows the focused screen. The viewer fits the whole
-sheet, while the desktop may crop it on other aspect ratios.
+A user-local hook preserves the selection when Destiny is reapplied.
+Use `--no-launch` to install without opening the app, and
+`destiny-wallpapers --configure` to compare formats again.
+
+Readable reflow with larger type for 1080p and 1440p remains in development.
+Resolution quality and text readability are assessed separately. Omarchy
+currently shares one wallpaper across monitors; the app first avoids
+upscaling on any screen, then minimizes cropping. Changing focus does not
+change the recommendation. The viewer always fits the complete sheet.
 
 [Companion setup, controls and limitations](companion/README.md).
 
 ## Screenshots
 
 Taken on a running Omarchy 4.0.4 desktop, before the current wallpaper revision.
-The two wide ones show the `ultrawide` branch.
+The two wide ones show the ultrawide layout.
 
 ![fastfetch over the Quantum Simulator sheet](previews/desktop-about.webp)
 
@@ -203,7 +209,7 @@ An optional fullscreen browser with keyboard navigation, automatic screen-format
 selection and a first-launch explanation. Install and open it from this checkout:
 
 ```bash
-omarchy pkg add imv zenity  # only if missing
+omarchy pkg add imv gtk4 python-gobject  # only if missing
 python3 companion/install.py
 ```
 
@@ -267,8 +273,8 @@ SVG. `--style original` selects the preceding line treatment. See
 [the drawing conventions](tools/FIDELITY.md) for rendering and label checks.
 
 ```bash
-python3 tools/make_wallpapers.py --size 5120x2880                # main branch
-python3 tools/make_wallpapers.py --size 5120x2160                # ultrawide branch
+python3 tools/make_wallpapers.py --size 5120x2880                # 16:9 layout
+python3 tools/make_wallpapers.py --size 5120x2160                # ultrawide layout
 python3 tools/make_wallpapers.py --size 2880x1920 --inset 0      # one exact screen
 python3 tools/make_wallpapers.py --only 12 --out /tmp/test       # one sheet
 python3 tools/make_previews.py                                   # README images

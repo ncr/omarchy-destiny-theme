@@ -56,12 +56,53 @@ class Profiles(unittest.TestCase):
                 dict(name='bad', width=1920, height=1080, scale=float('nan'))]
         self.assertEqual(wp.normalize_monitors(rows), [dict(name='portrait', width=1440, height=2560, scale=1.5, focused=False)])
 
-    def test_focused_monitor_and_manual(self):
+    def test_all_monitors_and_manual(self):
         a, b = self.screen(), {**self.screen(5120,2160), 'name':'DP-2', 'focused':False}
-        self.assertEqual(wp.plan(self.root, detected=[b,a])['profile'], '16-9')
+        self.assertEqual(wp.plan(self.root, detected=[b,a])['profile'], 'wide')
         self.assertEqual(wp.plan(self.root, detected=[a,b], monitor='DP-2')['profile'], 'wide')
         with self.assertRaisesRegex(ValueError, 'not connected'):
             self.plan(monitor='missing')
+
+    def test_focus_and_order_do_not_change_recommendation(self):
+        a, b = self.screen(), {**self.screen(5120,2160), 'name':'DP-2', 'focused':False}
+        p = wp.plan(self.root, detected=[a,b])
+        a['focused'], b['focused'] = False, True
+        self.assertEqual(wp.plan(self.root, detected=[b,a])['recommended'], p['recommended'])
+
+    def test_largest_monitor_prevents_low_resolution_choice(self):
+        low = {**self.manifest['profiles'][1], 'id':'1080-test', 'size':[1920,1080]}
+        self.manifest['profiles'].append(low)
+        self.save()
+        screens = [self.screen(), {**self.screen(3840,2160), 'name':'DP-2'}]
+        p = wp.plan(self.root, detected=screens)
+        self.assertEqual(p['recommended'], '16-9')
+        low_result = next(x for x in p['options'] if x['profile']=='1080-test')
+        self.assertTrue(low_result['upscale'])
+        self.assertEqual(low_result['displays'][1]['factor'], 2)
+        self.assertFalse(p['options'][0]['upscale'])
+
+    def test_more_than_two_screens_and_portrait_crop(self):
+        screens = [self.screen(), {**self.screen(3840,2160), 'name':'DP-2'},
+                   {**self.screen(1080,1920), 'name':'DP-3'},
+                   {**self.screen(3440,1440), 'name':'DP-4'}]
+        p = wp.plan(self.root, detected=screens)
+        self.assertTrue(all(len(o['displays'])==4 for o in p['options']))
+        self.assertGreater(p['options'][0]['displays'][2]['crop'], .5)
+
+    def test_when_all_are_too_small_choose_least_enlargement(self):
+        p = wp.plan(self.root, detected=[self.screen(7680,4320)])
+        self.assertTrue(all(o['upscale'] for o in p['options']))
+        self.assertEqual(p['recommended'], '16-9')
+        self.assertEqual(p['options'][0]['displays'][0]['factor'], 1.5)
+
+    def test_dialog_choice_changes_actual_files_and_saved_preference(self):
+        with patch.object(wp, 'read_setup', return_value={}), patch.object(wp, 'announce', return_value='wide'), \
+             patch.object(wp, 'sync') as sync, patch.object(wp, 'save_setup') as save:
+            result = wp.initialize(self.root, self.plan())
+            self.assertEqual(result['profile'], 'wide')
+            self.assertIn('/wide/', result['files'][0])
+            self.assertEqual(sync.call_args.args[0]['profile'], 'wide')
+            self.assertEqual(save.call_args.args[0]['profile'], 'wide')
 
     def test_incomplete_profile_not_mixed_and_escape_rejected(self):
         (self.root/'16-9/one.webp').unlink()
@@ -125,12 +166,12 @@ class Profiles(unittest.TestCase):
             save.assert_not_called()
 
     def test_setup_once_and_retry_when_detection_unavailable(self):
-        with patch.object(wp, 'read_setup', return_value={'version':2, 'root':str(self.root)}), \
+        with patch.object(wp, 'read_setup', return_value={'version':3, 'root':str(self.root)}), \
              patch.object(wp, 'announce') as announce, patch.object(wp, 'sync'), patch.object(wp, 'save_setup') as save:
             self.assertTrue(wp.initialize(self.root, self.plan()))
             announce.assert_not_called()
             save.assert_called_once()
-        with patch.object(wp, 'read_setup', return_value={}), patch.object(wp, 'announce', return_value=True), \
+        with patch.object(wp, 'read_setup', return_value={}), patch.object(wp, 'announce', return_value='16-9'), \
              patch.object(wp, 'sync'), patch.object(wp, 'save_setup') as save:
             wp.initialize(self.root, wp.plan(self.root, detected=[]))
             save.assert_not_called()
