@@ -1,0 +1,126 @@
+{
+  "slug": "island-wing",
+  "notes": {
+    "WING BOX": "BROAD LOW ASPECT RATIO LIFT SURFACE",
+    "SPRAY DEFLECTOR": "KEEPS WATER FROM INTAKES",
+    "CABIN": "WATER PROXIMITY PILOTING",
+    "LIFT ENGINE": "HIGH MOUNTED / SPRAY CLEARANCE"
+  },
+  "parts": 200,
+  "groups": {
+    "B": {
+      "parts": 42,
+      "objects": [
+        "broad main wing",
+        "broad main wing spine",
+        "broad main wing vein",
+        "broad main wing vein.001",
+        "broad main wing vein.002",
+        "broad main wing vein.003",
+        "broad main wing vein.004",
+        "broad main wing vein.005",
+        "broad main wing vein.006",
+        "broad main wing vein.007",
+        "broad main wing vein.008",
+        "broad main wing vein.009",
+        "broad main wing vein.010",
+        "broad main wing vein.011",
+        "broad main wing vein.012",
+        "broad main wing vein.013",
+        "main spar",
+        "wing rib",
+        "wing rib.001",
+        "wing rib.002",
+        "wing box root",
+        "broad main wing.001",
+        "broad main wing spine.001",
+        "broad main wing vein.014",
+        "broad main wing vein.015",
+        "broad main wing vein.016",
+        "broad main wing vein.017",
+        "broad main wing vein.018",
+        "broad main wing vein.019",
+        "broad main wing vein.020",
+        "broad main wing vein.021",
+        "broad main wing vein.022",
+        "broad main wing vein.023",
+        "broad main wing vein.024",
+        "broad main wing vein.025",
+        "broad main wing vein.026",
+        "broad main wing vein.027",
+        "main spar.001",
+        "wing rib.003",
+        "wing rib.004",
+        "wing rib.005",
+        "wing box root.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -9,
+        43
+      ]
+    },
+    "C": {
+      "parts": 38,
+      "objects": [
+        "spray deflector",
+        "spray deflector spine",
+        "spray deflector vein",
+        "spray deflector vein.001",
+        "spray deflector vein.002",
+        "spray deflector vein.003",
+        "spray deflector vein.004",
+        "spray deflector vein.005",
+        "spray deflector vein.006",
+        "spray deflector vein.007",
+        "spray deflector vein.008",
+        "spray deflector vein.009",
+        "spray deflector vein.010",
+        "spray deflector vein.011",
+        "spray deflector vein.012",
+        "spray deflector vein.013",
+        "deflector rail",
+        "deflector bracket",
+        "deflector bracket.001",
+        "spray deflector.001",
+        "spray deflector spine.001",
+        "spray deflector vein.014",
+        "spray deflector vein.015",
+        "spray deflector vein.016",
+        "spray deflector vein.017",
+        "spray deflector vein.018",
+        "spray deflector vein.019",
+        "spray deflector vein.020",
+        "spray deflector vein.021",
+        "spray deflector vein.022",
+        "spray deflector vein.023",
+        "spray deflector vein.024",
+        "spray deflector vein.025",
+        "spray deflector vein.026",
+        "spray deflector vein.027",
+        "deflector rail.001",
+        "deflector bracket.002",
+        "deflector bracket.003"
+      ],
+      "removed_covers": [],
+      "camera": [
+        37,
+        39
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 2528,
+      "file": "tools/assets/century/island-wing-A.json"
+    },
+    "B": {
+      "paths": 201,
+      "file": "tools/assets/century/island-wing-B.json"
+    },
+    "C": {
+      "paths": 254,
+      "file": "tools/assets/century/island-wing-C.json"
+    }
+  }
+}

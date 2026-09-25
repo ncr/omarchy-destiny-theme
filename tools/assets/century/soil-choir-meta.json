@@ -1,0 +1,93 @@
+{
+  "slug": "soil-choir",
+  "notes": {
+    "PROBE TINE": "DEPTH RESOLVED MOISTURE AND CHEMISTRY",
+    "FIELD HUB": "COMPARES LOCAL TRENDS",
+    "SATELLITE": "SAME CALIBRATION / ANOTHER PATCH",
+    "LIVING CONTEXT": "LOCAL ROOT ZONE / NO FIELD AVERAGE"
+  },
+  "parts": 116,
+  "groups": {
+    "B": {
+      "parts": 15,
+      "objects": [
+        "probe body",
+        "sensing electrode",
+        "sensing electrode.001",
+        "sensing electrode.002",
+        "probe cap",
+        "service cap",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "probe tip"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -12,
+        46
+      ]
+    },
+    "C": {
+      "parts": 32,
+      "objects": [
+        "field hub",
+        "sealed cable socket",
+        "sealed cable socket.001",
+        "optical barrel",
+        "barrel retaining band",
+        "barrel retaining band.001",
+        "barrel retaining band.002",
+        "lens hood",
+        "lens",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "hub solar cover",
+        "panel edge",
+        "panel edge.001",
+        "panel seam",
+        "panel seam.001",
+        "panel seam.002",
+        "panel seam.003",
+        "panel seam.004",
+        "panel seam.005",
+        "panel seam.006",
+        "panel cross seam",
+        "panel cross seam.001",
+        "panel cross seam.002",
+        "panel cross seam.003",
+        "panel cross seam.004",
+        "cover stay",
+        "cover stay.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        34,
+        42
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 3229,
+      "file": "tools/assets/century/soil-choir-A.json"
+    },
+    "B": {
+      "paths": 977,
+      "file": "tools/assets/century/soil-choir-B.json"
+    },
+    "C": {
+      "paths": 844,
+      "file": "tools/assets/century/soil-choir-C.json"
+    }
+  }
+}

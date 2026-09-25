@@ -1,0 +1,73 @@
+{
+  "slug": "later-anchor",
+  "notes": {
+    "TIMED LATCH": "PHYSICAL DELAY / MANUAL OVERRIDE EXISTS",
+    "DEVICE CRADLE": "THE PHONE IS FINE / YOU ARE ELSEWHERE",
+    "TIMER": "READABLE REMAINING TIME",
+    "DRAWER HANDLE": "OVERRIDE KEY IS IN ANOTHER ROOM"
+  },
+  "parts": 37,
+  "groups": {
+    "B": {
+      "parts": 20,
+      "objects": [
+        "timed latch",
+        "locking bolt",
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "cooling fin.002",
+        "motor face",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "output shaft",
+        "terminal housing",
+        "latch fastener",
+        "latch fastener.001",
+        "manual override"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -13,
+        48
+      ]
+    },
+    "C": {
+      "parts": 7,
+      "objects": [
+        "device drawer",
+        "drawer slide",
+        "drawer slide.001",
+        "padded cradle",
+        "distracting device",
+        "cradle bumper",
+        "cradle bumper.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        33,
+        44
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 1473,
+      "file": "tools/assets/century/later-anchor-A.json"
+    },
+    "B": {
+      "paths": 1158,
+      "file": "tools/assets/century/later-anchor-B.json"
+    },
+    "C": {
+      "paths": 304,
+      "file": "tools/assets/century/later-anchor-C.json"
+    }
+  }
+}

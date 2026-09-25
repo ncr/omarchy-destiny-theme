@@ -1,0 +1,113 @@
+{
+  "slug": "air-root",
+  "notes": {
+    "SORBENT WHEEL": "REPLACEABLE ADSORBENT SECTORS",
+    "FLOW PLENUM": "SEPARATE PARTICLE AND GAS STAGES",
+    "PARTICLE FILTER": "FIRST STAGE / PULL OUT ACCESS",
+    "LIVING CARTRIDGE": "BIOLOGICAL STAGE / SEPARATE SERVICE"
+  },
+  "parts": 180,
+  "groups": {
+    "B": {
+      "parts": 42,
+      "objects": [
+        "sorbent wheel",
+        "sorbent sector rib",
+        "sorbent sector rib.001",
+        "sorbent sector rib.002",
+        "sorbent sector rib.003",
+        "sorbent sector rib.004",
+        "sorbent sector rib.005",
+        "sorbent sector rib.006",
+        "sorbent sector rib.007",
+        "sorbent sector rib.008",
+        "sorbent sector rib.009",
+        "sorbent sector rib.010",
+        "sorbent sector rib.011",
+        "honeycomb layer",
+        "honeycomb layer.001",
+        "honeycomb layer.002",
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "cooling fin.002",
+        "cooling fin.003",
+        "cooling fin.004",
+        "motor face",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "output shaft",
+        "terminal housing",
+        "wheel hub",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -13,
+        44
+      ]
+    },
+    "C": {
+      "parts": 25,
+      "objects": [
+        "flow plenum",
+        "flow guide",
+        "flow guide.001",
+        "flow guide.002",
+        "flow guide.003",
+        "flow guide.004",
+        "flow guide.005",
+        "flow guide.006",
+        "flow guide.007",
+        "flow guide.008",
+        "access fastener",
+        "access fastener.001",
+        "outlet throat",
+        "rotor hub",
+        "twisted rotor blade",
+        "twisted rotor blade.001",
+        "twisted rotor blade.002",
+        "twisted rotor blade.003",
+        "twisted rotor blade.004",
+        "captive fastener.016",
+        "captive fastener.017",
+        "captive fastener.018",
+        "captive fastener.019",
+        "captive fastener.020",
+        "captive fastener.021"
+      ],
+      "removed_covers": [],
+      "camera": [
+        33,
+        40
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 2817,
+      "file": "tools/assets/century/air-root-A.json"
+    },
+    "B": {
+      "paths": 1591,
+      "file": "tools/assets/century/air-root-B.json"
+    },
+    "C": {
+      "paths": 439,
+      "file": "tools/assets/century/air-root-C.json"
+    }
+  }
+}

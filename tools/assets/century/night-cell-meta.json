@@ -1,0 +1,98 @@
+{
+  "slug": "night-cell",
+  "notes": {
+    "RADIATOR": "SELECTIVE INFRARED EMISSION",
+    "THERMAL BRIDGE": "SMALL TEMPERATURE DIFFERENCE",
+    "LOGGER": "LOW POWER FIELD TELEMETRY",
+    "SUPPORT": "THERMAL ISOLATION FROM GROUND"
+  },
+  "parts": 75,
+  "groups": {
+    "B": {
+      "parts": 32,
+      "objects": [
+        "selective sky radiator",
+        "panel edge",
+        "panel edge.001",
+        "panel seam",
+        "panel seam.001",
+        "panel seam.002",
+        "panel seam.003",
+        "panel cross seam",
+        "panel cross seam.001",
+        "panel cross seam.002",
+        "panel cross seam.003",
+        "panel cross seam.004",
+        "panel cross seam.005",
+        "laminate clamp",
+        "laminate clamp.001",
+        "selective sky radiator.001",
+        "panel edge.002",
+        "panel edge.003",
+        "panel seam.004",
+        "panel seam.005",
+        "panel seam.006",
+        "panel seam.007",
+        "panel cross seam.006",
+        "panel cross seam.007",
+        "panel cross seam.008",
+        "panel cross seam.009",
+        "panel cross seam.010",
+        "panel cross seam.011",
+        "laminate clamp.002",
+        "laminate clamp.003",
+        "radiator frame",
+        "radiator frame.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -10,
+        49
+      ]
+    },
+    "C": {
+      "parts": 20,
+      "objects": [
+        "cold spreader",
+        "thermoelectric tile",
+        "warm fin",
+        "warm fin.001",
+        "warm fin.002",
+        "warm fin.003",
+        "warm fin.004",
+        "thermoelectric tile.001",
+        "warm fin.005",
+        "warm fin.006",
+        "warm fin.007",
+        "warm fin.008",
+        "warm fin.009",
+        "thermoelectric tile.002",
+        "warm fin.010",
+        "warm fin.011",
+        "warm fin.012",
+        "warm fin.013",
+        "warm fin.014",
+        "warm collector"
+      ],
+      "removed_covers": [],
+      "camera": [
+        34,
+        -27
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 1279,
+      "file": "tools/assets/century/night-cell-A.json"
+    },
+    "B": {
+      "paths": 290,
+      "file": "tools/assets/century/night-cell-B.json"
+    },
+    "C": {
+      "paths": 535,
+      "file": "tools/assets/century/night-cell-C.json"
+    }
+  }
+}

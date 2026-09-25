@@ -1,0 +1,108 @@
+{
+  "slug": "cargo-snake",
+  "notes": {
+    "ARTICULATED HITCH": "POWER AND STEERING BETWEEN SEGMENTS",
+    "DRIVE CORNER": "STEERED POWERED WHEEL",
+    "CARGO POD": "ONE ADDRESS / INDEPENDENT LOAD",
+    "ROUTE SENSOR": "SLOW SERVICE STREET NAVIGATION"
+  },
+  "parts": 373,
+  "groups": {
+    "B": {
+      "parts": 36,
+      "objects": [
+        "pivot body",
+        "retainer",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "pivot body.001",
+        "retainer.001",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015",
+        "hitch drawbar",
+        "hitch loom",
+        "captive fastener.016",
+        "captive fastener.017",
+        "captive fastener.018",
+        "captive fastener.019",
+        "captive fastener.020",
+        "captive fastener.021",
+        "hitch drawbar.001",
+        "hitch loom.001",
+        "captive fastener.022",
+        "captive fastener.023",
+        "captive fastener.024",
+        "captive fastener.025",
+        "captive fastener.026",
+        "captive fastener.027"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -9,
+        48
+      ]
+    },
+    "C": {
+      "parts": 26,
+      "objects": [
+        "drive wheel",
+        "drive hub",
+        "captive fastener.028",
+        "captive fastener.029",
+        "captive fastener.030",
+        "captive fastener.031",
+        "captive fastener.032",
+        "captive fastener.033",
+        "captive fastener.034",
+        "captive fastener.035",
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "cooling fin.002",
+        "motor face",
+        "captive fastener.036",
+        "captive fastener.037",
+        "captive fastener.038",
+        "captive fastener.039",
+        "captive fastener.040",
+        "captive fastener.041",
+        "captive fastener.042",
+        "captive fastener.043",
+        "output shaft",
+        "terminal housing",
+        "steering knuckle"
+      ],
+      "removed_covers": [],
+      "camera": [
+        37,
+        44
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 4799,
+      "file": "tools/assets/century/cargo-snake-A.json"
+    },
+    "B": {
+      "paths": 956,
+      "file": "tools/assets/century/cargo-snake-B.json"
+    },
+    "C": {
+      "paths": 590,
+      "file": "tools/assets/century/cargo-snake-C.json"
+    }
+  }
+}

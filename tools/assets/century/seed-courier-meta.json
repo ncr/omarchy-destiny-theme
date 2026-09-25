@@ -1,0 +1,92 @@
+{
+  "slug": "seed-courier",
+  "notes": {
+    "SEED INDEXER": "TWELVE INDIVIDUAL CAPSULE POCKETS",
+    "SOIL DART": "PLACES CAPSULE BELOW THE SURFACE",
+    "VISION": "AVOIDS EXISTING PLANTS AND NESTS",
+    "WALKER FOOT": "SMALL CONTACT PATCH / LOW LOAD"
+  },
+  "parts": 199,
+  "groups": {
+    "B": {
+      "parts": 31,
+      "objects": [
+        "seed indexing disc",
+        "seed capsule",
+        "seed capsule.001",
+        "seed capsule.002",
+        "seed capsule.003",
+        "seed capsule.004",
+        "seed capsule.005",
+        "seed capsule.006",
+        "seed capsule.007",
+        "seed capsule.008",
+        "seed capsule.009",
+        "seed capsule.010",
+        "seed capsule.011",
+        "indexer guide",
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "cooling fin.002",
+        "cooling fin.003",
+        "cooling fin.004",
+        "motor face",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "output shaft",
+        "terminal housing"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -11,
+        47
+      ]
+    },
+    "C": {
+      "parts": 15,
+      "objects": [
+        "soil dart guide",
+        "penetrating tip",
+        "dart collar",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015",
+        "linear slide",
+        "linear slide.001",
+        "dart carriage",
+        "capsule chute"
+      ],
+      "removed_covers": [],
+      "camera": [
+        35,
+        43
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 4092,
+      "file": "tools/assets/century/seed-courier-A.json"
+    },
+    "B": {
+      "paths": 739,
+      "file": "tools/assets/century/seed-courier-B.json"
+    },
+    "C": {
+      "paths": 446,
+      "file": "tools/assets/century/seed-courier-C.json"
+    }
+  }
+}

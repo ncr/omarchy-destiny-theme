@@ -1,0 +1,117 @@
+{
+  "slug": "ring-tender",
+  "notes": {
+    "CAPTURE RING": "SOFT CONTACT BEFORE HARD LATCH",
+    "THRUSTER POD": "PAIRED TRANSLATION JETS",
+    "RANGE FINDER": "FINAL APPROACH LIDAR",
+    "RADIATOR": "WASTE HEAT TO DEEP SPACE"
+  },
+  "parts": 172,
+  "groups": {
+    "B": {
+      "parts": 50,
+      "objects": [
+        "capture throat",
+        "compliant seal",
+        "capture shoe",
+        "jaw slide",
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "motor face",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "output shaft",
+        "terminal housing",
+        "capture shoe.001",
+        "jaw slide.001",
+        "motor case.001",
+        "cooling fin.002",
+        "cooling fin.003",
+        "motor face.001",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015",
+        "output shaft.001",
+        "terminal housing.001",
+        "capture shoe.002",
+        "jaw slide.002",
+        "motor case.002",
+        "cooling fin.004",
+        "cooling fin.005",
+        "motor face.002",
+        "captive fastener.016",
+        "captive fastener.017",
+        "captive fastener.018",
+        "captive fastener.019",
+        "captive fastener.020",
+        "captive fastener.021",
+        "captive fastener.022",
+        "captive fastener.023",
+        "output shaft.002",
+        "terminal housing.002"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -15,
+        41
+      ]
+    },
+    "C": {
+      "parts": 21,
+      "objects": [
+        "propellant pod",
+        "conformal vessel seam",
+        "conformal vessel seam.001",
+        "service neck",
+        "captive fastener.024",
+        "captive fastener.025",
+        "captive fastener.026",
+        "captive fastener.027",
+        "captive fastener.028",
+        "captive fastener.029",
+        "vessel saddle",
+        "vessel saddle.001",
+        "thruster nozzle",
+        "thruster chamber",
+        "thruster nozzle.001",
+        "thruster chamber.001",
+        "thruster nozzle.002",
+        "thruster chamber.002",
+        "thruster nozzle.003",
+        "thruster chamber.003",
+        "valve island"
+      ],
+      "removed_covers": [],
+      "camera": [
+        31,
+        37
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 5403,
+      "file": "tools/assets/century/ring-tender-A.json"
+    },
+    "B": {
+      "paths": 893,
+      "file": "tools/assets/century/ring-tender-B.json"
+    },
+    "C": {
+      "paths": 1537,
+      "file": "tools/assets/century/ring-tender-C.json"
+    }
+  }
+}

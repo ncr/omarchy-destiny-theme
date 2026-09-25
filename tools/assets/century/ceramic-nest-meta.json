@@ -1,0 +1,91 @@
+{
+  "slug": "ceramic-nest",
+  "notes": {
+    "EXTRUSION HEAD": "METERED REFRACTORY PASTE",
+    "HEATED CRADLE": "GRADUAL DRYING / WALL SUPPORT",
+    "CERAMIC PART": "LAYERED INTERLOCKING REFRACTORY",
+    "GANTRY": "TWO AXIS TOOL SUPPORT"
+  },
+  "parts": 104,
+  "groups": {
+    "B": {
+      "parts": 34,
+      "objects": [
+        "paste reservoir",
+        "conformal vessel seam",
+        "conformal vessel seam.001",
+        "service neck",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "vessel saddle",
+        "vessel saddle.001",
+        "extrusion screw",
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "cooling fin.002",
+        "cooling fin.003",
+        "cooling fin.004",
+        "motor face",
+        "captive fastener.006",
+        "captive fastener.007",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "output shaft",
+        "terminal housing",
+        "ceramic nozzle",
+        "tool carriage",
+        "carriage roller",
+        "carriage roller.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -13,
+        44
+      ]
+    },
+    "C": {
+      "parts": 11,
+      "objects": [
+        "heated cradle",
+        "cradle heater",
+        "cradle heater.001",
+        "cradle heater.002",
+        "build floor",
+        "cradle standoff",
+        "cradle standoff.001",
+        "cradle standoff.002",
+        "cradle standoff.003",
+        "cradle standoff.004",
+        "cradle standoff.005"
+      ],
+      "removed_covers": [],
+      "camera": [
+        33,
+        40
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 4041,
+      "file": "tools/assets/century/ceramic-nest-A.json"
+    },
+    "B": {
+      "paths": 1208,
+      "file": "tools/assets/century/ceramic-nest-B.json"
+    },
+    "C": {
+      "paths": 808,
+      "file": "tools/assets/century/ceramic-nest-C.json"
+    }
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "slug": "bubble-bailiff",
+  "notes": {
+    "LIQUID PATH": "Sinuous wetted channel; cover omitted in this study.",
+    "WICK CASSETTE": "Surface chemistry is selected for this coolant.",
+    "GAS BUFFER": "Temporary gas hold before an authorised vent cycle.",
+    "RETURN UNION": "Bubble-free delivery is a target, not a certification."
+  },
+  "parts": 151,
+  "groups": {
+    "B": {
+      "parts": 25,
+      "objects": [
+        "membrane cassette",
+        "wick support",
+        "wick support.001",
+        "wick support.002",
+        "wick support.003",
+        "wick support.004",
+        "capillary channel",
+        "capillary channel.001",
+        "capillary channel.002",
+        "capillary channel.003",
+        "capillary channel.004",
+        "capillary channel.005",
+        "capillary channel.006",
+        "capillary channel.007",
+        "cassette retainer",
+        "cassette retainer.001",
+        "vent plenum outlet",
+        "captive fastener.016",
+        "captive fastener.017",
+        "captive fastener.018",
+        "captive fastener.019",
+        "captive fastener.020",
+        "captive fastener.021",
+        "captive fastener.022",
+        "captive fastener.023"
+      ],
+      "removed_covers": [],
+      "camera": [
+        25,
+        40
+      ]
+    },
+    "C": {
+      "parts": 48,
+      "objects": [
+        "gas buffer",
+        "conformal vessel seam",
+        "conformal vessel seam.001",
+        "service neck",
+        "captive fastener.024",
+        "captive fastener.025",
+        "captive fastener.026",
+        "captive fastener.027",
+        "captive fastener.028",
+        "captive fastener.029",
+        "vessel saddle",
+        "vessel saddle.001",
+        "trap outlet",
+        "captive fastener.030",
+        "captive fastener.031",
+        "captive fastener.032",
+        "captive fastener.033",
+        "captive fastener.034",
+        "captive fastener.035",
+        "captive fastener.036",
+        "captive fastener.037",
+        "isolation valve stem",
+        "manual vent wheel",
+        "wheel spoke",
+        "wheel spoke.001",
+        "wheel spoke.002",
+        "rounded instrument casting",
+        "instrument bezel",
+        "engraved scale",
+        "engraved scale.001",
+        "engraved scale.002",
+        "engraved scale.003",
+        "engraved scale.004",
+        "face screw",
+        "face screw.001",
+        "bezel captive screw",
+        "bezel captive screw.001",
+        "bezel captive screw.002",
+        "bezel captive screw.003",
+        "instrument dial",
+        "dial needle",
+        "instrument dial.001",
+        "dial needle.001",
+        "case ventilation slot",
+        "case ventilation slot.001",
+        "case ventilation slot.002",
+        "case ventilation slot.003",
+        "case ventilation slot.004"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -22,
+        26
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 4476,
+      "file": "tools/assets/century/bubble-bailiff-A.json"
+    },
+    "B": {
+      "paths": 558,
+      "file": "tools/assets/century/bubble-bailiff-B.json"
+    },
+    "C": {
+      "paths": 1979,
+      "file": "tools/assets/century/bubble-bailiff-C.json"
+    }
+  }
+}

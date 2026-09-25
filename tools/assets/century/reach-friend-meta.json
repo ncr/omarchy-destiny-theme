@@ -1,0 +1,76 @@
+{
+  "slug": "reach-friend",
+  "notes": {
+    "SHOULDER LINK": "TOOL WEIGHT INTO THE BACK FRAME",
+    "BALANCE SPRING": "ADJUSTED TO TOOL MASS",
+    "TOOL": "HUMAN STEERS THE WORK",
+    "HUMAN TECHNICIAN": "STILL RESPONSIBLE FOR THE REPAIR"
+  },
+  "parts": 174,
+  "groups": {
+    "B": {
+      "parts": 19,
+      "objects": [
+        "shoulder assist link",
+        "shoulder assist link.001",
+        "pivot body",
+        "retainer",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "pivot body.001",
+        "retainer.001",
+        "captive fastener.006",
+        "captive fastener.007",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "forearm support cuff"
+      ],
+      "removed_covers": [],
+      "camera": [
+        1,
+        37
+      ]
+    },
+    "C": {
+      "parts": 9,
+      "objects": [
+        "balance spring",
+        "spring takeoff",
+        "spring adjustment",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015",
+        "captive fastener.016",
+        "captive fastener.017"
+      ],
+      "removed_covers": [
+        "balance spring pack"
+      ],
+      "camera": [
+        47,
+        33
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 2331,
+      "file": "tools/assets/century/reach-friend-A.json"
+    },
+    "B": {
+      "paths": 626,
+      "file": "tools/assets/century/reach-friend-B.json"
+    },
+    "C": {
+      "paths": 388,
+      "file": "tools/assets/century/reach-friend-C.json"
+    }
+  }
+}

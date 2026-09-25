@@ -1,0 +1,65 @@
+{
+  "slug": "floating-court",
+  "notes": {
+    "PLATFORM JOINT": "FLEXIBLE INTERPLATFORM CONNECTION",
+    "MOORING CLEAT": "RECOVERABLE SHORE ANCHOR",
+    "SERVICE CORE": "SHARED POWER AND COMMUNICATION",
+    "CAISSON": "COMPARTMENTED BUOYANCY"
+  },
+  "parts": 108,
+  "groups": {
+    "B": {
+      "parts": 10,
+      "objects": [
+        "platform joint cheek",
+        "joint pin",
+        "pin retainer",
+        "pin retainer.001",
+        "flexible service bridge",
+        "platform joint cheek.001",
+        "joint pin.001",
+        "pin retainer.002",
+        "pin retainer.003",
+        "flexible service bridge.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -10,
+        52
+      ]
+    },
+    "C": {
+      "parts": 9,
+      "objects": [
+        "mooring cleat base",
+        "cleat post",
+        "cleat post.001",
+        "cleat horn",
+        "cleat bolt",
+        "cleat bolt.001",
+        "cleat bolt.002",
+        "cleat bolt.003",
+        "mooring rope"
+      ],
+      "removed_covers": [],
+      "camera": [
+        36,
+        48
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 1831,
+      "file": "tools/assets/century/floating-court-A.json"
+    },
+    "B": {
+      "paths": 666,
+      "file": "tools/assets/century/floating-court-B.json"
+    },
+    "C": {
+      "paths": 127,
+      "file": "tools/assets/century/floating-court-C.json"
+    }
+  }
+}

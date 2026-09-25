@@ -220,95 +220,24 @@ def hand(s, x, y, scale=1, rot=0, a=.72):
 
 
 def seated(s, x, y, facing=1):
-    """Seated lateral envelope with anatomically shaped trunk and lower leg.
-
-    Landmarks share a floor at y+346 and table surface at y+133. This is an
-    authored visual study, not a percentile-certified anthropometric model.
-    """
-    s.c.save()
-    s.c.translate(x,y)
-    s.c.scale(facing,1)
-    # Chair is separate from the human contour, with a true supporting seat.
+    """Seated orthographic view of the shared articulated 3D dummy."""
+    from projected_dummy import draw, geometry
+    data=geometry('seated');seat=data['dy']+3
+    s.c.save();s.c.translate(x,y);s.c.scale(facing,1)
     contour(s,[("M",-42,346),("L",-42,91),("L",-36,91),
-        ("L",-34,216),("L",86,216),("L",92,346)],a=.47,w=.7)
-    s.rect(-34,210,118,6,.42,.55)
+        ("L",-34,seat),("L",86,seat),("L",92,346)],a=.47,w=.7)
+    s.rect(-34,seat,118,6,.42,.55)
     s.ln(-42,283,89,283,.24,.4)
-    head(s,0,0)
-    # Far leg: offset enough to read the paired limbs in a lateral projection.
-    contour(s,[("M",10,177),("C",47,177,91,177,109,190),
-        ("C",122,202,125,218,121,239),("C",115,266,114,294,116,322),
-        ("L",143,337),("C",150,341,151,345,144,346),
-        ("L",104,346),("C",99,345,98,339,101,330),
-        ("C",97,304,98,273,96,249),("L",90,216)],a=.3,w=.55)
-    # Nape, scapula, lumbar hollow, supported pelvis, thigh, patella, calf, heel.
-    contour(s,[("M",-14,35),("C",-24,43,-31,56,-32,76),
-        ("C",-32,97,-28,115,-23,133),("C",-19,147,-21,160,-26,177),
-        ("C",-33,195,-29,205,-15,209),("C",4,213,22,206,43,208),
-        ("C",65,210,86,211,105,212),("C",106,226,110,236,110,246),
-        ("C",108,274,110,300,112,325),("C",108,332,108,342,113,346),
-        ("L",159,346),("C",166,345,164,340,157,338),
-        ("C",142,332,137,323,132,320),("C",127,291,141,271,140,250),
-        ("C",140,238,134,225,134,214),("C",139,199,132,185,119,180),
-        ("C",91,170,56,170,33,169),("C",28,153,30,137,32,120),
-        ("C",36,97,32,78,27,64),("C",24,49,16,44,9,37)],a=.73,w=.8,fill=.012)
-    # Small internal landmarks describe anatomy rather than cloth folds.
-    s.bez((-19,64),(-15,79),(-15,98),(-20,113),.3,.45)
-    s.bez((1,176),(13,169),(23,173),(29,188),.32,.45)
-    s.bez((114,194),(124,191),(131,200),(128,207),.32,.45)
-    s.bez((126,238),(132,251),(125,269),(122,286),.27,.4)
-    s.bez((116,320),(121,324),(128,326),(134,329),.27,.4)
-    # Deltoid, upper arm, olecranon, forearm taper and supported wrist.
-    contour(s,[("M",-6,52),("C",4,45,17,50,20,63),
-        ("C",23,79,19,106,25,117),("C",43,117,63,117,83,122),
-        ("L",85,133),("C",64,135,43,138,25,138),
-        ("C",12,140,9,127,7,112),("C",3,94,-4,81,-7,69)],a=.73,w=.75,fill=.012)
-    s.bez((1,63),(5,72),(8,89),(10,99),.28,.45)
-    s.bez((22,130),(37,129),(56,128),(74,129),.25,.4)
-    # Side-on hand resting on the tabletop, with overlapping fingers.
-    contour(s,[("M",83,122),("C",92,121,100,120,106,123),
-        ("L",117,127),("C",123,129,122,132,118,132),
-        ("L",96,132),("L",85,133)],a=.7,w=.65,fill=.012)
-    s.bez((98,126),(105,127),(111,128),(117,129),.35,.4)
-    joint_chain(s,[(5,61),(21,128),(85,127)])
-    joint_chain(s,[(5,61),(3,185),(120,199),(121,321)])
-    # No numeric angle is invented: the arc indicates the shown pose only.
-    s.arc(120,199,21,95,185,.28,.45,color=GOLD)
-    dummy_side_shell(s)
+    draw(s,'seated',0,0)
     s.c.restore()
 
 
 def diner(s,x,y,variant=0):
-    """Neutral front elevation of a seated subject, cropped at table height."""
-    s.c.save()
-    s.c.translate(x,y)
-    # Mild width differences express body variation without character design.
-    s.c.scale((.95,1.04,1)[variant%3],1)
-    front_head(s,0,0)
-    contour(s,[("M",-12,33),("C",-18,43,-31,44,-44,50),
-        ("C",-59,58,-62,76,-61,94),("L",-60,122),
-        ("C",-65,128,-59,133,-49,133),("L",-21,132),
-        ("C",-26,112,-24,95,-26,77),
-        ("M",12,33),("C",18,43,31,44,44,50),
-        ("C",59,58,62,76,61,94),("L",60,122),
-        ("C",65,128,59,133,49,133),("L",21,132),
-        ("C",26,112,24,95,26,77)],a=.7,w=.75)
-    # Torso is a single closed silhouette behind the arms and table settings.
-    contour(s,[("M",-12,33),("C",-18,43,-35,44,-43,51),
-        ("C",-37,69,-31,89,-30,108),("L",-33,132),
-        ("L",33,132),("L",30,108),("C",31,89,37,69,43,51),
-        ("C",35,44,18,43,12,33)],a=.65,w=.7,fill=.01)
-    for sign in (-1,1):
-        s.bez((sign*11,36),(sign*12,48),(sign*17,53),(sign*27,55),.32,.45)
-        s.bez((sign*6,57),(sign*16,53),(sign*27,54),(sign*34,58),.3,.45)
-        s.bez((sign*30,68),(sign*41,67),(sign*45,72),(sign*44,81),.3,.45)
-        s.poly([(sign*44,62),(sign*48,120),(sign*18,126)],.2,.4,close=False,dash=[5,3,1,3],color=GOLD)
-        for px,py in ((sign*44,62),(sign*48,120)):
-            s.circ(px,py,2.3,.43,.4,color=GOLD)
-        s.bez((sign*52,119),(sign*39,120),(sign*30,125),(sign*20,125),.65,.65)
-        s.bez((sign*20,125),(sign*12,121),(sign*6,129),(sign*2,130),.6,.55)
-        s.ln(sign*3,132,sign*21,131,.45,.45)
-    s.ln(0,43,0,112,.18,.4,dash=[8,3,1,3])
-    dummy_front_shell(s)
+    """The same seated 3D dummy viewed from the front, behind the table."""
+    from projected_dummy import draw
+    s.c.save();s.c.translate(x,y)
+    s.c.rectangle(-90,-46,180,179);s.c.clip()
+    draw(s,'diner',0,0)
     s.c.restore()
 
 
@@ -338,19 +267,6 @@ def enrich(s, name, mx, my):
     """Details stay inside their parent assemblies and below annotations."""
     s.c.save(); s.c.translate(mx,my)
     if name == "truth-lamp":
-        # Section through layered optical housing, heat sink and suspension.
-        s.poly([(-34,-247),(34,-247),(111,-178),(-111,-178)],.45,.5)
-        for k in range(-9,10):
-            x=k*10
-            yy=-241+abs(x)*.82
-            s.ln(x,yy,x,-181,.34,.45)
-        panel(s,-26,-231,52,23,2)
-        for x in (-104,-78,-52,52,78,104):
-            bolt(s,x,-175,2)
-        for k in range(9):
-            x=-108+k*27
-            s.circ(x,-165.5,5.2,.65,.45)
-            s.circ(x,-165.5,1.4,.8,.4,color=ARC)
         for y in range(-402,-251,9):
             s.ln(-2,y,2,y+2,.45,.4)
         for x in (-250,250):

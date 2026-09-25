@@ -2,3 +2,6 @@ __pycache__/
 .DS_Store
 concepts/
 tmp/
+
+# Runtime registry lock; never part of the wallpaper source.
+docs/century/catalog.lock

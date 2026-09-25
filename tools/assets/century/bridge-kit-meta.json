@@ -1,0 +1,74 @@
+{
+  "slug": "bridge-kit",
+  "notes": {
+    "TRUSS KNUCKLE": "CAPTIVE PIN / ALIGNED LOAD PATH",
+    "DECK LOCK": "LINKS ADJACENT LOAD PANELS",
+    "BANK SHOE": "DISTRIBUTES LOAD INTO THE BANK",
+    "DECK": "INTERLOCKING WALKING SURFACE"
+  },
+  "parts": 177,
+  "groups": {
+    "B": {
+      "parts": 19,
+      "objects": [
+        "pivot body",
+        "retainer",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "truss knuckle clevis",
+        "truss knuckle clevis.001",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "clevis lower shoe"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -13,
+        48
+      ]
+    },
+    "C": {
+      "parts": 9,
+      "objects": [
+        "deck locking cassette",
+        "deck lock pin",
+        "overcentre latch",
+        "latch pivot",
+        "deck lock pin.001",
+        "overcentre latch.001",
+        "latch pivot.001",
+        "deck seam",
+        "deck seam.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        33,
+        44
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 2837,
+      "file": "tools/assets/century/bridge-kit-A.json"
+    },
+    "B": {
+      "paths": 334,
+      "file": "tools/assets/century/bridge-kit-B.json"
+    },
+    "C": {
+      "paths": 159,
+      "file": "tools/assets/century/bridge-kit-C.json"
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "slug": "dive-spine",
+  "notes": {
+    "BUOYANCY VALVE": "ACCESSIBLE INFLATE AND DUMP",
+    "QUICK RELEASE": "CLEAR EMERGENCY ACCESS",
+    "CYLINDER": "CLOSE TO THE BODY CENTRELINE",
+    "HUMAN DIVER": "ILLUSTRATIVE LIFE SUPPORT CONCEPT"
+  },
+  "parts": 232,
+  "groups": {
+    "B": {
+      "parts": 17,
+      "objects": [
+        "buoyancy valve",
+        "valve coupling",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "valve coupling.001",
+        "captive fastener.006",
+        "captive fastener.007",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "valve button",
+        "inflation tube"
+      ],
+      "removed_covers": [],
+      "camera": [
+        7,
+        34
+      ]
+    },
+    "C": {
+      "parts": 10,
+      "objects": [
+        "quick release buckle",
+        "release tab",
+        "buckle hinge",
+        "buckle fastener",
+        "buckle fastener.001",
+        "quick release buckle.001",
+        "release tab.001",
+        "buckle hinge.001",
+        "buckle fastener.002",
+        "buckle fastener.003"
+      ],
+      "removed_covers": [],
+      "camera": [
+        30,
+        14
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 3077,
+      "file": "tools/assets/century/dive-spine-A.json"
+    },
+    "B": {
+      "paths": 774,
+      "file": "tools/assets/century/dive-spine-B.json"
+    },
+    "C": {
+      "paths": 188,
+      "file": "tools/assets/century/dive-spine-C.json"
+    }
+  }
+}

@@ -13,9 +13,9 @@ Every subject here is made up for this theme. Nothing is traced or copied
 from the game: only the drawing technique is borrowed — thin white line work
 on slate, tick rings, leader lines, spaced capitals.
 
-On a 21:9 sheet the main drawing sits left of centre, secondary views fill the
-two sides, the legend takes the bottom left and the Omarchy emblem the bottom
-right. At 16:9 and narrower the secondary views are left out.
+The current starmap treatment retains three columns in both native formats:
+centred main drawing, side details and diagrams, legend bottom left and Field
+Notes bottom right. The legacy original treatment keeps its old compact layout.
 """
 
 import argparse

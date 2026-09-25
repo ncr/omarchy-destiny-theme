@@ -1,0 +1,96 @@
+{
+  "slug": "brick-return",
+  "notes": {
+    "COMPLIANT JAW": "SUPPORTS BRICK WITHOUT EDGE CRUSHING",
+    "MORTAR SEPARATOR": "CONTROLLED VIBRATION / LOCAL RELEASE",
+    "REUSABLE BRICK": "INTACT CERAMIC / MORTAR REMOVED",
+    "DUST TRAY": "SEPARATE RECOVERED MINERAL FRACTION"
+  },
+  "parts": 111,
+  "groups": {
+    "B": {
+      "parts": 25,
+      "objects": [
+        "compliant jaw",
+        "jaw pad",
+        "jaw slide",
+        "compliant jaw.001",
+        "jaw pad.001",
+        "jaw slide.001",
+        "jaw cross slide",
+        "jaw cross slide.001",
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "cooling fin.002",
+        "cooling fin.003",
+        "cooling fin.004",
+        "motor face",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "output shaft",
+        "terminal housing"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -12,
+        45
+      ]
+    },
+    "C": {
+      "parts": 25,
+      "objects": [
+        "separator head",
+        "vibration chisel",
+        "vibration chisel.001",
+        "vibration chisel.002",
+        "vibration chisel.003",
+        "vibration chisel.004",
+        "motor case.001",
+        "cooling fin.005",
+        "cooling fin.006",
+        "cooling fin.007",
+        "cooling fin.008",
+        "cooling fin.009",
+        "motor face.001",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015",
+        "output shaft.001",
+        "terminal housing.001",
+        "head tie",
+        "head tie.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        34,
+        41
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 3654,
+      "file": "tools/assets/century/brick-return-A.json"
+    },
+    "B": {
+      "paths": 1349,
+      "file": "tools/assets/century/brick-return-B.json"
+    },
+    "C": {
+      "paths": 1128,
+      "file": "tools/assets/century/brick-return-C.json"
+    }
+  }
+}

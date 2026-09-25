@@ -1,0 +1,126 @@
+{
+  "slug": "cliff-step",
+  "notes": {
+    "ANCHOR CLAMP": "LOCKED BEFORE LOAD TRANSFER",
+    "TRANSFER LINK": "ALTERNATING CLAMP LOAD CYCLE",
+    "PREPARED RAIL": "FIXED ANCHORS / INSPECTED ROUTE",
+    "PAYLOAD": "LOAD REMAINS OVER THE CLAMP AXIS"
+  },
+  "parts": 100,
+  "groups": {
+    "B": {
+      "parts": 42,
+      "objects": [
+        "anchor clamp",
+        "clamp bolt",
+        "clamp bolt.001",
+        "gripping tooth",
+        "gripping tooth.001",
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "cooling fin.002",
+        "cooling fin.003",
+        "motor face",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "output shaft",
+        "terminal housing",
+        "anchor clamp.001",
+        "clamp bolt.002",
+        "clamp bolt.003",
+        "gripping tooth.002",
+        "gripping tooth.003",
+        "motor case.001",
+        "cooling fin.004",
+        "cooling fin.005",
+        "cooling fin.006",
+        "cooling fin.007",
+        "motor face.001",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015",
+        "output shaft.001",
+        "terminal housing.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -12,
+        44
+      ]
+    },
+    "C": {
+      "parts": 38,
+      "objects": [
+        "transfer cylinder",
+        "piston rod",
+        "pivot body",
+        "retainer",
+        "captive fastener.016",
+        "captive fastener.017",
+        "captive fastener.018",
+        "captive fastener.019",
+        "captive fastener.020",
+        "captive fastener.021",
+        "pivot body.001",
+        "retainer.001",
+        "captive fastener.022",
+        "captive fastener.023",
+        "captive fastener.024",
+        "captive fastener.025",
+        "captive fastener.026",
+        "captive fastener.027",
+        "transfer cylinder.001",
+        "piston rod.001",
+        "pivot body.002",
+        "retainer.002",
+        "captive fastener.028",
+        "captive fastener.029",
+        "captive fastener.030",
+        "captive fastener.031",
+        "captive fastener.032",
+        "captive fastener.033",
+        "pivot body.003",
+        "retainer.003",
+        "captive fastener.034",
+        "captive fastener.035",
+        "captive fastener.036",
+        "captive fastener.037",
+        "captive fastener.038",
+        "captive fastener.039",
+        "load crosshead",
+        "cylinder equalisation"
+      ],
+      "removed_covers": [],
+      "camera": [
+        34,
+        40
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 1391,
+      "file": "tools/assets/century/cliff-step-A.json"
+    },
+    "B": {
+      "paths": 2152,
+      "file": "tools/assets/century/cliff-step-B.json"
+    },
+    "C": {
+      "paths": 684,
+      "file": "tools/assets/century/cliff-step-C.json"
+    }
+  }
+}

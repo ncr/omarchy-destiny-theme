@@ -16,6 +16,7 @@ ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'concepts/starmap-study'
 
 class StudySheet(Sheet):
+    triptych = True
     def __init__(self,*a,**kw):
         self.role='plain'
         self.text_manifest=[]
@@ -71,7 +72,7 @@ class StudySheet(Sheet):
         return .18+.82*((v+1)/2)**.6
 
     def primary_focus(self,gx,gy):
-        mx,my=self.cx-120,self.cy-25
+        mx,my=self.cx,self.cy-25+max(0,self.H-1080)*.35
         return self.role=='main' and abs(gx-mx)<145 and my-260<gy<my-150
 
     def _stroke(self,a,w,dash,color):
@@ -107,12 +108,6 @@ class StudySheet(Sheet):
 
 def section_study(s,mx,my):
     with s.layer('section'):
-        # Transverse sections of the tapered reflector, within its existing shell.
-        for k in range(1,18):
-            t=k/18;y=my-247+t*67;hw=34+77*t
-            sag=2.5+4*t
-            s.bez((mx-hw,y),(mx-hw*.4,y+sag),(mx+hw*.4,y+sag),(mx+hw,y),
-                  .28 if k%3 else .43,.34)
         # A compact field-volume study immediately below the emitter array.
         # It ends above the heads and stays away from every callout.
         for k in range(8):

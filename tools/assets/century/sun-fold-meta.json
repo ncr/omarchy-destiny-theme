@@ -1,0 +1,102 @@
+{
+  "slug": "sun-fold",
+  "notes": {
+    "FACET ACTUATOR": "FAIL SAFE STOW POSITION",
+    "RECEIVER": "SMALL FOCAL HEAT RECEIVER",
+    "SLEW HEAD": "TWO AXIS SOLAR TRACKING",
+    "CHARGING POST": "PUBLIC COURT INTERFACE"
+  },
+  "parts": 473,
+  "groups": {
+    "B": {
+      "parts": 28,
+      "objects": [
+        "pivot body",
+        "retainer",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "facet strut",
+        "actuator barrel",
+        "actuator rod",
+        "pivot body.001",
+        "retainer.001",
+        "captive fastener.006",
+        "captive fastener.007",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "pivot body.002",
+        "retainer.002",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015",
+        "captive fastener.016",
+        "captive fastener.017",
+        "facet carrier"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -14,
+        49
+      ]
+    },
+    "C": {
+      "parts": 28,
+      "objects": [
+        "thermal receiver",
+        "conformal vessel seam",
+        "conformal vessel seam.001",
+        "service neck",
+        "captive fastener.192",
+        "captive fastener.193",
+        "captive fastener.194",
+        "captive fastener.195",
+        "captive fastener.196",
+        "captive fastener.197",
+        "vessel saddle",
+        "vessel saddle.001",
+        "absorber fin",
+        "absorber fin.001",
+        "absorber fin.002",
+        "absorber fin.003",
+        "absorber fin.004",
+        "receiver return",
+        "receiver return.001",
+        "receiver aperture",
+        "captive fastener.198",
+        "captive fastener.199",
+        "captive fastener.200",
+        "captive fastener.201",
+        "captive fastener.202",
+        "captive fastener.203",
+        "captive fastener.204",
+        "captive fastener.205"
+      ],
+      "removed_covers": [],
+      "camera": [
+        32,
+        45
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 5555,
+      "file": "tools/assets/century/sun-fold-A.json"
+    },
+    "B": {
+      "paths": 542,
+      "file": "tools/assets/century/sun-fold-B.json"
+    },
+    "C": {
+      "paths": 1202,
+      "file": "tools/assets/century/sun-fold-C.json"
+    }
+  }
+}

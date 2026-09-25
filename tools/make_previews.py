@@ -8,9 +8,12 @@ The wallpaper thumbnails are scaled-down copies of ../backgrounds.
 """
 
 import os
+import json
+import math
 import re
 import subprocess
 
+from pathlib import Path
 from PIL import Image
 
 from sheet import Sheet
@@ -66,11 +69,16 @@ def thumbnails():
         if name.endswith(".webp"):
             subprocess.run(["magick", os.path.join(src, name), "-resize", "1600x", "-quality", "82",
                             "-define", "webp:method=6", os.path.join(OUT, name)], check=True)
-    files = sorted(f for f in os.listdir(OUT) if re.match(r"\d\d-.*\.webp$", f))
+    registry = Path(ROOT) / 'docs/collection/catalog.json'
+    if registry.exists():
+        files = [Path(e['source']).name for e in json.loads(registry.read_text())['finalized']]
+        files = [f for f in files if os.path.isfile(os.path.join(src, f))]
+    else:
+        files = sorted(f for f in os.listdir(src) if re.match(r"\d{2,3}-.*\.webp$", f))
     with Image.open(os.path.join(src, files[0])) as image:
         cell_height = round(1200 * image.height / image.width)
     subprocess.run(["magick", "montage"] + [os.path.join(OUT, f) for f in files] +
-                   ["-tile", "2x7", "-geometry", f"1200x{cell_height}+8+8", "-background", "#0a0c10",
+                   ["-tile", f"3x{math.ceil(len(files)/3)}", "-geometry", f"1200x{cell_height}+8+8", "-background", "#0a0c10",
                     "-quality", "84", os.path.join(OUT, "wallpapers.webp")], check=True)
 
 

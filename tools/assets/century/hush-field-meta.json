@@ -1,0 +1,68 @@
+{
+  "slug": "hush-field",
+  "notes": {
+    "SOURCE TILE": "INDEPENDENTLY AIMED ACOUSTIC SOURCES",
+    "MICROPHONE TREE": "LOCAL ERROR MEASUREMENTS",
+    "CONTROLLER": "LIMITS THE QUIET ZONE TO A MAPPED AREA",
+    "AIMING BEAM": "SOURCE ORIENTATION / NO SOUND DOME"
+  },
+  "parts": 56,
+  "groups": {
+    "B": {
+      "parts": 11,
+      "objects": [
+        "acoustic source tile",
+        "driver surround",
+        "driver diaphragm",
+        "driver surround.001",
+        "driver diaphragm.001",
+        "driver surround.002",
+        "driver diaphragm.002",
+        "driver surround.003",
+        "driver diaphragm.003",
+        "mount screw",
+        "mount screw.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -15,
+        42
+      ]
+    },
+    "C": {
+      "parts": 11,
+      "objects": [
+        "microphone stem",
+        "microphone branch",
+        "microphone capsule",
+        "capsule mesh",
+        "microphone branch.001",
+        "microphone capsule.001",
+        "capsule mesh.001",
+        "microphone branch.002",
+        "microphone capsule.002",
+        "capsule mesh.002",
+        "microphone foot"
+      ],
+      "removed_covers": [],
+      "camera": [
+        31,
+        38
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 5190,
+      "file": "tools/assets/century/hush-field-A.json"
+    },
+    "B": {
+      "paths": 1285,
+      "file": "tools/assets/century/hush-field-B.json"
+    },
+    "C": {
+      "paths": 1040,
+      "file": "tools/assets/century/hush-field-C.json"
+    }
+  }
+}

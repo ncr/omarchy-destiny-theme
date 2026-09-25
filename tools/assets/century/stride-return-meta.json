@@ -1,0 +1,76 @@
+{
+  "slug": "stride-return",
+  "notes": {
+    "ANKLE CAM": "RETURN TIMING NEAR PUSH OFF",
+    "ELASTIC CARTRIDGE": "TUNED STORAGE / STAIRS BYPASS",
+    "CALF CUFF": "SPREADS CONTACT ABOVE THE ANKLE",
+    "HUMAN WALKER": "ENERGY SAVED / WALKING STILL REQUIRED"
+  },
+  "parts": 175,
+  "groups": {
+    "B": {
+      "parts": 22,
+      "objects": [
+        "pivot body",
+        "retainer",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "ankle cam",
+        "cam follower",
+        "sole plate",
+        "pivot body.001",
+        "retainer.001",
+        "captive fastener.006",
+        "captive fastener.007",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "ankle cam.001",
+        "cam follower.001",
+        "sole plate.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -9,
+        35
+      ]
+    },
+    "C": {
+      "parts": 6,
+      "objects": [
+        "ankle spring",
+        "spring return",
+        "calf strap",
+        "ankle spring.001",
+        "spring return.001",
+        "calf strap.001"
+      ],
+      "removed_covers": [
+        "elastic cartridge"
+      ],
+      "camera": [
+        37,
+        31
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 2653,
+      "file": "tools/assets/century/stride-return-A.json"
+    },
+    "B": {
+      "paths": 1123,
+      "file": "tools/assets/century/stride-return-B.json"
+    },
+    "C": {
+      "paths": 54,
+      "file": "tools/assets/century/stride-return-C.json"
+    }
+  }
+}

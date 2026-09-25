@@ -1,0 +1,86 @@
+{
+  "slug": "crumb-pilot",
+  "notes": {
+    "EDGE WHISKER": "STOPS BEFORE THE TABLE EDGE",
+    "VACUUM THROAT": "CRUMBS TO A REMOVABLE HOPPER",
+    "HOPPER": "NO CRUMBS STORED IN THE SOFTWARE",
+    "VISION": "THE BISCUIT IS NOT WORTH THE FALL"
+  },
+  "parts": 79,
+  "groups": {
+    "B": {
+      "parts": 20,
+      "objects": [
+        "edge whisker",
+        "pivot body",
+        "retainer",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "whisker sensor",
+        "edge whisker.001",
+        "pivot body.001",
+        "retainer.001",
+        "captive fastener.006",
+        "captive fastener.007",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "whisker sensor.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -13,
+        47
+      ]
+    },
+    "C": {
+      "parts": 20,
+      "objects": [
+        "vacuum throat",
+        "throat guard",
+        "throat guard.001",
+        "throat guard.002",
+        "throat guard.003",
+        "throat guard.004",
+        "suction impeller",
+        "rotor hub",
+        "twisted rotor blade",
+        "twisted rotor blade.001",
+        "twisted rotor blade.002",
+        "twisted rotor blade.003",
+        "twisted rotor blade.004",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015",
+        "captive fastener.016",
+        "captive fastener.017",
+        "fan collar"
+      ],
+      "removed_covers": [],
+      "camera": [
+        33,
+        43
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 1919,
+      "file": "tools/assets/century/crumb-pilot-A.json"
+    },
+    "B": {
+      "paths": 538,
+      "file": "tools/assets/century/crumb-pilot-B.json"
+    },
+    "C": {
+      "paths": 518,
+      "file": "tools/assets/century/crumb-pilot-C.json"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "slug": "spore-library",
+  "notes": {
+    "CULTURE DRAWER": "SIX INDEPENDENTLY SEALED CULTURES",
+    "TRANSFER PORT": "INTERLOCKED STERILE ACCESS",
+    "CLIMATE SERVICE": "PER DRAWER ENVIRONMENT CONTROL",
+    "VERIFY HEAD": "CULTURE ID / NO UNKNOWN RETURNS"
+  },
+  "parts": 62,
+  "groups": {
+    "B": {
+      "parts": 16,
+      "objects": [
+        "extended culture drawer",
+        "culture well",
+        "sealed well lid",
+        "culture well.001",
+        "sealed well lid.001",
+        "culture well.002",
+        "sealed well lid.002",
+        "culture well.003",
+        "sealed well lid.003",
+        "culture well.004",
+        "sealed well lid.004",
+        "culture well.005",
+        "sealed well lid.005",
+        "drawer rail",
+        "drawer rail.001",
+        "drawer handle"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -14,
+        45
+      ]
+    },
+    "C": {
+      "parts": 14,
+      "objects": [
+        "transfer lock",
+        "sterile port",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "interlock ring",
+        "bayonet latch",
+        "bayonet latch.001",
+        "bayonet latch.002"
+      ],
+      "removed_covers": [],
+      "camera": [
+        32,
+        41
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 4044,
+      "file": "tools/assets/century/spore-library-A.json"
+    },
+    "B": {
+      "paths": 2140,
+      "file": "tools/assets/century/spore-library-B.json"
+    },
+    "C": {
+      "paths": 653,
+      "file": "tools/assets/century/spore-library-C.json"
+    }
+  }
+}

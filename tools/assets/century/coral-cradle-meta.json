@@ -1,0 +1,139 @@
+{
+  "slug": "coral-cradle",
+  "notes": {
+    "NURSERY CASSETTES": "OPEN WATER / RETAINED FRAGMENT ID",
+    "TRANSFER COLLAR": "THREE SOFT CONTACTS / DEAD BASE ONLY",
+    "CIRCULATION": "GENTLE THROUGH-FLOW / NO SEALED TANK",
+    "GANTRY": "LIMITED FORCE TRANSFER / SHORT REACH"
+  },
+  "parts": 155,
+  "groups": {
+    "B": {
+      "parts": 23,
+      "objects": [
+        "compliant transfer collar",
+        "flexure finger",
+        "soft base contact",
+        "flexure finger.001",
+        "soft base contact.001",
+        "flexure finger.002",
+        "soft base contact.002",
+        "optical barrel",
+        "barrel retaining band",
+        "barrel retaining band.001",
+        "barrel retaining band.002",
+        "lens hood",
+        "lens",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "camera support",
+        "camera support.001",
+        "camera bridge",
+        "transfer slide"
+      ],
+      "removed_covers": [],
+      "camera": [
+        30,
+        25
+      ]
+    },
+    "C": {
+      "parts": 70,
+      "objects": [
+        "nursery cassette",
+        "fragment collet",
+        "fragment collet.001",
+        "fragment collet.002",
+        "live fragment",
+        "coral offshoot",
+        "coral offshoot.001",
+        "fragment collet.003",
+        "live fragment.001",
+        "coral offshoot.002",
+        "coral offshoot.003",
+        "cassette guide",
+        "cassette guide.001",
+        "cassette ID tab",
+        "nursery cassette.001",
+        "fragment collet.004",
+        "live fragment.002",
+        "coral offshoot.004",
+        "coral offshoot.005",
+        "fragment collet.005",
+        "live fragment.003",
+        "coral offshoot.006",
+        "coral offshoot.007",
+        "fragment collet.006",
+        "fragment collet.007",
+        "cassette guide.002",
+        "cassette guide.003",
+        "cassette ID tab.001",
+        "nursery cassette.002",
+        "fragment collet.008",
+        "fragment collet.009",
+        "fragment collet.010",
+        "live fragment.004",
+        "coral offshoot.008",
+        "coral offshoot.009",
+        "fragment collet.011",
+        "live fragment.005",
+        "coral offshoot.010",
+        "coral offshoot.011",
+        "cassette guide.004",
+        "cassette guide.005",
+        "cassette ID tab.002",
+        "nursery cassette.003",
+        "fragment collet.012",
+        "live fragment.006",
+        "coral offshoot.012",
+        "coral offshoot.013",
+        "fragment collet.013",
+        "live fragment.007",
+        "coral offshoot.014",
+        "coral offshoot.015",
+        "fragment collet.014",
+        "fragment collet.015",
+        "cassette guide.006",
+        "cassette guide.007",
+        "cassette ID tab.003",
+        "nursery cassette.004",
+        "fragment collet.016",
+        "fragment collet.017",
+        "fragment collet.018",
+        "live fragment.008",
+        "coral offshoot.016",
+        "coral offshoot.017",
+        "fragment collet.019",
+        "live fragment.009",
+        "coral offshoot.018",
+        "coral offshoot.019",
+        "cassette guide.008",
+        "cassette guide.009",
+        "cassette ID tab.004"
+      ],
+      "removed_covers": [],
+      "camera": [
+        18,
+        48
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 9363,
+      "file": "tools/assets/century/coral-cradle-A.json"
+    },
+    "B": {
+      "paths": 982,
+      "file": "tools/assets/century/coral-cradle-B.json"
+    },
+    "C": {
+      "paths": 8528,
+      "file": "tools/assets/century/coral-cradle-C.json"
+    }
+  }
+}

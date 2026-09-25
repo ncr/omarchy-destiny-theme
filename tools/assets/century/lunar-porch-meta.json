@@ -1,0 +1,95 @@
+{
+  "slug": "lunar-porch",
+  "notes": {
+    "SUIT DOCK": "REAR ENTRY INTERFACE / SUIT OMITTED",
+    "DUST TRAP": "ABRASIVE PARTICLES STAY OUTSIDE",
+    "BULKHEAD": "CLEAN HABITAT PRESSURE BOUNDARY",
+    "UTILITY CHEST": "SUIT PURGE AND SERVICE"
+  },
+  "parts": 80,
+  "groups": {
+    "B": {
+      "parts": 24,
+      "objects": [
+        "suit dock backplate",
+        "suitport seal",
+        "port latch",
+        "port latch.001",
+        "port latch.002",
+        "port latch.003",
+        "air connection",
+        "data connection",
+        "latch axle",
+        "overcentre latch lever",
+        "latch witness",
+        "latch axle.001",
+        "overcentre latch lever.001",
+        "latch witness.001",
+        "latch axle.002",
+        "overcentre latch lever.002",
+        "latch witness.002",
+        "latch axle.003",
+        "overcentre latch lever.003",
+        "latch witness.003",
+        "secondary seal",
+        "test port",
+        "test port.001",
+        "seal test manifold"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -13,
+        40
+      ]
+    },
+    "C": {
+      "parts": 25,
+      "objects": [
+        "dust grate",
+        "grate bar",
+        "grate bar.001",
+        "grate bar.002",
+        "grate bar.003",
+        "grate bar.004",
+        "grate bar.005",
+        "grate bar.006",
+        "grate bar.007",
+        "grate bar.008",
+        "grate bar.009",
+        "dust trap drawer",
+        "drawer handle",
+        "drawer rail",
+        "drawer rail.001",
+        "cross grate",
+        "cross grate.001",
+        "cross grate.002",
+        "grate captive screw",
+        "grate captive screw.001",
+        "grate captive screw.002",
+        "grate captive screw.003",
+        "drawer stop",
+        "drawer stop.001",
+        "drawer gasket"
+      ],
+      "removed_covers": [],
+      "camera": [
+        33,
+        36
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 4556,
+      "file": "tools/assets/century/lunar-porch-A.json"
+    },
+    "B": {
+      "paths": 1851,
+      "file": "tools/assets/century/lunar-porch-B.json"
+    },
+    "C": {
+      "paths": 630,
+      "file": "tools/assets/century/lunar-porch-C.json"
+    }
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "slug": "rail-pod",
+  "notes": {
+    "WHEEL MODULE": "STANDARD GAUGE RUNNING GEAR",
+    "COUPLING NOSE": "AUTOMATIC MECHANICAL AND POWER LINK",
+    "CARGO DOOR": "SINGLE CONSIGNMENT SIDE ACCESS",
+    "ROUTE SENSOR": "SIDING AND COUPLING APPROACH"
+  },
+  "parts": 103,
+  "groups": {
+    "B": {
+      "parts": 50,
+      "objects": [
+        "wheel axle",
+        "rail wheel",
+        "wheel flange",
+        "rail wheel.001",
+        "wheel flange.001",
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "cooling fin.002",
+        "cooling fin.003",
+        "cooling fin.004",
+        "cooling fin.005",
+        "motor face",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "output shaft",
+        "terminal housing",
+        "suspension",
+        "suspension.001",
+        "wheel axle.001",
+        "rail wheel.002",
+        "wheel flange.002",
+        "rail wheel.003",
+        "wheel flange.003",
+        "motor case.001",
+        "cooling fin.006",
+        "cooling fin.007",
+        "cooling fin.008",
+        "cooling fin.009",
+        "cooling fin.010",
+        "cooling fin.011",
+        "motor face.001",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015",
+        "output shaft.001",
+        "terminal housing.001",
+        "suspension.002",
+        "suspension.003"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -11,
+        43
+      ]
+    },
+    "C": {
+      "parts": 11,
+      "objects": [
+        "coupling nose",
+        "coupler shank",
+        "coupling collar",
+        "captive fastener.016",
+        "captive fastener.017",
+        "captive fastener.018",
+        "captive fastener.019",
+        "captive fastener.020",
+        "captive fastener.021",
+        "buffer",
+        "buffer.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        35,
+        39
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 2870,
+      "file": "tools/assets/century/rail-pod-A.json"
+    },
+    "B": {
+      "paths": 2812,
+      "file": "tools/assets/century/rail-pod-B.json"
+    },
+    "C": {
+      "paths": 289,
+      "file": "tools/assets/century/rail-pod-C.json"
+    }
+  }
+}

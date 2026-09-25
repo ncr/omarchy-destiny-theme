@@ -2,6 +2,7 @@
 import math
 from fidelity import contour, front_head, optical_target, bolt
 from sheet import WHITE, ARC, GOLD
+from hardware3d.accessories import rounded
 
 
 def absent_head(s,x,y):
@@ -144,150 +145,49 @@ PROXY_PARTS={'upper_arm':(116,21,14,16,11),'forearm':(88,16,10,11,8),
 
 
 def proxy_pose():
-    sh=(34,-178);hip=(-6,20)
-    pose={'shoulder':sh,'hip':hip}
-    for side,wrist,ankle,elbow_hint,knee_hint in (
-            ('far',(-108,-48),(-178,236),(-100,-140),(-64,138)),
-            ('near',(172,-160),(74,226),(104,-104),(112,96))):
-        pose[side]={'wrist':wrist,'ankle':ankle,
-            'elbow':paired_joint(sh,wrist,PROXY_PARTS['upper_arm'][0],PROXY_PARTS['forearm'][0],elbow_hint),
-            'knee':paired_joint(hip,ankle,PROXY_PARTS['thigh'][0],PROXY_PARTS['calf'][0],knee_hint),
-            'foot_angle':12 if side=='near' else math.degrees(
-                math.asin((300-ankle[1])/math.hypot(58,28))-math.atan2(28,58))}
-        elbow=pose[side]['elbow']
-        pose[side]['hand_angle']=math.degrees(math.atan2(wrist[1]-elbow[1],wrist[0]-elbow[0]))-90
-    return pose
+    from mannequin3d.proxy_pose import layout
+    return layout()
 
 
 def presence_body(s,mx,my):
-    """A front-view instrumented crash dummy wearing the original VR apparatus."""
-    s.c.save();s.c.translate(mx,my)
-    shoulders=((-86,-236),(86,-236));elbows=((-126,-118),(126,-118))
-    wrists=((-150,-6),(150,-6));hips=((-36,-30),(36,-30))
-    knees=((-50,104),(50,104));ankles=((-52,220),(52,220))
-    for i in range(2):
-        dummy_segment(s,shoulders[i],elbows[i],21,15,16,11)
-        dummy_segment(s,elbows[i],wrists[i],17,11,11,8)
-        dummy_segment(s,hips[i],knees[i],32,23,17,16)
-        dummy_segment(s,knees[i],ankles[i],24,12,16,8)
-        for p,r,t in ((shoulders[i],16,True),(elbows[i],11,False),
-                      (knees[i],16,True),(wrists[i],8,False)):
-            dummy_joint(s,p,r,t)
-        dummy_foot_front(s,ankles[i],side=-1 if i==0 else 1)
-    # Visible flexible lumbar member connects the rib jacket to the pelvic casting.
-    contour(s,[("M",-37,-119),("L",37,-119),("L",38,-59),("L",-38,-59)],
-        a=.55,w=.6,fill=.01,close=True)
-    for y in range(-112,-61,8):
-        s.bez((-38,y),(-15,y+5),(15,y+5),(38,y),.49,.55)
-    # One rib-jacket shell, shaped shoulders, lower edge above the lumbar bellows.
-    contour(s,[("M",-15,-258),("L",15,-258),
-        ("C",28,-255,44,-251,59,-249),("C",77,-247,82,-240,83,-228),
-        ("C",76,-213,71,-199,69,-181),("C",65,-149,60,-126,49,-112),
-        ("C",29,-106,-29,-106,-49,-112),
-        ("C",-60,-126,-65,-149,-69,-181),
-        ("C",-71,-199,-76,-213,-83,-228),
-        ("C",-82,-240,-77,-247,-59,-249),("C",-44,-251,-28,-255,-15,-258)],
-        a=.89,w=.95,fill=.022,close=True)
-    for sign in (-1,1):
-        s.bez((sign*14,-248),(sign*34,-242),(sign*51,-246),(sign*66,-233),.58,.55)
-        s.bez((sign*50,-229),(sign*58,-207),(sign*46,-158),(sign*39,-125),.48,.5)
-        for k in range(4):
-            y=-209+k*21
-            s.bez((sign*30,y),(sign*39,y+4),(sign*48,y+3),(sign*55,y-1),.32,.45)
-        for y in (-223,-129):bolt(s,sign*43,y,1.8,.6)
-    s.bez((-46,-117),(-25,-112),(25,-112),(46,-117),.5,.5)
-    # Pelvis with projecting hip sockets and a separate lower access seam.
-    contour(s,[("M",-37,-69),("C",-53,-66,-67,-58,-69,-42),
-        ("C",-72,-24,-59,-6,-43,1),("C",-27,4,-17,-2,0,-2),
-        ("C",17,-2,27,4,43,1),("C",59,-6,72,-24,69,-42),
-        ("C",67,-58,53,-66,37,-69),("C",18,-64,-18,-64,-37,-69)],
-        a=.82,w=.85,fill=.024,close=True)
-    s.bez((-56,-49),(-31,-42),(31,-42),(56,-49),.5,.55)
-    s.bez((-31,-10),(-18,-17),(18,-17),(31,-10),.4,.5)
-    for i in range(2):dummy_joint(s,hips[i],15,True)
-    # The neck ends exactly in the collar seat at y=-258.
-    s.ellipse(0,-256,20,5,a=.8,w=.65)
-    front_head(s,0,-304,1.25)
+    """One orthographic projection of the shared 3D test-dummy castings."""
+    from projected_dummy import draw, geometry
+    draw(s,'presence',mx,my)
+    data=geometry('presence');scale=data['scale'];dy=data['dy']
+    # The wearable apparatus remains authored vector geometry, on top of the dummy.
+    s.c.save();s.c.translate(mx,my+dy);s.c.scale(scale,scale)
     contour(s,[("M",-31,-316),("C",-17,-321,17,-321,31,-316),
         ("L",29,-300),("C",17,-296,-17,-296,-29,-300)],
-        a=.86,w=.8,fill=.045,close=True,color=ARC)
+        a=.86,w=.8,fill=0,close=True,color=ARC)
     for sign in (-1,1):
         s.rect(sign*34-3,-302,6,14,.75,.55,fill=.2,color=GOLD)
         s.bez((sign*36,-288),(sign*34,-274),(sign*34,-263),(sign*45,-253),.4,.5)
     contour(s,[("M",-21,-214),("L",21,-214),("L",24,-208),("L",24,-164),
         ("L",18,-158),("L",-18,-158),("L",-24,-164),("L",-24,-208)],
         a=.72,w=.65,fill=.028,close=True)
-    s.rect(-13,-201,26,25,.62,.5,color=ARC)
-    for x in (-17,17):
-        for y in (-207,-165):bolt(s,x,y,1.4,.5)
-    for i in range(2):
-        for p1,p2,r1,r2 in ((shoulders[i],elbows[i],21,15),(elbows[i],wrists[i],17,11),
-                            (hips[i],knees[i],32,23),(knees[i],ankles[i],24,12)):
-            muscle_sleeve(s,p1,p2,r1,r2)
-    optical_target(s,0,-234,7)
-    dummy_hand(s,wrists[0],angle=9)
-    dummy_hand(s,wrists[1],angle=-9,side=-1)
+    rounded(s,-15,-203,30,29,6,.72,.55,color=ARC)
+    for x in (-9,0,9):s.circ(x,-166,1.4,.7,.4,color=GOLD)
+    for sign in (-1,1):
+        for kind,r1,r2 in [('upper_arm',21,14),('forearm',16,10),('thigh',23,14),('calf',15,8)]:
+            j=data['joints'][str(sign)+kind]
+            a,b=j['a'],j['b']
+            muscle_sleeve(s,(a[0],-a[2]),(b[0],-b[2]),r1,r2)
     s.c.restore()
 
 
 def proxy_body(s,mx,my):
-    """One set of rigid dummy components, posed twice with no per-side stretching."""
+    """Running pose of the same 3D castings; head intentionally absent."""
+    from projected_dummy import draw
     from leisure import cuff
+    draw(s,'proxy',mx,my)
+    pose=proxy_pose();e,w=pose['near']['elbow'],pose['near']['wrist']
     s.c.save();s.c.translate(mx,my)
-    pose=proxy_pose();sh=pose['shoulder'];hip=pose['hip']
-
-    def side_parts(side,a):
-        q=pose[side]
-        segments=(('upper_arm',sh,q['elbow']),('forearm',q['elbow'],q['wrist']),
-                  ('thigh',hip,q['knee']),('calf',q['knee'],q['ankle']))
-        for name,p1,p2 in segments:
-            length,r1,r2,j1,j2=PROXY_PARTS[name]
-            assert abs(math.dist(p1,p2)-length)<1e-8
-            dummy_segment(s,p1,p2,r1,r2,j1,j2,a)
-        for point,r,target in ((q['elbow'],11,False),(q['knee'],15,True)):
-            dummy_joint(s,point,r,target,a)
-        dummy_foot(s,q['ankle'],angle=q['foot_angle'],a=a)
-
-    side_parts('far',.55)
-    dummy_hand(s,pose['far']['wrist'],angle=pose['far']['hand_angle'],side=-1,a=.55)
-    for r in (20,28,36):s.arc(-116,-40,r,140,220,.4,.5)
-    # Lumbar stack follows the same forward lean as the rib jacket.
-    contour(s,[("M",-28,-69),("L",49,-53),("L",37,-11),("L",-32,-24)],
-        a=.57,w=.6,fill=.012,close=True)
-    for k in range(5):
-        y=-57+k*7;s.bez((-28,y),(-5,y+7),(20,y+10),(44,y+14),.49,.5)
-    contour(s,[("M",-30,-27),("C",-48,-21,-53,1,-49,23),
-        ("C",-46,43,-21,57,1,56),("C",22,54,38,35,44,16),
-        ("C",49,0,39,-13,30,-17),("L",-30,-27)],a=.83,w=.9,fill=.022,close=True)
-    s.bez((-38,-7),(-18,-5),(12,1),(28,9),.46,.5)
-
-    # Rib cage in its own rigid, tilted frame. Convex sternum, flatter back,
-    # sloping clavicle and a distinct collar seat replace the bottle outline.
-    s.c.save();s.c.translate(20,-129);s.c.rotate(math.radians(11.4))
-    contour(s,[("M",-14,-81),("L",14,-81),
-        ("C",25,-78,41,-70,47,-57),("C",58,-38,61,-14,55,7),
-        ("C",51,23,42,47,35,66),("C",18,73,-8,75,-32,67),
-        ("C",-38,49,-41,28,-42,6),("C",-44,-15,-45,-38,-38,-57),
-        ("C",-33,-71,-23,-76,-14,-81)],a=.9,w=.95,fill=.022,close=True)
-    # The neck overlaps the socket by three units; it cannot float above it.
-    contour(s,[("M",-12,-110),("L",12,-110),("L",14,-78),("L",-14,-78)],
-        a=.76,w=.7,fill=.015,close=True)
-    for y in (-105,-99,-93,-87):
-        s.bez((-12,y),(-5,y+2),(5,y+2),(12,y),.62,.55)
-    s.rect(-16,-114,32,5,.82,.7,fill=.03)
-    for x in (-10,10):bolt(s,x,-111,1.4,.6)
-    s.bez((-22,-66),(-34,-42),(-30,-2),(-28,21),.5,.5)
-    s.bez((28,-65),(42,-48),(44,-18),(38,7),.5,.5)
-    for k in range(4):
-        y=-43+k*17;s.bez((18,y),(30,y+5),(41,y+5),(48,y),.4,.5)
-    s.bez((-29,61),(-12,67),(13,66),(31,61),.52,.5)
-    for x,y in ((-28,-52),(36,-49),(-26,50),(28,49)):bolt(s,x,y,1.7,.56)
-    s.c.restore()
-
-    side_parts('near',.8)
-    dummy_joint(s,sh,16,True);dummy_joint(s,hip,18,True)
-    e,w=pose['near']['elbow'],pose['near']['wrist']
     cuff(s,e,w,.52,.98,14,fill=.10,color=ARC)
-    cuff(s,e,w,.70,.86,17,fill=.45,color=GOLD)
-    dummy_hand(s,w,angle=-135,side=-1)
+    # Cast watch case aligned with the already approved wrist orientation.
+    angle=math.atan2(w[1]-e[1],w[0]-e[0])
+    s.c.save();s.c.translate(e[0]+(w[0]-e[0])*.78,e[1]+(w[1]-e[1])*.78);s.c.rotate(angle)
+    rounded(s,-10,-18,20,36,6,.92,.7,.035,GOLD)
+    rounded(s,-6,-12,12,24,4,.8,.5,color=ARC)
+    s.circ(12,0,2.4,.8,.5,color=GOLD);s.c.restore()
+    for r in (20,28,36):s.arc(pose['far']['wrist'][0]-9,pose['far']['wrist'][1]+8,r,140,220,.4,.5)
     s.c.restore()

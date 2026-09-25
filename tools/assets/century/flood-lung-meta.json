@@ -1,0 +1,113 @@
+{
+  "slug": "flood-lung",
+  "notes": {
+    "IMPELLER BELL": "LOW HEAD / HIGH VOLUME FLOW",
+    "HOSE COUPLING": "TWIN CAM LOCK / CAPTIVE SEAL",
+    "SUCTION CAGE": "COARSE DEBRIS SCREEN",
+    "POWER MODULE": "SEALED MOTOR DRIVE"
+  },
+  "parts": 89,
+  "groups": {
+    "B": {
+      "parts": 38,
+      "objects": [
+        "impeller bell",
+        "rotor hub",
+        "twisted rotor blade",
+        "twisted rotor blade.001",
+        "twisted rotor blade.002",
+        "twisted rotor blade.003",
+        "twisted rotor blade.004",
+        "twisted rotor blade.005",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "cooling fin.002",
+        "cooling fin.003",
+        "cooling fin.004",
+        "cooling fin.005",
+        "cooling fin.006",
+        "cooling fin.007",
+        "cooling fin.008",
+        "motor face",
+        "captive fastener.006",
+        "captive fastener.007",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "output shaft",
+        "terminal housing",
+        "motor support",
+        "motor support.001",
+        "motor support.002"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -13,
+        42
+      ]
+    },
+    "C": {
+      "parts": 29,
+      "objects": [
+        "discharge elbow",
+        "quick coupling",
+        "captive fastener.014",
+        "captive fastener.015",
+        "captive fastener.016",
+        "captive fastener.017",
+        "captive fastener.018",
+        "captive fastener.019",
+        "captive fastener.020",
+        "captive fastener.021",
+        "cam lock",
+        "pivot body",
+        "retainer",
+        "captive fastener.022",
+        "captive fastener.023",
+        "captive fastener.024",
+        "captive fastener.025",
+        "captive fastener.026",
+        "captive fastener.027",
+        "cam lock.001",
+        "pivot body.001",
+        "retainer.001",
+        "captive fastener.028",
+        "captive fastener.029",
+        "captive fastener.030",
+        "captive fastener.031",
+        "captive fastener.032",
+        "captive fastener.033",
+        "gasket seat"
+      ],
+      "removed_covers": [],
+      "camera": [
+        33,
+        38
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 3311,
+      "file": "tools/assets/century/flood-lung-A.json"
+    },
+    "B": {
+      "paths": 2074,
+      "file": "tools/assets/century/flood-lung-B.json"
+    },
+    "C": {
+      "paths": 696,
+      "file": "tools/assets/century/flood-lung-C.json"
+    }
+  }
+}

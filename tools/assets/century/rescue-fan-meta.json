@@ -1,0 +1,85 @@
+{
+  "slug": "rescue-fan",
+  "notes": {
+    "LIFT DUCT": "GUARDED ROTOR ABOVE OBSTACLES",
+    "STRETCHER CRADLE": "PATIENT POD / NO FIGURE FITTED",
+    "RANGE HEAD": "LANDING SITE AND POD CLEARANCE",
+    "SUSPENSION": "LOWERED PATIENT CRADLE"
+  },
+  "parts": 163,
+  "groups": {
+    "B": {
+      "parts": 33,
+      "objects": [
+        "lift duct",
+        "rotor hub",
+        "twisted rotor blade",
+        "twisted rotor blade.001",
+        "twisted rotor blade.002",
+        "twisted rotor blade.003",
+        "twisted rotor blade.004",
+        "twisted rotor blade.005",
+        "twisted rotor blade.006",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "motor bridge",
+        "motor bridge.001",
+        "motor bridge.002",
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "cooling fin.002",
+        "motor face",
+        "captive fastener.006",
+        "captive fastener.007",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "output shaft",
+        "terminal housing"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -11,
+        45
+      ]
+    },
+    "C": {
+      "parts": 6,
+      "objects": [
+        "stretcher shell",
+        "patient restraint",
+        "patient restraint.001",
+        "stretcher handle",
+        "stretcher handle.001",
+        "head cushion"
+      ],
+      "removed_covers": [],
+      "camera": [
+        35,
+        41
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 5502,
+      "file": "tools/assets/century/rescue-fan-A.json"
+    },
+    "B": {
+      "paths": 1111,
+      "file": "tools/assets/century/rescue-fan-B.json"
+    },
+    "C": {
+      "paths": 244,
+      "file": "tools/assets/century/rescue-fan-C.json"
+    }
+  }
+}

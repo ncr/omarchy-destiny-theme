@@ -1,0 +1,122 @@
+{
+  "slug": "velvet-hammer",
+  "notes": {
+    "TRANSFER CAM": "Takes the stored load before the jaw retracts.",
+    "SPLIT RING": "Interrupted carrier; opening shown for inspection.",
+    "RELEASE LOG": "Records the sequence, not a declaration of zero shock.",
+    "RETAINING JAW": "A physical hold until the transfer path is engaged."
+  },
+  "parts": 195,
+  "groups": {
+    "B": {
+      "parts": 16,
+      "objects": [
+        "load transfer saddle",
+        "cassette guide",
+        "cassette guide.001",
+        "cam sector",
+        "pivot body.009",
+        "retainer.009",
+        "captive fastener.054",
+        "captive fastener.055",
+        "captive fastener.056",
+        "captive fastener.057",
+        "captive fastener.058",
+        "captive fastener.059",
+        "roller rocker",
+        "wound return spring",
+        "retaining jaw",
+        "release shaft"
+      ],
+      "removed_covers": [],
+      "camera": [
+        22,
+        25
+      ]
+    },
+    "C": {
+      "parts": 60,
+      "objects": [
+        "rounded instrument casting",
+        "instrument bezel",
+        "engraved scale",
+        "engraved scale.001",
+        "engraved scale.002",
+        "engraved scale.003",
+        "engraved scale.004",
+        "face screw",
+        "face screw.001",
+        "bezel captive screw",
+        "bezel captive screw.001",
+        "bezel captive screw.002",
+        "bezel captive screw.003",
+        "instrument dial",
+        "dial needle",
+        "instrument dial.001",
+        "dial needle.001",
+        "case ventilation slot",
+        "case ventilation slot.001",
+        "case ventilation slot.002",
+        "case ventilation slot.003",
+        "case ventilation slot.004",
+        "event strip magazine",
+        "record slot",
+        "record slot.001",
+        "record slot.002",
+        "time-tag loom",
+        "reset crown",
+        "paper roller bearing",
+        "captive fastener.072",
+        "captive fastener.073",
+        "captive fastener.074",
+        "captive fastener.075",
+        "captive fastener.076",
+        "captive fastener.077",
+        "paper roller",
+        "paper roller bearing.001",
+        "captive fastener.078",
+        "captive fastener.079",
+        "captive fastener.080",
+        "captive fastener.081",
+        "captive fastener.082",
+        "captive fastener.083",
+        "paper roller.001",
+        "time strip graduation",
+        "time strip graduation.001",
+        "time strip graduation.002",
+        "time strip graduation.003",
+        "time strip graduation.004",
+        "time strip graduation.005",
+        "time strip graduation.006",
+        "time strip graduation.007",
+        "spool case rib",
+        "spool case rib.001",
+        "spool case rib.002",
+        "spool case rib.003",
+        "spool case rib.004",
+        "spool case rib.005",
+        "spool case rib.006",
+        "paper outlet"
+      ],
+      "removed_covers": [],
+      "camera": [
+        32,
+        33
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 7209,
+      "file": "tools/assets/century/velvet-hammer-A.json"
+    },
+    "B": {
+      "paths": 725,
+      "file": "tools/assets/century/velvet-hammer-B.json"
+    },
+    "C": {
+      "paths": 1995,
+      "file": "tools/assets/century/velvet-hammer-C.json"
+    }
+  }
+}

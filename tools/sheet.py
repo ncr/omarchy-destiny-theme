@@ -113,7 +113,12 @@ class Sheet:
         self.W = width_px / self.s
         self.H = 1080.0
         self.cx = self.W / 2
-        self.cy = self.H / 2
+        if getattr(self, 'triptych', False):
+            self.s = width_px / 2560.0
+            self.W = 2560.0
+            self.H = height_px / self.s
+            self.cx = self.W / 2
+        self.cy = 540.0 if getattr(self, 'triptych', False) else self.H / 2
         self.wide = self.W > 2300  # room for secondary views left and right
         self.inset = 0 if self.wide else Sheet.side_inset
         self.seed = seed
@@ -321,9 +326,24 @@ class Sheet:
             adv.append(c.text_extents(ch).x_advance)
         return adv
 
+    def readable_size(self, size):
+        """Keep type at least 14 native pixels, including fitted side views.
+
+        The floor is seven design units; the font, measuring and audit all
+        use the same value. Sub/superscript glyphs retain their relative size.
+        """
+        if not getattr(self, 'triptych', False):
+            return size
+        m = self.c.get_matrix()
+        scale = min(math.hypot(m.xx, m.yx), math.hypot(m.xy, m.yy)) / self.s
+        return max(size, 7.0 / scale)
+
     def text(self, s, x, y, size=8, track=0.22, a=0.7, align="l", bold=False, color=WHITE, rot=0):
         """Label with letter spacing. Returns the text width."""
         c = self.c
+        size = self.readable_size(size)
+        if getattr(self, 'triptych', False):
+            a = max(a, .60)
         glyphs = self._glyphs(s, size)
         adv = self._advances(glyphs, bold)
         gap = track * size
@@ -496,6 +516,9 @@ class Sheet:
         A single centred character is also centred on its inked shape rather
         than on its advance width, which includes uneven side bearings.
         """
+        size = self.readable_size(size)
+        if getattr(self, 'triptych', False):
+            a = max(a, .60)
         c = self.c
         c.select_font_face(FONT, cairo.FONT_SLANT_NORMAL,
                            cairo.FONT_WEIGHT_BOLD if bold else cairo.FONT_WEIGHT_NORMAL)
@@ -522,6 +545,7 @@ class Sheet:
             self.text(scale, x0 + 24, y + 14, 6.5, a=0.4)
 
     def measure(self, s, size=8, track=0.22, bold=False):
+        size = self.readable_size(size)
         glyphs = self._glyphs(s, size)
         return sum(self._advances(glyphs, bold)) + track * size * (len(glyphs) - 1)
 
@@ -545,7 +569,10 @@ class Sheet:
         is scaled down to fit between the legend and the emblem.
         """
         self.c.save()
-        if not self.wide:
+        self._main_origin = (x, y)
+        if getattr(self, 'triptych', False):
+            self.c.translate(self.cx-x, max(0,self.H-1080)*.35)
+        elif not self.wide:
             # Small enough, and far enough right, that the drawing and its
             # labels clear the legend; high enough to clear the emblem.
             k = 0.72
@@ -555,7 +582,28 @@ class Sheet:
             self.c.translate(-x, -y)
 
     def end_main(self):
+        # Every device gets its A caption here, independently of its renderer.
+        # Use the same boxed letter and typography as the auxiliary B/C views.
+        names = {
+            'quantum-simulator': 'RADIAL CRYOGENIC ENGINE',
+            'sky-racer': 'DUCTED-FAN RACER',
+            'fusion-transport': 'CREWED FUSION TRANSFER VEHICLE',
+            'greener': 'AUTONOMOUS TURF CULTIVATOR',
+            'cortical-mesh': 'CORTICAL SENSOR MESH',
+            'bounder': 'POWERED SPRINT EXOSKELETON',
+            'air-refinery': 'ATMOSPHERIC FUEL SYNTHESIZER',
+            'aroma-organ': 'OLFACTORY SYNTHESIZER',
+            'tether-climber': 'LASER-POWERED ORBITAL CLIMBER',
+            'truth-lamp': 'DINNER-TABLE TRUTH DETECTOR',
+            'organ-foundry': 'AUTOLOGOUS KIDNEY PRINTER',
+            'volumetric-stage': 'FREE-AIR VOLUMETRIC PROJECTOR',
+            'proxy': 'DELEGATED MORNING RUN',
+            'presence-rig': 'OMNIDIRECTIONAL HAPTIC ARENA',
+        }
+        subject = getattr(self, 'subject', None)
         self.c.restore()
+        if subject in names:
+            self.view_label(self.cx,88,'A',names[subject])
 
     def begin_clip_circle(self, x, y, r):
         self.c.save()
@@ -625,6 +673,7 @@ class Sheet:
 
         enabled_by is a list of (discipline, sentence). The emblem goes in the bottom-right corner.
         """
+        self.legend_title = title
         m = 44
         ex, ey = self.W - m - 152 - self.inset, self.H - m - 190
         width, col = 530, 160
@@ -657,9 +706,13 @@ class Sheet:
         ops.append((y + 3, lambda yy: (self.text("PROJECTED FIRST SERVICE", x0, yy, 6.5, a=0.5),
                                        self.text(service, x0 + col, yy, 8, track=0.3, a=0.9, bold=True))))
         top = self.H - m - 46 - (y + 3)
+        self.legend_top = top
         for dy, fn in ops:
             fn(top + dy)
-        self.emblem(ex, ey, t)
+        from collection_layout import signature_box, original_notes
+        ex, ey, radius = signature_box(self)
+        self.emblem(ex, ey, t, r=radius)
+        original_notes(self)
 
     # -- output ----------------------------------------------------------
 

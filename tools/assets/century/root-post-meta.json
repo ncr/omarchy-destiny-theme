@@ -1,0 +1,76 @@
+{
+  "slug": "root-post",
+  "notes": {
+    "MICRODOSE TIP": "DELIVERY BESIDE ACTIVE ROOTS",
+    "ROOT SCANNER": "LOCAL MOISTURE AND IMPEDANCE",
+    "DOSE CARTRIDGE": "TREE SPECIFIC NUTRIENT BLEND",
+    "POWER CANOPY": "OFF GRID FIELD SERVICE"
+  },
+  "parts": 118,
+  "groups": {
+    "B": {
+      "parts": 13,
+      "objects": [
+        "microdose barrel",
+        "injection needle",
+        "meter collar",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "syringe drive",
+        "dose inlet"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -15,
+        43
+      ]
+    },
+    "C": {
+      "parts": 17,
+      "objects": [
+        "root scanner",
+        "scanner tine",
+        "tine collar",
+        "scanner tine.001",
+        "tine collar.001",
+        "scanner tine.002",
+        "tine collar.002",
+        "sensor face",
+        "panel edge",
+        "panel edge.001",
+        "panel seam",
+        "panel seam.001",
+        "panel seam.002",
+        "panel seam.003",
+        "panel seam.004",
+        "housing fastener",
+        "housing fastener.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        26,
+        -18
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 1425,
+      "file": "tools/assets/century/root-post-A.json"
+    },
+    "B": {
+      "paths": 364,
+      "file": "tools/assets/century/root-post-B.json"
+    },
+    "C": {
+      "paths": 228,
+      "file": "tools/assets/century/root-post-C.json"
+    }
+  }
+}

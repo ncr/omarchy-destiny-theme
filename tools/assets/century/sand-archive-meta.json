@@ -1,0 +1,80 @@
+{
+  "slug": "sand-archive",
+  "notes": {
+    "ACCESS THROAT": "REPLACEABLE DUST AND WATER BARRIER",
+    "ARCHIVE DRAWER": "READABLE RECORDS AND DECODING NOTES",
+    "BURIED CHAMBER": "SECTIONED DRY STORAGE ENVELOPE",
+    "DESICCANT": "PASSIVE HUMIDITY BUFFER"
+  },
+  "parts": 61,
+  "groups": {
+    "B": {
+      "parts": 24,
+      "objects": [
+        "access throat",
+        "throat flange",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "throat flange.001",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015",
+        "dust labyrinth",
+        "hatch lid",
+        "hatch handle",
+        "hatch dog",
+        "hatch dog.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -12,
+        46
+      ]
+    },
+    "C": {
+      "parts": 10,
+      "objects": [
+        "archive drawer",
+        "record packet",
+        "packet binding",
+        "record packet.001",
+        "packet binding.001",
+        "record packet.002",
+        "packet binding.002",
+        "drawer rail",
+        "drawer rail.001",
+        "drawer pull"
+      ],
+      "removed_covers": [],
+      "camera": [
+        34,
+        42
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 1555,
+      "file": "tools/assets/century/sand-archive-A.json"
+    },
+    "B": {
+      "paths": 502,
+      "file": "tools/assets/century/sand-archive-B.json"
+    },
+    "C": {
+      "paths": 309,
+      "file": "tools/assets/century/sand-archive-C.json"
+    }
+  }
+}

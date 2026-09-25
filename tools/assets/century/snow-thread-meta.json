@@ -1,0 +1,127 @@
+{
+  "slug": "snow-thread",
+  "notes": {
+    "TRACK BOGIE": "WIDE SHOES / SHARED GROUND LOAD",
+    "SNOW PROBE": "MEASURES AHEAD OF THE LOAD",
+    "SUPPLY CASE": "INSULATED FIELD PAYLOAD",
+    "CABIN": "LOW CENTRE OF MASS"
+  },
+  "parts": 149,
+  "groups": {
+    "B": {
+      "parts": 55,
+      "objects": [
+        "bogie wheel",
+        "wheel hub",
+        "bogie wheel.001",
+        "wheel hub.001",
+        "bogie wheel.002",
+        "wheel hub.002",
+        "track shoe",
+        "track shoe.001",
+        "track shoe.002",
+        "track shoe.003",
+        "track shoe.004",
+        "track shoe.005",
+        "track shoe.006",
+        "track shoe.007",
+        "track shoe.008",
+        "track shoe.009",
+        "track shoe.010",
+        "track shoe.011",
+        "track shoe.012",
+        "track shoe.013",
+        "track shoe.014",
+        "track shoe.015",
+        "track shoe.016",
+        "track shoe.017",
+        "track shoe.018",
+        "track shoe.019",
+        "track shoe.020",
+        "track shoe.021",
+        "track shoe.022",
+        "track shoe.023",
+        "track shoe.024",
+        "track shoe.025",
+        "track shoe.026",
+        "track shoe.027",
+        "track shoe.028",
+        "track shoe.029",
+        "track shoe.030",
+        "track shoe.031",
+        "track shoe.032",
+        "track shoe.033",
+        "track shoe.034",
+        "track shoe.035",
+        "track shoe.036",
+        "track shoe.037",
+        "track shoe.038",
+        "track shoe.039",
+        "track shoe.040",
+        "track shoe.041",
+        "track shoe.042",
+        "track shoe.043",
+        "track end",
+        "track end.001",
+        "bogie suspension",
+        "bogie suspension.001",
+        "bogie suspension.002"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -11,
+        43
+      ]
+    },
+    "C": {
+      "parts": 26,
+      "objects": [
+        "snow probe arm",
+        "probe skid",
+        "probe electrode",
+        "probe electrode.001",
+        "probe electrode.002",
+        "pivot body",
+        "retainer",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "probe spring",
+        "optical barrel",
+        "barrel retaining band",
+        "barrel retaining band.001",
+        "barrel retaining band.002",
+        "lens hood",
+        "lens",
+        "captive fastener.006",
+        "captive fastener.007",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011"
+      ],
+      "removed_covers": [],
+      "camera": [
+        35,
+        39
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 3478,
+      "file": "tools/assets/century/snow-thread-A.json"
+    },
+    "B": {
+      "paths": 2494,
+      "file": "tools/assets/century/snow-thread-B.json"
+    },
+    "C": {
+      "paths": 1033,
+      "file": "tools/assets/century/snow-thread-C.json"
+    }
+  }
+}

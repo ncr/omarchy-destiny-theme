@@ -1,0 +1,90 @@
+{
+  "slug": "balance-thread",
+  "notes": {
+    "TACTILE TILE": "DIRECTIONAL PRESSURE / EARS STAY FREE",
+    "DEPTH SENSOR": "NEARBY OBSTACLES AND ROUTE CUES",
+    "BELT PROCESSOR": "LOCAL MAP / NO AUDIO PROMPTS",
+    "HUMAN USER": "THE PERSON CHOOSES WHERE TO GO"
+  },
+  "parts": 191,
+  "groups": {
+    "B": {
+      "parts": 16,
+      "objects": [
+        "tactile tile",
+        "haptic pad",
+        "haptic pad.001",
+        "tile screw",
+        "tile screw.001",
+        "tactile tile.001",
+        "haptic pad.002",
+        "haptic pad.003",
+        "tile screw.002",
+        "tile screw.003",
+        "tactile tile.002",
+        "haptic pad.004",
+        "haptic pad.005",
+        "tile screw.004",
+        "tile screw.005",
+        "front belt"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -7,
+        34
+      ]
+    },
+    "C": {
+      "parts": 28,
+      "objects": [
+        "depth sensor",
+        "optical barrel",
+        "barrel retaining band",
+        "barrel retaining band.001",
+        "barrel retaining band.002",
+        "lens hood",
+        "lens",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "optical barrel.001",
+        "barrel retaining band.003",
+        "barrel retaining band.004",
+        "barrel retaining band.005",
+        "lens hood.001",
+        "lens.001",
+        "captive fastener.006",
+        "captive fastener.007",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "sensor clip",
+        "sensor fastener",
+        "sensor fastener.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        39,
+        30
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 2874,
+      "file": "tools/assets/century/balance-thread-A.json"
+    },
+    "B": {
+      "paths": 301,
+      "file": "tools/assets/century/balance-thread-B.json"
+    },
+    "C": {
+      "paths": 914,
+      "file": "tools/assets/century/balance-thread-C.json"
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "slug": "breath-shell",
+  "notes": {
+    "SCRUBBER": "REPLACEABLE MONITORED SORBENT",
+    "BREATHING VALVE": "INHALE AND EXHALE PATHS SEPARATED",
+    "RESERVE GAS": "ILLUSTRATIVE EMERGENCY RESERVE",
+    "HUMAN INSIDE": "THE PERSON IS NOT A ROBOT"
+  },
+  "parts": 207,
+  "groups": {
+    "B": {
+      "parts": 31,
+      "objects": [
+        "scrubber cartridge",
+        "conformal vessel seam",
+        "conformal vessel seam.001",
+        "service neck",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "vessel saddle",
+        "vessel saddle.001",
+        "cartridge lock",
+        "cartridge lock.001",
+        "scrubber return",
+        "scrubber cartridge.001",
+        "conformal vessel seam.002",
+        "conformal vessel seam.003",
+        "service neck.001",
+        "captive fastener.006",
+        "captive fastener.007",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "vessel saddle.002",
+        "vessel saddle.003",
+        "cartridge lock.002",
+        "cartridge lock.003",
+        "scrubber return.001",
+        "scrubber manifold"
+      ],
+      "removed_covers": [],
+      "camera": [
+        6,
+        34
+      ]
+    },
+    "C": {
+      "parts": 18,
+      "objects": [
+        "breathing valve",
+        "breathing hose port",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015",
+        "captive fastener.016",
+        "captive fastener.017",
+        "breathing hose port.001",
+        "captive fastener.018",
+        "captive fastener.019",
+        "captive fastener.020",
+        "captive fastener.021",
+        "captive fastener.022",
+        "captive fastener.023",
+        "valve diaphragm",
+        "valve fastener",
+        "valve fastener.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        52,
+        30
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 2927,
+      "file": "tools/assets/century/breath-shell-A.json"
+    },
+    "B": {
+      "paths": 1235,
+      "file": "tools/assets/century/breath-shell-B.json"
+    },
+    "C": {
+      "paths": 730,
+      "file": "tools/assets/century/breath-shell-C.json"
+    }
+  }
+}

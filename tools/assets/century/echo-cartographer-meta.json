@@ -1,0 +1,106 @@
+{
+  "slug": "echo-cartographer",
+  "notes": {
+    "SENSOR GIMBAL": "LIGHT AND ACOUSTIC RANGE CHANNELS",
+    "RETRACTABLE WHEEL": "NARROW MODE FOR TIGHT PASSAGES",
+    "RECOVERY REEL": "PHYSICAL RETURN OPTION",
+    "SERVICE LID": "BATTERY AND MAP STORAGE"
+  },
+  "parts": 126,
+  "groups": {
+    "B": {
+      "parts": 40,
+      "objects": [
+        "pivot body",
+        "retainer",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "sensor fork",
+        "sensor fork.001",
+        "sensor head",
+        "optical barrel",
+        "barrel retaining band",
+        "barrel retaining band.001",
+        "barrel retaining band.002",
+        "lens hood",
+        "lens",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "optical barrel.001",
+        "barrel retaining band.003",
+        "barrel retaining band.004",
+        "barrel retaining band.005",
+        "lens hood.001",
+        "lens.001",
+        "captive fastener.014",
+        "captive fastener.015",
+        "captive fastener.016",
+        "captive fastener.017",
+        "captive fastener.018",
+        "captive fastener.019",
+        "acoustic receiver",
+        "acoustic receiver.001",
+        "acoustic receiver.002"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -13,
+        44
+      ]
+    },
+    "C": {
+      "parts": 20,
+      "objects": [
+        "retractable wheel",
+        "wheel hub",
+        "captive fastener.020",
+        "captive fastener.021",
+        "captive fastener.022",
+        "captive fastener.023",
+        "captive fastener.024",
+        "captive fastener.025",
+        "captive fastener.026",
+        "captive fastener.027",
+        "wheel swing arm",
+        "pivot body.001",
+        "retainer.001",
+        "captive fastener.028",
+        "captive fastener.029",
+        "captive fastener.030",
+        "captive fastener.031",
+        "captive fastener.032",
+        "captive fastener.033",
+        "deployment ram"
+      ],
+      "removed_covers": [],
+      "camera": [
+        33,
+        40
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 2724,
+      "file": "tools/assets/century/echo-cartographer-A.json"
+    },
+    "B": {
+      "paths": 1511,
+      "file": "tools/assets/century/echo-cartographer-B.json"
+    },
+    "C": {
+      "paths": 596,
+      "file": "tools/assets/century/echo-cartographer-C.json"
+    }
+  }
+}

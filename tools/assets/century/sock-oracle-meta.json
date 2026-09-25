@@ -1,0 +1,152 @@
+{
+  "slug": "sock-oracle",
+  "notes": {
+    "SORTING DRUM": "GENTLE MOTION / CLEAN SOCKS ONLY",
+    "PAIRING GATE": "MATCHED PAIR / SEPARATE LONELY DRAWER",
+    "WEAVE CAMERA": "OWNER / WEAVE / WEAR COMPARISON",
+    "LONELY DRAWER": "THE OTHER SOCK IS STILL ELSEWHERE"
+  },
+  "parts": 136,
+  "groups": {
+    "B": {
+      "parts": 57,
+      "objects": [
+        "soft sorting drum",
+        "compliant sorting rib",
+        "compliant sorting rib.001",
+        "compliant sorting rib.002",
+        "compliant sorting rib.003",
+        "compliant sorting rib.004",
+        "compliant sorting rib.005",
+        "compliant sorting rib.006",
+        "compliant sorting rib.007",
+        "drum rim",
+        "drum rim.001",
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "cooling fin.002",
+        "cooling fin.003",
+        "cooling fin.004",
+        "cooling fin.005",
+        "motor face",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "output shaft",
+        "terminal housing",
+        "rear hub",
+        "drum ventilation eye",
+        "drum ventilation eye.001",
+        "drum ventilation eye.002",
+        "drum ventilation eye.003",
+        "drum ventilation eye.004",
+        "drum ventilation eye.005",
+        "drum ventilation eye.006",
+        "drum ventilation eye.007",
+        "drum ventilation eye.008",
+        "drum ventilation eye.009",
+        "drum ventilation eye.010",
+        "drum ventilation eye.011",
+        "drum ventilation eye.012",
+        "drum ventilation eye.013",
+        "drum ventilation eye.014",
+        "drum ventilation eye.015",
+        "drum ventilation eye.016",
+        "drum ventilation eye.017",
+        "drum ventilation eye.018",
+        "drum ventilation eye.019",
+        "drum ventilation eye.020",
+        "drum ventilation eye.021",
+        "drum ventilation eye.022",
+        "drum ventilation eye.023",
+        "drum front spoke",
+        "drum front spoke.001",
+        "optical encoder tab"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -13,
+        45
+      ]
+    },
+    "C": {
+      "parts": 47,
+      "objects": [
+        "pairing pocket",
+        "gate hinge",
+        "motor case.001",
+        "cooling fin.006",
+        "cooling fin.007",
+        "motor face.001",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015",
+        "output shaft.001",
+        "terminal housing.001",
+        "pairing pocket.001",
+        "gate hinge.001",
+        "motor case.002",
+        "cooling fin.008",
+        "cooling fin.009",
+        "motor face.002",
+        "captive fastener.016",
+        "captive fastener.017",
+        "captive fastener.018",
+        "captive fastener.019",
+        "captive fastener.020",
+        "captive fastener.021",
+        "captive fastener.022",
+        "captive fastener.023",
+        "output shaft.002",
+        "terminal housing.002",
+        "diverter tongue",
+        "pocket guide rail",
+        "pocket guide rail.001",
+        "anti-snag roller",
+        "anti-snag roller.001",
+        "anti-snag roller.002",
+        "paired service loom",
+        "paired service loom.001",
+        "pocket guide rail.002",
+        "pocket guide rail.003",
+        "anti-snag roller.003",
+        "anti-snag roller.004",
+        "anti-snag roller.005",
+        "paired service loom.002",
+        "paired service loom.003"
+      ],
+      "removed_covers": [
+        "pairing gate"
+      ],
+      "camera": [
+        33,
+        41
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 2900,
+      "file": "tools/assets/century/sock-oracle-A.json"
+    },
+    "B": {
+      "paths": 1359,
+      "file": "tools/assets/century/sock-oracle-B.json"
+    },
+    "C": {
+      "paths": 1555,
+      "file": "tools/assets/century/sock-oracle-C.json"
+    }
+  }
+}

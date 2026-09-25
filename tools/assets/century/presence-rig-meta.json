@@ -1,0 +1,112 @@
+{
+  "slug": "presence-rig",
+  "notes": {
+    "ROLLER CASSETTE": "REPLACEABLE BAY / FIELD SHOWN SPARSELY",
+    "HUMAN PLAYER": "SHOWN AS DUMMY / EGO NOT TO SCALE",
+    "CAPTIVE TETHER": "REEL / QUICK RELEASE / LOAD PATH",
+    "SUIT INTERFACE": "TACTILE AND MUSCLE BAND CONTROL",
+    "SIGHT AND SOUND": "HEADSET / INNER-EAR INTERFACE",
+    "POWERED FLOOR": "3 m FIELD / OPPOSITE TO PLAYER MOTION"
+  },
+  "parts": 453,
+  "groups": {
+    "B": {
+      "parts": 27,
+      "objects": [
+        "roller cartridge pan",
+        "cartridge roller",
+        "cartridge roller.001",
+        "cartridge roller.002",
+        "cartridge roller.003",
+        "cartridge roller.004",
+        "cartridge roller.005",
+        "cartridge roller.006",
+        "cartridge roller.007",
+        "cartridge roller.008",
+        "roller shaft",
+        "roller shaft.001",
+        "roller shaft.002",
+        "roller bearing rail",
+        "roller bearing rail.001",
+        "motor case",
+        "cooling fin",
+        "motor face",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "output shaft",
+        "terminal housing",
+        "bay connector"
+      ],
+      "removed_covers": [],
+      "camera": [
+        26,
+        36
+      ]
+    },
+    "C": {
+      "parts": 37,
+      "objects": [
+        "tether azimuth bearing",
+        "tether reel",
+        "reel cheek",
+        "captive fastener.006",
+        "captive fastener.007",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "reel cheek.001",
+        "captive fastener.014",
+        "captive fastener.015",
+        "captive fastener.016",
+        "captive fastener.017",
+        "captive fastener.018",
+        "captive fastener.019",
+        "captive fastener.020",
+        "captive fastener.021",
+        "motor case.001",
+        "cooling fin.001",
+        "cooling fin.002",
+        "motor face.001",
+        "captive fastener.022",
+        "captive fastener.023",
+        "captive fastener.024",
+        "captive fastener.025",
+        "captive fastener.026",
+        "captive fastener.027",
+        "captive fastener.028",
+        "captive fastener.029",
+        "output shaft.001",
+        "terminal housing.001",
+        "release clevis",
+        "release pin",
+        "manual pull eye"
+      ],
+      "removed_covers": [],
+      "camera": [
+        26,
+        31
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 7736,
+      "file": "tools/assets/century/presence-rig-A.json"
+    },
+    "B": {
+      "paths": 598,
+      "file": "tools/assets/century/presence-rig-B.json"
+    },
+    "C": {
+      "paths": 1593,
+      "file": "tools/assets/century/presence-rig-C.json"
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "slug": "hand-stead",
+  "notes": {
+    "TOOL GIMBAL": "TWO AXIS DISTURBANCE COMPENSATION",
+    "COMPLIANT CUFF": "BROAD CONTACT / NO RIGID GRIP",
+    "HUMAN HAND": "THE SKILL BELONGS TO THE PERSON",
+    "CONTROL POD": "LOCAL MOTION ESTIMATE"
+  },
+  "parts": 40,
+  "groups": {
+    "B": {
+      "parts": 17,
+      "objects": [
+        "tool gimbal",
+        "gimbal pivot",
+        "gimbal pivot.001",
+        "tool cradle",
+        "optical barrel",
+        "barrel retaining band",
+        "barrel retaining band.001",
+        "barrel retaining band.002",
+        "lens hood",
+        "lens",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "precision tool"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -15,
+        45
+      ]
+    },
+    "C": {
+      "parts": 6,
+      "objects": [
+        "compliant forearm cuff",
+        "cuff pad",
+        "cuff pad.001",
+        "cuff latch",
+        "latch fastener",
+        "latch fastener.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        31,
+        41
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 1312,
+      "file": "tools/assets/century/hand-stead-A.json"
+    },
+    "B": {
+      "paths": 1054,
+      "file": "tools/assets/century/hand-stead-B.json"
+    },
+    "C": {
+      "paths": 253,
+      "file": "tools/assets/century/hand-stead-C.json"
+    }
+  }
+}

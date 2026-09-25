@@ -1,0 +1,88 @@
+{
+  "slug": "metric-embassy",
+  "notes": {
+    "REFERENCE HEAD": "A fitted thread is not proof of electrical compatibility.",
+    "ADAPTOR LIBRARY": "Replaceable keyed cartridges, each with declared limits.",
+    "GAUGE CAROUSEL": "A physical sample precedes any software translation.",
+    "DRIVE INDEX": "Indexing stops before the connector is presented."
+  },
+  "parts": 205,
+  "groups": {
+    "B": {
+      "parts": 30,
+      "objects": [
+        "metrology head",
+        "probe slide",
+        "probe slide.001",
+        "three-wire jaw",
+        "three-wire jaw.001",
+        "reference wire",
+        "reference wire.001",
+        "reference wire.002",
+        "rounded instrument casting",
+        "instrument bezel",
+        "engraved scale",
+        "engraved scale.001",
+        "engraved scale.002",
+        "engraved scale.003",
+        "engraved scale.004",
+        "face screw",
+        "face screw.001",
+        "bezel captive screw",
+        "bezel captive screw.001",
+        "bezel captive screw.002",
+        "bezel captive screw.003",
+        "instrument dial",
+        "dial needle",
+        "instrument dial.001",
+        "dial needle.001",
+        "case ventilation slot",
+        "case ventilation slot.001",
+        "case ventilation slot.002",
+        "case ventilation slot.003",
+        "case ventilation slot.004"
+      ],
+      "removed_covers": [],
+      "camera": [
+        28,
+        33
+      ]
+    },
+    "C": {
+      "parts": 12,
+      "objects": [
+        "keyed adaptor shoe",
+        "coded connector",
+        "connector rim",
+        "contact pin",
+        "contact pin.001",
+        "contact pin.002",
+        "contact pin.003",
+        "contact pin.004",
+        "polarisation key",
+        "thread crest",
+        "thread crest.001",
+        "thread crest.002"
+      ],
+      "removed_covers": [],
+      "camera": [
+        18,
+        32
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 8981,
+      "file": "tools/assets/century/metric-embassy-A.json"
+    },
+    "B": {
+      "paths": 1181,
+      "file": "tools/assets/century/metric-embassy-B.json"
+    },
+    "C": {
+      "paths": 858,
+      "file": "tools/assets/century/metric-embassy-C.json"
+    }
+  }
+}

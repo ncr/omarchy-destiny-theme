@@ -1,0 +1,119 @@
+{
+  "slug": "heat-window",
+  "notes": {
+    "OPTICAL LAMINATE": "DAYLIGHT AND HEAT TRANSFER LAYERS",
+    "EDGE ACTUATOR": "LOCAL CONTROL / MANUAL RELEASE",
+    "JAMB": "REPLACEABLE SERVICE EDGE",
+    "DAYLIGHT SENSOR": "MEASURES USEFUL INDOOR LIGHT"
+  },
+  "parts": 94,
+  "groups": {
+    "B": {
+      "parts": 49,
+      "objects": [
+        "optical laminate",
+        "panel edge",
+        "panel edge.001",
+        "panel seam",
+        "panel seam.001",
+        "panel seam.002",
+        "panel seam.003",
+        "panel seam.004",
+        "panel cross seam",
+        "panel cross seam.001",
+        "panel cross seam.002",
+        "panel cross seam.003",
+        "panel cross seam.004",
+        "panel cross seam.005",
+        "panel cross seam.006",
+        "optical laminate.001",
+        "panel edge.002",
+        "panel edge.003",
+        "panel seam.005",
+        "panel seam.006",
+        "panel seam.007",
+        "panel seam.008",
+        "panel seam.009",
+        "panel cross seam.007",
+        "panel cross seam.008",
+        "panel cross seam.009",
+        "panel cross seam.010",
+        "panel cross seam.011",
+        "panel cross seam.012",
+        "panel cross seam.013",
+        "optical laminate.002",
+        "panel edge.004",
+        "panel edge.005",
+        "panel seam.010",
+        "panel seam.011",
+        "panel seam.012",
+        "panel seam.013",
+        "panel seam.014",
+        "panel cross seam.014",
+        "panel cross seam.015",
+        "panel cross seam.016",
+        "panel cross seam.017",
+        "panel cross seam.018",
+        "panel cross seam.019",
+        "panel cross seam.020",
+        "laminate edge",
+        "laminate edge.001",
+        "laminate edge.002",
+        "laminate edge.003"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -12,
+        41
+      ]
+    },
+    "C": {
+      "parts": 24,
+      "objects": [
+        "edge actuator",
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "cooling fin.002",
+        "cooling fin.003",
+        "cooling fin.004",
+        "motor face",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "output shaft",
+        "terminal housing",
+        "edge drive screw",
+        "edge linkage",
+        "edge linkage.001",
+        "edge linkage.002",
+        "service fastener",
+        "service fastener.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        34,
+        37
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 1160,
+      "file": "tools/assets/century/heat-window-A.json"
+    },
+    "B": {
+      "paths": 229,
+      "file": "tools/assets/century/heat-window-B.json"
+    },
+    "C": {
+      "paths": 596,
+      "file": "tools/assets/century/heat-window-C.json"
+    }
+  }
+}

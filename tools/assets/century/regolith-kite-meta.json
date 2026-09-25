@@ -1,0 +1,120 @@
+{
+  "slug": "regolith-kite",
+  "notes": {
+    "SCOOP DRUM": "CONTROLLED TOOL REACTION",
+    "RAKE MOUTH": "PARTICLE SIZE CONTROL",
+    "SAMPLE VAULT": "DUST SEALED TRANSFER BIN",
+    "LANDING SHOE": "LOW GRAVITY ANCHOR PAD"
+  },
+  "parts": 123,
+  "groups": {
+    "B": {
+      "parts": 44,
+      "objects": [
+        "collection drum",
+        "drum cheek",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "drum cheek.001",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015",
+        "scoop lip",
+        "scoop lip.001",
+        "scoop lip.002",
+        "scoop lip.003",
+        "scoop lip.004",
+        "scoop lip.005",
+        "scoop lip.006",
+        "scoop lip.007",
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "cooling fin.002",
+        "cooling fin.003",
+        "cooling fin.004",
+        "motor face",
+        "captive fastener.016",
+        "captive fastener.017",
+        "captive fastener.018",
+        "captive fastener.019",
+        "captive fastener.020",
+        "captive fastener.021",
+        "captive fastener.022",
+        "captive fastener.023",
+        "output shaft",
+        "terminal housing"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -13,
+        48
+      ]
+    },
+    "C": {
+      "parts": 30,
+      "objects": [
+        "rake mouth",
+        "replaceable tooth",
+        "replaceable tooth.001",
+        "replaceable tooth.002",
+        "replaceable tooth.003",
+        "replaceable tooth.004",
+        "replaceable tooth.005",
+        "replaceable tooth.006",
+        "replaceable tooth.007",
+        "replaceable tooth.008",
+        "replaceable tooth.009",
+        "replaceable tooth.010",
+        "rake pivot",
+        "rake pivot.001",
+        "pivot body",
+        "retainer",
+        "captive fastener.024",
+        "captive fastener.025",
+        "captive fastener.026",
+        "captive fastener.027",
+        "captive fastener.028",
+        "captive fastener.029",
+        "pivot body.001",
+        "retainer.001",
+        "captive fastener.030",
+        "captive fastener.031",
+        "captive fastener.032",
+        "captive fastener.033",
+        "captive fastener.034",
+        "captive fastener.035"
+      ],
+      "removed_covers": [],
+      "camera": [
+        33,
+        44
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 3346,
+      "file": "tools/assets/century/regolith-kite-A.json"
+    },
+    "B": {
+      "paths": 1453,
+      "file": "tools/assets/century/regolith-kite-B.json"
+    },
+    "C": {
+      "paths": 912,
+      "file": "tools/assets/century/regolith-kite-C.json"
+    }
+  }
+}

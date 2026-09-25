@@ -1,0 +1,91 @@
+{
+  "slug": "canal-thread",
+  "notes": {
+    "LOCKING COUPLER": "SEPARABLE POWER AND TOW CONNECTION",
+    "AZIMUTH DRIVE": "ROTATES FOR DOCKING THRUST",
+    "HATCH": "SHALLOW NARROW CARGO HOLD",
+    "DOCKING SENSOR": "SMALL URBAN QUAY APPROACH"
+  },
+  "parts": 83,
+  "groups": {
+    "B": {
+      "parts": 7,
+      "objects": [
+        "coupler cheek",
+        "coupler cheek.001",
+        "coupler pin",
+        "pin retainer",
+        "coupler drawbar",
+        "coupler drawbar.001",
+        "power bridge"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -11,
+        47
+      ]
+    },
+    "C": {
+      "parts": 38,
+      "objects": [
+        "azimuth shaft",
+        "propeller duct",
+        "rotor hub",
+        "twisted rotor blade",
+        "twisted rotor blade.001",
+        "twisted rotor blade.002",
+        "twisted rotor blade.003",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "cooling fin.002",
+        "cooling fin.003",
+        "motor face",
+        "captive fastener.006",
+        "captive fastener.007",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "output shaft",
+        "terminal housing",
+        "steering bearing",
+        "captive fastener.014",
+        "captive fastener.015",
+        "captive fastener.016",
+        "captive fastener.017",
+        "captive fastener.018",
+        "captive fastener.019",
+        "captive fastener.020",
+        "captive fastener.021"
+      ],
+      "removed_covers": [],
+      "camera": [
+        35,
+        43
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 2931,
+      "file": "tools/assets/century/canal-thread-A.json"
+    },
+    "B": {
+      "paths": 424,
+      "file": "tools/assets/century/canal-thread-B.json"
+    },
+    "C": {
+      "paths": 1412,
+      "file": "tools/assets/century/canal-thread-C.json"
+    }
+  }
+}

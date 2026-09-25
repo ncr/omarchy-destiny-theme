@@ -1,0 +1,100 @@
+{
+  "slug": "aroma-command",
+  "notes": {
+    "METER": "FICTIONAL HARDWARE / NOT RECEPTOR DATA",
+    "MIX": "FICTIONAL HARDWARE / NOT RECEPTOR DATA",
+    "CARRIER": "FICTIONAL HARDWARE / NOT RECEPTOR DATA",
+    "OUTLET": "FICTIONAL HARDWARE / NOT RECEPTOR DATA"
+  },
+  "parts": 75,
+  "groups": {
+    "B": {
+      "parts": 42,
+      "objects": [
+        "odorant socket",
+        "socket seal",
+        "metering valve",
+        "valve collar",
+        "valve collar.001",
+        "valve coil connector",
+        "dosing capillary",
+        "odorant socket.001",
+        "socket seal.001",
+        "metering valve.001",
+        "valve collar.002",
+        "valve collar.003",
+        "valve coil connector.001",
+        "dosing capillary.001",
+        "odorant socket.002",
+        "socket seal.002",
+        "metering valve.002",
+        "valve collar.004",
+        "valve collar.005",
+        "valve coil connector.002",
+        "dosing capillary.002",
+        "odorant socket.003",
+        "socket seal.003",
+        "metering valve.003",
+        "valve collar.006",
+        "valve collar.007",
+        "valve coil connector.003",
+        "dosing capillary.003",
+        "odorant socket.004",
+        "socket seal.004",
+        "metering valve.004",
+        "valve collar.008",
+        "valve collar.009",
+        "valve coil connector.004",
+        "dosing capillary.004",
+        "odorant socket.005",
+        "socket seal.005",
+        "metering valve.005",
+        "valve collar.010",
+        "valve collar.011",
+        "valve coil connector.005",
+        "dosing capillary.005"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -13,
+        53
+      ]
+    },
+    "C": {
+      "parts": 12,
+      "objects": [
+        "mixing die",
+        "mixer channel",
+        "mixer channel.001",
+        "mixer channel.002",
+        "mixer channel.003",
+        "mixer channel.004",
+        "mixer channel.005",
+        "outlet tube",
+        "heated outlet",
+        "heater band",
+        "heater band.001",
+        "heater band.002"
+      ],
+      "removed_covers": [],
+      "camera": [
+        33,
+        49
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 4809,
+      "file": "tools/assets/century/aroma-command-A.json"
+    },
+    "B": {
+      "paths": 3312,
+      "file": "tools/assets/century/aroma-command-B.json"
+    },
+    "C": {
+      "paths": 1002,
+      "file": "tools/assets/century/aroma-command-C.json"
+    }
+  }
+}

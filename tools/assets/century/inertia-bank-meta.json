@@ -1,0 +1,98 @@
+{
+  "slug": "inertia-bank",
+  "notes": {
+    "ROTOR STACK": "COUNTER ROTATING STORAGE PAIR",
+    "BEARING CAGE": "CONTACTLESS SUPPORT / TOUCHDOWN RING",
+    "INVERTER": "DC BUS POWER INTERFACE",
+    "VACUUM VESSEL": "FRAGMENT CONTAINMENT SHELL"
+  },
+  "parts": 100,
+  "groups": {
+    "B": {
+      "parts": 22,
+      "objects": [
+        "composite rotor",
+        "rotor spoke",
+        "rotor spoke.001",
+        "rotor spoke.002",
+        "rotor spoke.003",
+        "rotor spoke.004",
+        "rotor spoke.005",
+        "composite rotor.001",
+        "rotor spoke.006",
+        "rotor spoke.007",
+        "rotor spoke.008",
+        "rotor spoke.009",
+        "rotor spoke.010",
+        "rotor spoke.011",
+        "composite rotor.002",
+        "rotor spoke.012",
+        "rotor spoke.013",
+        "rotor spoke.014",
+        "rotor spoke.015",
+        "rotor spoke.016",
+        "rotor spoke.017",
+        "rotor shaft"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -12,
+        45
+      ]
+    },
+    "C": {
+      "parts": 30,
+      "objects": [
+        "bearing stator",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "magnetic pole",
+        "magnetic pole.001",
+        "magnetic pole.002",
+        "magnetic pole.003",
+        "bearing stator.001",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015",
+        "magnetic pole.004",
+        "magnetic pole.005",
+        "magnetic pole.006",
+        "magnetic pole.007",
+        "bearing cage tie",
+        "bearing cage tie.001",
+        "bearing cage tie.002",
+        "bearing cage tie.003"
+      ],
+      "removed_covers": [],
+      "camera": [
+        34,
+        41
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 2675,
+      "file": "tools/assets/century/inertia-bank-A.json"
+    },
+    "B": {
+      "paths": 598,
+      "file": "tools/assets/century/inertia-bank-B.json"
+    },
+    "C": {
+      "paths": 1054,
+      "file": "tools/assets/century/inertia-bank-C.json"
+    }
+  }
+}

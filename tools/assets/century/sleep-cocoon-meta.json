@@ -1,0 +1,134 @@
+{
+  "slug": "sleep-cocoon",
+  "notes": {
+    "HEAD CRADLE": "SUPPORTS WITHOUT FORWARD NECK FLEXION",
+    "SEAT LINKAGE": "SUPPORTED PELVIS THROUGH RECLINE",
+    "FOOT PLATFORM": "BOTH FEET SUPPORTED",
+    "HUMAN ON BREAK": "REST IS A SCHEDULED OPERATION"
+  },
+  "parts": 294,
+  "groups": {
+    "B": {
+      "parts": 10,
+      "objects": [
+        "head cradle",
+        "lateral head pad",
+        "lateral head pad.001",
+        "headrest post",
+        "headrest adjuster",
+        "headrest height rail",
+        "headrest lock",
+        "headrest height rail.001",
+        "headrest lock.001",
+        "release loop"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -7,
+        39
+      ]
+    },
+    "C": {
+      "parts": 78,
+      "objects": [
+        "seat parallelogram",
+        "seat parallelogram.001",
+        "pivot body",
+        "retainer",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "pivot body.001",
+        "retainer.001",
+        "captive fastener.006",
+        "captive fastener.007",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "pivot body.002",
+        "retainer.002",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015",
+        "captive fastener.016",
+        "captive fastener.017",
+        "pivot body.003",
+        "retainer.003",
+        "captive fastener.018",
+        "captive fastener.019",
+        "captive fastener.020",
+        "captive fastener.021",
+        "captive fastener.022",
+        "captive fastener.023",
+        "recline damper",
+        "lower linkage bracket",
+        "fixed linkage knuckle",
+        "seat linkage knuckle",
+        "seat mounting post",
+        "seat parallelogram.002",
+        "seat parallelogram.003",
+        "pivot body.004",
+        "retainer.004",
+        "captive fastener.024",
+        "captive fastener.025",
+        "captive fastener.026",
+        "captive fastener.027",
+        "captive fastener.028",
+        "captive fastener.029",
+        "pivot body.005",
+        "retainer.005",
+        "captive fastener.030",
+        "captive fastener.031",
+        "captive fastener.032",
+        "captive fastener.033",
+        "captive fastener.034",
+        "captive fastener.035",
+        "pivot body.006",
+        "retainer.006",
+        "captive fastener.036",
+        "captive fastener.037",
+        "captive fastener.038",
+        "captive fastener.039",
+        "captive fastener.040",
+        "captive fastener.041",
+        "pivot body.007",
+        "retainer.007",
+        "captive fastener.042",
+        "captive fastener.043",
+        "captive fastener.044",
+        "captive fastener.045",
+        "captive fastener.046",
+        "captive fastener.047",
+        "recline damper.001",
+        "lower linkage bracket.001",
+        "fixed linkage knuckle.001",
+        "seat linkage knuckle.001",
+        "seat mounting post.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        39,
+        35
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 6444,
+      "file": "tools/assets/century/sleep-cocoon-A.json"
+    },
+    "B": {
+      "paths": 456,
+      "file": "tools/assets/century/sleep-cocoon-B.json"
+    },
+    "C": {
+      "paths": 2766,
+      "file": "tools/assets/century/sleep-cocoon-C.json"
+    }
+  }
+}
