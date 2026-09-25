@@ -47,8 +47,8 @@ def main():
     else:
         if not shutil.which('imv'):
             ap.error('imv is required; on Omarchy run: omarchy pkg add imv')
-        if local and not shutil.which('xdg-terminal-exec'):
-            ap.error('xdg-terminal-exec is required for setup from the application menu')
+        if local and not (shutil.which('foot') or shutil.which('xdg-terminal-exec')):
+            ap.error('foot or xdg-terminal-exec is required for setup from the application menu')
         if launcher.exists() and MARKER not in launcher.read_text():
             ap.error(f'Refusing to overwrite an unrelated executable: {launcher}')
         if desktop.exists() and 'StartupWMClass=destiny-wallpapers' not in desktop.read_text():

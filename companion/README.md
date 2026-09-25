@@ -5,7 +5,7 @@ The theme installed through Omarchy's menu is data only: it cannot install or
 launch this app by itself. Explicitly run the companion installer once:
 
 ```sh
-omarchy pkg add imv gum          # only if missing
+omarchy pkg add imv              # only if missing
 python3 companion/install.py
 ```
 
@@ -14,10 +14,12 @@ application menu, and opens it automatically in a graphical session. Use
 `--no-launch` to install without opening it. No sudo, permanent viewer autostart,
 or compositor configuration changes are involved.
 
-## First launch: two choices in a terminal
+## First launch: two choices in a full-screen TUI
 
-Setup runs in your current terminal, or opens the default terminal when started
-from the application menu. There is no GTK setup window or countdown.
+Setup uses a full-screen TUI with bold choices and a strong selection highlight.
+It runs in your current terminal. From the application menu, it opens Foot
+full-screen with a large 20-point font, falling back to the default terminal.
+This font setting applies only to the setup window; no terminal config changes.
 
 - **Perfectly good** — the smallest suitable set for all connected monitors.
 - **I don't care, I want the biggest everything** — the highest resolution
@@ -26,8 +28,9 @@ from the application menu. There is no GTK setup window or countdown.
 Each choice shows its total MB. One short reason explains the recommendation,
 including why a smaller file loses if it would crop content or require
 upscaling. If both policies currently resolve to the same set, setup says so.
-Arrow keys choose; Enter applies; Escape cancels. Without `gum`, a simple
-numbered prompt works too. The selected policy is remembered, so new exports
+Arrow keys choose; Enter applies; Escape cancels. Python's standard curses
+module renders the TUI; a numbered prompt supports non-interactive terminals.
+The selected policy is remembered, so new exports
 and monitor changes can be handled without asking for a resolution again.
 `--configure` reopens setup; `--show-plan` provides the full read-only details.
 Existing graphical-setup installations see the terminal choice once.

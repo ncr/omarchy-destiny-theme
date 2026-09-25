@@ -47,10 +47,10 @@ python3 ~/.config/omarchy/themes/destiny/companion/install.py
 ```
 
 The installer opens Destiny Wallpapers automatically. First-launch setup runs
-in the terminal with two options: **Perfectly good** (smallest suitable set)
+in a full-screen TUI with two bold options: **Perfectly good** (smallest suitable set)
 and **I don't care, I want the biggest everything** (highest matching
 resolution). Both show their MB; one sentence explains the recommendation.
-Enter applies, Escape cancels. The application menu opens the default terminal
+Enter applies, Escape cancels. The application menu opens a large-font Foot window (or the default terminal)
 for this step; subsequent launches go straight to the gallery.
 
 Both native formats live on **main**; there is no separate ultrawide branch:
@@ -213,7 +213,7 @@ An optional fullscreen browser with keyboard navigation, automatic screen-format
 selection and a first-launch explanation. Install and open it from this checkout:
 
 ```bash
-omarchy pkg add imv gum  # only if missing
+omarchy pkg add imv      # only if missing
 python3 companion/install.py
 ```
 
