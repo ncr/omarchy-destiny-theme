@@ -19,8 +19,8 @@ and a `.desktop` entry. No sudo or compositor configuration changes.
 If `~/.local/bin` is not on PATH, use the application menu or the full path.
 
 The app reads `docs/collection/catalog.json` in this checkout. In the current
-development checkout that is all 34 retained wallpapers, in collection order.
-A fresh clone without development renders shows the 14 shipped backgrounds.
+development checkout that is all 42 retained wallpapers, in collection order.
+A fresh clone without development renders shows all 42 shipped backgrounds.
 Rejected concepts are excluded. Generated HTML galleries and symlinks are not
 required. The actual title bar always shows the available image count.
 

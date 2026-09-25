@@ -21,8 +21,11 @@ def main():
             print('DEADLINE: stopping before next model',flush=True);break
         t=time.time();print('BUILD',entry['number'],entry['slug'],flush=True)
         from century.quality_geometry import BUILDERS as quality_builders
+        from century.extension_geometry import BUILDERS as extension_builders
         kit.reset(entry)
-        if entry['number'] in quality_builders:
+        if entry['number'] in extension_builders:
+            az,el=extension_builders[entry['number']]()
+        elif entry['number'] in quality_builders:
             az,el=quality_builders[entry['number']]()
         else:
             mod=importlib.import_module('century.'+entry['domain'])

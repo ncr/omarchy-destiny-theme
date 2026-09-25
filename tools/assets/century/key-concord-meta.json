@@ -1,0 +1,92 @@
+{
+  "slug": "key-concord",
+  "notes": {
+    "KEY ONE": "One input cannot manufacture the other person's consent.",
+    "KEY TWO": "Identical mechanical authority; no master cylinder.",
+    "COINCIDENCE YOKE": "Both pawls must clear before the output can travel.",
+    "WITHDRAWAL": "Either input may withdraw before bolt release."
+  },
+  "parts": 152,
+  "groups": {
+    "B": {
+      "parts": 24,
+      "objects": [
+        "coincidence yoke",
+        "equal-input lever",
+        "pivot body",
+        "retainer",
+        "captive fastener.016",
+        "captive fastener.017",
+        "captive fastener.018",
+        "captive fastener.019",
+        "captive fastener.020",
+        "captive fastener.021",
+        "blocking pawl",
+        "wound return spring",
+        "equal-input lever.001",
+        "pivot body.001",
+        "retainer.001",
+        "captive fastener.022",
+        "captive fastener.023",
+        "captive fastener.024",
+        "captive fastener.025",
+        "captive fastener.026",
+        "captive fastener.027",
+        "blocking pawl.001",
+        "wound return spring.001",
+        "coincidence pivot"
+      ],
+      "removed_covers": [],
+      "camera": [
+        24,
+        50
+      ]
+    },
+    "C": {
+      "parts": 22,
+      "objects": [
+        "revocation side rail",
+        "revocation side rail.001",
+        "revocation end bridge",
+        "revocation end bridge.001",
+        "witness bridge",
+        "keeper fastener",
+        "keeper fastener.001",
+        "keeper fastener.002",
+        "keeper fastener.003",
+        "retractable bolt",
+        "return guide",
+        "return guide.001",
+        "wound return spring.002",
+        "manual return crown",
+        "crown knurl",
+        "crown knurl.001",
+        "crown knurl.002",
+        "crown knurl.003",
+        "crown knurl.004",
+        "crown knurl.005",
+        "crown knurl.006",
+        "crown knurl.007"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -20,
+        35
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 3953,
+      "file": "tools/assets/century/key-concord-A.json"
+    },
+    "B": {
+      "paths": 506,
+      "file": "tools/assets/century/key-concord-B.json"
+    },
+    "C": {
+      "paths": 355,
+      "file": "tools/assets/century/key-concord-C.json"
+    }
+  }
+}

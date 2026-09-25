@@ -1,0 +1,108 @@
+{
+  "slug": "resonance-tailor",
+  "notes": {
+    "CENTRE MASS": "Mass position changes the tuning of this branch.",
+    "SHORT BRANCH": "Three unequal branches target different narrow bands.",
+    "LOCK BRIDGE": "Locking follows measurement, never a guess by ear.",
+    "HOST CLAMP": "Energy enters from the vibrating host structure."
+  },
+  "parts": 148,
+  "groups": {
+    "B": {
+      "parts": 46,
+      "objects": [
+        "fork root.001",
+        "parallel flexure.002",
+        "parallel flexure.003",
+        "sliding mass.001",
+        "mass cheek.002",
+        "mass cheek.003",
+        "tuning leadscrew.001",
+        "screw witness.010",
+        "screw witness.011",
+        "screw witness.012",
+        "screw witness.013",
+        "screw witness.014",
+        "screw witness.015",
+        "screw witness.016",
+        "screw witness.017",
+        "screw witness.018",
+        "screw witness.019",
+        "screw witness.020",
+        "screw witness.021",
+        "screw witness.022",
+        "screw witness.023",
+        "screw witness.024",
+        "rounded instrument casting.001",
+        "instrument bezel.001",
+        "engraved scale.005",
+        "engraved scale.006",
+        "engraved scale.007",
+        "engraved scale.008",
+        "engraved scale.009",
+        "face screw.002",
+        "face screw.003",
+        "bezel captive screw.004",
+        "bezel captive screw.005",
+        "bezel captive screw.006",
+        "bezel captive screw.007",
+        "instrument dial.002",
+        "dial needle.002",
+        "instrument dial.003",
+        "dial needle.003",
+        "case ventilation slot.005",
+        "case ventilation slot.006",
+        "case ventilation slot.007",
+        "case ventilation slot.008",
+        "case ventilation slot.009",
+        "wound return spring.001",
+        "end stop.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        30,
+        27
+      ]
+    },
+    "C": {
+      "parts": 16,
+      "objects": [
+        "locking bridge",
+        "lock screw",
+        "lock knob",
+        "lock screw.001",
+        "lock knob.001",
+        "crossed flexure one",
+        "crossed flexure two",
+        "travel stop",
+        "flexure anchorage",
+        "flexure clamp",
+        "flexure anchorage.001",
+        "flexure clamp.001",
+        "flexure anchorage.002",
+        "flexure clamp.002",
+        "flexure anchorage.003",
+        "flexure clamp.003"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -20,
+        30
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 7812,
+      "file": "tools/assets/century/resonance-tailor-A.json"
+    },
+    "B": {
+      "paths": 3011,
+      "file": "tools/assets/century/resonance-tailor-B.json"
+    },
+    "C": {
+      "paths": 794,
+      "file": "tools/assets/century/resonance-tailor-C.json"
+    }
+  }
+}

@@ -22,7 +22,7 @@ def collection(directory):
 
 
 def finalized_collection():
-    """Use the retained registry; a clean checkout can show shipped originals.
+    """Use the retained registry; a clean checkout shows the complete shipped set.
 
     The generated ranking gallery is optional and is not a runtime dependency.
     Rejected Century studies are never discovered by scanning render folders.
@@ -35,7 +35,7 @@ def finalized_collection():
         source = (ROOT / entry['source']).resolve()
         if not source.is_relative_to(ROOT):
             raise ValueError('Collection source must be inside the theme checkout')
-        if not source.is_file() and entry['id'].startswith('o'):
+        if not source.is_file():
             source = ROOT / 'backgrounds' / source.name
         if source.is_file():
             files.append(source)

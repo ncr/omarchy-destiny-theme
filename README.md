@@ -5,21 +5,24 @@ first Destiny game: deep-space navy, ice-white text, square corners, thin
 frames, and Arc blue, Void purple, Solar orange and exotic gold at full
 strength.
 
-It ships 14 wallpapers drawn as engineering sheets. Each shows a device that
+It ships 42 wallpapers drawn as engineering sheets. Each shows a device that
 does not exist yet, says what it does, and lists the discoveries it is waiting
 for. Every sheet has its own colour mood.
 
 ![Desktop with Neovim, fastfetch and btop](preview.png)
 
-![All fourteen wallpapers](previews/wallpapers.webp)
+![All 42 wallpapers](previews/wallpapers.webp)
 
-*The gallery follows this branch's aspect ratio. The 21:9 version includes
-extra views; the 16:9 version uses the compact layout.*
+*The gallery follows this branch's aspect ratio. Both native formats retain
+the full three-column layout, two service views, individual diagrams and Field Notes.*
 
 Only the drawing technique is borrowed from the game — thin white line work,
 tick rings, leader lines, spaced capitals. No weapon, character, place, symbol
 or name from the game appears anywhere. This is a fan project, not affiliated
 with or endorsed by Bungie.
+
+The eight latest machines and their research notes are documented in
+[Extension to 42](docs/collection/EXTENSION-42.pl.md).
 
 ## Install
 
@@ -43,8 +46,8 @@ repository has two branches:
 
 | Branch | Wallpapers | For |
 |--------|-----------|-----|
-| `main` | 16:9, 5120×2880 | 16:9 at any size up to 5K. Also 16:10 and 3:2 laptops: the legend and the emblem sit far enough from the sides to survive that crop. |
-| `ultrawide` | 21:9, 5120×2160 | 3440×1440, 5120×2160 and similar. These sheets add two secondary views, a chart and a data table. |
+| `main` | 16:9, 5120×2880 | Native 16:9 layout up to 5K; use an uncropped fit on other aspect ratios. |
+| `ultrawide` | 21:9, 5120×2160 | 3440×1440, 5120×2160 and similar. Full triptych layout at the native ultrawide aspect ratio. |
 
 On an ultrawide screen, switch after installing:
 
@@ -204,8 +207,7 @@ python3 companion/install.py
 Open **Destiny Wallpapers** from the application menu, or run
 `destiny-wallpapers`. Use **← / →** to browse, **F** for fullscreen,
 **I** for the filename, and **Esc** to close. The app reads current images
-from the checkout: all 34 retained sheets when rendered locally, or the 14
-shipped backgrounds on a fresh clone. Rejected studies are excluded.
+from the checkout: all 42 retained sheets, including on a fresh clone. Rejected studies are excluded.
 
 [Installation, updates and removal](companion/README.md).
 

@@ -663,3 +663,23 @@ Audyt przechodził, bo mierzył odstęp do następnej sekcji, lecz nie do rysunk
 
 Porównanie `concepts/century/attached-captions/` zachowuje poprzednią korektę
 `vertical-rhythm` jako wersję przed; nie przepisuj jej archiwum.
+
+## 27. Rozszerzenie do 42 i kontrola połączeń
+
+Osiem nowych urządzeń opisano w `docs/collection/EXTENSION-42.pl.md`.
+Nie wracaj do 80 odrzuconych koncepcji. Numery katalogowe zachowują historię,
+a o członkostwie i liczbie 42 decyduje `docs/collection/catalog.json`.
+
+- Liczba części modelu nie świadczy o widocznym detalu: osłona może zasłonić
+  całą sprężynę. Obejrzyj B/C od strony mechanizmu i otwórz korpus świadomie.
+- Sprawdź wszystkie punkty mocowania: koniec podpory musi dochodzić do odlewu,
+  napinacz do wspornika, trunnion do jarzma. Nie uznawaj pozornego styku
+  w projekcji za połączenie w modelu.
+- Grupa podzespołu powinna obejmować transformację części **i przewodów**.
+  `group()` wewnątrz `at()` może zachować stare współrzędne przewodu, ponieważ
+  transformacja wymienia jego zapis. Obejmij `at()` zewnętrzną grupą.
+- Przewód należący do całej maszyny nie powinien wydłużać obwiedni odłączonej
+  kasety serwisowej. Rozdziel pigtail kasety i dalszą wiązkę głównej sceny.
+- Zestaw dostarczany w Git i aplikacja mają mieć tę samą liczbę pozycji.
+  Użyj `release_collection.py`; sprawdź też aplikację na świeżym klonie bez
+  katalogu `concepts/`, a nie tylko na stanowisku autora.

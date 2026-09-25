@@ -47,7 +47,7 @@ def draw_view(s,entry,key,cx,cy,width,height):
             'accent':(.86,.62,ARC),'cable':(.64,.47,GOLD),'figure':(.90,.80,WHITE)}
     from century.editorial import DATA
     from century.editorial_second import DATA as SECOND
-    if entry['number'] in DATA or entry['number'] in SECOND:
+    if entry['number'] in DATA or entry['number'] in SECOND or entry['number']>100:
         styles['detail']=(.79,.54,WHITE)
         styles['shell']=(.52,.38,WHITE)
     for path in d['paths']:
@@ -75,7 +75,7 @@ def callouts(s,entry,anchors,mx,my):
 def compose(entry,size=(5120,2160),audit_hook=None):
     Sheet.side_inset=150 if size[0]/size[1]<2 else 0
     s=CenturySheet(*size,seed=entry['seed']);s.entry=entry;s.subject=entry['slug'];s.set_palette(entry['palette'])
-    s.background();s.begin_lines();s.grid();s.frame(entry['number'])
+    s.background();s.begin_lines();s.grid();s.frame(entry['number'],entry.get('series_total',100))
     if audit_hook:audit_hook(s)
     mx,my=s.cx-70,505
     s.begin_main(mx,my)
@@ -97,6 +97,8 @@ def compose(entry,size=(5120,2160),audit_hook=None):
     draw_editorial(s,entry)
     from century.editorial_second import draw as draw_second
     draw_second(s,entry)
+    from century.extension_editorial import draw as draw_extension
+    draw_extension(s,entry)
     s.end_lines()
     return s
 

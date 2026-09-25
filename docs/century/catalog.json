@@ -10648,5 +10648,715 @@
     },
     "view_B_note": "ROOT ELECTRODES / ASK THE SOIL FIRST",
     "view_C_note": "METER AND PUMP / NO EDITABLE ALIBI"
+  },
+  {
+    "number": 101,
+    "slug": "velvet-hammer",
+    "title": "VELVET HAMMER",
+    "domain": "orbital",
+    "recipe": "velvet_hammer",
+    "category": "NON-PYROTECHNIC PAYLOAD RELEASE",
+    "purpose": "NON-PYROTECHNIC PAYLOAD RELEASE",
+    "narrative": "Releases an orbital payload by transferring preload before retracting the retaining jaws. The separation should make an event log, not an entrance.",
+    "real_basis": "Non-pyrotechnic release mechanisms and controlled transfer of stored strain energy.",
+    "required_breakthroughs": "A flight-qualified synchronised release that stays reliable through thermal cycling and contamination.",
+    "view_A": "OPEN LOAD-TRANSFER COLLAR",
+    "view_B": "TRANSFER CAM CASSETTE",
+    "view_C": "EVENT STRIP RECORDER",
+    "view_B_note": "ROLLER / RETURN SPRING / RETAINING JAW",
+    "view_C_note": "TIME TAGS / RELEASE IS NOT ZERO SHOCK",
+    "palette": "umber",
+    "model": "VH-3",
+    "service_year": "2072",
+    "human_role": "none",
+    "seed": 203838,
+    "series_total": 110,
+    "parameters": [
+      [
+        "STATUS",
+        "ORIGINAL CONCEPT STUDY"
+      ]
+    ],
+    "sources": [
+      "https://ntrs.nasa.gov/api/citations/19970021613/downloads/19970021613.pdf"
+    ],
+    "source_scope": "Established principle; original speculative hardware. Diagram models and fictional records explicitly scoped.",
+    "source_files": [
+      "tools/century/extension_geometry.py",
+      "tools/century/extension_editorial.py"
+    ],
+    "status": "finished / retained",
+    "review_notes": [],
+    "curation": {
+      "status": "retained",
+      "review": "autonomous extension to 42",
+      "reason": "Distinct mechanism, service geometry and editorial diagrams; no recycled rejected concept."
+    },
+    "built": {
+      "at": "2026-09-25T13:56:15.192397+00:00",
+      "seconds": 0.26,
+      "parts": 195,
+      "views": {
+        "A": {
+          "paths": 7209,
+          "file": "tools/assets/century/velvet-hammer-A.json"
+        },
+        "B": {
+          "paths": 725,
+          "file": "tools/assets/century/velvet-hammer-B.json"
+        },
+        "C": {
+          "paths": 1995,
+          "file": "tools/assets/century/velvet-hammer-C.json"
+        }
+      }
+    },
+    "validation": {
+      "layout": {
+        "wide": true,
+        "16-9": true
+      },
+      "files": true,
+      "visual_review": "agent-reviewed after corrections / user delegated autonomous completion"
+    },
+    "rendered": {
+      "wide": {
+        "file": "concepts/century/wide/101-velvet-hammer.webp",
+        "size": [
+          5120,
+          2160
+        ],
+        "seconds": 8.04
+      },
+      "16-9": {
+        "file": "concepts/century/16-9/101-velvet-hammer.webp",
+        "size": [
+          5120,
+          2880
+        ],
+        "seconds": 10.82
+      }
+    }
+  },
+  {
+    "number": 103,
+    "slug": "bubble-bailiff",
+    "title": "BUBBLE BAILIFF",
+    "domain": "habitats",
+    "recipe": "bubble_bailiff",
+    "category": "MICROGRAVITY COOLANT GAS TRAP",
+    "purpose": "MICROGRAVITY COOLANT GAS TRAP",
+    "narrative": "Separates stray gas from a recirculating coolant loop when bubbles refuse to rise. The gas is held in custody until a controlled vent is available.",
+    "real_basis": "Wetted capillary membranes can exclude gas below their bubble-point pressure.",
+    "required_breakthroughs": "Coolant-compatible surface chemistry and a recoverable separator that resists fouling.",
+    "view_A": "SINUOUS SEPARATION MANIFOLD",
+    "view_B": "WETTED MEMBRANE DRAWER",
+    "view_C": "GAS CUSTODY BUFFER",
+    "view_B_note": "WICK SUPPORT / FLOW CHANNELS / RETAINERS",
+    "view_C_note": "ISOLATION STEM / VENT WHEEL / INVENTORY",
+    "palette": "navy",
+    "model": "BB-2",
+    "service_year": "2076",
+    "human_role": "none",
+    "seed": 204112,
+    "series_total": 110,
+    "parameters": [
+      [
+        "STATUS",
+        "ORIGINAL CONCEPT STUDY"
+      ]
+    ],
+    "sources": [
+      "https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/20100033580.pdf"
+    ],
+    "source_scope": "Established principle; original speculative hardware. Diagram models and fictional records explicitly scoped.",
+    "source_files": [
+      "tools/century/extension_geometry.py",
+      "tools/century/extension_editorial.py"
+    ],
+    "status": "finished / retained",
+    "review_notes": [],
+    "curation": {
+      "status": "retained",
+      "review": "autonomous extension to 42",
+      "reason": "Distinct mechanism, service geometry and editorial diagrams; no recycled rejected concept."
+    },
+    "built": {
+      "at": "2026-09-25T13:54:15.533863+00:00",
+      "seconds": 0.19,
+      "parts": 151,
+      "views": {
+        "A": {
+          "paths": 4476,
+          "file": "tools/assets/century/bubble-bailiff-A.json"
+        },
+        "B": {
+          "paths": 558,
+          "file": "tools/assets/century/bubble-bailiff-B.json"
+        },
+        "C": {
+          "paths": 1979,
+          "file": "tools/assets/century/bubble-bailiff-C.json"
+        }
+      }
+    },
+    "validation": {
+      "layout": {
+        "wide": true,
+        "16-9": true
+      },
+      "files": true,
+      "visual_review": "agent-reviewed after corrections / user delegated autonomous completion"
+    },
+    "rendered": {
+      "wide": {
+        "file": "concepts/century/wide/103-bubble-bailiff.webp",
+        "size": [
+          5120,
+          2160
+        ],
+        "seconds": 7.89
+      },
+      "16-9": {
+        "file": "concepts/century/16-9/103-bubble-bailiff.webp",
+        "size": [
+          5120,
+          2880
+        ],
+        "seconds": 10.49
+      }
+    }
+  },
+  {
+    "number": 104,
+    "slug": "key-concord",
+    "title": "KEY CONCORD",
+    "domain": "civic",
+    "recipe": "key_concord",
+    "category": "TWO-PERSON CONSENT LATCH",
+    "purpose": "TWO-PERSON CONSENT LATCH",
+    "narrative": "Opens a shared compartment only while two independent key holders agree. Rank, urgency and a louder voice do not count as a second key.",
+    "real_basis": "Mechanical interlocks can implement two independent permissive conditions.",
+    "required_breakthroughs": "A tamper-evident, fail-secure mechanism with a separately defined emergency procedure.",
+    "view_A": "EQUAL-AUTHORITY LOCKBODY",
+    "view_B": "COINCIDENCE YOKE",
+    "view_C": "RETRACTABLE KEEPER",
+    "view_B_note": "TWO BARRELS / ONE SHARED PERMISSION",
+    "view_C_note": "BOLT / RETURN SPRING / WITNESS WINDOW",
+    "palette": "grass",
+    "model": "KC-2",
+    "service_year": "2068",
+    "human_role": "none",
+    "seed": 204249,
+    "series_total": 110,
+    "parameters": [
+      [
+        "STATUS",
+        "ORIGINAL CONCEPT STUDY"
+      ]
+    ],
+    "sources": [],
+    "source_scope": "Established principle; original speculative hardware. Diagram models and fictional records explicitly scoped.",
+    "source_files": [
+      "tools/century/extension_geometry.py",
+      "tools/century/extension_editorial.py"
+    ],
+    "status": "finished / retained",
+    "review_notes": [],
+    "curation": {
+      "status": "retained",
+      "review": "autonomous extension to 42",
+      "reason": "Distinct mechanism, service geometry and editorial diagrams; no recycled rejected concept."
+    },
+    "built": {
+      "at": "2026-09-25T13:54:15.751763+00:00",
+      "seconds": 0.21,
+      "parts": 152,
+      "views": {
+        "A": {
+          "paths": 3953,
+          "file": "tools/assets/century/key-concord-A.json"
+        },
+        "B": {
+          "paths": 506,
+          "file": "tools/assets/century/key-concord-B.json"
+        },
+        "C": {
+          "paths": 355,
+          "file": "tools/assets/century/key-concord-C.json"
+        }
+      }
+    },
+    "validation": {
+      "layout": {
+        "wide": true,
+        "16-9": true
+      },
+      "files": true,
+      "visual_review": "agent-reviewed after corrections / user delegated autonomous completion"
+    },
+    "rendered": {
+      "wide": {
+        "file": "concepts/century/wide/104-key-concord.webp",
+        "size": [
+          5120,
+          2160
+        ],
+        "seconds": 8.19
+      },
+      "16-9": {
+        "file": "concepts/century/16-9/104-key-concord.webp",
+        "size": [
+          5120,
+          2880
+        ],
+        "seconds": 10.74
+      }
+    }
+  },
+  {
+    "number": 105,
+    "slug": "metric-embassy",
+    "title": "METRIC EMBASSY",
+    "domain": "industry",
+    "recipe": "metric_embassy",
+    "category": "CONNECTOR COMPATIBILITY STATION",
+    "purpose": "CONNECTOR COMPATIBILITY STATION",
+    "narrative": "Identifies a visiting connector before authorising an adapter. A thread that goes in is considered an introduction, not proof of compatibility.",
+    "real_basis": "Dimensional metrology and thread pitch-diameter measurement using calibrated gauges.",
+    "required_breakthroughs": "A verified interface library covering mechanical, electrical and fluid compatibility.",
+    "view_A": "OPEN GAUGE CAROUSEL",
+    "view_B": "THREE-WIRE PROBE HEAD",
+    "view_C": "KEYED ADAPTOR CARTRIDGE",
+    "view_B_note": "CONTACT WIRES / TRAVEL / ZERO REFERENCE",
+    "view_C_note": "THREAD CRESTS / CONTACT PINS / POLARISATION",
+    "palette": "graphite",
+    "model": "ME-7",
+    "service_year": "2071",
+    "human_role": "none",
+    "seed": 204386,
+    "series_total": 110,
+    "parameters": [
+      [
+        "STATUS",
+        "ORIGINAL CONCEPT STUDY"
+      ]
+    ],
+    "sources": [
+      "https://www.nist.gov/publications/pitch-diameter-measurement-threaded-gages-using-cmm"
+    ],
+    "source_scope": "Established principle; original speculative hardware. Diagram models and fictional records explicitly scoped.",
+    "source_files": [
+      "tools/century/extension_geometry.py",
+      "tools/century/extension_editorial.py"
+    ],
+    "status": "finished / retained",
+    "review_notes": [],
+    "curation": {
+      "status": "retained",
+      "review": "autonomous extension to 42",
+      "reason": "Distinct mechanism, service geometry and editorial diagrams; no recycled rejected concept."
+    },
+    "built": {
+      "at": "2026-09-25T13:54:16.064203+00:00",
+      "seconds": 0.31,
+      "parts": 205,
+      "views": {
+        "A": {
+          "paths": 8981,
+          "file": "tools/assets/century/metric-embassy-A.json"
+        },
+        "B": {
+          "paths": 1181,
+          "file": "tools/assets/century/metric-embassy-B.json"
+        },
+        "C": {
+          "paths": 858,
+          "file": "tools/assets/century/metric-embassy-C.json"
+        }
+      }
+    },
+    "validation": {
+      "layout": {
+        "wide": true,
+        "16-9": true
+      },
+      "files": true,
+      "visual_review": "agent-reviewed after corrections / user delegated autonomous completion"
+    },
+    "rendered": {
+      "wide": {
+        "file": "concepts/century/wide/105-metric-embassy.webp",
+        "size": [
+          5120,
+          2160
+        ],
+        "seconds": 7.6
+      },
+      "16-9": {
+        "file": "concepts/century/16-9/105-metric-embassy.webp",
+        "size": [
+          5120,
+          2880
+        ],
+        "seconds": 10.5
+      }
+    }
+  },
+  {
+    "number": 106,
+    "slug": "muon-customs",
+    "title": "MUON CUSTOMS",
+    "domain": "science",
+    "recipe": "muon_customs",
+    "category": "PASSIVE CARGO SCATTERING TOMOGRAPH",
+    "purpose": "PASSIVE CARGO SCATTERING TOMOGRAPH",
+    "narrative": "Studies a sealed cargo bay using naturally arriving cosmic-ray muons. Suspicious density is reconstructed slowly; the sky does not accept priority boarding.",
+    "real_basis": "Muon scattering tomography estimates material distribution from measured incoming and outgoing tracks.",
+    "required_breakthroughs": "Robust reconstruction with sparse tracks and carefully characterised detector backgrounds.",
+    "view_A": "OPEN COSMIC INSPECTION GANTRY",
+    "view_B": "TRACKING PLANE CASSETTE",
+    "view_C": "COINCIDENCE CLOCK RACK",
+    "view_B_note": "STAGGERED LAYERS / EVENT COORDINATES",
+    "view_C_note": "TIMESTAMP / MATCH / RETAIN THE RAW TRACK",
+    "palette": "wine",
+    "model": "MC-4",
+    "service_year": "2081",
+    "human_role": "none",
+    "seed": 204523,
+    "series_total": 110,
+    "parameters": [
+      [
+        "STATUS",
+        "ORIGINAL CONCEPT STUDY"
+      ]
+    ],
+    "sources": [
+      "https://laro.lanl.gov/esploro/outputs/journalArticle/Tomographic-Imaging-with-Cosmic-Ray-Muons/9916364485503761"
+    ],
+    "source_scope": "Established principle; original speculative hardware. Diagram models and fictional records explicitly scoped.",
+    "source_files": [
+      "tools/century/extension_geometry.py",
+      "tools/century/extension_editorial.py"
+    ],
+    "status": "finished / retained",
+    "review_notes": [],
+    "curation": {
+      "status": "retained",
+      "review": "autonomous extension to 42",
+      "reason": "Distinct mechanism, service geometry and editorial diagrams; no recycled rejected concept."
+    },
+    "built": {
+      "at": "2026-09-25T13:54:16.391404+00:00",
+      "seconds": 0.32,
+      "parts": 233,
+      "views": {
+        "A": {
+          "paths": 5987,
+          "file": "tools/assets/century/muon-customs-A.json"
+        },
+        "B": {
+          "paths": 878,
+          "file": "tools/assets/century/muon-customs-B.json"
+        },
+        "C": {
+          "paths": 3147,
+          "file": "tools/assets/century/muon-customs-C.json"
+        }
+      }
+    },
+    "validation": {
+      "layout": {
+        "wide": true,
+        "16-9": true
+      },
+      "files": true,
+      "visual_review": "agent-reviewed after corrections / user delegated autonomous completion"
+    },
+    "rendered": {
+      "wide": {
+        "file": "concepts/century/wide/106-muon-customs.webp",
+        "size": [
+          5120,
+          2160
+        ],
+        "seconds": 7.95
+      },
+      "16-9": {
+        "file": "concepts/century/16-9/106-muon-customs.webp",
+        "size": [
+          5120,
+          2880
+        ],
+        "seconds": 10.57
+      }
+    }
+  },
+  {
+    "number": 107,
+    "slug": "resonance-tailor",
+    "title": "RESONANCE TAILOR",
+    "domain": "industry",
+    "recipe": "resonance_tailor",
+    "category": "CLAMP-ON TUNED MASS ABSORBER",
+    "purpose": "CLAMP-ON TUNED MASS ABSORBER",
+    "narrative": "Fits an awkward machine with three adjustable resonant branches. Each branch takes a narrow band of vibration personally.",
+    "real_basis": "Tuned mass absorbers exchange vibration energy with a host near their selected resonances.",
+    "required_breakthroughs": "Durable tuning locks and verified performance across changing host loads and temperatures.",
+    "view_A": "THREE-BAND ABSORBER CROWN",
+    "view_B": "MOVING MASS BRANCH",
+    "view_C": "CROSSED-FLEXURE LOCK",
+    "view_B_note": "PARALLEL LEAVES / TRAVEL / TUNING SCREW",
+    "view_C_note": "LOCK SCREWS / COMPLIANT GUIDE / STOP",
+    "palette": "violet",
+    "model": "RT-3",
+    "service_year": "2069",
+    "human_role": "none",
+    "seed": 204660,
+    "series_total": 110,
+    "parameters": [
+      [
+        "STATUS",
+        "ORIGINAL CONCEPT STUDY"
+      ]
+    ],
+    "sources": [
+      "https://technology.nasa.gov/patent/LAR-TOPS-189"
+    ],
+    "source_scope": "Established principle; original speculative hardware. Diagram models and fictional records explicitly scoped.",
+    "source_files": [
+      "tools/century/extension_geometry.py",
+      "tools/century/extension_editorial.py"
+    ],
+    "status": "finished / retained",
+    "review_notes": [],
+    "curation": {
+      "status": "retained",
+      "review": "autonomous extension to 42",
+      "reason": "Distinct mechanism, service geometry and editorial diagrams; no recycled rejected concept."
+    },
+    "built": {
+      "at": "2026-09-25T13:54:16.717517+00:00",
+      "seconds": 0.32,
+      "parts": 148,
+      "views": {
+        "A": {
+          "paths": 7812,
+          "file": "tools/assets/century/resonance-tailor-A.json"
+        },
+        "B": {
+          "paths": 3011,
+          "file": "tools/assets/century/resonance-tailor-B.json"
+        },
+        "C": {
+          "paths": 794,
+          "file": "tools/assets/century/resonance-tailor-C.json"
+        }
+      }
+    },
+    "validation": {
+      "layout": {
+        "wide": true,
+        "16-9": true
+      },
+      "files": true,
+      "visual_review": "agent-reviewed after corrections / user delegated autonomous completion"
+    },
+    "rendered": {
+      "wide": {
+        "file": "concepts/century/wide/107-resonance-tailor.webp",
+        "size": [
+          5120,
+          2160
+        ],
+        "seconds": 8.44
+      },
+      "16-9": {
+        "file": "concepts/century/16-9/107-resonance-tailor.webp",
+        "size": [
+          5120,
+          2880
+        ],
+        "seconds": 11.16
+      }
+    }
+  },
+  {
+    "number": 108,
+    "slug": "suture-loom",
+    "title": "SUTURE LOOM",
+    "domain": "medicine",
+    "recipe": "suture_loom",
+    "category": "EXPERIMENTAL NEEDLE HANDOFF MODULE",
+    "purpose": "EXPERIMENTAL NEEDLE HANDOFF MODULE",
+    "narrative": "Passes a curved needle between opposing grippers while a dancer manages thread slack. This bench study uses a test membrane; the patient is the research schedule.",
+    "real_basis": "Robotic needle manipulation and tension control have been studied for automated suturing.",
+    "required_breakthroughs": "Validated tissue interaction, sterilisation and fault recovery before any clinical application.",
+    "view_A": "OPEN NEEDLE-HANDOFF TRACK",
+    "view_B": "OPPOSED NEEDLE GRIPPERS",
+    "view_C": "THREAD DANCER CARTRIDGE",
+    "view_B_note": "ALTERNATING HOLD / CURVED TEST NEEDLE",
+    "view_C_note": "SPOOL / TENSION ARM / SLACK RECOVERY",
+    "palette": "grass",
+    "model": "SL-2",
+    "service_year": "2084",
+    "human_role": "none",
+    "seed": 204797,
+    "series_total": 110,
+    "parameters": [
+      [
+        "STATUS",
+        "ORIGINAL CONCEPT STUDY"
+      ]
+    ],
+    "sources": [
+      "https://arxiv.org/abs/2002.00530"
+    ],
+    "source_scope": "Established principle; original speculative hardware. Diagram models and fictional records explicitly scoped.",
+    "source_files": [
+      "tools/century/extension_geometry.py",
+      "tools/century/extension_editorial.py"
+    ],
+    "status": "finished / retained",
+    "review_notes": [],
+    "curation": {
+      "status": "retained",
+      "review": "autonomous extension to 42",
+      "reason": "Distinct mechanism, service geometry and editorial diagrams; no recycled rejected concept."
+    },
+    "built": {
+      "at": "2026-09-25T13:54:17.006083+00:00",
+      "seconds": 0.29,
+      "parts": 153,
+      "views": {
+        "A": {
+          "paths": 6184,
+          "file": "tools/assets/century/suture-loom-A.json"
+        },
+        "B": {
+          "paths": 2935,
+          "file": "tools/assets/century/suture-loom-B.json"
+        },
+        "C": {
+          "paths": 2319,
+          "file": "tools/assets/century/suture-loom-C.json"
+        }
+      }
+    },
+    "validation": {
+      "layout": {
+        "wide": true,
+        "16-9": true
+      },
+      "files": true,
+      "visual_review": "agent-reviewed after corrections / user delegated autonomous completion"
+    },
+    "rendered": {
+      "wide": {
+        "file": "concepts/century/wide/108-suture-loom.webp",
+        "size": [
+          5120,
+          2160
+        ],
+        "seconds": 8.56
+      },
+      "16-9": {
+        "file": "concepts/century/16-9/108-suture-loom.webp",
+        "size": [
+          5120,
+          2880
+        ],
+        "seconds": 10.53
+      }
+    }
+  },
+  {
+    "number": 110,
+    "slug": "spin-table",
+    "title": "SPIN TABLE",
+    "domain": "habitats",
+    "recipe": "spin_table",
+    "category": "BOWL-SCALE ROTATING GALLEY",
+    "purpose": "BOWL-SCALE ROTATING GALLEY",
+    "narrative": "Keeps dinner inside a sealed rotating vessel with a balanced cradle and an interlocked lid. Artificial gravity is available in the serving size only.",
+    "real_basis": "Centripetal acceleration is proportional to radius and angular speed squared.",
+    "required_breakthroughs": "A safe balanced rotor with food-compatible seals and dependable stopped-rotor transfer.",
+    "view_A": "BALANCED ROTATING VESSEL",
+    "view_B": "DRIVE AND REACTION BEARING",
+    "view_C": "INTERLOCKED TRANSFER LID",
+    "view_B_note": "REDUCTION / TORQUE RETURN / SERVICE GAUGE",
+    "view_C_note": "THREE LATCHES / SEAL / EQUALISATION PORT",
+    "palette": "umber",
+    "model": "ST-1",
+    "service_year": "2078",
+    "human_role": "none",
+    "seed": 205071,
+    "series_total": 110,
+    "parameters": [
+      [
+        "STATUS",
+        "ORIGINAL CONCEPT STUDY"
+      ]
+    ],
+    "sources": [
+      "https://science.nasa.gov/learn/basics-of-space-flight/chapter3-3/"
+    ],
+    "source_scope": "Established principle; original speculative hardware. Diagram models and fictional records explicitly scoped.",
+    "source_files": [
+      "tools/century/extension_geometry.py",
+      "tools/century/extension_editorial.py"
+    ],
+    "status": "finished / retained",
+    "review_notes": [],
+    "curation": {
+      "status": "retained",
+      "review": "autonomous extension to 42",
+      "reason": "Distinct mechanism, service geometry and editorial diagrams; no recycled rejected concept."
+    },
+    "built": {
+      "at": "2026-09-25T13:56:15.518513+00:00",
+      "seconds": 0.32,
+      "parts": 155,
+      "views": {
+        "A": {
+          "paths": 5123,
+          "file": "tools/assets/century/spin-table-A.json"
+        },
+        "B": {
+          "paths": 3058,
+          "file": "tools/assets/century/spin-table-B.json"
+        },
+        "C": {
+          "paths": 745,
+          "file": "tools/assets/century/spin-table-C.json"
+        }
+      }
+    },
+    "validation": {
+      "layout": {
+        "wide": true,
+        "16-9": true
+      },
+      "files": true,
+      "visual_review": "agent-reviewed after corrections / user delegated autonomous completion"
+    },
+    "rendered": {
+      "wide": {
+        "file": "concepts/century/wide/110-spin-table.webp",
+        "size": [
+          5120,
+          2160
+        ],
+        "seconds": 8.06
+      },
+      "16-9": {
+        "file": "concepts/century/16-9/110-spin-table.webp",
+        "size": [
+          5120,
+          2880
+        ],
+        "seconds": 10.96
+      }
+    }
   }
 ]
