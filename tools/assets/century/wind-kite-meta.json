@@ -1,0 +1,133 @@
+{
+  "slug": "wind-kite",
+  "notes": {
+    "SWEPT SPAR": "LOAD PATH / RIGHT SKIN REMOVED",
+    "TRACTION WINCH": "GENERATOR AND RETURN DRIVE",
+    "TRACKING HEAD": "GROUND TRACKING / LAND BEFORE STORM",
+    "BRIDLE": "SYSTEM STUDY / TETHER LENGTH COMPRESSED"
+  },
+  "parts": 179,
+  "groups": {
+    "B": {
+      "parts": 59,
+      "objects": [
+        "traction drum",
+        "drum flange",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "drum flange.001",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015",
+        "tether winding",
+        "tether winding.001",
+        "tether winding.002",
+        "tether winding.003",
+        "tether winding.004",
+        "tether winding.005",
+        "tether winding.006",
+        "tether winding.007",
+        "tether winding.008",
+        "tether winding.009",
+        "tether winding.010",
+        "tether winding.011",
+        "tether winding.012",
+        "tether winding.013",
+        "tether winding.014",
+        "bearing saddle",
+        "bearing saddle.001",
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "cooling fin.002",
+        "cooling fin.003",
+        "cooling fin.004",
+        "cooling fin.005",
+        "cooling fin.006",
+        "motor face",
+        "captive fastener.016",
+        "captive fastener.017",
+        "captive fastener.018",
+        "captive fastener.019",
+        "captive fastener.020",
+        "captive fastener.021",
+        "captive fastener.022",
+        "captive fastener.023",
+        "output shaft",
+        "terminal housing",
+        "level wind rail",
+        "level wind rail.001",
+        "traversing screw",
+        "tether fairlead"
+      ],
+      "removed_covers": [],
+      "camera": [
+        32,
+        26
+      ]
+    },
+    "C": {
+      "parts": 28,
+      "objects": [
+        "airfoil rib",
+        "airfoil rib.001",
+        "airfoil rib.002",
+        "airfoil rib.003",
+        "airfoil rib.004",
+        "airfoil rib.005",
+        "wing spar",
+        "trailing spar",
+        "airfoil rib.006",
+        "airfoil rib.007",
+        "airfoil rib.008",
+        "airfoil rib.009",
+        "airfoil rib.010",
+        "airfoil rib.011",
+        "wing spar.001",
+        "trailing spar.001",
+        "wing bay diagonal",
+        "wing bay diagonal.001",
+        "wing bay diagonal.002",
+        "wing bay diagonal.003",
+        "wing bay diagonal.004",
+        "wing bay diagonal.005",
+        "wing bay diagonal.006",
+        "wing bay diagonal.007",
+        "wing bay diagonal.008",
+        "wing bay diagonal.009",
+        "bridle hardpoint",
+        "bridle hardpoint.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        8,
+        30
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 5761,
+      "file": "tools/assets/century/wind-kite-A.json"
+    },
+    "B": {
+      "paths": 3890,
+      "file": "tools/assets/century/wind-kite-B.json"
+    },
+    "C": {
+      "paths": 637,
+      "file": "tools/assets/century/wind-kite-C.json"
+    }
+  }
+}

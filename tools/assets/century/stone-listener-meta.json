@@ -1,0 +1,62 @@
+{
+  "slug": "stone-listener",
+  "notes": {
+    "CONTACT SHOE": "CONTROLLED CONTACT ON MASONRY",
+    "PHASED RECEIVER": "MULTIPLE ACOUSTIC TRAVEL PATHS",
+    "FIELD COMPUTER": "INVERSION WITH UNCERTAINTY",
+    "MASONRY": "EXISTING STRUCTURE / NO DRILLING"
+  },
+  "parts": 39,
+  "groups": {
+    "B": {
+      "parts": 6,
+      "objects": [
+        "contact shoe",
+        "contact transducer",
+        "coupling adjuster",
+        "coupling adjuster.001",
+        "compliant interface",
+        "shoe handle"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -13,
+        51
+      ]
+    },
+    "C": {
+      "parts": 10,
+      "objects": [
+        "phased receiver",
+        "receiver element",
+        "receiver element.001",
+        "receiver element.002",
+        "receiver element.003",
+        "receiver element.004",
+        "receiver element.005",
+        "clamp screw",
+        "clamp screw.001",
+        "receiver grip"
+      ],
+      "removed_covers": [],
+      "camera": [
+        33,
+        47
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 1117,
+      "file": "tools/assets/century/stone-listener-A.json"
+    },
+    "B": {
+      "paths": 143,
+      "file": "tools/assets/century/stone-listener-B.json"
+    },
+    "C": {
+      "paths": 511,
+      "file": "tools/assets/century/stone-listener-C.json"
+    }
+  }
+}

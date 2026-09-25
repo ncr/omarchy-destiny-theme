@@ -1,0 +1,97 @@
+{
+  "slug": "brine-garden",
+  "notes": {
+    "ION CASSETTES": "SELECTIVE RECOVERY STAGES",
+    "SETTLING TRAY": "SEPARATE MINERAL FRACTIONS",
+    "REAGENT VESSEL": "CONTROLLED PRECIPITATION CHEMISTRY",
+    "RETURN HEADER": "RESIDUAL BRINE TO CLOSED PROCESS"
+  },
+  "parts": 164,
+  "groups": {
+    "B": {
+      "parts": 31,
+      "objects": [
+        "ion separation cassette",
+        "membrane support",
+        "membrane support.001",
+        "membrane support.002",
+        "membrane support.003",
+        "membrane support.004",
+        "membrane support.005",
+        "membrane support.006",
+        "cassette port",
+        "cassette port.001",
+        "ion separation cassette.001",
+        "membrane support.007",
+        "membrane support.008",
+        "membrane support.009",
+        "membrane support.010",
+        "membrane support.011",
+        "membrane support.012",
+        "membrane support.013",
+        "cassette port.002",
+        "cassette port.003",
+        "ion separation cassette.002",
+        "membrane support.014",
+        "membrane support.015",
+        "membrane support.016",
+        "membrane support.017",
+        "membrane support.018",
+        "membrane support.019",
+        "membrane support.020",
+        "cassette port.004",
+        "cassette port.005",
+        "cassette carrier"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -12,
+        46
+      ]
+    },
+    "C": {
+      "parts": 20,
+      "objects": [
+        "precipitation pan",
+        "tray lip",
+        "tray lip.001",
+        "tray end",
+        "tray end.001",
+        "settling baffle",
+        "settling baffle.001",
+        "settling baffle.002",
+        "settling baffle.003",
+        "precipitation pan.001",
+        "tray lip.002",
+        "tray lip.003",
+        "tray end.002",
+        "tray end.003",
+        "settling baffle.004",
+        "settling baffle.005",
+        "settling baffle.006",
+        "settling baffle.007",
+        "tray upright",
+        "tray upright.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        34,
+        42
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 4173,
+      "file": "tools/assets/century/brine-garden-A.json"
+    },
+    "B": {
+      "paths": 1014,
+      "file": "tools/assets/century/brine-garden-B.json"
+    },
+    "C": {
+      "paths": 299,
+      "file": "tools/assets/century/brine-garden-C.json"
+    }
+  }
+}

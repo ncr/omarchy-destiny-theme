@@ -1,0 +1,89 @@
+{
+  "slug": "pet-diplomat",
+  "notes": {
+    "GESTURE CAMERA": "POSTURE AND ROUTINE / NO MIND READING",
+    "REQUEST PADDLE": "OPEN THE DOOR SO I CAN RECONSIDER",
+    "STATUS PANEL": "SUGGESTION / NOT A TRANSLATION",
+    "WATER BOWL": "CHECK THE OBVIOUS THINGS FIRST"
+  },
+  "parts": 53,
+  "groups": {
+    "B": {
+      "parts": 37,
+      "objects": [
+        "gesture camera",
+        "optical barrel",
+        "barrel retaining band",
+        "barrel retaining band.001",
+        "barrel retaining band.002",
+        "lens hood",
+        "lens",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "optical barrel.001",
+        "barrel retaining band.003",
+        "barrel retaining band.004",
+        "barrel retaining band.005",
+        "lens hood.001",
+        "lens.001",
+        "captive fastener.006",
+        "captive fastener.007",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "pan axis",
+        "pan bearing",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015",
+        "captive fastener.016",
+        "captive fastener.017",
+        "captive fastener.018",
+        "captive fastener.019",
+        "camera fastener",
+        "camera fastener.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -13,
+        46
+      ]
+    },
+    "C": {
+      "parts": 6,
+      "objects": [
+        "request paddle",
+        "paddle hinge",
+        "hinge collar",
+        "hinge collar.001",
+        "paddle load cell",
+        "paddle indicator"
+      ],
+      "removed_covers": [],
+      "camera": [
+        28,
+        -24
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 2848,
+      "file": "tools/assets/century/pet-diplomat-A.json"
+    },
+    "B": {
+      "paths": 1343,
+      "file": "tools/assets/century/pet-diplomat-B.json"
+    },
+    "C": {
+      "paths": 141,
+      "file": "tools/assets/century/pet-diplomat-C.json"
+    }
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "slug": "quiet-stair",
+  "notes": {
+    "VERTICAL CARRIAGES": "FIXED TREAD X / INDEPENDENT Z AXES",
+    "LEVEL DECK": "EMPTY: LEVEL LOW / THEN LIFT TO LANDING",
+    "SAFETY EDGE": "INHIBITS MOVEMENT WHEN OBSTRUCTED",
+    "MANUAL RELEASE": "SERVICE OVERRIDE / MODE LOCK FIRST"
+  },
+  "parts": 467,
+  "groups": {
+    "B": {
+      "parts": 41,
+      "objects": [
+        "vertical guide.002",
+        "vertical guide.003",
+        "lift screw.001",
+        "screw thread.017",
+        "screw thread.018",
+        "screw thread.019",
+        "screw thread.020",
+        "screw thread.021",
+        "screw thread.022",
+        "screw thread.023",
+        "screw thread.024",
+        "screw thread.025",
+        "screw thread.026",
+        "screw thread.027",
+        "screw thread.028",
+        "screw thread.029",
+        "screw thread.030",
+        "screw thread.031",
+        "screw thread.032",
+        "screw thread.033",
+        "top bearing bridge.001",
+        "motor case.001",
+        "cooling fin.004",
+        "cooling fin.005",
+        "cooling fin.006",
+        "cooling fin.007",
+        "motor face.001",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015",
+        "output shaft.001",
+        "terminal housing.001",
+        "travelling nut.001",
+        "tread load bridge.001",
+        "end stop.002",
+        "end stop.003"
+      ],
+      "removed_covers": [],
+      "camera": [
+        22,
+        22
+      ]
+    },
+    "C": {
+      "parts": 48,
+      "objects": [
+        "edge carrier extrusion",
+        "contact cell saddle",
+        "moving contact pad",
+        "compliant contact leaf",
+        "compliant contact leaf.001",
+        "cell retainer",
+        "contact cell saddle.001",
+        "moving contact pad.001",
+        "compliant contact leaf.002",
+        "compliant contact leaf.003",
+        "cell retainer.001",
+        "contact cell saddle.002",
+        "moving contact pad.002",
+        "compliant contact leaf.004",
+        "compliant contact leaf.005",
+        "cell retainer.002",
+        "contact cell saddle.003",
+        "moving contact pad.003",
+        "compliant contact leaf.006",
+        "compliant contact leaf.007",
+        "cell retainer.003",
+        "contact cell saddle.004",
+        "moving contact pad.004",
+        "compliant contact leaf.008",
+        "compliant contact leaf.009",
+        "cell retainer.004",
+        "contact cell saddle.005",
+        "moving contact pad.005",
+        "compliant contact leaf.010",
+        "compliant contact leaf.011",
+        "cell retainer.005",
+        "contact cell saddle.006",
+        "moving contact pad.006",
+        "compliant contact leaf.012",
+        "compliant contact leaf.013",
+        "cell retainer.006",
+        "end seal",
+        "edge mounting ear",
+        "mounting fastener",
+        "end seal.001",
+        "edge mounting ear.001",
+        "mounting fastener.001",
+        "edge return bus",
+        "sealed cable gland",
+        "gland grip",
+        "gland grip.001",
+        "gland grip.002",
+        "edge loom"
+      ],
+      "removed_covers": [
+        "edge removable elastomer lip"
+      ],
+      "camera": [
+        -64,
+        26
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 15976,
+      "file": "tools/assets/century/quiet-stair-A.json"
+    },
+    "B": {
+      "paths": 3191,
+      "file": "tools/assets/century/quiet-stair-B.json"
+    },
+    "C": {
+      "paths": 1497,
+      "file": "tools/assets/century/quiet-stair-C.json"
+    }
+  }
+}

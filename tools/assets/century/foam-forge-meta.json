@@ -1,0 +1,85 @@
+{
+  "slug": "foam-forge",
+  "notes": {
+    "GAS INJECTOR": "CONTROLLED FOAM NUCLEATION",
+    "SPLIT MOLD": "OPENED TO SHOW RIBBED CAVITY",
+    "MELT FURNACE": "VERIFIED ALLOY / TEMPERATURE HOLD",
+    "TRANSFER": "HEATED LOW TURBULENCE PATH"
+  },
+  "parts": 66,
+  "groups": {
+    "B": {
+      "parts": 20,
+      "objects": [
+        "injector metering stem",
+        "injector distribution ring",
+        "injector distribution ring.001",
+        "injector distribution ring.002",
+        "injector flange",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "injector passage",
+        "injector passage.001",
+        "injector passage.002",
+        "injector passage.003",
+        "injector passage.004",
+        "injector passage.005",
+        "gas inlet"
+      ],
+      "removed_covers": [
+        "gas injector cover"
+      ],
+      "camera": [
+        35,
+        -20
+      ]
+    },
+    "C": {
+      "parts": 17,
+      "objects": [
+        "split mold half",
+        "mold alignment pin",
+        "mold alignment pin.001",
+        "mold rib",
+        "mold rib.001",
+        "mold rib.002",
+        "mold rib.003",
+        "split mold half.001",
+        "mold alignment pin.002",
+        "mold alignment pin.003",
+        "mold rib.004",
+        "mold rib.005",
+        "mold rib.006",
+        "mold rib.007",
+        "mold base",
+        "clamp wheel",
+        "clamp wheel.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        34,
+        43
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 1850,
+      "file": "tools/assets/century/foam-forge-A.json"
+    },
+    "B": {
+      "paths": 1276,
+      "file": "tools/assets/century/foam-forge-B.json"
+    },
+    "C": {
+      "paths": 1079,
+      "file": "tools/assets/century/foam-forge-C.json"
+    }
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "slug": "well-warden",
+  "notes": {
+    "SENSOR STRING": "DEPTH RESOLVED WATER MONITORING",
+    "CABLE SEAL": "REMOVABLE PRESSURE CAP",
+    "LOGGER": "TREND STORAGE / REMOTE ALARM",
+    "CASING": "SECTIONED OBSERVATION WELL"
+  },
+  "parts": 70,
+  "groups": {
+    "B": {
+      "parts": 37,
+      "objects": [
+        "sensor mandrel",
+        "sensor capsule",
+        "capsule seal",
+        "capsule seal.001",
+        "sensor port",
+        "sensor port.001",
+        "sensor port.002",
+        "sensor port.003",
+        "sensor port.004",
+        "sensor port.005",
+        "sensor capsule.001",
+        "capsule seal.002",
+        "capsule seal.003",
+        "sensor port.006",
+        "sensor port.007",
+        "sensor port.008",
+        "sensor port.009",
+        "sensor port.010",
+        "sensor port.011",
+        "sensor capsule.002",
+        "capsule seal.004",
+        "capsule seal.005",
+        "sensor port.012",
+        "sensor port.013",
+        "sensor port.014",
+        "sensor port.015",
+        "sensor port.016",
+        "sensor port.017",
+        "sensor capsule.003",
+        "capsule seal.006",
+        "capsule seal.007",
+        "sensor port.018",
+        "sensor port.019",
+        "sensor port.020",
+        "sensor port.021",
+        "sensor port.022",
+        "sensor port.023"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -12,
+        43
+      ]
+    },
+    "C": {
+      "parts": 14,
+      "objects": [
+        "well cap",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "cable gland",
+        "gland nut",
+        "cap handle",
+        "cap handle.001",
+        "cable loop"
+      ],
+      "removed_covers": [],
+      "camera": [
+        34,
+        39
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 2694,
+      "file": "tools/assets/century/well-warden-A.json"
+    },
+    "B": {
+      "paths": 1826,
+      "file": "tools/assets/century/well-warden-B.json"
+    },
+    "C": {
+      "paths": 618,
+      "file": "tools/assets/century/well-warden-C.json"
+    }
+  }
+}

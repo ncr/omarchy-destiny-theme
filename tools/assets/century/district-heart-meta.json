@@ -1,0 +1,120 @@
+{
+  "slug": "district-heart",
+  "notes": {
+    "COMPRESSOR": "VARIABLE SPEED REFRIGERANT SCROLL",
+    "VALVE BRIDGE": "REVERSIBLE FLOW ROUTING",
+    "DISTRICT LOOP": "HOT WATER PLATE EXCHANGER",
+    "CONTROLLER": "DEMAND AND DEFROST COORDINATION"
+  },
+  "parts": 117,
+  "groups": {
+    "B": {
+      "parts": 38,
+      "objects": [
+        "compressor shell",
+        "compressor cover",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "shell cooling band",
+        "shell cooling band.001",
+        "shell cooling band.002",
+        "shell cooling band.003",
+        "shell cooling band.004",
+        "shell cooling band.005",
+        "shell cooling band.006",
+        "shell cooling band.007",
+        "shell cooling band.008",
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "cooling fin.002",
+        "cooling fin.003",
+        "cooling fin.004",
+        "cooling fin.005",
+        "motor face",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015",
+        "output shaft",
+        "terminal housing",
+        "discharge elbow"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -10,
+        43
+      ]
+    },
+    "C": {
+      "parts": 36,
+      "objects": [
+        "valve body",
+        "valve spindle",
+        "valve wheel",
+        "valve drop",
+        "valve body.001",
+        "valve spindle.001",
+        "valve wheel.001",
+        "valve drop.001",
+        "valve body.002",
+        "valve spindle.002",
+        "valve wheel.002",
+        "valve drop.002",
+        "valve body.003",
+        "valve spindle.003",
+        "valve wheel.003",
+        "valve drop.003",
+        "valve header",
+        "valve header.001",
+        "service connection",
+        "captive fastener.016",
+        "captive fastener.017",
+        "captive fastener.018",
+        "captive fastener.019",
+        "captive fastener.020",
+        "captive fastener.021",
+        "captive fastener.022",
+        "captive fastener.023",
+        "service connection.001",
+        "captive fastener.024",
+        "captive fastener.025",
+        "captive fastener.026",
+        "captive fastener.027",
+        "captive fastener.028",
+        "captive fastener.029",
+        "captive fastener.030",
+        "captive fastener.031"
+      ],
+      "removed_covers": [],
+      "camera": [
+        36,
+        39
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 6265,
+      "file": "tools/assets/century/district-heart-A.json"
+    },
+    "B": {
+      "paths": 2569,
+      "file": "tools/assets/century/district-heart-B.json"
+    },
+    "C": {
+      "paths": 2284,
+      "file": "tools/assets/century/district-heart-C.json"
+    }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "slug": "seam-surgeon",
+  "notes": {
+    "WELD TRAIN": "ORBIT / FEED / FILLER / SHIELD GAS",
+    "INSPECTION ARRAY": "TRAILING PASS / SEPARATE ACCEPTANCE",
+    "PREPARATION HEAD": "CLEAN FIRST / THEN CONTROLLED WELD PASS",
+    "SPLIT TRACK": "CLAMP AROUND THE JOINT / NO PIPE REMOVAL"
+  },
+  "parts": 128,
+  "groups": {
+    "B": {
+      "parts": 29,
+      "objects": [
+        "vee guide wheel",
+        "vee guide wheel.001",
+        "vee guide wheel.002",
+        "vee guide wheel.003",
+        "torch feed rail",
+        "torch carriage",
+        "torch throat",
+        "torch ceramic nozzle",
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "cooling fin.002",
+        "cooling fin.003",
+        "cooling fin.004",
+        "motor face",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "output shaft",
+        "terminal housing",
+        "filler wire spool",
+        "spool flange",
+        "spool flange.001",
+        "filler guide"
+      ],
+      "removed_covers": [
+        "orbital tool saddle"
+      ],
+      "camera": [
+        52,
+        22
+      ]
+    },
+    "C": {
+      "parts": 24,
+      "objects": [
+        "inspection contact wheel",
+        "inspection contact wheel.001",
+        "inspection contact wheel.002",
+        "inspection contact wheel.003",
+        "inspection array",
+        "array division",
+        "array division.001",
+        "array division.002",
+        "array division.003",
+        "compliant probe link",
+        "compliant probe link.001",
+        "optical barrel",
+        "barrel retaining band",
+        "barrel retaining band.001",
+        "barrel retaining band.002",
+        "lens hood",
+        "lens",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "shoe junction"
+      ],
+      "removed_covers": [
+        "inspection bogie"
+      ],
+      "camera": [
+        155,
+        50
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 2950,
+      "file": "tools/assets/century/seam-surgeon-A.json"
+    },
+    "B": {
+      "paths": 1524,
+      "file": "tools/assets/century/seam-surgeon-B.json"
+    },
+    "C": {
+      "paths": 798,
+      "file": "tools/assets/century/seam-surgeon-C.json"
+    }
+  }
+}

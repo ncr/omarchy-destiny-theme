@@ -1,0 +1,78 @@
+{
+  "slug": "star-post",
+  "notes": {
+    "LASER TELESCOPE": "COHERENT OPTICAL LINK",
+    "ACQUISITION DISH": "WIDE ANGLE RENDEZVOUS RADIO",
+    "POWER WING": "TWO AXIS SUN TRACKING",
+    "STAR TRACKER": "INERTIAL POINTING REFERENCE"
+  },
+  "parts": 104,
+  "groups": {
+    "B": {
+      "parts": 26,
+      "objects": [
+        "pivot body",
+        "retainer",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "gimbal fork",
+        "gimbal fork.001",
+        "optical barrel",
+        "barrel retaining band",
+        "barrel retaining band.001",
+        "barrel retaining band.002",
+        "lens hood",
+        "lens",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "barrel stiffener",
+        "barrel stiffener.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -13,
+        49
+      ]
+    },
+    "C": {
+      "parts": 6,
+      "objects": [
+        "acquisition dish",
+        "dish rim",
+        "feed tripod",
+        "feed tripod.001",
+        "feed tripod.002",
+        "feed horn"
+      ],
+      "removed_covers": [],
+      "camera": [
+        33,
+        45
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 2324,
+      "file": "tools/assets/century/star-post-A.json"
+    },
+    "B": {
+      "paths": 956,
+      "file": "tools/assets/century/star-post-B.json"
+    },
+    "C": {
+      "paths": 516,
+      "file": "tools/assets/century/star-post-C.json"
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "slug": "dew-crown",
+  "notes": {
+    "CONDENSING LEAF": "TEXTURED RADIATIVE SURFACE",
+    "COLLECTION THROAT": "SCREEN BEFORE STORAGE",
+    "CISTERN": "COVERED DRINKING WATER RESERVE",
+    "MAST": "FOLDS DOWN FOR SERVICE"
+  },
+  "parts": 160,
+  "groups": {
+    "B": {
+      "parts": 32,
+      "objects": [
+        "condensing leaf",
+        "condensing leaf spine",
+        "condensing leaf vein",
+        "condensing leaf vein.001",
+        "condensing leaf vein.002",
+        "condensing leaf vein.003",
+        "condensing leaf vein.004",
+        "condensing leaf vein.005",
+        "condensing leaf vein.006",
+        "condensing leaf vein.007",
+        "condensing leaf vein.008",
+        "condensing leaf vein.009",
+        "condensing leaf vein.010",
+        "condensing leaf vein.011",
+        "condensing leaf vein.012",
+        "condensing leaf vein.013",
+        "leaf drainage spine",
+        "capillary groove",
+        "capillary groove.001",
+        "capillary groove.002",
+        "capillary groove.003",
+        "capillary groove.004",
+        "capillary groove.005",
+        "pivot body",
+        "retainer",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "leaf stay"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -14,
+        45
+      ]
+    },
+    "C": {
+      "parts": 22,
+      "objects": [
+        "collection lip",
+        "collection funnel",
+        "filter cartridge",
+        "filter cap",
+        "captive fastener.006",
+        "captive fastener.007",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "filter cap.001",
+        "captive fastener.014",
+        "captive fastener.015",
+        "captive fastener.016",
+        "captive fastener.017",
+        "captive fastener.018",
+        "captive fastener.019",
+        "captive fastener.020",
+        "captive fastener.021",
+        "filtered drop"
+      ],
+      "removed_covers": [],
+      "camera": [
+        32,
+        41
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 1719,
+      "file": "tools/assets/century/dew-crown-A.json"
+    },
+    "B": {
+      "paths": 184,
+      "file": "tools/assets/century/dew-crown-B.json"
+    },
+    "C": {
+      "paths": 541,
+      "file": "tools/assets/century/dew-crown-C.json"
+    }
+  }
+}

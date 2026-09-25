@@ -1,0 +1,107 @@
+{
+  "slug": "mantle-needle",
+  "notes": {
+    "DRILL CROWN": "ELECTRIC ASSIST / ANNULAR CUT",
+    "RETURN MANIFOLD": "SEALED SUPPLY AND RETURN",
+    "FEED TOWER": "CONSTANT THRUST DRILL FEED",
+    "ROCK SHOE": "LOAD DISTRIBUTION PAD"
+  },
+  "parts": 136,
+  "groups": {
+    "B": {
+      "parts": 26,
+      "objects": [
+        "crown body",
+        "annular cutter",
+        "cutter insert",
+        "flushing passage",
+        "cutter insert.001",
+        "flushing passage.001",
+        "cutter insert.002",
+        "flushing passage.002",
+        "cutter insert.003",
+        "flushing passage.003",
+        "cutter insert.004",
+        "flushing passage.004",
+        "cutter insert.005",
+        "flushing passage.005",
+        "cutter insert.006",
+        "flushing passage.006",
+        "cutter insert.007",
+        "flushing passage.007",
+        "cutter insert.008",
+        "flushing passage.008",
+        "cutter insert.009",
+        "flushing passage.009",
+        "cutter insert.010",
+        "flushing passage.010",
+        "cutter insert.011",
+        "flushing passage.011"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -10,
+        42
+      ]
+    },
+    "C": {
+      "parts": 35,
+      "objects": [
+        "return manifold",
+        "return elbow",
+        "return coupling",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "isolation valve",
+        "valve handwheel",
+        "return elbow.001",
+        "return coupling.001",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015",
+        "isolation valve.001",
+        "valve handwheel.001",
+        "captive fastener.016",
+        "captive fastener.017",
+        "captive fastener.018",
+        "captive fastener.019",
+        "captive fastener.020",
+        "captive fastener.021",
+        "captive fastener.022",
+        "captive fastener.023",
+        "captive fastener.024",
+        "captive fastener.025"
+      ],
+      "removed_covers": [],
+      "camera": [
+        36,
+        38
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 4017,
+      "file": "tools/assets/century/mantle-needle-A.json"
+    },
+    "B": {
+      "paths": 199,
+      "file": "tools/assets/century/mantle-needle-B.json"
+    },
+    "C": {
+      "paths": 1672,
+      "file": "tools/assets/century/mantle-needle-C.json"
+    }
+  }
+}

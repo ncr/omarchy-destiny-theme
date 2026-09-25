@@ -1,0 +1,111 @@
+{
+  "slug": "wheelhouse",
+  "notes": {
+    "COUNTER ROTORS": "ANGULAR MOMENTUM EXCHANGE",
+    "BEARING YOKE": "ACTIVE MAGNETIC SUSPENSION",
+    "SERVICE BUS": "STATION ATTITUDE INTERFACE",
+    "COOLING LEAF": "BEARING HEAT REJECTION"
+  },
+  "parts": 146,
+  "groups": {
+    "B": {
+      "parts": 29,
+      "objects": [
+        "momentum flywheel",
+        "wheel spoke",
+        "wheel spoke.001",
+        "wheel spoke.002",
+        "wheel spoke.003",
+        "wheel spoke.004",
+        "wheel spoke.005",
+        "magnetic hub",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "momentum flywheel.001",
+        "wheel spoke.006",
+        "wheel spoke.007",
+        "wheel spoke.008",
+        "wheel spoke.009",
+        "wheel spoke.010",
+        "wheel spoke.011",
+        "magnetic hub.001",
+        "captive fastener.006",
+        "captive fastener.007",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "bearing axis"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -11,
+        48
+      ]
+    },
+    "C": {
+      "parts": 36,
+      "objects": [
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "cooling fin.002",
+        "cooling fin.003",
+        "cooling fin.004",
+        "motor face",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015",
+        "captive fastener.016",
+        "captive fastener.017",
+        "captive fastener.018",
+        "captive fastener.019",
+        "output shaft",
+        "terminal housing",
+        "motor yoke",
+        "motor yoke.001",
+        "yoke crown",
+        "pivot body",
+        "retainer",
+        "captive fastener.020",
+        "captive fastener.021",
+        "captive fastener.022",
+        "captive fastener.023",
+        "captive fastener.024",
+        "captive fastener.025",
+        "pivot body.001",
+        "retainer.001",
+        "captive fastener.026",
+        "captive fastener.027",
+        "captive fastener.028",
+        "captive fastener.029",
+        "captive fastener.030",
+        "captive fastener.031"
+      ],
+      "removed_covers": [],
+      "camera": [
+        35,
+        44
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 3125,
+      "file": "tools/assets/century/wheelhouse-A.json"
+    },
+    "B": {
+      "paths": 660,
+      "file": "tools/assets/century/wheelhouse-B.json"
+    },
+    "C": {
+      "paths": 1019,
+      "file": "tools/assets/century/wheelhouse-C.json"
+    }
+  }
+}

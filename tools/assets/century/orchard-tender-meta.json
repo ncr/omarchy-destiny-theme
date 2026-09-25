@@ -1,0 +1,129 @@
+{
+  "slug": "orchard-tender",
+  "notes": {
+    "SOFT GRIPPER": "SUPPORTS FRUIT BEFORE RELEASE",
+    "CUSHIONED TRAY": "SHALLOW INDIVIDUAL FRUIT NESTS",
+    "VISION": "RIPENESS AND BRANCH CLEARANCE",
+    "ARM JOINT": "SLOW LOAD CONTROL NEAR CANOPY"
+  },
+  "parts": 195,
+  "groups": {
+    "B": {
+      "parts": 60,
+      "objects": [
+        "gripper bridge",
+        "parallel jaw link",
+        "compliant jaw",
+        "jaw pin",
+        "parallel jaw link.001",
+        "compliant jaw.001",
+        "jaw pin.001",
+        "wrist coupling",
+        "soft fruit cup",
+        "soft fruit cup spine",
+        "soft fruit cup vein",
+        "soft fruit cup vein.001",
+        "soft fruit cup vein.002",
+        "soft fruit cup vein.003",
+        "soft fruit cup vein.004",
+        "soft fruit cup vein.005",
+        "soft fruit cup vein.006",
+        "soft fruit cup vein.007",
+        "soft fruit cup vein.008",
+        "soft fruit cup vein.009",
+        "soft fruit cup vein.010",
+        "soft fruit cup vein.011",
+        "soft fruit cup vein.012",
+        "soft fruit cup vein.013",
+        "soft fruit cup.001",
+        "soft fruit cup spine.001",
+        "soft fruit cup vein.014",
+        "soft fruit cup vein.015",
+        "soft fruit cup vein.016",
+        "soft fruit cup vein.017",
+        "soft fruit cup vein.018",
+        "soft fruit cup vein.019",
+        "soft fruit cup vein.020",
+        "soft fruit cup vein.021",
+        "soft fruit cup vein.022",
+        "soft fruit cup vein.023",
+        "soft fruit cup vein.024",
+        "soft fruit cup vein.025",
+        "soft fruit cup vein.026",
+        "soft fruit cup vein.027",
+        "optical barrel",
+        "barrel retaining band",
+        "barrel retaining band.001",
+        "barrel retaining band.002",
+        "lens hood",
+        "lens",
+        "captive fastener.016",
+        "captive fastener.017",
+        "captive fastener.018",
+        "captive fastener.019",
+        "captive fastener.020",
+        "captive fastener.021",
+        "pivot body.002",
+        "retainer.002",
+        "captive fastener.022",
+        "captive fastener.023",
+        "captive fastener.024",
+        "captive fastener.025",
+        "captive fastener.026",
+        "captive fastener.027"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -12,
+        43
+      ]
+    },
+    "C": {
+      "parts": 23,
+      "objects": [
+        "fruit tray",
+        "tray side",
+        "tray side.001",
+        "tray end",
+        "tray end.001",
+        "cushioned fruit nest",
+        "picked fruit",
+        "fruit stem",
+        "cushioned fruit nest.001",
+        "picked fruit.001",
+        "fruit stem.001",
+        "cushioned fruit nest.002",
+        "picked fruit.002",
+        "fruit stem.002",
+        "cushioned fruit nest.003",
+        "picked fruit.003",
+        "fruit stem.003",
+        "cushioned fruit nest.004",
+        "picked fruit.004",
+        "fruit stem.004",
+        "cushioned fruit nest.005",
+        "picked fruit.005",
+        "fruit stem.005"
+      ],
+      "removed_covers": [],
+      "camera": [
+        34,
+        39
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 4025,
+      "file": "tools/assets/century/orchard-tender-A.json"
+    },
+    "B": {
+      "paths": 1036,
+      "file": "tools/assets/century/orchard-tender-B.json"
+    },
+    "C": {
+      "paths": 1493,
+      "file": "tools/assets/century/orchard-tender-C.json"
+    }
+  }
+}

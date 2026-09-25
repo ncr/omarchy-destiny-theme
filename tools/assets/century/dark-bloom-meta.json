@@ -1,0 +1,85 @@
+{
+  "slug": "dark-bloom",
+  "notes": {
+    "FILTER WHEEL": "REGISTERED SPECTRAL PASSBANDS",
+    "COLD FINGER": "LOW NOISE DETECTOR SUPPORT",
+    "APERTURE": "PASSIVE OBSERVATION / NO ILLUMINATION",
+    "LOGGER": "REGISTERED CHANNEL COMPARISON"
+  },
+  "parts": 134,
+  "groups": {
+    "B": {
+      "parts": 31,
+      "objects": [
+        "filter wheel",
+        "filter cell",
+        "spectral filter",
+        "filter cell.001",
+        "spectral filter.001",
+        "filter cell.002",
+        "spectral filter.002",
+        "filter cell.003",
+        "spectral filter.003",
+        "filter cell.004",
+        "spectral filter.004",
+        "filter cell.005",
+        "spectral filter.005",
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "cooling fin.002",
+        "cooling fin.003",
+        "cooling fin.004",
+        "motor face",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "output shaft",
+        "terminal housing",
+        "wheel guard"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -14,
+        46
+      ]
+    },
+    "C": {
+      "parts": 8,
+      "objects": [
+        "cold finger",
+        "detector cold stage",
+        "thermal shield",
+        "thermal shield.001",
+        "thermal shield.002",
+        "cooler body",
+        "cooler mount",
+        "cooler mount.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        32,
+        42
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 6366,
+      "file": "tools/assets/century/dark-bloom-A.json"
+    },
+    "B": {
+      "paths": 2036,
+      "file": "tools/assets/century/dark-bloom-B.json"
+    },
+    "C": {
+      "paths": 695,
+      "file": "tools/assets/century/dark-bloom-C.json"
+    }
+  }
+}

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -euo pipefail
+project_dir="$(dirname "$(readlink -f "$0")")"
+exec "$project_dir/wallpapers" --dir "$project_dir/concepts/century/finalized/wide" "$@"

@@ -1,0 +1,114 @@
+{
+  "slug": "shade-orchard",
+  "notes": {
+    "LOUVER PIVOT": "ONE CONTROLLED SHADING AXIS",
+    "RAIN CHANNEL": "WATER TO A COVERED GROUND STORE",
+    "LOUVER": "SUMMER SHADE / WINTER DAYLIGHT",
+    "PEDESTRIAN SPACE": "CLEAR ROUTE BELOW THE CANOPY"
+  },
+  "parts": 105,
+  "groups": {
+    "B": {
+      "parts": 57,
+      "objects": [
+        "pivot body",
+        "retainer",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "louver axle",
+        "pivot body.001",
+        "retainer.001",
+        "captive fastener.006",
+        "captive fastener.007",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "louver axle.001",
+        "pivot body.002",
+        "retainer.002",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015",
+        "captive fastener.016",
+        "captive fastener.017",
+        "louver axle.002",
+        "pivot body.003",
+        "retainer.003",
+        "captive fastener.018",
+        "captive fastener.019",
+        "captive fastener.020",
+        "captive fastener.021",
+        "captive fastener.022",
+        "captive fastener.023",
+        "louver axle.003",
+        "synchronising link",
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "cooling fin.002",
+        "cooling fin.003",
+        "motor face",
+        "captive fastener.024",
+        "captive fastener.025",
+        "captive fastener.026",
+        "captive fastener.027",
+        "captive fastener.028",
+        "captive fastener.029",
+        "captive fastener.030",
+        "captive fastener.031",
+        "output shaft",
+        "terminal housing",
+        "crank",
+        "crank.001",
+        "crank.002",
+        "crank.003"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -12,
+        47
+      ]
+    },
+    "C": {
+      "parts": 11,
+      "objects": [
+        "rain channel",
+        "gutter clip",
+        "gutter clip.001",
+        "downpipe",
+        "downpipe cleanout",
+        "captive fastener.032",
+        "captive fastener.033",
+        "captive fastener.034",
+        "captive fastener.035",
+        "captive fastener.036",
+        "captive fastener.037"
+      ],
+      "removed_covers": [],
+      "camera": [
+        34,
+        43
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 2658,
+      "file": "tools/assets/century/shade-orchard-A.json"
+    },
+    "B": {
+      "paths": 1859,
+      "file": "tools/assets/century/shade-orchard-B.json"
+    },
+    "C": {
+      "paths": 423,
+      "file": "tools/assets/century/shade-orchard-C.json"
+    }
+  }
+}

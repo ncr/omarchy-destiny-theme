@@ -1,0 +1,123 @@
+{
+  "slug": "comet-anchor",
+  "notes": {
+    "ANCHOR SCREW": "LOW TORQUE ICE PENETRATOR",
+    "TOOTHED PAD": "REACTION LOAD INTO SURFACE",
+    "INSTRUMENT SHELF": "CORE AND VOLATILE ANALYSIS",
+    "TELEMETRY": "OPTICAL RELAY HEAD"
+  },
+  "parts": 102,
+  "groups": {
+    "B": {
+      "parts": 38,
+      "objects": [
+        "drill cartridge",
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "cooling fin.002",
+        "cooling fin.003",
+        "cooling fin.004",
+        "cooling fin.005",
+        "cooling fin.006",
+        "motor face",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "output shaft",
+        "terminal housing",
+        "core shaft",
+        "helical cutter flight",
+        "helical cutter flight.001",
+        "helical cutter flight.002",
+        "helical cutter flight.003",
+        "helical cutter flight.004",
+        "helical cutter flight.005",
+        "helical cutter flight.006",
+        "helical cutter flight.007",
+        "core coupling",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -11,
+        44
+      ]
+    },
+    "C": {
+      "parts": 39,
+      "objects": [
+        "tripod link",
+        "leg brace",
+        "landing pad",
+        "ice tooth",
+        "ice tooth.001",
+        "pivot body",
+        "retainer",
+        "captive fastener.016",
+        "captive fastener.017",
+        "captive fastener.018",
+        "captive fastener.019",
+        "captive fastener.020",
+        "captive fastener.021",
+        "tripod link.001",
+        "leg brace.001",
+        "landing pad.001",
+        "ice tooth.002",
+        "ice tooth.003",
+        "pivot body.001",
+        "retainer.001",
+        "captive fastener.022",
+        "captive fastener.023",
+        "captive fastener.024",
+        "captive fastener.025",
+        "captive fastener.026",
+        "captive fastener.027",
+        "tripod link.002",
+        "leg brace.002",
+        "landing pad.002",
+        "ice tooth.004",
+        "ice tooth.005",
+        "pivot body.002",
+        "retainer.002",
+        "captive fastener.028",
+        "captive fastener.029",
+        "captive fastener.030",
+        "captive fastener.031",
+        "captive fastener.032",
+        "captive fastener.033"
+      ],
+      "removed_covers": [],
+      "camera": [
+        35,
+        40
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 2868,
+      "file": "tools/assets/century/comet-anchor-A.json"
+    },
+    "B": {
+      "paths": 1654,
+      "file": "tools/assets/century/comet-anchor-B.json"
+    },
+    "C": {
+      "paths": 944,
+      "file": "tools/assets/century/comet-anchor-C.json"
+    }
+  }
+}

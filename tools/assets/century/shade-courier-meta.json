@@ -1,0 +1,129 @@
+{
+  "slug": "shade-courier",
+  "notes": {
+    "SHADE STACK": "STAGGERED RADIATIVE BARRIERS",
+    "COLD CAPSULE": "PASSIVE THERMAL HOLD",
+    "ION DRIVE": "LOW THRUST / LONG COAST",
+    "POWER BLANKET": "HINGED SOLAR CELLS"
+  },
+  "parts": 168,
+  "groups": {
+    "B": {
+      "parts": 30,
+      "objects": [
+        "radiation shield",
+        "shield perimeter",
+        "shield rib",
+        "shield rib.001",
+        "shield rib.002",
+        "shield rib.003",
+        "shield rib.004",
+        "shield rib.005",
+        "shield rib.006",
+        "shield rib.007",
+        "radiation shield.001",
+        "shield perimeter.001",
+        "shield rib.008",
+        "shield rib.009",
+        "shield rib.010",
+        "shield rib.011",
+        "shield rib.012",
+        "shield rib.013",
+        "shield rib.014",
+        "shield rib.015",
+        "radiation shield.002",
+        "shield perimeter.002",
+        "shield rib.016",
+        "shield rib.017",
+        "shield rib.018",
+        "shield rib.019",
+        "shield rib.020",
+        "shield rib.021",
+        "shield rib.022",
+        "shield rib.023"
+      ],
+      "removed_covers": [],
+      "camera": [
+        25,
+        -28
+      ]
+    },
+    "C": {
+      "parts": 50,
+      "objects": [
+        "service neck",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "vessel saddle",
+        "vessel saddle.001",
+        "cold collar",
+        "cold collar.001",
+        "cold collar.002",
+        "payload shelf",
+        "sealed sample vial",
+        "vial retention lip",
+        "sealed sample vial.001",
+        "vial retention lip.001",
+        "sealed sample vial.002",
+        "vial retention lip.002",
+        "sealed sample vial.003",
+        "vial retention lip.003",
+        "payload shelf.001",
+        "sealed sample vial.004",
+        "vial retention lip.004",
+        "sealed sample vial.005",
+        "vial retention lip.005",
+        "sealed sample vial.006",
+        "vial retention lip.006",
+        "sealed sample vial.007",
+        "vial retention lip.007",
+        "payload shelf.002",
+        "sealed sample vial.008",
+        "vial retention lip.008",
+        "sealed sample vial.009",
+        "vial retention lip.009",
+        "sealed sample vial.010",
+        "vial retention lip.010",
+        "sealed sample vial.011",
+        "vial retention lip.011",
+        "payload vertical rail",
+        "payload vertical rail.001",
+        "temperature logger",
+        "logger indicator",
+        "logger indicator.001",
+        "logger indicator.002",
+        "coolant return",
+        "coolant return.001",
+        "coolant return.002"
+      ],
+      "removed_covers": [
+        "cold capsule",
+        "conformal vessel seam"
+      ],
+      "camera": [
+        34,
+        22
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 2982,
+      "file": "tools/assets/century/shade-courier-A.json"
+    },
+    "B": {
+      "paths": 955,
+      "file": "tools/assets/century/shade-courier-B.json"
+    },
+    "C": {
+      "paths": 2440,
+      "file": "tools/assets/century/shade-courier-C.json"
+    }
+  }
+}

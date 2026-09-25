@@ -1,0 +1,107 @@
+{
+  "slug": "spectrum-harp",
+  "notes": {
+    "GRATING CARRIAGE": "ANGLE SELECTED SPECTRAL DISPERSION",
+    "SAMPLE CELL": "SMALL SEALED OPTICAL SAMPLE",
+    "FOLD MIRROR": "COMPACT OPTICAL PATH",
+    "DETECTOR": "CALIBRATED INTENSITY READOUT"
+  },
+  "parts": 88,
+  "groups": {
+    "B": {
+      "parts": 38,
+      "objects": [
+        "grating carriage",
+        "diffraction grating",
+        "grating ruling",
+        "grating ruling.001",
+        "grating ruling.002",
+        "grating ruling.003",
+        "grating ruling.004",
+        "grating ruling.005",
+        "grating ruling.006",
+        "grating ruling.007",
+        "grating ruling.008",
+        "grating ruling.009",
+        "grating ruling.010",
+        "grating ruling.011",
+        "grating rotary stage",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "cooling fin.002",
+        "motor face",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015",
+        "output shaft",
+        "terminal housing"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -12,
+        50
+      ]
+    },
+    "C": {
+      "parts": 23,
+      "objects": [
+        "sample cell",
+        "cell window",
+        "captive fastener.016",
+        "captive fastener.017",
+        "captive fastener.018",
+        "captive fastener.019",
+        "captive fastener.020",
+        "captive fastener.021",
+        "captive fastener.022",
+        "captive fastener.023",
+        "cell window.001",
+        "captive fastener.024",
+        "captive fastener.025",
+        "captive fastener.026",
+        "captive fastener.027",
+        "captive fastener.028",
+        "captive fastener.029",
+        "captive fastener.030",
+        "captive fastener.031",
+        "fluid port",
+        "fluid port.001",
+        "cell foot",
+        "cell foot.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        34,
+        46
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 2246,
+      "file": "tools/assets/century/spectrum-harp-A.json"
+    },
+    "B": {
+      "paths": 939,
+      "file": "tools/assets/century/spectrum-harp-B.json"
+    },
+    "C": {
+      "paths": 697,
+      "file": "tools/assets/century/spectrum-harp-C.json"
+    }
+  }
+}

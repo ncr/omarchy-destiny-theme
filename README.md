@@ -119,6 +119,7 @@ notifications, the menu and the lock screen use the same gradient.
 | `icons.theme`, `chromium.theme` | Icon set and browser colour. |
 | `backgrounds/` | Fourteen wallpapers. |
 | `preview.png`, `previews/` | Images for the theme picker and this page. |
+| `companion/`, `destiny-wallpapers` | Optional wallpaper browser, user-local installer and menu integration. |
 | `tools/` | The Python program that draws the wallpapers, and a copy of the Omarchy logo it reads. |
 
 Nothing in this repository runs on your machine when the theme is installed:
@@ -190,10 +191,69 @@ function that draws it takes a loop phase from 0 to 1, and every ring turns a
 whole number of times per loop, so it is ready to be animated once Omarchy
 plays video backgrounds.
 
+### Destiny Wallpapers companion app
+
+An optional fullscreen browser for the wallpaper collection, with keyboard
+navigation and live reload during development. Install from this checkout:
+
+```bash
+omarchy pkg add imv  # only if missing
+python3 companion/install.py
+```
+
+Open **Destiny Wallpapers** from the application menu, or run
+`destiny-wallpapers`. Use **← / →** to browse, **F** for fullscreen,
+**I** for the filename, and **Esc** to close. The app reads current images
+from the checkout: all 34 retained sheets when rendered locally, or the 14
+shipped backgrounds on a fresh clone. Rejected studies are excluded.
+
+[Installation, updates and removal](companion/README.md).
+
+### Fullscreen development viewer
+
+Run `./wallpapers` from the repository, or `./wallpapers tether` to start at a
+particular wallpaper (`./wallpapers 9` works too). Requires `imv`.
+
+- **Left / Right:** previous / next wallpaper, wrapping at the ends.
+- **Esc:** close the viewer.
+- **Super+O:** fullscreen ↔ floating, pinned preview (local Hyprland integration).
+- **I:** toggle filename and position; **Home / End:** first / last.
+
+The view starts fullscreen, fits the entire image without cropping, and reloads
+the displayed file when it changes. It uses its own bindings, without changing
+your normal image-viewer configuration or desktop background.
+
+The default collection is `concepts/development/`, falling back to `backgrounds/`
+on a fresh checkout. Regenerate the development set with `./wallpapers --render`.
+While the viewer is open, update a single wallpaper with:
+
+```bash
+python3 tools/make_wallpapers.py --only 9 --out concepts/development
+```
+
+Use `./wallpapers --dir concepts/tether-details` for a separate review directory,
+or `./wallpapers --list` to see the current collection. Only numbered wallpaper
+files are included; comparison crops and previews are excluded.
+
+### Century: 100 new wallpapers
+
+The [Century collection](docs/century/README.pl.md) contains 100 new devices,
+stories and authored Blender models, exported natively at 5120×2160 and
+5120×2880. Browse the local collection with `./century` or open
+`concepts/century/index.html` for search, domain filters and both formats.
+The [concept catalogue](docs/century/CONCEPTS.md) documents every sheet.
+Century is a separate review collection; the existing development viewer
+and installed desktop collection keep their current contents.
+
 ### Rendering your own
 
+For new artwork, start with the [wallpaper production guide](docs/WALLPAPER-PRODUCTION-GUIDE.pl.md)
+(Polish). It records the visual direction, review lessons, anatomy and label
+checks, reference images, and a workflow for growing the collection to about
+100 distinct devices. Future sessions should read it before extending the set.
+
 The wallpapers are drawn by a program, and the result is deterministic: the
-same command gives byte-identical files.
+same sources, command and rendering environment give byte-identical files.
 
 The current sheets use detailed technical contours, schematic crash-test
 figures, locally fading construction lines and restrained grain. Text is set
@@ -209,10 +269,13 @@ python3 tools/make_wallpapers.py --only 12 --out /tmp/test       # one sheet
 python3 tools/make_previews.py                                   # README images
 ```
 
-`--inset` is how far the legend and the emblem stay from the sides. It
-defaults to 150 units (of 1080) for 16:9, so those files survive cropping to
-16:10 and 3:2, and to 0 otherwise. Above 2.1 : 1 the program adds the secondary
-views.
+The current development collection retains the complete three-column layout
+in both native formats: a main illustration, two details, two diagrams, title,
+Field Notes and the original Omarchy signature. A sits above the main drawing;
+the quiet Easter egg is centred at the bottom. The taller format adds vertical
+space without stretching the drawings. These full-width compositions are
+intended to be displayed without cropping. `--inset` applies to the preceding
+`--style original` compact layout.
 
 Needs `python-cairo`, `python-numpy`, `python-pillow` and the Nimbus Sans font
 (`gsfonts` on Arch).

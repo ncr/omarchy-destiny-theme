@@ -17,6 +17,7 @@ if abs(width/height-16/9)<.01:Sheet.side_inset=150
 original_start=devices.start;original_leader=Sheet.leader;original_legend=Sheet.legend
 labels=[];kind='text'
 def text(self,t,x,y,size=8,track=.22,a=.7,align='l',bold=False,color=(.95,.965,.98),rot=0):
+    size=self.readable_size(size)
     glyphs=self._glyphs(t,size);adv=self._advances(glyphs,bold)
     w=sum(adv)+track*size*(len(glyphs)-1)
     px=-{'l':0,'r':w,'c':w/2}[align];m=self.c.get_matrix();m.translate(x,y);m.rotate(math.radians(rot));pts=[]
@@ -25,11 +26,23 @@ def text(self,t,x,y,size=8,track=.22,a=.7,align='l',bold=False,color=(.95,.965,.
         if e.width and e.height:
             pts += [m.transform_point(u,v) for u in (px+e.x_bearing,px+e.x_bearing+e.width) for v in (dy+e.y_bearing,dy+e.y_bearing+e.height)]
         px+=aw+track*size
-    if pts:labels.append({'text':t,'kind':kind,'box':[min(p[0] for p in pts),min(p[1] for p in pts),max(p[0] for p in pts),max(p[1] for p in pts)]})
+    if pts:labels.append({'text':t,'kind':kind,'font_px':round(size*math.hypot(m.xy,m.yy),3),'box':[min(p[0] for p in pts),min(p[1] for p in pts),max(p[0] for p in pts),max(p[1] for p in pts)]})
     return w
 def leader(self,*a,**kw):
     global kind
     before=kind;kind='callout';original_leader(self,*a,**kw);kind=before
+def text_mid(self,t,x,y_mid,size=8,track=.22,a=.7,align='l',bold=False,color=(.95,.965,.98)):
+    size=self.readable_size(size)
+    # Sheet.text_mid draws centred single glyphs directly. Capture those too,
+    # including the boxed A/B/C identifiers, at their actual ink coordinates.
+    import cairo
+    from sheet import FONT
+    self.c.select_font_face(FONT,cairo.FONT_SLANT_NORMAL,cairo.FONT_WEIGHT_BOLD if bold else cairo.FONT_WEIGHT_NORMAL)
+    self.c.set_font_size(size);cap=-self.c.text_extents('H').y_bearing
+    if len(t)==1 and align=='c':
+        e=self.c.text_extents(t)
+        return text(self,t,x-(e.x_bearing+e.width/2),y_mid+cap/2,size,0,a,'l',bold,color)
+    return text(self,t,x,y_mid+cap/2,size,track,a,align,bold,color)
 def legend(self,*a,**kw):
     global kind
     before=kind;kind='legend';original_legend(self,*a,**kw);kind=before
@@ -37,7 +50,7 @@ def start(*a,**kw):
     s=original_start(*a,**kw);s.surface.flush()
     s._audit_base=np.frombuffer(s.surface.get_data(),np.uint8).reshape(height,width,4).copy()
     labels.clear();return s
-Sheet.text=text;Sheet.leader=leader;Sheet.legend=legend
+Sheet.text=text;Sheet.text_mid=text_mid;Sheet.leader=leader;Sheet.legend=legend
 devices.start=start;foibles.start=start;leisure.start=start
 inside_own_symbol={
  'air-refinery':{'AIR','CONTACTOR','WATER','ELECTROLYSER','SUNLIGHT','RECEIVER','ENZYME BEDS','CATALYST BEDS','JET FUEL'},
@@ -45,7 +58,7 @@ inside_own_symbol={
  'organ-foundry':{'1','2','3','4','5','6'},
  'proxy':{'114','CITY 10K'},
 }
-fns=dict(devices.SHEETS+foibles.SHEETS+leisure.SHEETS);report=[]
+fns=dict(devices.SHEETS+foibles.SHEETS+leisure.SHEETS);report=[];main_titles={}
 if args.style=='starmap':
     from starmap import install
     install()
@@ -66,8 +79,29 @@ for name,_ in ORDER:
     for i,a in enumerate(labels):
         for b in labels[i+1:]:
             if a['box'][0]<b['box'][2] and a['box'][2]>b['box'][0] and a['box'][1]<b['box'][3] and a['box'][3]>b['box'][1]:pairs.append([a['text'],b['text']])
-    report.append({'name':name,'geometry_collisions':issues,'text_collisions':pairs,'out_of_bounds':out_of_bounds,'intentional_symbol_fills':intentional,'texts':labels})
-    print(name,'geometry:',[(t['text'],t['geometry_pixels']) for t in issues],'text:',pairs,'outside:',len(out_of_bounds),flush=True)
+    view_counts={letter:sum(t['text']==letter for t in labels) for letter in 'ABC'}
+    expected={'A':1,'B':int(s.wide),'C':int(s.wide)}
+    view_issues=[f'{letter}: expected {count}, found {view_counts[letter]}' for letter,count in expected.items() if view_counts[letter]!=count]
+    if getattr(s,'triptych',False):
+        from triptych import audit_slots
+        view_issues.extend(audit_slots(s,labels))
+    notes=[t for t in labels if t['text'].startswith('FIELD NOTES / ')]
+    if len(notes)!=1:view_issues.append(f'Expected one FIELD NOTES block, found {len(notes)}')
+    from collection_layout import signature_box
+    nx0,ny0,nx1,ny1=s.field_notes_bounds
+    ex,ey,er=signature_box(s)
+    if nx0<ex+er and nx1>ex-er and ny0<ey+er and ny1>ey-er:
+        view_issues.append('Field notes collide with signature region')
+    main_caption=next((labels[i+1]['text'] for i,t in enumerate(labels[:-1]) if t['text']=='A'),None)
+    if main_caption:
+        key=main_caption.casefold()
+        if key in main_titles:view_issues.append(f'A caption duplicates {main_titles[key]}: {main_caption}')
+        main_titles[key]=name
+        if set(main_caption.upper().split()) & {'ASSEMBLY','CONFIGURATION','UNIT'}:
+            view_issues.append(f'Generic A caption: {main_caption}')
+    else:view_issues.append('A caption is missing')
+    report.append({'name':name,'illustration_layout':s.illustration_layout,'section_layout':s.section_layout,'legend_top':s.legend_top,'field_notes_bounds':s.field_notes_bounds,'geometry_collisions':issues,'text_collisions':pairs,'out_of_bounds':out_of_bounds,'view_label_counts':view_counts,'view_label_issues':view_issues,'main_caption':main_caption,'intentional_symbol_fills':intentional,'texts':labels})
+    print(name,'geometry:',[(t['text'],t['geometry_pixels']) for t in issues],'text:',pairs,'outside:',len(out_of_bounds),'views:',view_counts,'view issues:',view_issues,flush=True)
 Path(args.out).write_text(json.dumps({'size':size,'threshold':5,'sheets':report},indent=2)+'\n')
-if any(s[k] for s in report for k in ('geometry_collisions','text_collisions','out_of_bounds')):
+if any(s[k] for s in report for k in ('geometry_collisions','text_collisions','out_of_bounds','view_label_issues')):
     sys.exit(1)

@@ -1,0 +1,120 @@
+{
+  "slug": "dune-skimmer",
+  "notes": {
+    "EXPANDING WHEEL": "VARIABLE CONTACT WIDTH",
+    "SHADE HINGE": "PARKED MODE / FOLDS OVER PAYLOAD",
+    "CREW CANOPY": "SEALED AGAINST ABRASIVE SAND",
+    "CARGO BAY": "SUPPLIES BELOW THE SHADE"
+  },
+  "parts": 244,
+  "groups": {
+    "B": {
+      "parts": 41,
+      "objects": [
+        "expanding wheel",
+        "wheel lamella",
+        "wheel lamella.001",
+        "wheel lamella.002",
+        "wheel lamella.003",
+        "wheel drive hub",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "expansion spoke",
+        "expansion spoke.001",
+        "expansion spoke.002",
+        "expansion spoke.003",
+        "expansion spoke.004",
+        "expansion spoke.005",
+        "expansion spoke.006",
+        "expansion spoke.007",
+        "sand grouser",
+        "sand grouser.001",
+        "sand grouser.002",
+        "sand grouser.003",
+        "sand grouser.004",
+        "sand grouser.005",
+        "sand grouser.006",
+        "sand grouser.007",
+        "sand grouser.008",
+        "sand grouser.009",
+        "sand grouser.010",
+        "sand grouser.011",
+        "sand grouser.012",
+        "sand grouser.013",
+        "sand grouser.014",
+        "sand grouser.015",
+        "sand grouser.016",
+        "sand grouser.017",
+        "hub dust seal"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -13,
+        42
+      ]
+    },
+    "C": {
+      "parts": 33,
+      "objects": [
+        "pivot body",
+        "retainer",
+        "captive fastener.032",
+        "captive fastener.033",
+        "captive fastener.034",
+        "captive fastener.035",
+        "captive fastener.036",
+        "captive fastener.037",
+        "shade hinge arm",
+        "shade piston",
+        "pivot body.001",
+        "retainer.001",
+        "captive fastener.038",
+        "captive fastener.039",
+        "captive fastener.040",
+        "captive fastener.041",
+        "captive fastener.042",
+        "captive fastener.043",
+        "shade hinge arm.001",
+        "shade piston.001",
+        "shade hinge",
+        "hinge pin",
+        "hinge pin.001",
+        "paired service loom",
+        "paired service loom.001",
+        "piston bellows",
+        "piston bellows.001",
+        "piston bellows.002",
+        "paired service loom.002",
+        "paired service loom.003",
+        "piston bellows.003",
+        "piston bellows.004",
+        "piston bellows.005"
+      ],
+      "removed_covers": [],
+      "camera": [
+        33,
+        38
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 5572,
+      "file": "tools/assets/century/dune-skimmer-A.json"
+    },
+    "B": {
+      "paths": 1699,
+      "file": "tools/assets/century/dune-skimmer-B.json"
+    },
+    "C": {
+      "paths": 1285,
+      "file": "tools/assets/century/dune-skimmer-C.json"
+    }
+  }
+}

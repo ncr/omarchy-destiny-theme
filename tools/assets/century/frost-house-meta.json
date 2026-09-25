@@ -1,0 +1,71 @@
+{
+  "slug": "frost-house",
+  "notes": {
+    "THERMAL CASSETTE": "REPLACEABLE PHASE CHANGE RESERVE",
+    "DOOR GASKET": "CONTINUOUS MONITORED THERMAL SEAL",
+    "MEDICINE SHELF": "MONITORED PAYLOAD / STORAGE STUDY",
+    "MONITOR": "ALARM BEFORE RESERVE IS EXHAUSTED"
+  },
+  "parts": 89,
+  "groups": {
+    "B": {
+      "parts": 15,
+      "objects": [
+        "phase change cassette",
+        "cassette cooling rib",
+        "cassette cooling rib.001",
+        "cassette cooling rib.002",
+        "cassette handle",
+        "phase change cassette.001",
+        "cassette cooling rib.003",
+        "cassette cooling rib.004",
+        "cassette cooling rib.005",
+        "cassette handle.001",
+        "phase change cassette.002",
+        "cassette cooling rib.006",
+        "cassette cooling rib.007",
+        "cassette cooling rib.008",
+        "cassette handle.002"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -66,
+        45
+      ]
+    },
+    "C": {
+      "parts": 10,
+      "objects": [
+        "insulated door",
+        "door gasket",
+        "gasket retainer",
+        "gasket retainer.001",
+        "gasket retainer.002",
+        "gasket retainer.003",
+        "inner thermal liner",
+        "door hinge",
+        "door hinge.001",
+        "door latch"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -50,
+        26
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 1590,
+      "file": "tools/assets/century/frost-house-A.json"
+    },
+    "B": {
+      "paths": 355,
+      "file": "tools/assets/century/frost-house-B.json"
+    },
+    "C": {
+      "paths": 252,
+      "file": "tools/assets/century/frost-house-C.json"
+    }
+  }
+}

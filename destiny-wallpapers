@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -euo pipefail
+project_dir="$(dirname "$(readlink -f "$0")")"
+exec /usr/bin/python "$project_dir/tools/view_wallpapers.py" --collection finalized "$@"

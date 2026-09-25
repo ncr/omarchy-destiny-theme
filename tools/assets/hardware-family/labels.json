@@ -1,0 +1,426 @@
+{
+  "organ-foundry": [
+    [
+      "PRINT HEAD",
+      "6 BIO-INKS / 10 \u00b5m VOXEL"
+    ],
+    [
+      "CELL CARTRIDGES",
+      "GROWN FROM THE PATIENT'S SKIN"
+    ],
+    [
+      "PRINT FRONT",
+      "LAYER 1 212 OF 2 900"
+    ],
+    [
+      "VASCULAR TREE",
+      "ARTERY TO 10 \u00b5m CAPILLARY"
+    ],
+    [
+      "PERFUSION PUMP",
+      "PULSATILE / 72 BPM"
+    ],
+    [
+      "OXYGENATOR"
+    ],
+    [
+      "METABOLITE SENSORS",
+      "4 ANALYTES / 1 Hz"
+    ]
+  ],
+  "quantum-simulator": [
+    [
+      "PULSE-TUBE COOLER",
+      "NO LIQUID HELIUM TO REFILL"
+    ],
+    [
+      "CONTROL CHIPS",
+      "AT 4 K, BESIDE THE WIRING"
+    ],
+    [
+      "OPTICAL LINK",
+      "TO NEIGHBOUR CRYOSTATS"
+    ],
+    [
+      "HEAT EXCHANGER"
+    ],
+    [
+      "MIXING CHAMBER",
+      "HELIUM-3 IN HELIUM-4"
+    ],
+    [
+      "MAGNETIC SHIELD"
+    ],
+    [
+      "PROCESSOR STACK",
+      "6 TILES \u00d7 1 700 LOGICAL QUBITS"
+    ],
+    [
+      "CONTROL LINES"
+    ]
+  ],
+  "tether-climber": [
+    [
+      "RIBBON",
+      "1 m WIDE / 12 \u00b5m THICK"
+    ],
+    [
+      "DEBRIS SHIELD"
+    ],
+    [
+      "CARGO POD",
+      "20 t / 6 CONTAINERS"
+    ],
+    [
+      "TRACTION DRIVE",
+      "8 ROLLERS / 200 km/h"
+    ],
+    [
+      "RADIATOR"
+    ],
+    [
+      "LASER RECEIVER",
+      "TUNED TO ONE WAVELENGTH"
+    ],
+    [
+      "POWER BEAM",
+      "4 MW FROM THE ANCHOR"
+    ]
+  ],
+  "cortical-mesh": [
+    [
+      "MESH THREAD",
+      "POLYMER AND GOLD / 1 \u00b5m THICK"
+    ],
+    [
+      "RECORDING SITE",
+      "ONE PER NEURON-SIZED NODE"
+    ],
+    [
+      "DECODER CHIP",
+      "15 mW"
+    ],
+    [
+      "POWER COIL",
+      "DRIVEN BY ULTRASOUND"
+    ],
+    [
+      "INSERTION PORT",
+      "\u00d8 2 mm"
+    ],
+    [
+      "SEALED CAN",
+      "TITANIUM / \u00d8 18 mm"
+    ]
+  ],
+  "fusion-transport": [
+    [
+      "CREW RING",
+      "6 CREW / 0.4 g AT 2 rpm"
+    ],
+    [
+      "DUST SHIELD"
+    ],
+    [
+      "PROPELLANT TANKS",
+      "DEUTERIUM AND HELIUM-3"
+    ],
+    [
+      "DROPLET RADIATOR",
+      "LIQUID TIN / 25 MW"
+    ],
+    [
+      "DROPLET COLLECTOR"
+    ],
+    [
+      "SHADOW SHIELD"
+    ],
+    [
+      "FUSION CORE",
+      "FIELD-REVERSED PLASMA / 75 MW"
+    ],
+    [
+      "MAGNETIC NOZZLE",
+      "EXHAUST 100 km/s"
+    ]
+  ],
+  "air-refinery": [
+    [
+      "AIR CONTACTOR",
+      "SORBENT PANELS / RELEASE AT 60 \u00b0C"
+    ],
+    [
+      "ENZYME BEDS",
+      "CO\u2082 TO FORMATE"
+    ],
+    [
+      "CATALYST BEDS",
+      "FORMATE AND H\u2082 TO C8 \u2013 C16 CHAINS"
+    ],
+    [
+      "SOLAR RECEIVER",
+      "PROCESS HEAT AT 250 \u00b0C"
+    ],
+    [
+      "MIRROR FIELD",
+      "40 ha"
+    ],
+    [
+      "ELECTROLYSER",
+      "WATER TO H\u2082 AND O\u2082"
+    ],
+    [
+      "PRODUCT TANKS",
+      "JET FUEL / 36 t PER DAY"
+    ]
+  ],
+  "sky-racer": [
+    [
+      "RIM-DRIVEN FAN",
+      "6 OFF / 95 kW EACH"
+    ],
+    [
+      "CRASH CELL",
+      "PILOT, SEAT AND HARNESS"
+    ],
+    [
+      "LITHIUM-AIR PACK",
+      "1 100 Wh PER kg"
+    ],
+    [
+      "SENSING ARRAY",
+      "14 HEADS / SEES 200 m"
+    ],
+    [
+      "KEEP-CLEAR ENVELOPE",
+      "NOTHING COMES CLOSER THAN 3 m"
+    ],
+    [
+      "FOLDING ARM",
+      "WOVEN NANOTUBE FIBRE"
+    ]
+  ],
+  "volumetric-stage": [
+    [
+      "EMITTER HEAD",
+      "INFRARED / STEERED ON A CHIP"
+    ],
+    [
+      "TOWER",
+      "24 m"
+    ],
+    [
+      "BRIDGE",
+      "7 HEADS POINTING DOWN"
+    ],
+    [
+      "IMAGE VOLUME",
+      "40 \u00d7 22 \u00d7 18 m"
+    ],
+    [
+      "VOXEL"
+    ],
+    [
+      "HAZE UNIT",
+      "LIGHT-CONVERTING PARTICLES"
+    ]
+  ],
+  "presence-rig": [
+    [
+      "HEADSET",
+      "SIGHT AND SOUND"
+    ],
+    [
+      "INNER-EAR PADS",
+      "A FEW mA, FELT AS ACCELERATION"
+    ],
+    [
+      "MUSCLE BAND",
+      "RESISTS OR ASSISTS EVERY JOINT"
+    ],
+    [
+      "TACTILE SKIN",
+      "A MILLION MOVING POINTS"
+    ],
+    [
+      "GLOVE",
+      "1 POINT PER mm\u00b2"
+    ],
+    [
+      "SUIT COMPUTER"
+    ],
+    [
+      "SAFETY TETHER"
+    ],
+    [
+      "ROLLER FLOOR",
+      "MOVES THE GROUND, NOT THE PLAYER"
+    ],
+    [
+      "HUMAN PLAYER",
+      "SHOWN AS DUMMY. EGO NOT TO SCALE."
+    ]
+  ],
+  "aroma-organ": [
+    [
+      "BASE ODORANT",
+      "96 CARTRIDGES / 6 MONTHS EACH"
+    ],
+    [
+      "VALVE RING",
+      "DOSES OF 5 pl"
+    ],
+    [
+      "MANIFOLD"
+    ],
+    [
+      "MIXING CHIP",
+      "NEW BLEND 12 TIMES A SECOND"
+    ],
+    [
+      "HEATED OUTLET",
+      "TO THE NOSE PIECE OR THE ROOM DUCT"
+    ],
+    [
+      "CLEARING FAN"
+    ],
+    [
+      "SCRUBBER",
+      "DESTROYS THE LAST SMELL IN 0.4 s"
+    ]
+  ],
+  "bounder": [
+    [
+      "PACK",
+      "CELLS AND CONTROLLER / 2.2 kg"
+    ],
+    [
+      "HIP DRIVE"
+    ],
+    [
+      "NERVE-SIGNAL CUFF",
+      "READS THE COMMAND 60 ms EARLY"
+    ],
+    [
+      "MUSCLE BUNDLE",
+      "NANOTUBE YARN / 3 PER LEG"
+    ],
+    [
+      "KNEE CAM",
+      "VARIABLE LEVERAGE"
+    ],
+    [
+      "ANKLE PIVOT"
+    ],
+    [
+      "SPRING BLADE",
+      "RETURNS 96 % OF THE LANDING"
+    ],
+    [
+      "SOLE",
+      "SPIKED OR FLAT"
+    ]
+  ],
+  "proxy": [
+    [
+      "HEAD",
+      "NONE FITTED / NO TRACKER ASKS FOR ONE"
+    ],
+    [
+      "OWNER'S WATCH",
+      "THE ONLY PART THE INSURER SEES"
+    ],
+    [
+      "LEFT WRIST",
+      "SKIN, WARMTH, PULSE AND LIGHT SWEAT"
+    ],
+    [
+      "CHEST",
+      "BARE ALUMINIUM / NOBODY CHECKS"
+    ],
+    [
+      "RIGHT KNEE",
+      "COPIES THE OWNER'S LIMP FROM A 2041 SKI TRIP"
+    ],
+    [
+      "WAVING HAND",
+      "NEIGHBOURS ARE WITNESSES"
+    ],
+    [
+      "FOOT",
+      "WEARS OUT THE OWNER'S OWN SHOES"
+    ],
+    [
+      "RACE NUMBER",
+      "ENTERED UNDER THE OWNER'S NAME"
+    ]
+  ],
+  "greener": [
+    [
+      "PERISCOPE CAMERA",
+      "READS THE NEIGHBOUR'S GREEN BY STARLIGHT"
+    ],
+    [
+      "THE NEIGHBOUR'S UNIT",
+      "BOUGHT THREE WEEKS LATER / 18 mm TALLER"
+    ],
+    [
+      "FENCE",
+      "RAISED TWICE, BY BOTH PARTIES"
+    ],
+    [
+      "CONTROL BOX",
+      "SET TO: NEIGHBOUR + 4 %"
+    ],
+    [
+      "GNOME",
+      "DECOY. CONTAINS NOTHING."
+    ],
+    [
+      "THEIR GNOME",
+      "CONTAINS A SECOND CAMERA"
+    ],
+    [
+      "ANTENNA WIRE",
+      "TELLS THE GRASS HOW GREEN TO BE"
+    ],
+    [
+      "SHRUB",
+      "PLANTED TO HIDE THE MAST. HIDES NOTHING."
+    ]
+  ],
+  "truth-lamp": [
+    [
+      "MICROPHONE RING",
+      "HEARS THE HALF SECOND BEFORE \"OF COURSE NOT\""
+    ],
+    [
+      "THERMAL CAMERAS",
+      "NOSES COOL BY 0.4 \u00b0C WHEN THEIR OWNERS LIE"
+    ],
+    [
+      "LAMP",
+      "GLOWS RED FOR THREE SECONDS. NOT DIMMABLE."
+    ],
+    [
+      "OFF SWITCH",
+      "NEW IN VERSION 2"
+    ],
+    [
+      "SEAT 4",
+      "\"NO, I LOVE IT. I'LL WEAR IT ALL THE TIME.\""
+    ],
+    [
+      "SEAT 1, GRANDMOTHER",
+      "NEVER SETS IT OFF. SAYS WHAT SHE THINKS."
+    ],
+    [
+      "DOG",
+      "HAS NEVER SET IT OFF EITHER"
+    ],
+    [
+      "DINNER",
+      "THE SUBJECT OF 31 % OF ALL DETECTIONS"
+    ]
+  ]
+}

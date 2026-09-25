@@ -1,0 +1,78 @@
+{
+  "slug": "grip-print",
+  "notes": {
+    "TENDON DIFFERENTIAL": "SERVICEABLE COMPACT DRIVE",
+    "PALM SENSOR": "CONTACT PRESSURE / OBJECT SLIP",
+    "CUSTOM SOCKET": "INDIVIDUALLY FITTED INTERFACE",
+    "HUMAN HAND STAND-IN": "COMPACT SCHEMATIC / NOT A FINGER MODEL"
+  },
+  "parts": 49,
+  "groups": {
+    "B": {
+      "parts": 21,
+      "objects": [
+        "tendon differential",
+        "differential pulley",
+        "pulley rim",
+        "differential pulley.001",
+        "pulley rim.001",
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "motor face",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "output shaft",
+        "terminal housing",
+        "tendon path",
+        "tendon path.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        156,
+        25
+      ]
+    },
+    "C": {
+      "parts": 11,
+      "objects": [
+        "palm sensor pad",
+        "pressure cell",
+        "pressure cell.001",
+        "pressure cell.002",
+        "pressure cell.003",
+        "pressure cell.004",
+        "pressure cell.005",
+        "pressure cell.006",
+        "pressure cell.007",
+        "pressure cell.008",
+        "sensor edge"
+      ],
+      "removed_covers": [],
+      "camera": [
+        18,
+        20
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 1520,
+      "file": "tools/assets/century/grip-print-A.json"
+    },
+    "B": {
+      "paths": 1461,
+      "file": "tools/assets/century/grip-print-B.json"
+    },
+    "C": {
+      "paths": 240,
+      "file": "tools/assets/century/grip-print-C.json"
+    }
+  }
+}

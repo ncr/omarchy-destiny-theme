@@ -1,0 +1,97 @@
+{
+  "slug": "silt-heron",
+  "notes": {
+    "CORE BARREL": "SHORT UNDISTURBED SEDIMENT SAMPLE",
+    "BROAD FOOT": "LOW PRESSURE ON SOFT MUD",
+    "NAVIGATION": "REED ROOT AVOIDANCE",
+    "LEG JOINT": "QUASI STATIC SUPPORT GAIT"
+  },
+  "parts": 149,
+  "groups": {
+    "B": {
+      "parts": 38,
+      "objects": [
+        "core barrel",
+        "core mouth",
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "cooling fin.002",
+        "cooling fin.003",
+        "cooling fin.004",
+        "motor face",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "output shaft",
+        "terminal housing",
+        "core guide",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015",
+        "core guide.001",
+        "captive fastener.016",
+        "captive fastener.017",
+        "captive fastener.018",
+        "captive fastener.019",
+        "captive fastener.020",
+        "captive fastener.021",
+        "captive fastener.022",
+        "captive fastener.023",
+        "barrel slide"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -14,
+        42
+      ]
+    },
+    "C": {
+      "parts": 13,
+      "objects": [
+        "broad sediment foot",
+        "foot stiffener",
+        "foot stiffener.001",
+        "foot stiffener.002",
+        "pivot body",
+        "retainer",
+        "captive fastener.024",
+        "captive fastener.025",
+        "captive fastener.026",
+        "captive fastener.027",
+        "captive fastener.028",
+        "captive fastener.029",
+        "ankle neck"
+      ],
+      "removed_covers": [],
+      "camera": [
+        32,
+        38
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 3573,
+      "file": "tools/assets/century/silt-heron-A.json"
+    },
+    "B": {
+      "paths": 1756,
+      "file": "tools/assets/century/silt-heron-B.json"
+    },
+    "C": {
+      "paths": 319,
+      "file": "tools/assets/century/silt-heron-C.json"
+    }
+  }
+}

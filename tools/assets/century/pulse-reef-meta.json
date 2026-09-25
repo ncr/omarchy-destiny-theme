@@ -1,0 +1,75 @@
+{
+  "slug": "pulse-reef",
+  "notes": {
+    "TRANSLATOR": "RELATIVE HEAVE DRIVES THE GENERATOR",
+    "MOORING SWIVEL": "TORSION ISOLATION AT THE ANCHOR",
+    "FLOAT COLLAR": "ANNULAR BUOY / SEA SURFACE",
+    "BALLAST SPAR": "SUBMERGED REACTION MASS"
+  },
+  "parts": 72,
+  "groups": {
+    "B": {
+      "parts": 16,
+      "objects": [
+        "translator shaft",
+        "magnet ring",
+        "magnet ring.001",
+        "magnet ring.002",
+        "magnet ring.003",
+        "magnet ring.004",
+        "magnet ring.005",
+        "magnet ring.006",
+        "magnet ring.007",
+        "magnet ring.008",
+        "magnet ring.009",
+        "magnet ring.010",
+        "generator guide",
+        "generator guide.001",
+        "guide crosshead",
+        "guide crosshead.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -11,
+        44
+      ]
+    },
+    "C": {
+      "parts": 13,
+      "objects": [
+        "mooring swivel",
+        "swivel cap",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "anchor eye",
+        "swivel bearing",
+        "swivel bearing.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        35,
+        40
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 3555,
+      "file": "tools/assets/century/pulse-reef-A.json"
+    },
+    "B": {
+      "paths": 1148,
+      "file": "tools/assets/century/pulse-reef-B.json"
+    },
+    "C": {
+      "paths": 817,
+      "file": "tools/assets/century/pulse-reef-C.json"
+    }
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "slug": "advice-filter",
+  "notes": {
+    "ACOUSTIC SHUTTER": "HOLDS THE REST OF THE SENTENCE",
+    "CONSENT BUTTON": "PRESS ONLY IF YOU WANT THE REST",
+    "MICROPHONE": "LISTENS FOR UNSOLICITED ADVICE",
+    "PROCESSOR": "THE LISTENER REMAINS IN CHARGE"
+  },
+  "parts": 91,
+  "groups": {
+    "B": {
+      "parts": 46,
+      "objects": [
+        "acoustic shutter",
+        "shutter blade",
+        "blade pivot",
+        "shutter blade.001",
+        "blade pivot.001",
+        "shutter blade.002",
+        "blade pivot.002",
+        "shutter blade.003",
+        "blade pivot.003",
+        "shutter blade.004",
+        "blade pivot.004",
+        "shutter blade.005",
+        "blade pivot.005",
+        "shutter blade.006",
+        "blade pivot.006",
+        "shutter link",
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "motor face",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "output shaft",
+        "terminal housing",
+        "blade crank",
+        "pivot felt washer",
+        "blade crank.001",
+        "pivot felt washer.001",
+        "blade crank.002",
+        "pivot felt washer.002",
+        "blade crank.003",
+        "pivot felt washer.003",
+        "blade crank.004",
+        "pivot felt washer.004",
+        "blade crank.005",
+        "pivot felt washer.005",
+        "blade crank.006",
+        "pivot felt washer.006",
+        "paired service loom",
+        "paired service loom.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -13,
+        45
+      ]
+    },
+    "C": {
+      "parts": 19,
+      "objects": [
+        "consent button",
+        "button bezel",
+        "bezel screw",
+        "bezel screw.001",
+        "bezel screw.002",
+        "bezel screw.003",
+        "button switch",
+        "switch terminal",
+        "switch terminal.001",
+        "switch mounting ear",
+        "switch mounting ear.001",
+        "switch spring guide",
+        "switch return spring",
+        "switch return spring.001",
+        "switch return spring.002",
+        "switch spring guide.001",
+        "switch return spring.003",
+        "switch return spring.004",
+        "switch return spring.005"
+      ],
+      "removed_covers": [],
+      "camera": [
+        35,
+        -28
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 2975,
+      "file": "tools/assets/century/advice-filter-A.json"
+    },
+    "B": {
+      "paths": 2155,
+      "file": "tools/assets/century/advice-filter-B.json"
+    },
+    "C": {
+      "paths": 547,
+      "file": "tools/assets/century/advice-filter-C.json"
+    }
+  }
+}

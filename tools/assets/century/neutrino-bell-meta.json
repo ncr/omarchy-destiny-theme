@@ -1,0 +1,110 @@
+{
+  "slug": "neutrino-bell",
+  "notes": {
+    "PHOTON SENSOR": "REGISTERS LIGHT FROM DETECTOR MEDIUM",
+    "CALIBRATION FEED": "KNOWN LIGHT PULSES / TIMING CHECK",
+    "READOUT": "TIME TAGGED LOW LIGHT SIGNALS",
+    "PRESSURE HOUSING": "SECTIONED SENSOR MODULE / MEDIUM OMITTED"
+  },
+  "parts": 210,
+  "groups": {
+    "B": {
+      "parts": 38,
+      "objects": [
+        "optical barrel",
+        "barrel retaining band",
+        "barrel retaining band.001",
+        "barrel retaining band.002",
+        "lens hood",
+        "lens",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "sensor readout",
+        "sensor lead",
+        "sensor lead.001",
+        "readout front-end IC",
+        "IC lead",
+        "IC lead.001",
+        "IC lead.002",
+        "IC lead.003",
+        "IC lead.004",
+        "IC lead.005",
+        "readout front-end IC.001",
+        "IC lead.006",
+        "IC lead.007",
+        "IC lead.008",
+        "IC lead.009",
+        "IC lead.010",
+        "IC lead.011",
+        "readout front-end IC.002",
+        "IC lead.012",
+        "IC lead.013",
+        "IC lead.014",
+        "IC lead.015",
+        "IC lead.016",
+        "IC lead.017",
+        "board standoff",
+        "board standoff.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -135,
+        30
+      ]
+    },
+    "C": {
+      "parts": 26,
+      "objects": [
+        "calibration head",
+        "calibration emitter",
+        "calibration emitter.001",
+        "calibration emitter.002",
+        "calibration emitter.003",
+        "calibration emitter.004",
+        "calibration emitter.005",
+        "cable penetrator",
+        "captive fastener.006",
+        "captive fastener.007",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "calibration feed",
+        "emitter gasket",
+        "emitter gasket.001",
+        "emitter gasket.002",
+        "emitter gasket.003",
+        "emitter gasket.004",
+        "emitter gasket.005",
+        "cable strain relief",
+        "cable strain relief.001",
+        "cable strain relief.002"
+      ],
+      "removed_covers": [],
+      "camera": [
+        33,
+        40
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 6552,
+      "file": "tools/assets/century/neutrino-bell-A.json"
+    },
+    "B": {
+      "paths": 919,
+      "file": "tools/assets/century/neutrino-bell-B.json"
+    },
+    "C": {
+      "paths": 1442,
+      "file": "tools/assets/century/neutrino-bell-C.json"
+    }
+  }
+}

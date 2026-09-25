@@ -1,0 +1,86 @@
+{
+  "slug": "storm-petal",
+  "notes": {
+    "PETAL HINGE": "RIGID SHELL / CONTROLLED DEPLOYMENT",
+    "FLOOR SEAL": "CONTINUOUS WEATHER BARRIER",
+    "ROOF SPINE": "TRANSPORT AND WEATHER LOAD PATH",
+    "SERVICE SPINE": "HEAT / AIR / LOCAL POWER"
+  },
+  "parts": 77,
+  "groups": {
+    "B": {
+      "parts": 26,
+      "objects": [
+        "petal hinge",
+        "hinge bearing",
+        "hinge bearing.001",
+        "hinge bearing.002",
+        "opening ram",
+        "pivot body",
+        "retainer",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "petal hinge.001",
+        "hinge bearing.003",
+        "hinge bearing.004",
+        "hinge bearing.005",
+        "opening ram.001",
+        "pivot body.001",
+        "retainer.001",
+        "captive fastener.006",
+        "captive fastener.007",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -13,
+        44
+      ]
+    },
+    "C": {
+      "parts": 14,
+      "objects": [
+        "floor cassette",
+        "floor perimeter seal",
+        "floor latch",
+        "floor latch.001",
+        "floor latch.002",
+        "floor latch.003",
+        "floor seam",
+        "floor seam.001",
+        "floor seam.002",
+        "floor seam.003",
+        "floor seam.004",
+        "floor seam.005",
+        "floor seam.006",
+        "floor seam.007"
+      ],
+      "removed_covers": [],
+      "camera": [
+        33,
+        40
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 1443,
+      "file": "tools/assets/century/storm-petal-A.json"
+    },
+    "B": {
+      "paths": 1501,
+      "file": "tools/assets/century/storm-petal-B.json"
+    },
+    "C": {
+      "paths": 349,
+      "file": "tools/assets/century/storm-petal-C.json"
+    }
+  }
+}

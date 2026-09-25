@@ -1,0 +1,100 @@
+{
+  "slug": "canopy-weaver",
+  "notes": {
+    "BARK SADDLE": "BROAD PADS / NO CLIMBING SPIKES",
+    "TENSION HEAD": "MEASURED SUPPORT CABLE TENSION",
+    "VISION": "BRANCH AND CABLE CLEARANCE",
+    "TREE": "LIVING ANCHOR / LOAD LIMITED"
+  },
+  "parts": 131,
+  "groups": {
+    "B": {
+      "parts": 17,
+      "objects": [
+        "bark saddle",
+        "soft bark pad",
+        "soft bark pad.001",
+        "soft bark pad.002",
+        "soft bark pad.003",
+        "saddle strap",
+        "saddle strap.001",
+        "pivot body",
+        "retainer",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -13,
+        42
+      ]
+    },
+    "C": {
+      "parts": 37,
+      "objects": [
+        "tension drum",
+        "drum side",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015",
+        "drum side.001",
+        "captive fastener.016",
+        "captive fastener.017",
+        "captive fastener.018",
+        "captive fastener.019",
+        "captive fastener.020",
+        "captive fastener.021",
+        "captive fastener.022",
+        "captive fastener.023",
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "cooling fin.002",
+        "motor face",
+        "captive fastener.024",
+        "captive fastener.025",
+        "captive fastener.026",
+        "captive fastener.027",
+        "captive fastener.028",
+        "captive fastener.029",
+        "captive fastener.030",
+        "captive fastener.031",
+        "output shaft",
+        "terminal housing",
+        "rope guide",
+        "guide roller",
+        "guide roller.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        33,
+        38
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 3490,
+      "file": "tools/assets/century/canopy-weaver-A.json"
+    },
+    "B": {
+      "paths": 754,
+      "file": "tools/assets/century/canopy-weaver-B.json"
+    },
+    "C": {
+      "paths": 1408,
+      "file": "tools/assets/century/canopy-weaver-C.json"
+    }
+  }
+}

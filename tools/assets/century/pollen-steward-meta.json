@@ -1,0 +1,96 @@
+{
+  "slug": "pollen-steward",
+  "notes": {
+    "SOFT POLLINATOR": "COMPLIANT FLOWER CONTACT",
+    "POLLEN RESERVOIR": "SMALL BATCH / CLEANABLE CHAMBER",
+    "FLOWER": "LIVING PLANT / TOOL TARGET",
+    "NAVIGATION": "ROW AND FLOWER LOCALISATION"
+  },
+  "parts": 229,
+  "groups": {
+    "B": {
+      "parts": 26,
+      "objects": [
+        "gripper bridge",
+        "parallel jaw link",
+        "compliant jaw",
+        "jaw pin",
+        "parallel jaw link.001",
+        "compliant jaw.001",
+        "jaw pin.001",
+        "wrist coupling",
+        "soft flower brush",
+        "soft flower brush.001",
+        "soft flower brush.002",
+        "soft flower brush.003",
+        "soft flower brush.004",
+        "soft flower brush.005",
+        "optical barrel",
+        "barrel retaining band",
+        "barrel retaining band.001",
+        "barrel retaining band.002",
+        "lens hood",
+        "lens",
+        "captive fastener.016",
+        "captive fastener.017",
+        "captive fastener.018",
+        "captive fastener.019",
+        "captive fastener.020",
+        "captive fastener.021"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -12,
+        42
+      ]
+    },
+    "C": {
+      "parts": 24,
+      "objects": [
+        "pollen reservoir",
+        "conformal vessel seam",
+        "conformal vessel seam.001",
+        "service neck",
+        "captive fastener.022",
+        "captive fastener.023",
+        "captive fastener.024",
+        "captive fastener.025",
+        "captive fastener.026",
+        "captive fastener.027",
+        "vessel saddle",
+        "vessel saddle.001",
+        "sterile lid",
+        "captive fastener.028",
+        "captive fastener.029",
+        "captive fastener.030",
+        "captive fastener.031",
+        "captive fastener.032",
+        "captive fastener.033",
+        "captive fastener.034",
+        "captive fastener.035",
+        "metering screw",
+        "meter drive",
+        "pollen feed"
+      ],
+      "removed_covers": [],
+      "camera": [
+        34,
+        38
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 3404,
+      "file": "tools/assets/century/pollen-steward-A.json"
+    },
+    "B": {
+      "paths": 913,
+      "file": "tools/assets/century/pollen-steward-B.json"
+    },
+    "C": {
+      "paths": 899,
+      "file": "tools/assets/century/pollen-steward-C.json"
+    }
+  }
+}

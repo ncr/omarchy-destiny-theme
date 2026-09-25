@@ -1,0 +1,125 @@
+{
+  "slug": "ember-vault",
+  "notes": {
+    "CERAMIC CORE": "REPLACEABLE RESISTIVE HEAT BRICKS",
+    "EXCHANGER": "SEALED USEFUL HEAT CIRCUIT",
+    "INSULATION": "MULTILAYER REFRACTORY SHELL",
+    "CONTROL POD": "LIMITS TEMPERATURE AND CHARGE RATE"
+  },
+  "parts": 99,
+  "groups": {
+    "B": {
+      "parts": 48,
+      "objects": [
+        "ceramic heat block",
+        "heat passage",
+        "heat passage.001",
+        "heat passage.002",
+        "ceramic heat block.001",
+        "heat passage.003",
+        "heat passage.004",
+        "heat passage.005",
+        "ceramic heat block.002",
+        "heat passage.006",
+        "heat passage.007",
+        "heat passage.008",
+        "ceramic heat block.003",
+        "heat passage.009",
+        "heat passage.010",
+        "heat passage.011",
+        "ceramic heat block.004",
+        "heat passage.012",
+        "heat passage.013",
+        "heat passage.014",
+        "ceramic heat block.005",
+        "heat passage.015",
+        "heat passage.016",
+        "heat passage.017",
+        "ceramic heat block.006",
+        "heat passage.018",
+        "heat passage.019",
+        "heat passage.020",
+        "ceramic heat block.007",
+        "heat passage.021",
+        "heat passage.022",
+        "heat passage.023",
+        "ceramic heat block.008",
+        "heat passage.024",
+        "heat passage.025",
+        "heat passage.026",
+        "ceramic heat block.009",
+        "heat passage.027",
+        "heat passage.028",
+        "heat passage.029",
+        "ceramic heat block.010",
+        "heat passage.030",
+        "heat passage.031",
+        "heat passage.032",
+        "ceramic heat block.011",
+        "heat passage.033",
+        "heat passage.034",
+        "heat passage.035"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -12,
+        42
+      ]
+    },
+    "C": {
+      "parts": 31,
+      "objects": [
+        "exchanger hairpin",
+        "exchanger hairpin.001",
+        "exchanger hairpin.002",
+        "exchanger hairpin.003",
+        "exchanger header",
+        "exchanger header.001",
+        "header connection",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "header connection.001",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015",
+        "transfer fin",
+        "transfer fin.001",
+        "transfer fin.002",
+        "transfer fin.003",
+        "transfer fin.004",
+        "transfer fin.005",
+        "transfer fin.006"
+      ],
+      "removed_covers": [],
+      "camera": [
+        46,
+        24
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 878,
+      "file": "tools/assets/century/ember-vault-A.json"
+    },
+    "B": {
+      "paths": 641,
+      "file": "tools/assets/century/ember-vault-B.json"
+    },
+    "C": {
+      "paths": 949,
+      "file": "tools/assets/century/ember-vault-C.json"
+    }
+  }
+}

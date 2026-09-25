@@ -1,0 +1,124 @@
+{
+  "slug": "cold-mantle",
+  "notes": {
+    "MICROCHANNEL PANEL": "LOCAL HEAT EXCHANGE AT THE VEST",
+    "THERMAL BUFFER": "SWAPPABLE PHASE CHANGE RESERVE",
+    "CONTROLLER": "LOCAL FLOW AND TEMPERATURE LIMITS",
+    "HUMAN WORKER": "COOLS ONE PERSON / NOT THE WHOLE SITE"
+  },
+  "parts": 236,
+  "groups": {
+    "B": {
+      "parts": 16,
+      "objects": [
+        "thermal vest panel",
+        "microchannel",
+        "microchannel.001",
+        "microchannel.002",
+        "microchannel.003",
+        "microchannel.004",
+        "microchannel.005",
+        "panel manifold",
+        "thermal vest panel.001",
+        "microchannel.006",
+        "microchannel.007",
+        "microchannel.008",
+        "microchannel.009",
+        "microchannel.010",
+        "microchannel.011",
+        "panel manifold.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        4,
+        35
+      ]
+    },
+    "C": {
+      "parts": 62,
+      "objects": [
+        "thermal buffer",
+        "conformal vessel seam",
+        "conformal vessel seam.001",
+        "service neck",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "vessel saddle",
+        "vessel saddle.001",
+        "buffer lid",
+        "captive fastener.006",
+        "captive fastener.007",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "pump volute",
+        "pump cover",
+        "captive fastener.014",
+        "captive fastener.015",
+        "captive fastener.016",
+        "captive fastener.017",
+        "captive fastener.018",
+        "captive fastener.019",
+        "captive fastener.020",
+        "captive fastener.021",
+        "suction throat",
+        "discharge",
+        "discharge flange",
+        "captive fastener.022",
+        "captive fastener.023",
+        "captive fastener.024",
+        "captive fastener.025",
+        "captive fastener.026",
+        "captive fastener.027",
+        "captive fastener.028",
+        "captive fastener.029",
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "cooling fin.002",
+        "cooling fin.003",
+        "cooling fin.004",
+        "cooling fin.005",
+        "motor face",
+        "captive fastener.030",
+        "captive fastener.031",
+        "captive fastener.032",
+        "captive fastener.033",
+        "captive fastener.034",
+        "captive fastener.035",
+        "captive fastener.036",
+        "captive fastener.037",
+        "output shaft",
+        "terminal housing",
+        "buffer hose",
+        "buffer hose.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        50,
+        31
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 3548,
+      "file": "tools/assets/century/cold-mantle-A.json"
+    },
+    "B": {
+      "paths": 117,
+      "file": "tools/assets/century/cold-mantle-B.json"
+    },
+    "C": {
+      "paths": 1520,
+      "file": "tools/assets/century/cold-mantle-C.json"
+    }
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "slug": "blue-loop",
+  "notes": {
+    "BIOFILM CARTRIDGE": "FIRST STAGE ORGANIC LOAD REMOVAL",
+    "DIVERTER": "REUSE SUPPLY IS A SEPARATE LINE",
+    "BUFFER TANK": "GREYWATER INPUT / NO POTABLE CLAIM",
+    "CIRCULATION PUMP": "CONTROLLED FILTER RECIRCULATION"
+  },
+  "parts": 155,
+  "groups": {
+    "B": {
+      "parts": 64,
+      "objects": [
+        "biofilm cartridge",
+        "biofilm support",
+        "biofilm support.001",
+        "biofilm support.002",
+        "biofilm support.003",
+        "biofilm support.004",
+        "biofilm support.005",
+        "biofilm support.006",
+        "biofilm support.007",
+        "biofilm support.008",
+        "biofilm support.009",
+        "cartridge cap",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "feed riser",
+        "biofilm cartridge.001",
+        "biofilm support.010",
+        "biofilm support.011",
+        "biofilm support.012",
+        "biofilm support.013",
+        "biofilm support.014",
+        "biofilm support.015",
+        "biofilm support.016",
+        "biofilm support.017",
+        "biofilm support.018",
+        "biofilm support.019",
+        "cartridge cap.001",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015",
+        "feed riser.001",
+        "biofilm cartridge.002",
+        "biofilm support.020",
+        "biofilm support.021",
+        "biofilm support.022",
+        "biofilm support.023",
+        "biofilm support.024",
+        "biofilm support.025",
+        "biofilm support.026",
+        "biofilm support.027",
+        "biofilm support.028",
+        "biofilm support.029",
+        "cartridge cap.002",
+        "captive fastener.016",
+        "captive fastener.017",
+        "captive fastener.018",
+        "captive fastener.019",
+        "captive fastener.020",
+        "captive fastener.021",
+        "captive fastener.022",
+        "captive fastener.023",
+        "feed riser.002",
+        "cartridge header"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -12,
+        45
+      ]
+    },
+    "C": {
+      "parts": 32,
+      "objects": [
+        "diverter body",
+        "diverter port",
+        "captive fastener.024",
+        "captive fastener.025",
+        "captive fastener.026",
+        "captive fastener.027",
+        "captive fastener.028",
+        "captive fastener.029",
+        "diverter port.001",
+        "captive fastener.030",
+        "captive fastener.031",
+        "captive fastener.032",
+        "captive fastener.033",
+        "captive fastener.034",
+        "captive fastener.035",
+        "diverter port.002",
+        "captive fastener.036",
+        "captive fastener.037",
+        "captive fastener.038",
+        "captive fastener.039",
+        "captive fastener.040",
+        "captive fastener.041",
+        "diverter port.003",
+        "captive fastener.042",
+        "captive fastener.043",
+        "captive fastener.044",
+        "captive fastener.045",
+        "captive fastener.046",
+        "captive fastener.047",
+        "diverter actuator",
+        "inspection screw",
+        "inspection screw.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        34,
+        41
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 7322,
+      "file": "tools/assets/century/blue-loop-A.json"
+    },
+    "B": {
+      "paths": 4253,
+      "file": "tools/assets/century/blue-loop-B.json"
+    },
+    "C": {
+      "paths": 994,
+      "file": "tools/assets/century/blue-loop-C.json"
+    }
+  }
+}

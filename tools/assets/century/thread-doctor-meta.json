@@ -1,0 +1,89 @@
+{
+  "slug": "thread-doctor",
+  "notes": {
+    "MICRO LOOM": "INDIVIDUAL CROSSINGS UNDER TENSION",
+    "OPTICAL SHUTTLE": "MATCHES YARN BEFORE REWEAVING",
+    "YARN SPOOL": "MATCHED FIBRE AND COLOUR",
+    "FOCUS CONTROL": "HUMAN APPROVES THE REPAIR PATCH"
+  },
+  "parts": 69,
+  "groups": {
+    "B": {
+      "parts": 25,
+      "objects": [
+        "micro loom rail",
+        "micro loom rail.001",
+        "cloth clamp",
+        "cloth clamp.001",
+        "warp strand",
+        "warp strand.001",
+        "warp strand.002",
+        "warp strand.003",
+        "warp strand.004",
+        "warp strand.005",
+        "warp strand.006",
+        "warp strand.007",
+        "warp strand.008",
+        "warp strand.009",
+        "warp strand.010",
+        "weft strand",
+        "weft strand.001",
+        "weft strand.002",
+        "weft strand.003",
+        "weft strand.004",
+        "weft strand.005",
+        "weft strand.006",
+        "weft strand.007",
+        "tension screw",
+        "tension screw.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -12,
+        46
+      ]
+    },
+    "C": {
+      "parts": 18,
+      "objects": [
+        "optical barrel",
+        "barrel retaining band",
+        "barrel retaining band.001",
+        "barrel retaining band.002",
+        "lens hood",
+        "lens",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "inspection light",
+        "optical shuttle",
+        "shuttle roller",
+        "shuttle roller.001",
+        "repair needle",
+        "yarn feed"
+      ],
+      "removed_covers": [],
+      "camera": [
+        34,
+        42
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 1699,
+      "file": "tools/assets/century/thread-doctor-A.json"
+    },
+    "B": {
+      "paths": 156,
+      "file": "tools/assets/century/thread-doctor-B.json"
+    },
+    "C": {
+      "paths": 791,
+      "file": "tools/assets/century/thread-doctor-C.json"
+    }
+  }
+}

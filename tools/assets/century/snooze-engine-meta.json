@@ -1,0 +1,120 @@
+{
+  "slug": "snooze-engine",
+  "notes": {
+    "TRAVELLING CHIME": "GENTLE AT FIRST / STILL AN ALARM",
+    "DRIVE FOOT": "SMALL SLOW STEPS AWAY FROM BED",
+    "LIGHT PANEL": "STAGE ONE / BEFORE THE WALKING",
+    "SNOOZE PADDLE": "MARKETING CALLS THIS WELLNESS"
+  },
+  "parts": 94,
+  "groups": {
+    "B": {
+      "parts": 22,
+      "objects": [
+        "travelling chime",
+        "chime bar",
+        "bar suspension",
+        "chime bar.001",
+        "bar suspension.001",
+        "chime bar.002",
+        "bar suspension.002",
+        "striker",
+        "motor case",
+        "cooling fin",
+        "cooling fin.001",
+        "motor face",
+        "captive fastener",
+        "captive fastener.001",
+        "captive fastener.002",
+        "captive fastener.003",
+        "captive fastener.004",
+        "captive fastener.005",
+        "captive fastener.006",
+        "captive fastener.007",
+        "output shaft",
+        "terminal housing"
+      ],
+      "removed_covers": [],
+      "camera": [
+        -12,
+        44
+      ]
+    },
+    "C": {
+      "parts": 52,
+      "objects": [
+        "drive foot wheel",
+        "drive hub",
+        "captive fastener.008",
+        "captive fastener.009",
+        "captive fastener.010",
+        "captive fastener.011",
+        "captive fastener.012",
+        "captive fastener.013",
+        "captive fastener.014",
+        "captive fastener.015",
+        "motor case.001",
+        "cooling fin.002",
+        "cooling fin.003",
+        "cooling fin.004",
+        "motor face.001",
+        "captive fastener.016",
+        "captive fastener.017",
+        "captive fastener.018",
+        "captive fastener.019",
+        "captive fastener.020",
+        "captive fastener.021",
+        "captive fastener.022",
+        "captive fastener.023",
+        "output shaft.001",
+        "terminal housing.001",
+        "compliant axle",
+        "drive foot wheel.001",
+        "drive hub.001",
+        "captive fastener.024",
+        "captive fastener.025",
+        "captive fastener.026",
+        "captive fastener.027",
+        "captive fastener.028",
+        "captive fastener.029",
+        "captive fastener.030",
+        "captive fastener.031",
+        "motor case.002",
+        "cooling fin.005",
+        "cooling fin.006",
+        "cooling fin.007",
+        "motor face.002",
+        "captive fastener.032",
+        "captive fastener.033",
+        "captive fastener.034",
+        "captive fastener.035",
+        "captive fastener.036",
+        "captive fastener.037",
+        "captive fastener.038",
+        "captive fastener.039",
+        "output shaft.002",
+        "terminal housing.002",
+        "compliant axle.001"
+      ],
+      "removed_covers": [],
+      "camera": [
+        34,
+        40
+      ]
+    }
+  },
+  "views": {
+    "A": {
+      "paths": 3526,
+      "file": "tools/assets/century/snooze-engine-A.json"
+    },
+    "B": {
+      "paths": 1446,
+      "file": "tools/assets/century/snooze-engine-B.json"
+    },
+    "C": {
+      "paths": 2039,
+      "file": "tools/assets/century/snooze-engine-C.json"
+    }
+  }
+}
