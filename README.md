@@ -47,9 +47,9 @@ python3 ~/.config/omarchy/themes/destiny/companion/install.py
 ```
 
 The installer opens Destiny Wallpapers automatically. First-launch setup runs
-in a full-screen TUI with two bold options: **Perfectly good** (smallest suitable set)
-and **I don't care, I want the biggest everything** (highest matching
-resolution). Both show their MB; one sentence explains the recommendation.
+in a full-screen TUI with two bold options: **Smallest suitable set** and
+**Highest resolution**. Both show resolution and MB. A graphic comparison
+shows visible and cropped areas for each monitor, alongside enlargement status.
 Enter applies, Escape cancels. The application menu opens a large-font Foot window (or the default terminal)
 for this step; subsequent launches go straight to the gallery.
 

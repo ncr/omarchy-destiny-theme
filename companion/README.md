@@ -21,13 +21,17 @@ It runs in your current terminal. From the application menu, it opens Foot
 full-screen with a large 20-point font, falling back to the default terminal.
 This font setting applies only to the setup window; no terminal config changes.
 
-- **Perfectly good** — the smallest suitable set for all connected monitors.
-- **I don't care, I want the biggest everything** — the highest resolution
+- **Smallest suitable set** — the smallest suitable set for all connected monitors.
+- **Highest resolution** — the highest resolution
   available in the matching aspect ratio.
 
-Each choice shows its total MB. One short reason explains the recommendation,
-including why a smaller file loses if it would crop content or require
-upscaling. If both policies currently resolve to the same set, setup says so.
+Each choice shows its resolution and total MB. A side-by-side comparison shows
+the selected format and an alternative on each monitor: solid green is visible
+image; amber hatching is cropped away. Exact crop percentages and enlargement
+are displayed beside each diagram. PgUp/PgDn pages additional monitors;
+[ and ] cycle alternatives when more than two formats are available.
+Small terminals retain a compact text summary; enlarge to see the diagrams.
+If both policies currently resolve to the same set, setup says so.
 Arrow keys choose; Enter applies; Escape cancels. Python's standard curses
 module renders the TUI; a numbered prompt supports non-interactive terminals.
 The selected policy is remembered, so new exports

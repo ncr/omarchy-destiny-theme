@@ -11,13 +11,14 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'tools'))
 import wallpaper_setup_cli as cli
 
 PLAN = dict(recommended='small', biggest='big', reason='Smallest set that fits both screens.',
-            options=[dict(profile='small',total_bytes=80_000_000),dict(profile='big',total_bytes=280_000_000)])
+            options=[dict(profile='small',size=[1920,1080],total_bytes=80_000_000,displays=[]),
+                     dict(profile='big',size=[3840,2160],total_bytes=280_000_000,displays=[])])
 
 
 class CLI(unittest.TestCase):
     def test_exactly_two_choices(self):
-        self.assertEqual(cli.choices(PLAN), [('Perfectly good','80.0 MB','auto'),
-            ("I don't care, I want the biggest everything",'280.0 MB','biggest')])
+        self.assertEqual(cli.choices(PLAN), [('Smallest suitable set','80.0 MB','auto'),
+            ("Highest resolution",'280.0 MB','biggest')])
 
     def test_tui_navigation_and_cancel(self):
         class Screen:
@@ -34,10 +35,25 @@ class CLI(unittest.TestCase):
         with patch.object(cli.curses,'curs_set'),patch.object(cli.curses,'has_colors',return_value=False):
             screen=Screen([cli.curses.KEY_DOWN,'\n'])
             self.assertEqual(cli.tui(screen,PLAN,True),'biggest')
-            self.assertTrue(any('Perfectly good' in text for text in screen.lines))
-            self.assertTrue(any(PLAN['reason'] in text for text in screen.lines))
+            self.assertTrue(any('Smallest suitable set' in text for text in screen.lines))
+            self.assertTrue(any('SELECTED FORMAT' in text for text in screen.lines))
             self.assertIsNone(cli.tui(Screen(['\x1b']),PLAN,True))
             self.assertEqual(cli.tui(Screen(['\n'],(10,35)),PLAN,False),'auto')
+
+    def test_crop_geometry_matches_cover_area(self):
+        for size, display, axis in [([5120,2160],dict(width=1920,height=1080),'sides'),
+                                    ([1920,1080],dict(width=3440,height=1440),'vertical'),
+                                    ([3840,2160],dict(width=1920,height=1080),'none')]:
+            x,y,w,h=cli.crop_geometry(size,display)
+            self.assertAlmostEqual(2*x+w,1)
+            self.assertAlmostEqual(2*y+h,1)
+            if axis=='sides':
+                self.assertAlmostEqual(1-w*h,.25)
+                self.assertEqual(y,0)
+            elif axis=='vertical':
+                self.assertGreater(y,0)
+                self.assertEqual(x,0)
+            else:self.assertEqual((x,y,w,h),(0,0,1,1))
 
     def test_plain_default_and_cancel(self):
         with patch.object(cli.shutil,'which',return_value=None),patch('sys.stdout',new_callable=io.StringIO):
