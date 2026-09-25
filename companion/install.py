@@ -66,14 +66,16 @@ def main():
         desktop.write_text('[Desktop Entry]\nType=Application\nName=Destiny Wallpapers\n'
             'Comment=Browse the Destiny wallpaper collection\n'
             'Exec='+desktop_quote(launcher)+'\nIcon=preferences-desktop-wallpaper\n'
-            'Terminal=false\nCategories=Graphics;Viewer;\n'
-            'Keywords=wallpaper;tapety;destiny;blueprint;\nStartupWMClass=destiny-wallpapers\n')
+            'Terminal=false\nCategories=Graphics;Viewer;\nActions=Settings;\n'
+            'Keywords=wallpaper;tapety;destiny;blueprint;\nStartupWMClass=destiny-wallpapers\n'
+            '\n[Desktop Action Settings]\nName=Wallpaper settings\n'
+            'Exec='+desktop_quote(launcher)+' --configure\n')
         if local and shutil.which('omarchy'):
             hook_source = app/'destiny-wallpapers'
             hook_source.write_text('#!/bin/sh\n'+MARKER+'\n'
                 '[ "$1" = destiny ] || exit 0\nexec '+shlex.quote(str(launcher))+' --sync-backgrounds\n')
             subprocess.run(['omarchy', 'hook', 'install', 'theme-set', str(hook_source)], check=True)
-        (app/'install.json').write_text(json.dumps({'theme_root':str(ROOT),'prefix':str(prefix),'version':5},indent=2)+'\n')
+        (app/'install.json').write_text(json.dumps({'theme_root':str(ROOT),'prefix':str(prefix),'version':6},indent=2)+'\n')
         print(f'Installed Destiny Wallpapers: {launcher}\nWallpaper source: {ROOT}')
     refresh = shutil.which('update-desktop-database')
     if refresh and desktop.parent.is_dir():
@@ -83,7 +85,7 @@ def main():
             log = app/'launch.log'
             with log.open('a') as stream:
                 subprocess.Popen([str(launcher)], stdout=stream, stderr=stream, start_new_session=True)
-            print('Opening Destiny Wallpapers. First launch explains the detected monitor and selected format.')
+            print('Opening Destiny Wallpapers. Resolution is selected automatically; a notification links to settings.')
         else:
             print('No graphical session detected. Open Destiny Wallpapers from the application menu later.')
 

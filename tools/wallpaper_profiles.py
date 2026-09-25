@@ -233,17 +233,50 @@ def sync(p, current=None):
     return changed
 
 
+def notify_selection(p, desktop):
+    notifier = shutil.which('omarchy-notification-send')
+    fallback = shutil.which('notify-send')
+    if not notifier and not fallback:
+        return
+    resolution=' × '.join(map(str,p['size']))
+    title=('Optimal wallpaper resolution selected' if p['profile']==p['recommended']
+           else 'Wallpaper resolution updated')
+    title+=': '+resolution
+    scope='' if desktop else 'Gallery only. '
+    command=shutil.which('destiny-wallpapers')
+    if notifier and command:
+        args=[notifier,'--app-name','Destiny Wallpapers','-t','9000',title,
+              scope+'Click to change settings.', '--exec',command,'--configure']
+    else:
+        args=[notifier or fallback,title,scope+'Settings: destiny-wallpapers --configure']
+    try:
+        subprocess.run(args,check=False,timeout=5,capture_output=True)
+    except (OSError,subprocess.SubprocessError):
+        pass  # A notification failure must never prevent the gallery opening.
+
+
 def initialize(root, p, requested='auto', monitor=None, configure=False):
     previous = read_setup()
-    requested = 'auto'
+    # Old chooser preferences migrate to automatic; only explicit new settings
+    # can establish a manual override.
+    if previous.get('version') != 6 or previous.get('root') != str(root):
+        requested='auto'
     p = plan(root, requested, monitor, p['monitors'])
-    if configure or previous.get('version') != 5 or previous.get('root') != str(root):
-        choice = announce(p, bool(p['screen']) and active_destiny(current_dir()))
+    desktop=bool(p['screen']) and active_destiny(current_dir())
+    if configure:
+        choice=announce({**p,'setting':requested}, desktop)
         if not choice:
             return None
-        if choice != 'auto':
-            raise ValueError('Invalid setup confirmation')
+        if choice not in {'auto',*(o['profile'] for o in p['options'])}:
+            raise ValueError('Invalid wallpaper setting')
+        requested=choice
+        p=plan(root,requested,monitor,p['monitors'])
     sync(p)
     if p['screen']:
-        save_setup(dict(version=5, root=str(root), profile=requested, monitor=monitor))
+        changed=(previous.get('version')!=6 or previous.get('root')!=str(root)
+                 or previous.get('selected')!=p['profile'])
+        save_setup(dict(version=6,root=str(root),profile=requested,monitor=monitor,
+                        selected=p['profile']))
+        if changed:
+            notify_selection(p,desktop)
     return p

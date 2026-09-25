@@ -15,6 +15,9 @@ import wallpaper_profiles as wp
 
 class Profiles(unittest.TestCase):
     def setUp(self):
+        notify=patch.object(wp,'notify_selection')
+        self.notify=notify.start()
+        self.addCleanup(notify.stop)
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
@@ -144,10 +147,10 @@ class Profiles(unittest.TestCase):
              patch.object(wp, 'sync') as sync, patch.object(wp, 'save_setup') as save:
             result = wp.initialize(self.root, p, requested='biggest')
             self.assertEqual(result['profile'], '1080')
-            self.assertEqual(announce.call_args.args[0]['profile'],'1080')
+            announce.assert_not_called()
             self.assertEqual(sync.call_args.args[0]['profile'], '1080')
             self.assertEqual(save.call_args.args[0]['profile'], 'auto')
-            self.assertEqual(save.call_args.args[0]['version'],5)
+            self.assertEqual(save.call_args.args[0]['version'],6)
 
     def test_reason_explains_larger_file_and_biggest_keeps_proportions(self):
         self.add_sized_profile('cheap-wide', [5120,2160], 1)
@@ -213,20 +216,53 @@ class Profiles(unittest.TestCase):
     def test_cancel_does_not_sync_or_save(self):
         with patch.object(wp, 'read_setup', return_value={}), patch.object(wp, 'announce', return_value=False), \
              patch.object(wp, 'sync') as sync, patch.object(wp, 'save_setup') as save:
-            self.assertFalse(wp.initialize(self.root, self.plan()))
+            self.assertFalse(wp.initialize(self.root, self.plan(),configure=True))
             sync.assert_not_called()
             save.assert_not_called()
 
     def test_setup_once_and_retry_when_detection_unavailable(self):
-        with patch.object(wp, 'read_setup', return_value={'version':5, 'root':str(self.root)}), \
+        with patch.object(wp, 'read_setup', return_value={'version':6, 'root':str(self.root),'selected':'16-9'}), \
              patch.object(wp, 'announce') as announce, patch.object(wp, 'sync'), patch.object(wp, 'save_setup') as save:
             self.assertTrue(wp.initialize(self.root, self.plan()))
             announce.assert_not_called()
             save.assert_called_once()
+            self.notify.assert_not_called()
         with patch.object(wp, 'read_setup', return_value={}), patch.object(wp, 'announce', return_value='auto'), \
              patch.object(wp, 'sync'), patch.object(wp, 'save_setup') as save:
             wp.initialize(self.root, wp.plan(self.root, detected=[]))
             save.assert_not_called()
+
+    def test_manual_settings_persist_and_notification_does_not_repeat(self):
+        previous={}
+        def save(value):previous.update(value)
+        with patch.object(wp,'read_setup',side_effect=lambda:dict(previous)), patch.object(wp,'save_setup',side_effect=save), patch.object(wp,'sync'), patch.object(wp,'announce',return_value='wide') as prompt:
+            wp.initialize(self.root,self.plan())
+            prompt.assert_not_called()
+            self.notify.assert_called_once()
+            wp.initialize(self.root,self.plan())
+            self.notify.assert_called_once()
+            result=wp.initialize(self.root,self.plan(),configure=True)
+            self.assertEqual(result['profile'],'wide')
+            self.assertEqual(previous['profile'],'wide')
+            self.assertEqual(self.notify.call_count,2)
+            result=wp.initialize(self.root,self.plan(),requested=previous['profile'])
+            self.assertEqual(result['profile'],'wide')
+            self.assertEqual(self.notify.call_count,2)
+
+
+class Notifications(unittest.TestCase):
+    def test_notification_opens_settings(self):
+        p=dict(size=[3840,2160],profile='4k',recommended='4k')
+        with patch.object(wp.shutil,'which',side_effect=lambda name:'/usr/bin/'+name), patch.object(wp.subprocess,'run') as run:
+            wp.notify_selection(p,True)
+            args=run.call_args.args[0]
+            self.assertEqual(args[-3:],['--exec','/usr/bin/destiny-wallpapers','--configure'])
+            self.assertTrue(any('3840 × 2160' in x for x in args))
+            self.assertIn('Click to change settings.',args)
+
+    def test_notification_failure_does_not_block_launch(self):
+        with patch.object(wp.shutil,'which',return_value='/usr/bin/notifier'), patch.object(wp.subprocess,'run',side_effect=OSError('No bus')):
+            wp.notify_selection(dict(size=[3840,2160],profile='4k',recommended='4k'),False)
 
 
 if __name__ == '__main__':

@@ -14,28 +14,27 @@ application menu, and opens it automatically in a graphical session. Use
 `--no-launch` to install without opening it. No sudo, permanent viewer autostart,
 or compositor configuration changes are involved.
 
-## First launch: Optimal set
+## Automatic setup
 
-The full-screen TUI explains one automatic selection: **Optimal set**.
-There is no resolution or quality-policy chooser. The app evaluates all
-connected monitors, first avoiding enlargement, then minimizing cropping,
-then selecting the smallest file total among equally suitable sets.
+Opening the app automatically selects the optimal wallpaper set and opens the
+gallery. There is no first-run dialog. Selection considers all connected
+monitors: avoid enlargement, minimize cropping, then prefer smaller files.
 
-The screen shows only the optimal set: resolution, total MB and what Enter
-will do. Each monitor has a diagram of the resulting wallpaper: solid green
-is visible image; amber hatching is cropped away. Exact crop percentages and
-enlargement appear beside the diagram when relevant. No alternative sets or
-comparisons are displayed. PgUp/PgDn pages additional monitors.
+A short notification appears on the first selection or when the chosen set
+changes. It states the resolution; clicking it opens settings. With another
+theme active, it says “Gallery only” and leaves the desktop unchanged.
+Unchanged launches do not repeat the notification.
 
-Enter continues; Escape cancels without changes. From the application menu,
-Foot opens full-screen with a large 20-point font, falling back to the default
-terminal. This font setting applies only to setup, without config changes.
-An existing terminal uses its own font. Small terminals show a compact summary.
-Python's standard curses module renders the TUI.
+Settings are available through **Wallpaper settings** in the application's
+context menu, or `destiny-wallpapers --configure`. This optional TUI offers
+**Automatic · Optimal set** and the installed resolutions. A manual override
+is remembered; selecting Automatic restores monitor-based selection.
+Escape cancels without changing anything. The settings window uses a large
+font in Foot, without modifying terminal configuration.
 
-`--configure` reopens the explanation; `--show-plan` provides full read-only
-details. Earlier size-policy preferences are replaced by automatic selection
-when the user confirms the new setup. Subsequent launches adapt automatically.
+`--show-plan` provides detailed read-only diagnostics. Earlier setup policies
+migrate to automatic selection. No monitor detection means no desktop change;
+the app retries automatically on the next launch.
 
 Both native formats (42 sheets each) ship on **main**: 5120×2880 (16:9) and
 5120×2160 (ultrawide). MB describes compressed image files, not RAM or download
@@ -50,7 +49,7 @@ desktop unchanged and retries setup when detection works.
 If Destiny is active, the app copies the chosen set into Omarchy's staged
 backgrounds while preserving custom files and the currently selected sheet.
 A user-local `theme-set` hook repeats this selection when Destiny is reapplied,
-including after an update. The hook does nothing before first-run setup.
+including after an update. The hook does nothing before the app has initialized.
 Other themes are never activated or modified. Opening the app checks the
 monitors again; this is not a resident hotplug service.
 
@@ -74,7 +73,7 @@ window class. This app does not install a global keybinding.
 ```sh
 destiny-wallpapers truth-lamp
 destiny-wallpapers 3                  # Collection position, not filename number
-destiny-wallpapers --configure        # Review the optimal set
+destiny-wallpapers --configure        # Change resolution settings
 destiny-wallpapers --show-plan        # JSON; no changes or setup dialog
 destiny-wallpapers --list             # All 42 chosen files; read-only
 destiny-wallpapers --monitor DP-1     # Prefer its proportions; still avoid upscaling on all screens

@@ -62,7 +62,7 @@ def main():
     ap.add_argument('--dir', type=Path, help='View a different render directory')
     ap.add_argument('--render', action='store_true', help='Regenerate the development set before opening')
     ap.add_argument('--list', action='store_true', help='List the selected collection and exit')
-    ap.add_argument('--configure', action='store_true', help='Review the automatically selected optimal set in the terminal')
+    ap.add_argument('--configure', action='store_true', help='Change wallpaper resolution settings')
     ap.add_argument('--monitor', help="Prefer this monitor's proportions; assess resolution on all monitors")
     ap.add_argument('--show-plan', action='store_true', help='Print automatic setup as JSON without changing anything')
     ap.add_argument('--sync-backgrounds', action='store_true', help='Refresh an already configured Destiny desktop without opening the viewer')
@@ -82,9 +82,13 @@ def main():
         if retained and (ROOT/'docs/collection/profiles.json').is_file():
             import wallpaper_profiles as wp
             previous = wp.read_setup()
-            requested = 'auto'
+            requested = previous.get('profile','auto') if previous.get('version')==6 and previous.get('root')==str(ROOT) else 'auto'
+            if requested != 'auto':
+                _, available = wp.profiles(ROOT)
+                if requested not in {p['id'] for p in available}:
+                    requested = 'auto'
             monitor = args.monitor or previous.get('monitor')
-            if args.sync_backgrounds and (previous.get('version') != 5 or previous.get('root') != str(ROOT)):
+            if args.sync_backgrounds and (previous.get('version') != 6 or previous.get('root') != str(ROOT)):
                 return
             detected = wp.monitors()
             # A remembered external screen may be unplugged; explicit CLI typos
@@ -96,7 +100,7 @@ def main():
                 print(json.dumps(profile_plan, indent=2))
                 return
             if args.sync_backgrounds:
-                wp.sync(profile_plan)
+                wp.initialize(ROOT, profile_plan, requested, monitor)
                 return
             files = [Path(p) for p in profile_plan['files']]
         else:

@@ -16,9 +16,8 @@ PLAN = dict(recommended='small', biggest='big', reason='Smallest set that fits b
 
 
 class CLI(unittest.TestCase):
-    def test_only_optimal_set_is_offered(self):
-        self.assertEqual(cli.optimal_set(PLAN)['profile'],'small')
-        self.assertEqual(cli.size_label(cli.optimal_set(PLAN)),'80.0 MB')
+    def test_settings_include_auto_and_real_profiles(self):
+        self.assertEqual(cli.settings(PLAN),[('auto','Automatic · Optimal set'),('small','1920 × 1080 / 80.0 MB'),('big','3840 × 2160 / 280.0 MB')])
 
     def test_tui_navigation_and_cancel(self):
         class Screen:
@@ -34,26 +33,10 @@ class CLI(unittest.TestCase):
             def get_wch(self):return next(self.keys)
         with patch.object(cli.curses,'curs_set'),patch.object(cli.curses,'has_colors',return_value=False):
             screen=Screen([cli.curses.KEY_DOWN,'2','\n'])
-            self.assertEqual(cli.tui(screen,PLAN,True),'auto')
+            self.assertEqual(cli.tui(screen,PLAN,True),'small')
             self.assertTrue(any('Optimal set' in text for text in screen.lines))
-            self.assertFalse(any('ALTERNATIVE' in text or 'COMPARISON' in text or '3840' in text for text in screen.lines))
             self.assertIsNone(cli.tui(Screen(['\x1b']),PLAN,True))
             self.assertEqual(cli.tui(Screen(['\n'],(10,35)),PLAN,False),'auto')
-
-    def test_crop_geometry_matches_cover_area(self):
-        for size, display, axis in [([5120,2160],dict(width=1920,height=1080),'sides'),
-                                    ([1920,1080],dict(width=3440,height=1440),'vertical'),
-                                    ([3840,2160],dict(width=1920,height=1080),'none')]:
-            x,y,w,h=cli.crop_geometry(size,display)
-            self.assertAlmostEqual(2*x+w,1)
-            self.assertAlmostEqual(2*y+h,1)
-            if axis=='sides':
-                self.assertAlmostEqual(1-w*h,.25)
-                self.assertEqual(y,0)
-            elif axis=='vertical':
-                self.assertGreater(y,0)
-                self.assertEqual(x,0)
-            else:self.assertEqual((x,y,w,h),(0,0,1,1))
 
     def test_plain_default_and_cancel(self):
         with patch.object(cli.shutil,'which',return_value=None),patch('sys.stdout',new_callable=io.StringIO):
