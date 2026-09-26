@@ -17,8 +17,10 @@ The companion automatically selects the best wallpaper resolution for your deskt
 
 **Settings:** `destiny-wallpapers --configure`
 
-![Fusion Transport wallpaper and enlarged propulsion detail](previews/wallpaper-detail.webp)
+![Step into the future — 42 beautiful p(bloom) wallpapers](previews/wallpaper-collage.webp)
 
-[All wallpapers](previews/wallpapers.webp) · [Companion details](companion/README.md) · [MIT license](LICENSE)
+![Real Destiny desktop with Neovim, LazyGit, btop, Fastfetch and fzf](previews/desktop-tuis.png)
+
+[All wallpapers](previews/wallpapers.webp) · [Detail close-up](previews/wallpaper-detail.webp) · [Companion details](companion/README.md) · [MIT license](LICENSE)
 
 Inspired by Destiny; not affiliated with Bungie. Omarchy wordmark from [Omarchy](https://github.com/basecamp/omarchy).
