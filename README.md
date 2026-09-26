@@ -2,7 +2,7 @@
 
 A dark theme for [Omarchy](https://omarchy.org) 4, with **42 retrofuturistic blueprint wallpapers**.
 
-![Destiny desktop](preview.png)
+![Destiny desktop with Neovim, system information and live btop graphs](preview.png)
 
 ## Install
 
@@ -16,6 +16,8 @@ The companion automatically selects the best wallpaper resolution for your deskt
 **Browse:** open **Destiny Wallpapers** from the app menu. **← / →** to browse, **Esc** to close.
 
 **Settings:** `destiny-wallpapers --configure`
+
+![Fusion Transport wallpaper and enlarged propulsion detail](previews/wallpaper-detail.webp)
 
 [All wallpapers](previews/wallpapers.webp) · [Companion details](companion/README.md) · [MIT license](LICENSE)
 
