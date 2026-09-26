@@ -6,6 +6,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'previews/wallpaper-collage.webp'
 W, H = 2400, 1430
+TILT_DEGREES = 5
 FONT = Path('/usr/share/fonts/gsfonts')
 def font(size, face='NimbusSans-Regular.otf'):
     return ImageFont.truetype(str(FONT / face), size)
@@ -39,7 +40,7 @@ for i, name in enumerate(names):
     wall.alpha_composite(shadow, (x-12,y-8))
     wall.alpha_composite(sheet, (x,y))
     ImageDraw.Draw(wall).rectangle((x,y,x+tw-1,y+th-1), outline='#485261',width=1)
-wall = wall.rotate(5, resample=Image.Resampling.BICUBIC, expand=True)
+wall = wall.rotate(TILT_DEGREES, resample=Image.Resampling.BICUBIC, expand=True)
 canvas.alpha_composite(wall, (-360, 435))
 
 # Typography stays deterministic; only its light has a restrained bloom.
@@ -47,7 +48,7 @@ headline = Image.new('RGBA', (1600, 355))
 hd = ImageDraw.Draw(headline)
 hd.text((10, 0), 'STEP INTO', font=font(145,'NimbusSans-BoldItalic.otf'), fill='#eff5ea')
 hd.text((0, 145), 'THE FUTURE.', font=font(155,'NimbusSans-BoldItalic.otf'), fill='#b1e2e8')
-headline = headline.rotate(3, resample=Image.Resampling.BICUBIC, expand=True)
+headline = headline.rotate(TILT_DEGREES, resample=Image.Resampling.BICUBIC, expand=True)
 glow = headline.filter(ImageFilter.GaussianBlur(15))
 glow.putalpha(glow.getchannel('A').point(lambda a: int(a*.20)))
 canvas.alpha_composite(glow,(83,107))
