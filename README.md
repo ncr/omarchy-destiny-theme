@@ -2,7 +2,7 @@
 
 A dark theme for [Omarchy](https://omarchy.org) 4, with **42 retrofuturistic blueprint wallpapers**.
 
-![Destiny desktop with Neovim, system information and live btop graphs](preview.png)
+![Destiny desktop with a floating Fastfetch window over the Fusion Transport wallpaper](preview.png)
 
 ## Install
 
