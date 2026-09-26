@@ -1,4 +1,4 @@
-# Destiny
+# Destiny Theme
 
 A dark theme for [Omarchy](https://omarchy.org) 4, with **42 retrofuturistic blueprint wallpapers**.
 
@@ -8,10 +8,13 @@ A dark theme for [Omarchy](https://omarchy.org) 4, with **42 retrofuturistic blu
 
 ```bash
 omarchy theme install https://github.com/ncr/omarchy-destiny-theme.git
-python3 ~/.config/omarchy/themes/destiny/companion/install.py
 ```
 
 The companion automatically selects the best wallpaper resolution for your desktop, including when monitors change. No setup screens.
+
+```bash
+python3 ~/.config/omarchy/themes/destiny/companion/install.py
+```
 
 **Browse:** open **Destiny Wallpapers** from the app menu. **← / →** to browse, **Esc** to close.
 
