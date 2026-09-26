@@ -2,7 +2,7 @@
 
 A dark theme for [Omarchy](https://omarchy.org) 4, with **42 retrofuturistic blueprint wallpapers**.
 
-![Destiny desktop with a floating Fastfetch window over the Fusion Transport wallpaper](preview.png)
+![Destiny desktop with floating Fastfetch and btop windows beside the Bounder exoskeleton](preview.png)
 
 ## Install
 
